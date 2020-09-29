@@ -20,9 +20,7 @@ export const movieListItemType = shape({
   movie: PropTypes.string.isRequired
 });
 
-export const movieListType = shape({
-  movies: PropTypes.arrayOf(movieListItemType).isRequired
-});
+export const movieListType = PropTypes.arrayOf(movieListItemType).isRequired;
 
 export const movieCardTopType = shape({
   name: PropTypes.string.isRequired,
@@ -34,9 +32,7 @@ export const genresListItemType = shape({
   genre: PropTypes.string.isRequired
 });
 
-export const genresListType = shape({
-  genres: PropTypes.arrayOf(genresListItemType).isRequired,
-});
+export const genresListType = PropTypes.arrayOf(genresListItemType).isRequired;
 
 export const catalogType = shape({
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
