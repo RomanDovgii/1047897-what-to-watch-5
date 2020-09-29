@@ -1,18 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {movieListItemType} from "../../types/index";
 
 const MoviesListItem = (props) => {
-  const {movie} = props;
+  const movieListItem = props;
 
-  const imageName = movie.split(` `).join(`-`);
+  const imageName = movieListItem.movie.split(` `).join(`-`);
 
   return (
     <article className="small-movie-card catalog__movies-card">
       <div className="small-movie-card__image">
-        <img src={`img/` + imageName + `.jpg`} alt={movie} width="280" height="175" />
+        <img src={`img/` + imageName + `.jpg`} alt={movieListItem.movie} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{movie}</a>
+        <a className="small-movie-card__link" href="movie-page.html">{movieListItem.movie}</a>
       </h3>
     </article>
 
@@ -20,7 +20,7 @@ const MoviesListItem = (props) => {
 };
 
 MoviesListItem.propTypes = {
-  movie: PropTypes.string.isRequired
+  movieListItem: movieListItemType
 };
 
 export default MoviesListItem;

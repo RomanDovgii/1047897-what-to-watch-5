@@ -1,20 +1,20 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {genresListItemType} from "../../types/index";
 
 const GenresListItem = (props) => {
-  const {genre} = props;
+  const genresListItem = props;
 
-  const activeClass = (genre === `All genres`) ? ` catalog__genres-item--active` : ``;
+  const activeClass = (genresListItem.genre === `All genres`) ? ` catalog__genres-item--active` : ``;
 
   return (
     <li className={`catalog__genres-item` + activeClass}>
-      <a href="#" className="catalog__genres-link">{genre}</a>
+      <a href="#" className="catalog__genres-link">{genresListItem.genre}</a>
     </li>
   );
 };
 
 GenresListItem.propTypes = {
-  genre: PropTypes.string.isRequired
+  genresListItem: genresListItemType
 };
 
 export default GenresListItem;

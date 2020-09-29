@@ -20,8 +20,8 @@ App.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseDate: PropTypes.number.isRequired,
-  genres: PropTypes.array.isRequired,
-  movies: PropTypes.array.isRequired
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default App;

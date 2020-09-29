@@ -1,13 +1,13 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MoviesListItem from "./movies-list-item";
+import {movieListType} from "../../types/index";
 
 const MoviesList = (props) => {
-  const {movies} = props;
+  const movieList = props;
 
   return (
     <div className="catalog__movies-list">
-      {movies.map((movie, index) => {
+      {movieList.movies.map((movie, index) => {
         return (
           <MoviesListItem
             key = {index.toString()}
@@ -20,7 +20,7 @@ const MoviesList = (props) => {
 };
 
 MoviesList.propTypes = {
-  movies: PropTypes.array.isRequired,
+  movieList: movieListType
 };
 
 export default MoviesList;

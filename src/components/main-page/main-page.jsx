@@ -1,23 +1,23 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MovieCardTop from "./modules/movie-top";
 import Catalog from "./modules/catalog";
 import Footer from "./modules/footer";
+import {mainPageType} from "../types/index";
 
 const MainPage = (props) => {
-  const {name, genre, releaseDate, genres, movies} = props;
+  const mainPage = props;
 
   return (
     <React.Fragment>
       <MovieCardTop
-        name = {name}
-        genre = {genre}
-        releaseDate = {releaseDate}
+        name = {mainPage.name}
+        genre = {mainPage.genre}
+        releaseDate = {mainPage.releaseDate}
       />
       <div className="page-content">
         <Catalog
-          genres = {genres}
-          movies = {movies}
+          genres = {mainPage.genres}
+          movies = {mainPage.movies}
         />
         <Footer/>
       </div>
@@ -27,11 +27,7 @@ const MainPage = (props) => {
 };
 
 MainPage.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  genres: PropTypes.array.isRequired,
-  movies: PropTypes.array.isRequired
+  mainPage: mainPageType
 };
 
 export default MainPage;
