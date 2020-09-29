@@ -13,6 +13,6 @@ const GenresListItem = (props) => {
   );
 };
 
-GenresListItem.propTypes = listItemType.isRequired;
+GenresListItem.propTypes = listItemType;
 
 export default GenresListItem;

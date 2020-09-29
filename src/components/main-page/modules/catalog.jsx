@@ -23,6 +23,6 @@ const Catalog = (props) => {
   );
 };
 
-Catalog.propTypes = catalogType.isRequired;
+Catalog.propTypes = catalogType;
 
 export default Catalog;

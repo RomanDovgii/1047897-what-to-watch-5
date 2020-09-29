@@ -19,6 +19,6 @@ const GenresList = (props) => {
   );
 };
 
-GenresList.propTypes = listType.isRequired;
+GenresList.propTypes = listType;
 
 export default GenresList;

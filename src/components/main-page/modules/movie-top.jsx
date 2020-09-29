@@ -62,6 +62,6 @@ const MovieCardTop = (props) => {
   );
 };
 
-MovieCardTop.propTypes = movieCardTopType.isRequired;
+MovieCardTop.propTypes = movieCardTopType;
 
 export default MovieCardTop;

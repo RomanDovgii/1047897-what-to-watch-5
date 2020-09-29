@@ -19,6 +19,6 @@ const MoviesList = (props) => {
   );
 };
 
-MoviesList.propTypes = listType.isRequired;
+MoviesList.propTypes = listType;
 
 export default MoviesList;

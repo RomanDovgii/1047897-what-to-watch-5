@@ -16,6 +16,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = appType.isRequired;
+App.propTypes = appType;
 
 export default App;

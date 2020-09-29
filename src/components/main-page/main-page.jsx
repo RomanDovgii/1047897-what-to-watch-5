@@ -26,6 +26,6 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = appType.isRequired;
+MainPage.propTypes = appType;
 
 export default MainPage;
