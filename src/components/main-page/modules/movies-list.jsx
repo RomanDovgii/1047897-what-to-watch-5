@@ -1,6 +1,6 @@
 import React from "react";
 import MoviesListItem from "./movies-list-item";
-import {movieListType} from "../../types/index";
+import {listType} from "../../types/index";
 
 const MoviesList = (props) => {
   const {movies} = props;
@@ -19,6 +19,6 @@ const MoviesList = (props) => {
   );
 };
 
-MoviesList.propTypes = movieListType.isRequired;
+MoviesList.propTypes = listType.isRequired;
 
 export default MoviesList;
