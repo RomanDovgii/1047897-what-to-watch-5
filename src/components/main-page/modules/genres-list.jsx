@@ -1,6 +1,6 @@
 import React from "react";
 import GenresListItem from "./genres-list-item";
-import {listType} from "../../types/index";
+import {listType} from "../../types/types";
 
 const GenresList = (props) => {
   const {genres} = props;

@@ -1,5 +1,5 @@
 import React from "react";
-import {listItemType} from "../../types/index";
+import {listItemType} from "../../types/types";
 
 const MoviesListItem = (props) => {
   const {movie} = props;

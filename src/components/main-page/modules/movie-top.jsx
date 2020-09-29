@@ -1,5 +1,5 @@
 import React from "react";
-import {movieCardTopType} from "../../types/index";
+import {movieCardTopType} from "../../types/types";
 
 const MovieCardTop = (props) => {
   const {name, genre, releaseDate} = props;

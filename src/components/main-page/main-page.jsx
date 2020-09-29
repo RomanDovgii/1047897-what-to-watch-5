@@ -2,7 +2,7 @@ import React from "react";
 import MovieCardTop from "./modules/movie-top";
 import Catalog from "./modules/catalog";
 import Footer from "./modules/footer";
-import {appType} from "../types/index";
+import {appType} from "../types/types";
 
 const MainPage = (props) => {
   const {name, genre, releaseDate, genres, movies} = props;

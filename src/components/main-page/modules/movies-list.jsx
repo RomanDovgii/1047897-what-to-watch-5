@@ -1,6 +1,6 @@
 import React from "react";
 import MoviesListItem from "./movies-list-item";
-import {listType} from "../../types/index";
+import {listType} from "../../types/types";
 
 const MoviesList = (props) => {
   const {movies} = props;

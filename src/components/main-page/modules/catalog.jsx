@@ -2,7 +2,7 @@ import React from "react";
 import GenresList from "./genres-list";
 import MoviesList from "./movies-list";
 import MoreButton from "./more-button";
-import {catalogType} from "../../types/index";
+import {catalogType} from "../../types/types";
 
 const Catalog = (props) => {
   const {genres, movies} = props;
