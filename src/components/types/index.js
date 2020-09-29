@@ -8,14 +8,6 @@ export const appType = {
   movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export const mainPageType = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
-};
-
 export const movieListItemType = PropTypes.string.isRequired;
 
 export const movieListType = PropTypes.arrayOf(movieListItemType).isRequired;
