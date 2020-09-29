@@ -16,12 +16,12 @@ export const mainPageType = shape({
   movies: PropTypes.arrayOf(PropTypes.string).isRequired
 });
 
-export const movieListType = shape({
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
-});
-
 export const movieListItemType = shape({
   movie: PropTypes.string.isRequired
+});
+
+export const movieListType = shape({
+  movies: PropTypes.arrayOf(movieListItemType).isRequired
 });
 
 export const movieCardTopType = shape({
@@ -30,12 +30,12 @@ export const movieCardTopType = shape({
   releaseDate: PropTypes.number.isRequired
 });
 
-export const genresListType = shape({
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-});
-
 export const genresListItemType = shape({
   genre: PropTypes.string.isRequired
+});
+
+export const genresListType = shape({
+  genres: PropTypes.arrayOf(genresListItemType).isRequired,
 });
 
 export const catalogType = shape({

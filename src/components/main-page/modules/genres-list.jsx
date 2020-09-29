@@ -3,11 +3,11 @@ import GenresListItem from "./genres-list-item";
 import {genresListType} from "../../types/index";
 
 const GenresList = (props) => {
-  const genresList = props;
+  const {genres} = props;
 
   return (
     <ul className="catalog__genres-list">
-      {genresList.genres.map((genre, index) => {
+      {genres.map((genre, index) => {
         return (
           <GenresListItem
             key = {index.toString()}
@@ -19,8 +19,6 @@ const GenresList = (props) => {
   );
 };
 
-GenresList.propTypes = {
-  genresList: genresListType
-};
+GenresList.propTypes = genresListType.isRequired;
 
 export default GenresList;

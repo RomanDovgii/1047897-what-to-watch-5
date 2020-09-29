@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import MainPage from "../main-page/main-page";
+import {appType} from "../types/index";
 
 const App = (props) => {
   const {name, genre, releaseDate, genres, movies} = props;
@@ -16,12 +16,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
-};
+App.propTypes = appType.isRequired;
 
 export default App;

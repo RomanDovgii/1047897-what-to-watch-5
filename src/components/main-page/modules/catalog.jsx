@@ -5,17 +5,17 @@ import MoreButton from "./more-button";
 import {catalogType} from "../../types/index";
 
 const Catalog = (props) => {
-  const catalog = props;
+  const {genres, movies} = props;
 
   return (
     <React.Fragment>
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
         <GenresList
-          genres = {catalog.genres}
+          genres = {genres}
         />
         <MoviesList
-          movies = {catalog.movies}
+          movies = {movies}
         />
         <MoreButton/>
       </section>
@@ -23,8 +23,6 @@ const Catalog = (props) => {
   );
 };
 
-Catalog.propTypes = {
-  catalog: catalogType
-};
+Catalog.propTypes = catalogType.isRequired;
 
 export default Catalog;

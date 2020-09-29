@@ -3,11 +3,11 @@ import MoviesListItem from "./movies-list-item";
 import {movieListType} from "../../types/index";
 
 const MoviesList = (props) => {
-  const movieList = props;
+  const {movies} = props;
 
   return (
     <div className="catalog__movies-list">
-      {movieList.movies.map((movie, index) => {
+      {movies.map((movie, index) => {
         return (
           <MoviesListItem
             key = {index.toString()}
@@ -19,8 +19,6 @@ const MoviesList = (props) => {
   );
 };
 
-MoviesList.propTypes = {
-  movieList: movieListType
-};
+MoviesList.propTypes = movieListType.isRequired;
 
 export default MoviesList;

@@ -5,19 +5,19 @@ import Footer from "./modules/footer";
 import {mainPageType} from "../types/index";
 
 const MainPage = (props) => {
-  const mainPage = props;
+  const {name, genre, releaseDate, genres, movies} = props;
 
   return (
     <React.Fragment>
       <MovieCardTop
-        name = {mainPage.name}
-        genre = {mainPage.genre}
-        releaseDate = {mainPage.releaseDate}
+        name = {name}
+        genre = {genre}
+        releaseDate = {releaseDate}
       />
       <div className="page-content">
         <Catalog
-          genres = {mainPage.genres}
-          movies = {mainPage.movies}
+          genres = {genres}
+          movies = {movies}
         />
         <Footer/>
       </div>
@@ -26,8 +26,6 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = {
-  mainPage: mainPageType
-};
+MainPage.propTypes = mainPageType.isRequired;
 
 export default MainPage;
