@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "./modules/movie-card";
 import Catalog from "./modules/catalog";
-import Footer from "./modules/footer";
+import Footer from "../footer/footer";
 
 const MoviePage = () => {
   return (

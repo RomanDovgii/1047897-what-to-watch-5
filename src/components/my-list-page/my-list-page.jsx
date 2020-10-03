@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./modules/header";
 import Catalog from "./modules/catalog";
-import Footer from "./modules/footer";
+import Footer from "../footer/footer";
 
 const MyListPage = () => {
   return (

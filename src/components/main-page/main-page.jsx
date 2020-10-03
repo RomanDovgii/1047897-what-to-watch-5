@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCardTop from "./modules/movie-top";
 import Catalog from "./modules/catalog";
-import Footer from "./modules/footer";
+import Footer from "../footer/footer";
 import {appType} from "../types/types";
 
 const MainPage = (props) => {

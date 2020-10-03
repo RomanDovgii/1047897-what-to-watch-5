@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "./modules/header";
 import SignIn from "./modules/sign-in";
-import Footer from "./modules/footer";
+import Footer from "../footer/footer";
 
 const LoginPage = () => {
   return (
