@@ -1,5 +1,5 @@
 import React from "react";
-import {optionalType} from "../../types/types";
+import {optionalElementType} from "../../types/types";
 
 const HeadingMyList = (props) => {
   const {isRendered} = props;
@@ -13,6 +13,6 @@ const HeadingMyList = (props) => {
   return null;
 };
 
-HeadingMyList.propTypes = optionalType;
+HeadingMyList.propTypes = optionalElementType;
 
 export default HeadingMyList;

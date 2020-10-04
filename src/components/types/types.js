@@ -23,7 +23,7 @@ export const catalogType = {
   movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-export const optionalType = {
+export const optionalElementType = {
   isRendered: PropTypes.bool
 };
 

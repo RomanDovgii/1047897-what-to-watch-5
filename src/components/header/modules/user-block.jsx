@@ -1,5 +1,5 @@
 import React from "react";
-import {optionalType} from "../../types/types";
+import {optionalElementType} from "../../types/types";
 
 const UserBlock = (props) => {
   const {isRendered} = props;
@@ -17,6 +17,6 @@ const UserBlock = (props) => {
   return null;
 };
 
-UserBlock.propTypes = optionalType;
+UserBlock.propTypes = optionalElementType;
 
 export default UserBlock;
