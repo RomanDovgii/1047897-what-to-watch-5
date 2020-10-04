@@ -22,3 +22,15 @@ export const catalogType = {
   genres: PropTypes.arrayOf(PropTypes.string).isRequired,
   movies: PropTypes.arrayOf(PropTypes.string).isRequired
 };
+
+export const optionalElementType = {
+  isRendered: PropTypes.bool
+};
+
+export const headerType = {
+  isUserPage: PropTypes.bool,
+  isMyList: PropTypes.bool,
+  isSignIn: PropTypes.bool,
+  isNavigation: PropTypes.bool,
+  isUserBlock: PropTypes.bool
+};
