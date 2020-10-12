@@ -2,22 +2,22 @@ import React from "react";
 import MovieCardTop from "./modules/movie-top";
 import Catalog from "./modules/catalog";
 import Footer from "../footer/footer";
-import {appType} from "../types/types";
+import {moviesType} from "../types/types";
+import {GENRES} from "../../utils/const";
 
 const MainPage = (props) => {
-  const {name, genre, releaseDate, genres, movies} = props;
+  const {movies} = props;
+  const [firstMovie, ...otherMovies] = movies;
 
   return (
     <React.Fragment>
       <MovieCardTop
-        name = {name}
-        genre = {genre}
-        releaseDate = {releaseDate}
+        movie = {firstMovie}
       />
       <div className="page-content">
         <Catalog
-          genres = {genres}
-          movies = {movies}
+          genres = {GENRES}
+          movies = {otherMovies}
         />
         <Footer/>
       </div>
@@ -26,6 +26,6 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = appType;
+MainPage.propTypes = moviesType;
 
 export default MainPage;

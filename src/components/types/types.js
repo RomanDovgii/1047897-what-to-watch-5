@@ -1,11 +1,19 @@
 import PropTypes from "prop-types";
 
-export const appType = {
+export const movieType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  releaseDate: PropTypes.number.isRequired,
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
+  release: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  director: PropTypes.string.isRequired,
+  starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+  rating: PropTypes.number.isRequired,
+  ratingsCount: PropTypes.number.isRequired,
+  videoUrl: PropTypes.string.isRequired
+}).isRequired;
+
+export const moviesType = {
+  movies: PropTypes.arrayOf(PropTypes.shape(movieType).isRequired).isRequired
 };
 
 export const listItemType = PropTypes.string.isRequired;
@@ -18,10 +26,7 @@ export const movieCardTopType = {
   releaseDate: PropTypes.number.isRequired
 };
 
-export const catalogType = {
-  genres: PropTypes.arrayOf(PropTypes.string).isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string).isRequired
-};
+export const catalogType = Object.assign({}, listType, moviesType);
 
 export const optionalElementType = {
   isRendered: PropTypes.bool

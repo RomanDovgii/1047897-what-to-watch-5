@@ -6,20 +6,16 @@ import MyListPage from "../my-list-page/my-list-page";
 import MoviePage from "../movie-page/movie-page";
 import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
-import {appType} from "../types/types";
+import {moviesType} from "../types/types";
 
 const App = (props) => {
-  const {name, genre, releaseDate, genres, movies} = props;
+  const {movies} = props;
 
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/">
           <MainPage
-            name={name}
-            genre={genre}
-            releaseDate={releaseDate}
-            genres={genres}
             movies={movies}
           />
         </Route>
@@ -43,6 +39,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = appType;
+App.propTypes = moviesType;
 
 export default App;

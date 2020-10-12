@@ -1,8 +1,9 @@
 import React from "react";
-import {movieCardTopType} from "../../types/types";
+import {movieType} from "../../types/types";
 
 const MovieCardTop = (props) => {
-  const {name, genre, releaseDate} = props;
+  const {movie} = props;
+  const {name, genre, release} = movie;
 
   return (
     <section className="movie-card">
@@ -38,7 +39,7 @@ const MovieCardTop = (props) => {
             <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{releaseDate}</span>
+              <span className="movie-card__year">{release}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -62,6 +63,6 @@ const MovieCardTop = (props) => {
   );
 };
 
-MovieCardTop.propTypes = movieCardTopType;
+MovieCardTop.propTypes = movieType;
 
 export default MovieCardTop;
