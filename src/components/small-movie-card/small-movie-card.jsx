@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {smallMovieCardType} from "../types/types";
 
 const SmallMovieCard = (props) => {
@@ -22,7 +23,9 @@ const SmallMovieCard = (props) => {
         <img src={`img/` + imageName + `.jpg`} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-movie-card__title">
-        <a className="small-movie-card__link" href="movie-page.html">{name}</a>
+        <Link className="small-movie-card__link" to="/films/:id">
+          {name}
+        </Link>
       </h3>
     </article>
   );

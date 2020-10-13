@@ -1,8 +1,16 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 const PlayerExit = () => {
   return (
-    <button type="button" className="player__exit">Exit</button>
+    <Link to="/">
+      <button
+        type="button"
+        className="player__exit"
+      >
+        Exit
+      </button>
+    </Link>
   );
 };
 

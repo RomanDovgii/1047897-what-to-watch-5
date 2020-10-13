@@ -1,8 +1,17 @@
 import React from "react";
 import {movieType} from "../../types/types";
+import Header from "../../header/header";
+
+const HeaderSetting = {
+  IS_USER_PAGE: true,
+  IS_MY_LIST: false,
+  IS_SIGN_IN: false,
+  IS_NAVIGATION: false,
+  IS_USER_BLOCK: true
+};
 
 const MovieCardTop = (props) => {
-  const {movie} = props;
+  const {onPlayButtonClick, movie} = props;
   const {name, genre, release} = movie;
 
   return (
@@ -13,21 +22,13 @@ const MovieCardTop = (props) => {
 
       <h1 className="visually-hidden">WTW</h1>
 
-      <header className="page-header movie-card__head">
-        <div className="logo">
-          <a className="logo__link">
-            <span className="logo__letter logo__letter--1">W</span>
-            <span className="logo__letter logo__letter--2">T</span>
-            <span className="logo__letter logo__letter--3">W</span>
-          </a>
-        </div>
-
-        <div className="user-block">
-          <div className="user-block__avatar">
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-          </div>
-        </div>
-      </header>
+      <Header
+        isUserPage = {HeaderSetting.IS_USER_PAGE}
+        isMyList = {HeaderSetting.IS_MY_LIST}
+        isSignIn = {HeaderSetting.IS_SIGN_IN}
+        isNavigation = {HeaderSetting.IS_NAVIGATION}
+        isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+      />
 
       <div className="movie-card__wrap">
         <div className="movie-card__info">
@@ -43,7 +44,14 @@ const MovieCardTop = (props) => {
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
+                onClick = {(evt) => {
+                  evt.preventDefault();
+
+                  onPlayButtonClick();
+                }}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>

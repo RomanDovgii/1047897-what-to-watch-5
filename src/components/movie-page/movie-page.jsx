@@ -8,9 +8,13 @@ import {moviesType} from "../types/types";
 const MoviePage = (props) => {
   const {movies} = props;
 
+  const firstMovie = movies[0];
+
   return (
     <React.Fragment>
-      <MovieCard/>
+      <MovieCard
+        movie={firstMovie}
+      />
 
       <div className="page-content">
         <Catalog

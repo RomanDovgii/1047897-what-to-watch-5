@@ -1,6 +1,54 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import {MAXIMUM_DISPLAYED_ACTORS} from "../../../utils/const";
+import {movieType} from "../../types/types";
 
-const MovieCard = () => {
+const generateStarringString = (actors) => {
+  let text = ``;
+  let end = ``;
+  let actorsLocal = actors.slice();
+
+  if (actorsLocal.length > MAXIMUM_DISPLAYED_ACTORS) {
+    actorsLocal = actors.slice(0, MAXIMUM_DISPLAYED_ACTORS);
+
+    end = ` and other`;
+  }
+
+  actorsLocal.map((actor) => {
+    text += (actor + `, `);
+  });
+
+  text = text.slice(0, -2);
+
+  text += end;
+
+  return text;
+};
+
+const generateRatingText = (rating) => {
+  switch (true) {
+    case rating <= 3:
+      return `Bad`;
+    case rating <= 5:
+      return `Normal`;
+    case rating <= 8:
+      return `Good`;
+    case rating < 10:
+      return `Very good`;
+    case rating === 10:
+      return `Awesome`;
+    default:
+      return `Rating is incorrect`;
+  }
+};
+
+const MovieCard = (props) => {
+  const {movie} = props;
+
+  const {name, genre, release, descriptionParagraphs, director, actors, rating, ratingsCount} = movie;
+
+  const ratingString = `${rating}`.replace(`.`, `,`);
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -28,14 +76,17 @@ const MovieCard = () => {
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{release}</span>
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -47,7 +98,7 @@ const MovieCard = () => {
                 </svg>
                 <span>My list</span>
               </button>
-              <a href="add-review.html" className="btn movie-card__button">Add review</a>
+              <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
             </div>
           </div>
         </div>
@@ -75,21 +126,21 @@ const MovieCard = () => {
             </nav>
 
             <div className="movie-rating">
-              <div className="movie-rating__score">8,9</div>
+              <div className="movie-rating__score">{ratingString}</div>
               <p className="movie-rating__meta">
-                <span className="movie-rating__level">Very good</span>
-                <span className="movie-rating__count">240 ratings</span>
+                <span className="movie-rating__level">{generateRatingText(rating)}</span>
+                <span className="movie-rating__count">{ratingsCount} ratings</span>
               </p>
             </div>
 
             <div className="movie-card__text">
-              <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
+              {descriptionParagraphs.map((paragraph, i) => (
+                <p key={`paragraph-${i}`}>{paragraph}</p>
+              ))}
 
-              <p>Gustave prides himself on providing first-className service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+              <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-              <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-              <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+              <p className="movie-card__starring"><strong>Starring: {generateStarringString(actors)}</strong></p>
             </div>
           </div>
         </div>
@@ -97,5 +148,7 @@ const MovieCard = () => {
     </section>
   );
 };
+
+MovieCard.propTypes = movieType;
 
 export default MovieCard;

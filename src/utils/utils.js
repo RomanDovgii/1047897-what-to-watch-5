@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RAITING, MAXIMUM_RAITING_COUNT, MINIMUM_STARRING, MAXIMUM_STARRING, MINIMUM_DESCRIPTION, MAXIMUM_DESCRIPTION, FISH_TEXT, GRAND_BUDAPEST_HOTEL} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RAITING, MAXIMUM_RAITING_COUNT, MINIMUM_STARRING, MAXIMUM_STARRING, MINIMUM_DESCRIPTION, MAXIMUM_DESCRIPTION, FISH_TEXT, GRAND_BUDAPEST_HOTEL, MINIMUM_PARAGRAPHS, MAXIMUM_PARAGRAPHS} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -34,17 +34,28 @@ const generateStarring = () => {
   return starring;
 };
 
-const generateDescription = () => {
-  let description = ``;
+const generateParagraphText = () => {
+  let text = ``;
 
   const sentences = FISH_TEXT.split(`. `);
   const descriptionLength = getRandomIntegerNumber(MINIMUM_DESCRIPTION, MAXIMUM_DESCRIPTION);
 
   for (let i = 0; i < descriptionLength; i++) {
-    description = description + getRandomElementFromArray(sentences) + `. `;
+    text = text + getRandomElementFromArray(sentences) + `. `;
   }
 
-  return description;
+  return text;
+};
+
+const generateDescriptionParagraphs = () => {
+  const paragraphsCount = getRandomIntegerNumber(MINIMUM_PARAGRAPHS, MAXIMUM_PARAGRAPHS);
+  let paragraphs = [];
+
+  for (let i = 0; i < paragraphsCount; i++) {
+    paragraphs.push(generateParagraphText());
+  }
+
+  return paragraphs;
 };
 
 const generateRelease = () => {
@@ -58,10 +69,10 @@ const generateMovie = () => {
     name: getRandomElementFromArray(MOVIES),
     genre: getRandomElementFromArray(GENRES),
     release: generateRelease(),
-    description: generateDescription(),
+    descriptionParagraphs: generateDescriptionParagraphs(),
     director: getRandomElementFromArray(DIRECTORS),
     starring: generateStarring(),
-    rating: generateRating(),
+    actors: generateRating(),
     ratingsCount: getRandomIntegerNumber(MAXIMUM_RAITING_COUNT),
     videoUrl: getRandomElementFromArray(VIDEO_URLS),
     isMyList: getRandomBoolean()
