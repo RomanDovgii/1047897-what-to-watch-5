@@ -2,6 +2,15 @@ import React from "react";
 import {Link} from "react-router-dom";
 import {MAXIMUM_DISPLAYED_ACTORS} from "../../../utils/const";
 import {movieType} from "../../types/types";
+import Header from "../../header/header";
+
+const HeaderSetting = {
+  IS_USER_PAGE: true,
+  IS_MY_LIST: false,
+  IS_SIGN_IN: false,
+  IS_NAVIGATION: false,
+  IS_USER_BLOCK: true
+};
 
 const generateStarringString = (actors) => {
   let text = ``;
@@ -58,21 +67,13 @@ const MovieCard = (props) => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header
+          isUserPage = {HeaderSetting.IS_USER_PAGE}
+          isMyList = {HeaderSetting.IS_MY_LIST}
+          isSignIn = {HeaderSetting.IS_SIGN_IN}
+          isNavigation = {HeaderSetting.IS_NAVIGATION}
+          isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+        />
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
