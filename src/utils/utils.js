@@ -14,6 +14,10 @@ const getRandomIntegerNumber = (firstNumber, secondNumber = 0) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
+const getRandomBoolean = () => {
+  return (Math.random() >= 0.5);
+};
+
 const generateRating = () => {
   return Math.round((Math.random() * MAXIMUM_RAITING) * 1e1) / 1e1;
 };
@@ -59,7 +63,8 @@ const generateMovie = () => {
     starring: generateStarring(),
     rating: generateRating(),
     ratingsCount: getRandomIntegerNumber(MAXIMUM_RAITING_COUNT),
-    videoUrl: getRandomElementFromArray(VIDEO_URLS)
+    videoUrl: getRandomElementFromArray(VIDEO_URLS),
+    isMyList: getRandomBoolean()
   };
 };
 

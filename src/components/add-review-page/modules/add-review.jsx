@@ -1,38 +1,70 @@
-import React from "react";
+import React, {PureComponent} from "react";
 
-const AddReview = () => {
-  return (
-    <div className="add-review">
-      <form action="#" className="add-review__form">
-        <div className="rating">
-          <div className="rating__stars">
-            <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
-            <label className="rating__label" htmlFor="star-1">Rating 1</label>
+class AddReview extends PureComponent {
+  constructor(props) {
+    super(props);
 
-            <input className="rating__input" id="star-2" type="radio" name="rating" value="2" />
-            <label className="rating__label" htmlFor="star-2">Rating 2</label>
+    this.state = {
+      rating: `3`,
+      review: ``
+    };
 
-            <input className="rating__input" id="star-3" type="radio" name="rating" value="3" defaultChecked/>
-            <label className="rating__label" htmlFor="star-3">Rating 3</label>
+    this._handleChange = this._handleChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
+  }
 
-            <input className="rating__input" id="star-4" type="radio" name="rating" value="4" />
-            <label className="rating__label" htmlFor="star-4">Rating 4</label>
+  _handleChange(evt) {
+    const {name, value} = evt.target;
 
-            <input className="rating__input" id="star-5" type="radio" name="rating" value="5" />
-            <label className="rating__label" htmlFor="star-5">Rating 5</label>
+    this.setState({
+      [name]: value
+    });
+  }
+
+  _handleSubmit(evt) {
+    evt.preventDefault();
+  }
+
+  render() {
+    return (
+      <div className="add-review">
+        <form action="#" className="add-review__form" onSubmit={this._handleSubmit}>
+          <div className="rating">
+            <div className="rating__stars">
+              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" onChange={this._handleChange}/>
+              <label className="rating__label" htmlFor="star-1">Rating 1</label>
+
+              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" onChange={this._handleChange}/>
+              <label className="rating__label" htmlFor="star-2">Rating 2</label>
+
+              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" onChange={this._handleChange} defaultChecked/>
+              <label className="rating__label" htmlFor="star-3">Rating 3</label>
+
+              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" onChange={this._handleChange}/>
+              <label className="rating__label" htmlFor="star-4">Rating 4</label>
+
+              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" onChange={this._handleChange}/>
+              <label className="rating__label" htmlFor="star-5">Rating 5</label>
+            </div>
           </div>
-        </div>
 
-        <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
-          <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+          <div className="add-review__text">
+            <textarea
+              className="add-review__textarea"
+              name="review"
+              id="review-text"
+              placeholder="Review text"
+              onChange={this._handleChange}
+            ></textarea>
+            <div className="add-review__submit">
+              <button className="add-review__btn" type="submit">Post</button>
+            </div>
+
           </div>
-
-        </div>
-      </form>
-    </div>
-  );
-};
+        </form>
+      </div>
+    );
+  }
+}
 
 export default AddReview;

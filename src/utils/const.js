@@ -1,4 +1,4 @@
-export const MOVIES_COUNT = 8;
+export const MOVIES_COUNT = 9;
 export const MAXIMUM_RAITING = 10;
 export const MINIMUM_STARRING = 5;
 export const MAXIMUM_STARRING = 10;
@@ -23,5 +23,11 @@ export const GRAND_BUDAPEST_HOTEL = {
   starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Tom Cruise`],
   rating: 8.9,
   ratingsCount: 240,
-  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`
+  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  isMyList: false
+};
+
+export const CatalogHeadingVariant = {
+  CATALOG: `Catalog`, // скрыт
+  MOVIE_PAGE: `More like this` // не скрыт
 };

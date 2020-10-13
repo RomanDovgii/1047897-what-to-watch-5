@@ -1,7 +1,9 @@
 import React from "react";
 import Header from "../header/header";
-import Catalog from "./modules/catalog";
 import Footer from "../footer/footer";
+import Catalog from "../catalog/catalog";
+import {CatalogHeadingVariant} from "../../utils/const";
+import {moviesType} from "../types/types";
 
 const HeaderSetting = {
   IS_USER_PAGE: true,
@@ -11,7 +13,11 @@ const HeaderSetting = {
   IS_USER_BLOCK: true
 };
 
-const MyListPage = () => {
+const MyListPage = (props) => {
+  const {movies} = props;
+
+  const filteredMovies = movies.filter((movie) => movie.isMyList);
+
   return (
     <div className="user-page">
       <Header
@@ -21,10 +27,15 @@ const MyListPage = () => {
         isNavigation = {HeaderSetting.IS_NAVIGATION}
         isUserBlock = {HeaderSetting.IS_USER_BLOCK}
       />
-      <Catalog/>
+      <Catalog
+        heading = {CatalogHeadingVariant.CATALOG}
+        movies = {filteredMovies}
+      />
       <Footer/>
     </div>
   );
 };
+
+MyListPage.propTypes = moviesType;
 
 export default MyListPage;
