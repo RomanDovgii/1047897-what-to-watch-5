@@ -1,5 +1,5 @@
 import React from "react";
-import {movieType} from "../../types/types";
+import {movieCardTopType} from "../../types/types";
 import Header from "../../header/header";
 
 const HeaderSetting = {
@@ -11,7 +11,7 @@ const HeaderSetting = {
 };
 
 const MovieCardTop = (props) => {
-  const {onPlayButtonClick, movie} = props;
+  const {onUserIconClick, onPlayButtonClick, movie} = props;
   const {name, genre, release} = movie;
 
   return (
@@ -23,6 +23,7 @@ const MovieCardTop = (props) => {
       <h1 className="visually-hidden">WTW</h1>
 
       <Header
+        onUserIconClick = {onUserIconClick}
         isUserPage = {HeaderSetting.IS_USER_PAGE}
         isMyList = {HeaderSetting.IS_MY_LIST}
         isSignIn = {HeaderSetting.IS_SIGN_IN}
@@ -71,6 +72,6 @@ const MovieCardTop = (props) => {
   );
 };
 
-MovieCardTop.propTypes = movieType;
+MovieCardTop.propTypes = movieCardTopType;
 
 export default MovieCardTop;

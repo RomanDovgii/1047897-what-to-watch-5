@@ -1,5 +1,5 @@
 import React from "react";
-import {optionalElementType} from "../../types/types";
+import {isRenderedType} from "../../types/types";
 
 const HeadingSignIn = (props) => {
   const {isRendered} = props;
@@ -13,6 +13,6 @@ const HeadingSignIn = (props) => {
   return null;
 };
 
-HeadingSignIn.propTypes = optionalElementType;
+HeadingSignIn.propTypes = isRenderedType;
 
 export default HeadingSignIn;

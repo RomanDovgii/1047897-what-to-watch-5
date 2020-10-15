@@ -1,7 +1,7 @@
 import React from "react";
 import {CatalogHeadingVariant} from "../../../utils/const";
-import {moreButtonType} from "../../types/types";
 import {MAXIMUM_DISPLAYED_MOVIES} from "../../../utils/const";
+import {moreButtonType} from "../../types/types";
 
 const MoreButton = (props) => {
   const {heading, movies} = props;

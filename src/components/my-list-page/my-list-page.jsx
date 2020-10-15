@@ -3,7 +3,7 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import Catalog from "../catalog/catalog";
 import {CatalogHeadingVariant} from "../../utils/const";
-import {moviesType} from "../types/types";
+import {myListPageType} from "../types/types";
 
 const HeaderSetting = {
   IS_USER_PAGE: true,
@@ -14,11 +14,12 @@ const HeaderSetting = {
 };
 
 const MyListPage = (props) => {
-  const {movies} = props;
+  const {onUserIconClick, movies} = props;
 
   return (
     <div className="user-page">
       <Header
+        onUserIconClick = {onUserIconClick}
         isUserPage = {HeaderSetting.IS_USER_PAGE}
         isMyList = {HeaderSetting.IS_MY_LIST}
         isSignIn = {HeaderSetting.IS_SIGN_IN}
@@ -34,6 +35,6 @@ const MyListPage = (props) => {
   );
 };
 
-MyListPage.propTypes = moviesType;
+MyListPage.propTypes = myListPageType;
 
 export default MyListPage;

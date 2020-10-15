@@ -20,32 +20,61 @@ const App = (props) => {
           path="/"
           render={({history}) => (
             <MainPage
+              onUserIconClick={() => history.push(`/mylist`)}
               onPlayButtonClick={() => history.push(`/player/:id`)}
               promotedMovie = {promotedMovie}
               movies = {movies}
             />
           )}
         />
+
         <Route exact path="/login">
           <LoginPage/>
         </Route>
-        <Route exact path="/mylist">
-          <MyListPage
-            movies={filterMoviesForMyList(movies)}
-          />
-        </Route>
-        <Route exact path="/films/:id">
-          <MoviePage
-            promotedMovie = {promotedMovie}
-            movies = {movies}
-          />
-        </Route>
-        <Route exact path="/films/:id/review">
-          <AddReviewPage/>
-        </Route>
-        <Route exact path="/player/:id">
-          <PlayerPage/>
-        </Route>
+
+        <Route
+          exact
+          path="/mylist"
+          render={({history}) => (
+            <MyListPage
+              onUserIconClick = {() => history.push(`/mylist`)}
+              movies={filterMoviesForMyList(movies)}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/films/:id"
+          render={({history}) => (
+            <MoviePage
+              onUserIconClick = {() => history.push(`/mylist`)}
+              onPlayButtonClick={() => history.push(`/player/:id`)}
+              promotedMovie = {promotedMovie}
+              movies = {movies}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/films/:id/review"
+          render={({history}) => (
+            <AddReviewPage
+              onUserIconClick = {() => history.push(`/mylist`)}
+            />
+          )}
+        />
+
+        <Route
+          exact
+          path="/player/:id"
+          render={({history}) => (
+            <PlayerPage
+              onExitButtonClick = {() => history.goBack()}
+            />
+          )}
+        />
       </Switch>
     </BrowserRouter>
   );

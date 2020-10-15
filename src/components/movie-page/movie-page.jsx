@@ -3,15 +3,17 @@ import MovieCard from "./modules/movie-card";
 import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
 import {CatalogHeadingVariant} from "../../utils/const";
-import {moviesType} from "../types/types";
+import {mainPageType} from "../types/types";
 
 const MoviePage = (props) => {
-  const {promotedMovie, movies} = props;
+  const {onUserIconClick, onPlayButtonClick, promotedMovie, movies} = props;
 
   return (
     <React.Fragment>
       <MovieCard
-        movie={promotedMovie}
+        onUserIconClick = {onUserIconClick}
+        onPlayButtonClick = {onPlayButtonClick}
+        promotedMovie={promotedMovie}
       />
 
       <div className="page-content">
@@ -25,6 +27,6 @@ const MoviePage = (props) => {
   );
 };
 
-MoviePage.propTypes = moviesType;
+MoviePage.propTypes = mainPageType;
 
 export default MoviePage;

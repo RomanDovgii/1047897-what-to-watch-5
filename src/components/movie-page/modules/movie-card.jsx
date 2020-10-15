@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "../../../utils/const";
-import {movieType} from "../../types/types";
 import Header from "../../header/header";
+import {movieCardType} from "../../types/types";
 
 const HeaderSetting = {
   IS_USER_PAGE: true,
@@ -50,9 +50,9 @@ const generateRatingText = (rating) => {
 };
 
 const MovieCard = (props) => {
-  const {movie} = props;
+  const {onUserIconClick, onPlayButtonClick, promotedMovie} = props;
 
-  const {name, genre, release, descriptionParagraphs, director, actors, rating, ratingsCount} = movie;
+  const {name, genre, release, descriptionParagraphs, director, actors, rating, ratingsCount} = promotedMovie;
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
@@ -66,6 +66,7 @@ const MovieCard = (props) => {
         <h1 className="visually-hidden">WTW</h1>
 
         <Header
+          onUserIconClick = {onUserIconClick}
           isUserPage = {HeaderSetting.IS_USER_PAGE}
           isMyList = {HeaderSetting.IS_MY_LIST}
           isSignIn = {HeaderSetting.IS_SIGN_IN}
@@ -85,6 +86,11 @@ const MovieCard = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
+                onClick = {(evt) => {
+                  evt.preventDefault();
+
+                  onPlayButtonClick();
+                }}
               >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
@@ -148,6 +154,6 @@ const MovieCard = (props) => {
   );
 };
 
-MovieCard.propTypes = movieType;
+MovieCard.propTypes = movieCardType;
 
 export default MovieCard;

@@ -1,6 +1,6 @@
 import React from "react";
 import GenresListItem from "./genres-list-item";
-import {listType} from "../../types/types";
+import {optionalGenresType} from "../../types/types";
 
 const GenresList = (props) => {
   const {genres} = props;
@@ -23,6 +23,6 @@ const GenresList = (props) => {
   return null;
 };
 
-GenresList.propTypes = listType;
+GenresList.propTypes = optionalGenresType;
 
 export default GenresList;

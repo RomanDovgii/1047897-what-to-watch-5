@@ -1,17 +1,24 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {onExitButtonClickType} from "../../types/types";
 
-const PlayerExit = () => {
+const PlayerExit = (props) => {
+  const {onExitButtonClick} = props;
+
   return (
-    <Link to="/">
-      <button
-        type="button"
-        className="player__exit"
-      >
-        Exit
-      </button>
-    </Link>
+    <button
+      type="button"
+      className="player__exit"
+      onClick={(evt) => {
+        evt.preventDefault();
+
+        onExitButtonClick();
+      }}
+    >
+      Exit
+    </button>
   );
 };
+
+PlayerExit.propTypes = onExitButtonClickType;
 
 export default PlayerExit;

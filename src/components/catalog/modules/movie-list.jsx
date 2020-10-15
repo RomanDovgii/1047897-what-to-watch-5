@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
 import SmallMovieCard from "../../small-movie-card/small-movie-card";
-import {listType} from "../../types/types";
+import {moviesType} from "../../types/types";
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -35,6 +35,6 @@ class MoviesList extends PureComponent {
   }
 }
 
-MoviesList.propTypes = listType;
+MoviesList.propTypes = moviesType;
 
 export default MoviesList;
