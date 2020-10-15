@@ -41,7 +41,7 @@ const onMouseLeaveType = {
 };
 
 export const onExitButtonClickType = {
-  onExitButtonClickType: FunctionType
+  onExitButtonClick: FunctionType
 };
 
 export const onUserIconClickType = {
