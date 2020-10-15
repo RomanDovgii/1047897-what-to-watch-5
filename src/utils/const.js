@@ -1,13 +1,8 @@
 export const MOVIES_COUNT = 9;
-export const MAXIMUM_RAITING = 10;
-export const MINIMUM_STARRING = 5;
-export const MAXIMUM_STARRING = 10;
-export const MAXIMUM_RAITING_COUNT = 1000;
-export const MINIMUM_DESCRIPTION = 1;
-export const MAXIMUM_DESCRIPTION = 10;
-export const MINIMUM_PARAGRAPHS = 1;
-export const MAXIMUM_PARAGRAPHS = 3;
+export const MAXIMUM_RATING = 10;
+export const MAXIMUM_RATING_COUNT = 1000;
 export const MAXIMUM_DISPLAYED_ACTORS = 4;
+export const MAXIMUM_DISPLAYED_MOVIES = 8;
 
 export const GENRES = [`All genres`, `Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thrillers`];
 export const MOVIES = [`Aviator`, `Bohemian Rhapsody`, `Dardjeeling Limited`, `Fantastic Beasts The Crimes of Grindelwald`, `Johnny English`, `Macbeth`, `Midnight Special`, `Mindhunter`, `Moonrise Kingdom`, `No Country For Old Men`, `Orlando`, `Pulp Fiction`, `Revenant`, `Seven Years In Tibet`, `Shutter Island`, `Snatch`, `War of the Worlds`, `We need to talk about Kevin`, `What We Do in the Shadows`];
@@ -37,3 +32,37 @@ export const CatalogHeadingVariant = {
   CATALOG: `Catalog`, // скрыт
   MOVIE_PAGE: `More like this` // не скрыт
 };
+
+export const ActorsCount = {
+  MINIMUM: 5,
+  MAXIMUM: 10
+};
+
+export const UserRating = {
+  MINIMUM: 1,
+  DEFAULT: 3,
+  MAXIMUM: 5
+};
+
+export const Description = {
+  MINIMUM: 1,
+  MAXIMUM: 10
+};
+
+export const Paragraph = {
+  MINIMUM: 1,
+  MAXIMUM: 3
+};
+
+export const MoreLikeThis = {
+  FIRST_INDEX: 1,
+  LAST_INDEX: 5
+};
+
+export const RatingSystem = {
+  BAD: 3,
+  NORMAL: 5,
+  GOOD: 8,
+  AWESOME: 10
+};
+

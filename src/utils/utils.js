@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RAITING, MAXIMUM_RAITING_COUNT, MINIMUM_STARRING, MAXIMUM_STARRING, MINIMUM_DESCRIPTION, MAXIMUM_DESCRIPTION, FISH_TEXT, GRAND_BUDAPEST_HOTEL, MINIMUM_PARAGRAPHS, MAXIMUM_PARAGRAPHS} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, GRAND_BUDAPEST_HOTEL, ActorsCount, Description, Paragraph} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -19,36 +19,37 @@ const getRandomBoolean = () => {
 };
 
 const generateRating = () => {
-  return Math.round((Math.random() * MAXIMUM_RAITING) * 1e1) / 1e1;
+  return Math.round((Math.random() * MAXIMUM_RATING) * 1e1) / 1e1;
 };
 
-const generateStarring = () => {
-  const starring = [];
+const generateActors = () => {
+  const actors = [];
 
-  const starringCount = getRandomIntegerNumber(MINIMUM_STARRING, MAXIMUM_STARRING);
+  const starringCount = getRandomIntegerNumber(ActorsCount.MINIMUM, ActorsCount.MAXIMUM);
 
   for (let i = 0; i < starringCount; i++) {
-    starring.push(getRandomElementFromArray(ACTORS));
+    actors.push(getRandomElementFromArray(ACTORS));
   }
 
-  return starring;
+  return actors;
 };
 
 const generateParagraphText = () => {
-  let text = ``;
-
+  const randomSentences = [];
   const sentences = FISH_TEXT.split(`. `);
-  const descriptionLength = getRandomIntegerNumber(MINIMUM_DESCRIPTION, MAXIMUM_DESCRIPTION);
+  const descriptionLength = getRandomIntegerNumber(Description.MINIMUM, Description.MAXIMUM);
 
   for (let i = 0; i < descriptionLength; i++) {
-    text = text + getRandomElementFromArray(sentences) + `. `;
+    randomSentences.push(getRandomElementFromArray(sentences));
   }
+
+  const text = randomSentences.join(`. `);
 
   return text;
 };
 
 const generateDescriptionParagraphs = () => {
-  const paragraphsCount = getRandomIntegerNumber(MINIMUM_PARAGRAPHS, MAXIMUM_PARAGRAPHS);
+  const paragraphsCount = getRandomIntegerNumber(Paragraph.MINIMUM, Paragraph.MAXIMUM);
   let paragraphs = [];
 
   for (let i = 0; i < paragraphsCount; i++) {
@@ -71,9 +72,9 @@ const generateMovie = () => {
     release: generateRelease(),
     descriptionParagraphs: generateDescriptionParagraphs(),
     director: getRandomElementFromArray(DIRECTORS),
-    starring: generateStarring(),
-    actors: generateRating(),
-    ratingsCount: getRandomIntegerNumber(MAXIMUM_RAITING_COUNT),
+    actors: generateActors(),
+    rating: generateRating(),
+    ratingsCount: getRandomIntegerNumber(MAXIMUM_RATING_COUNT),
     videoUrl: getRandomElementFromArray(VIDEO_URLS),
     isMyList: getRandomBoolean()
   };

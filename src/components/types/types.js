@@ -26,7 +26,7 @@ export const movieType = PropTypes.shape({
 }).isRequired;
 
 export const moviesType = {
-  movies: PropTypes.arrayOf(PropTypes.shape(movieType).isRequired).isRequired
+  movies: PropTypes.arrayOf(movieType).isRequired
 };
 
 export const listItemType = PropTypes.string.isRequired;
@@ -34,7 +34,9 @@ const optionalListItemType = PropTypes.string;
 
 export const listType = PropTypes.arrayOf(listItemType).isRequired;
 
-const OptionalListType = PropTypes.arrayOf(optionalListItemType);
+const optionalGenresType = {
+  genres: PropTypes.arrayOf(optionalListItemType)
+};
 
 export const movieCardTopType = {
   name: PropTypes.string.isRequired,
@@ -42,7 +44,7 @@ export const movieCardTopType = {
   releaseDate: PropTypes.number.isRequired
 };
 
-export const catalogType = Object.assign({}, headingType, moviesType, OptionalListType);
+export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
 export const moreButtonType = Object.assign({}, headingType, moviesType);
 export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieType);
 

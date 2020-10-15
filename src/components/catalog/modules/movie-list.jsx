@@ -19,7 +19,7 @@ class MoviesList extends PureComponent {
         {movies.map((movie, index) => {
           return (
             <SmallMovieCard
-              key = {`${movie.name.trim()}-${index.toString()}`}
+              key = {`${movie.name.trim()}-${index}`}
               onMouseEnter = {(movieLocal) => {
                 this.setState({movie: movieLocal});
               }}

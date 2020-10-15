@@ -1,11 +1,35 @@
 import React, {PureComponent} from "react";
+import {UserRating} from "../../../utils/const";
+
+const getRatingInput = (onChange) => {
+  const content = [];
+
+  for (let i = UserRating.MINIMUM; i <= UserRating.MAXIMUM; i++) {
+    content.push(
+        <React.Fragment>
+          <input
+            className="rating__input"
+            id={`star-${i}`}
+            type="radio"
+            name="rating"
+            value={`${i}`}
+            onChange={onChange}
+            defaultChecked={i === UserRating.DEFAULT ? true : false}
+          />
+          <label className="rating__label" htmlFor={`star-${i}`}>Rating {i}</label>
+        </React.Fragment>
+    );
+  }
+
+  return content;
+};
 
 class AddReview extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      rating: `3`,
+      rating: `${UserRating.DEFAULT}`,
       review: ``
     };
 
@@ -23,6 +47,7 @@ class AddReview extends PureComponent {
 
   _handleSubmit(evt) {
     evt.preventDefault();
+    console.log(this.state);
   }
 
   render() {
@@ -31,20 +56,7 @@ class AddReview extends PureComponent {
         <form action="#" className="add-review__form" onSubmit={this._handleSubmit}>
           <div className="rating">
             <div className="rating__stars">
-              <input className="rating__input" id="star-1" type="radio" name="rating" value="1" onChange={this._handleChange}/>
-              <label className="rating__label" htmlFor="star-1">Rating 1</label>
-
-              <input className="rating__input" id="star-2" type="radio" name="rating" value="2" onChange={this._handleChange}/>
-              <label className="rating__label" htmlFor="star-2">Rating 2</label>
-
-              <input className="rating__input" id="star-3" type="radio" name="rating" value="3" onChange={this._handleChange} defaultChecked/>
-              <label className="rating__label" htmlFor="star-3">Rating 3</label>
-
-              <input className="rating__input" id="star-4" type="radio" name="rating" value="4" onChange={this._handleChange}/>
-              <label className="rating__label" htmlFor="star-4">Rating 4</label>
-
-              <input className="rating__input" id="star-5" type="radio" name="rating" value="5" onChange={this._handleChange}/>
-              <label className="rating__label" htmlFor="star-5">Rating 5</label>
+              {getRatingInput(this._handleChange)}
             </div>
           </div>
 

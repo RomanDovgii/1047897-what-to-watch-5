@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {MAXIMUM_DISPLAYED_ACTORS} from "../../../utils/const";
+import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "../../../utils/const";
 import {movieType} from "../../types/types";
 import Header from "../../header/header";
 
@@ -23,9 +23,7 @@ const generateStarringString = (actors) => {
     end = ` and other`;
   }
 
-  actorsLocal.map((actor) => {
-    text += (actor + `, `);
-  });
+  text = actorsLocal.join(`, `);
 
   text = text.slice(0, -2);
 
@@ -36,15 +34,15 @@ const generateStarringString = (actors) => {
 
 const generateRatingText = (rating) => {
   switch (true) {
-    case rating <= 3:
+    case rating <= RatingSystem.BAD:
       return `Bad`;
-    case rating <= 5:
+    case rating <= RatingSystem.NORMAL:
       return `Normal`;
-    case rating <= 8:
+    case rating <= RatingSystem.GOOD:
       return `Good`;
-    case rating < 10:
+    case rating < RatingSystem.AWESOME:
       return `Very good`;
-    case rating === 10:
+    case rating === RatingSystem.AWESOME:
       return `Awesome`;
     default:
       return `Rating is incorrect`;
