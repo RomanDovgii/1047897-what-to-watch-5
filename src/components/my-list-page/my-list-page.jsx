@@ -16,8 +16,6 @@ const HeaderSetting = {
 const MyListPage = (props) => {
   const {movies} = props;
 
-  const filteredMovies = movies.filter((movie) => movie.isMyList);
-
   return (
     <div className="user-page">
       <Header
@@ -29,7 +27,7 @@ const MyListPage = (props) => {
       />
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}
-        movies = {filteredMovies}
+        movies = {movies}
       />
       <Footer/>
     </div>

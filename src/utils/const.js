@@ -12,7 +12,7 @@ export const ACTORS = [`Tom Hanks`, `Will Smith`, `Leonardo DiCaprio`, `Robert D
 
 export const FISH_TEXT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales convallis elit et lacinia. Quisque quis cursus lectus. Praesent elementum semper felis ut pretium. Ut eu mi mollis, luctus purus ac, aliquet ipsum. Maecenas libero nunc, faucibus a porttitor eget, laoreet hendrerit diam. Aliquam eget purus sit amet augue feugiat efficitur in et augue. Curabitur nec nulla a mauris maximus semper vel in dui. Vivamus mollis urna ex, id facilisis velit facilisis tincidunt. Maecenas vitae congue massa. Maecenas vel tortor justo.`;
 
-export const GRAND_BUDAPEST_HOTEL = {
+export const PROMOTED_MOVIE = {
   name: `The Grand Budapest Hotel`,
   genre: `Drama`,
   release: 2014,

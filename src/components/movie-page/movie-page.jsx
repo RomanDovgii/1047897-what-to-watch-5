@@ -6,14 +6,12 @@ import {CatalogHeadingVariant} from "../../utils/const";
 import {moviesType} from "../types/types";
 
 const MoviePage = (props) => {
-  const {movies} = props;
-
-  const firstMovie = movies[0];
+  const {promotedMovie, movies} = props;
 
   return (
     <React.Fragment>
       <MovieCard
-        movie={firstMovie}
+        movie={promotedMovie}
       />
 
       <div className="page-content">

@@ -47,6 +47,7 @@ export const movieCardTopType = {
 export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
 export const moreButtonType = Object.assign({}, headingType, moviesType);
 export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieType);
+export const promotedMovieAndMoviesType = Object.assign({}, movieType, moviesType);
 
 export const optionalElementType = {
   isRendered: PropTypes.bool

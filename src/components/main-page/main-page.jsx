@@ -7,19 +7,18 @@ import Catalog from "../catalog/catalog";
 import {CatalogHeadingVariant} from "../../utils/const";
 
 const MainPage = (props) => {
-  const {onPlayButtonClick, movies} = props;
-  const [firstMovie, ...otherMovies] = movies;
+  const {onPlayButtonClick, promotedMovie, movies} = props;
 
   return (
     <React.Fragment>
       <MovieCardTop
         onPlayButtonClick = {onPlayButtonClick}
-        movie = {firstMovie}
+        movie = {promotedMovie}
       />
       <div className="page-content">
         <Catalog
           heading = {CatalogHeadingVariant.CATALOG}
-          movies = {otherMovies}
+          movies = {movies}
           genres = {GENRES}
         />
         <Footer/>

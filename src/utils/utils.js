@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, GRAND_BUDAPEST_HOTEL, ActorsCount, Description, Paragraph} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -80,10 +80,10 @@ const generateMovie = () => {
   };
 };
 
+export const filterMoviesForMyList = (movies) => {
+  return movies.filter((movie) => movie.isMyList);
+};
+
 export const generateMovies = () => {
-  let movies = new Array(MOVIES_COUNT).fill().map(generateMovie);
-
-  movies = [GRAND_BUDAPEST_HOTEL, ...movies];
-
-  return movies;
+  return new Array(MOVIES_COUNT).fill().map(generateMovie);
 };

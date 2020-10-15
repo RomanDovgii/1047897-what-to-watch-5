@@ -6,10 +6,11 @@ import MyListPage from "../my-list-page/my-list-page";
 import MoviePage from "../movie-page/movie-page";
 import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
-import {moviesType} from "../types/types";
+import {promotedMovieAndMoviesType} from "../types/types";
+import {filterMoviesForMyList} from "../../utils/utils";
 
 const App = (props) => {
-  const {movies} = props;
+  const {promotedMovie, movies} = props;
 
   return (
     <BrowserRouter>
@@ -20,7 +21,8 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               onPlayButtonClick={() => history.push(`/player/:id`)}
-              movies={movies}
+              promotedMovie = {promotedMovie}
+              movies = {movies}
             />
           )}
         />
@@ -29,12 +31,13 @@ const App = (props) => {
         </Route>
         <Route exact path="/mylist">
           <MyListPage
-            movies={movies}
+            movies={filterMoviesForMyList(movies)}
           />
         </Route>
         <Route exact path="/films/:id">
           <MoviePage
-            movies={movies}
+            promotedMovie = {promotedMovie}
+            movies = {movies}
           />
         </Route>
         <Route exact path="/films/:id/review">
@@ -48,6 +51,6 @@ const App = (props) => {
   );
 };
 
-App.propTypes = moviesType;
+App.propTypes = promotedMovieAndMoviesType;
 
 export default App;
