@@ -47,7 +47,6 @@ class AddReview extends PureComponent {
 
   _handleSubmit(evt) {
     evt.preventDefault();
-    console.log(this.state);
   }
 
   render() {

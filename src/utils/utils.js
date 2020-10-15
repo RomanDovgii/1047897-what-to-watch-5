@@ -81,12 +81,7 @@ const generateMovie = () => {
 };
 
 export const generateMovies = () => {
-  let movies = [];
-
-  for (let i = 0; i < MOVIES_COUNT; i++) {
-    const movie = generateMovie();
-    movies.push(movie);
-  }
+  let movies = new Array(MOVIES_COUNT).fill().map(generateMovie);
 
   movies = [GRAND_BUDAPEST_HOTEL, ...movies];
 
