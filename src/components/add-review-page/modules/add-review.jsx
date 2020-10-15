@@ -45,7 +45,7 @@ class AddReview extends PureComponent {
                       value={`${index}`}
                       onChange={this._handleChange}
                       key={`star-${index}`}
-                      defaultChecked={index === UserRating.DEFAULT ? true : false}
+                      checked={index === UserRating.DEFAULT ? true : false}
                     />
                     <label className="rating__label" htmlFor={`star-${index}`}>Rating {index}</label>
                   </React.Fragment>
@@ -60,6 +60,7 @@ class AddReview extends PureComponent {
               name="review"
               id="review-text"
               placeholder="Review text"
+              value={this.state.value}
               onChange={this._handleChange}
             ></textarea>
             <div className="add-review__submit">
