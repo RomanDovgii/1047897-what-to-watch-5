@@ -24,6 +24,8 @@ class AddReview extends PureComponent {
 
   _handleSubmit(evt) {
     evt.preventDefault();
+
+    console.log(this.state);
   }
 
   render() {
@@ -45,7 +47,7 @@ class AddReview extends PureComponent {
                       value={`${index}`}
                       onChange={this._handleChange}
                       key={`star-${index}`}
-                      checked={index === UserRating.DEFAULT ? true : false}
+                      defaultChecked={`${index}` === this.state.rating}
                     />
                     <label className="rating__label" htmlFor={`star-${index}`}>Rating {index}</label>
                   </React.Fragment>
