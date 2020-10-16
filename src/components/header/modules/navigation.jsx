@@ -1,5 +1,5 @@
 import React from "react";
-import {optionalElementType} from "../../types/types";
+import {isRenderedType} from "../../types/types";
 
 const Navigation = (props) => {
   const {isRendered} = props;
@@ -22,6 +22,6 @@ const Navigation = (props) => {
   return null;
 };
 
-Navigation.propTypes = optionalElementType;
+Navigation.propTypes = isRenderedType;
 
 export default Navigation;

@@ -7,7 +7,7 @@ import Navigation from "./modules/navigation";
 import UserBlock from "./modules/user-block";
 
 const Header = (props) => {
-  const {isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
+  const {onUserIconClick, isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
 
   const userPageElementClass = isUserPage ? `user-page__head` : ``;
 
@@ -27,6 +27,7 @@ const Header = (props) => {
       />
 
       <UserBlock
+        onUserIconClick = {onUserIconClick}
         isRendered = {isUserBlock}
       />
     </header>

@@ -3,7 +3,7 @@ import Header from "./../header/header";
 import SignIn from "./modules/sign-in";
 import Footer from "../footer/footer";
 
-const headerSettings = {
+const HeaderSetting = {
   IS_USER_PAGE: true,
   IS_MY_LIST: false,
   IS_SIGN_IN: true,
@@ -15,11 +15,11 @@ const LoginPage = () => {
   return (
     <div className="user-page">
       <Header
-        isUserPage = {headerSettings.IS_USER_PAGE}
-        isMyList = {headerSettings.IS_MY_LIST}
-        isSignIn = {headerSettings.IS_SIGN_IN}
-        isNavigation = {headerSettings.IS_NAVIGATION}
-        isUserBlock = {headerSettings.IS_USER_BLOCK}
+        isUserPage = {HeaderSetting.IS_USER_PAGE}
+        isMyList = {HeaderSetting.IS_MY_LIST}
+        isSignIn = {HeaderSetting.IS_SIGN_IN}
+        isNavigation = {HeaderSetting.IS_NAVIGATION}
+        isUserBlock = {HeaderSetting.IS_USER_BLOCK}
       />
       <SignIn/>
       <Footer/>

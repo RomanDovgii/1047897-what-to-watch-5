@@ -1,23 +1,26 @@
 import React from "react";
-import MovieCardTop from "./modules/movie-top";
-import Catalog from "./modules/catalog";
+import MovieCardTop from "./modules/movie-card-top";
 import Footer from "../footer/footer";
-import {appType} from "../types/types";
+import {mainPageType} from "../types/types";
+import {GENRES} from "../../utils/const";
+import Catalog from "../catalog/catalog";
+import {CatalogHeadingVariant} from "../../utils/const";
 
 const MainPage = (props) => {
-  const {name, genre, releaseDate, genres, movies} = props;
+  const {onUserIconClick, onPlayButtonClick, promotedMovie, movies} = props;
 
   return (
     <React.Fragment>
       <MovieCardTop
-        name = {name}
-        genre = {genre}
-        releaseDate = {releaseDate}
+        onUserIconClick = {onUserIconClick}
+        onPlayButtonClick = {onPlayButtonClick}
+        movie = {promotedMovie}
       />
       <div className="page-content">
         <Catalog
-          genres = {genres}
+          heading = {CatalogHeadingVariant.CATALOG}
           movies = {movies}
+          genres = {GENRES}
         />
         <Footer/>
       </div>
@@ -26,6 +29,6 @@ const MainPage = (props) => {
   );
 };
 
-MainPage.propTypes = appType;
+MainPage.propTypes = mainPageType;
 
 export default MainPage;

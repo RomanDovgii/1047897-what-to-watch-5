@@ -1,5 +1,5 @@
 import React from "react";
-import {listItemType} from "../../types/types";
+import {optionalGenreType} from "../../types/types";
 
 const GenresListItem = (props) => {
   const {genre} = props;
@@ -13,6 +13,6 @@ const GenresListItem = (props) => {
   );
 };
 
-GenresListItem.propTypes = listItemType;
+GenresListItem.propTypes = optionalGenreType;
 
 export default GenresListItem;

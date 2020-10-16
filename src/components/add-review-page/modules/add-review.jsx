@@ -1,38 +1,77 @@
-import React from "react";
+import React, {PureComponent} from "react";
+import {UserRating} from "../../../utils/const";
 
-const AddReview = () => {
-  return (
-    <div className="add-review">
-      <form action="#" className="add-review__form">
-        <div className="rating">
-          <div className="rating__stars">
-            <input className="rating__input" id="star-1" type="radio" name="rating" value="1"/>
-            <label className="rating__label" htmlFor="star-1">Rating 1</label>
+class AddReview extends PureComponent {
+  constructor(props) {
+    super(props);
 
-            <input className="rating__input" id="star-2" type="radio" name="rating" value="2" />
-            <label className="rating__label" htmlFor="star-2">Rating 2</label>
+    this.state = {
+      rating: `${UserRating.DEFAULT}`,
+      review: ``
+    };
 
-            <input className="rating__input" id="star-3" type="radio" name="rating" value="3" defaultChecked/>
-            <label className="rating__label" htmlFor="star-3">Rating 3</label>
+    this._handleChange = this._handleChange.bind(this);
+    this._handleSubmit = this._handleSubmit.bind(this);
+  }
 
-            <input className="rating__input" id="star-4" type="radio" name="rating" value="4" />
-            <label className="rating__label" htmlFor="star-4">Rating 4</label>
+  _handleChange(evt) {
+    const {name, value} = evt.target;
 
-            <input className="rating__input" id="star-5" type="radio" name="rating" value="5" />
-            <label className="rating__label" htmlFor="star-5">Rating 5</label>
+    this.setState({
+      [name]: value
+    });
+  }
+
+  _handleSubmit(evt) {
+    evt.preventDefault();
+  }
+
+  render() {
+    return (
+      <div className="add-review">
+        <form action="#" className="add-review__form" onSubmit={this._handleSubmit}>
+          <div className="rating">
+            <div className="rating__stars">
+              {new Array(UserRating.MAXIMUM).fill().map((currentElement, i) => {
+                const index = i + 1;
+
+                return (
+                  <React.Fragment key={`key-${index}`}>
+                    <input
+                      className="rating__input"
+                      id={`star-${index}`}
+                      type="radio"
+                      name="rating"
+                      value={`${index}`}
+                      key={`star-${index}`}
+                      checked={`${index}` === this.state.rating}
+                      onChange={this._handleChange}
+                    />
+                    <label className="rating__label" htmlFor={`star-${index}`}>Rating {index}</label>
+                  </React.Fragment>
+                );
+              })}
+            </div>
           </div>
-        </div>
 
-        <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text"></textarea>
-          <div className="add-review__submit">
-            <button className="add-review__btn" type="submit">Post</button>
+          <div className="add-review__text">
+            <textarea
+              className="add-review__textarea"
+              name="review"
+              id="review-text"
+              placeholder="Review text"
+              value={this.state.value}
+              onChange={this._handleChange}
+            ></textarea>
+            <div className="add-review__submit">
+              <button className="add-review__btn" type="submit">Post</button>
+            </div>
+
           </div>
-
-        </div>
-      </form>
-    </div>
-  );
-};
+        </form>
+      </div>
+    );
+  }
+}
 
 export default AddReview;

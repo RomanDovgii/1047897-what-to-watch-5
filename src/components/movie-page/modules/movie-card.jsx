@@ -1,6 +1,61 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "../../../utils/const";
+import Header from "../../header/header";
+import {movieCardType} from "../../types/types";
 
-const MovieCard = () => {
+const HeaderSetting = {
+  IS_USER_PAGE: true,
+  IS_MY_LIST: false,
+  IS_SIGN_IN: false,
+  IS_NAVIGATION: false,
+  IS_USER_BLOCK: true
+};
+
+const generateStarringString = (actors) => {
+  let text = ``;
+  let end = ``;
+  let actorsLocal = actors.slice();
+
+  if (actorsLocal.length > MAXIMUM_DISPLAYED_ACTORS) {
+    actorsLocal = actors.slice(0, MAXIMUM_DISPLAYED_ACTORS);
+
+    end = ` and other`;
+  }
+
+  text = actorsLocal.join(`, `);
+
+  text = text.slice(0, -2);
+
+  text += end;
+
+  return text;
+};
+
+const generateRatingText = (rating) => {
+  switch (true) {
+    case rating <= RatingSystem.BAD:
+      return `Bad`;
+    case rating <= RatingSystem.NORMAL:
+      return `Normal`;
+    case rating <= RatingSystem.GOOD:
+      return `Good`;
+    case rating < RatingSystem.AWESOME:
+      return `Very good`;
+    case rating === RatingSystem.AWESOME:
+      return `Awesome`;
+    default:
+      return `Rating is incorrect`;
+  }
+};
+
+const MovieCard = (props) => {
+  const {onUserIconClick, onPlayButtonClick, promotedMovie} = props;
+
+  const {name, genre, release, descriptionParagraphs, director, actors, rating, ratingsCount} = promotedMovie;
+
+  const ratingString = `${rating}`.replace(`.`, `,`);
+
   return (
     <section className="movie-card movie-card--full">
       <div className="movie-card__hero">
@@ -10,32 +65,33 @@ const MovieCard = () => {
 
         <h1 className="visually-hidden">WTW</h1>
 
-        <header className="page-header movie-card__head">
-          <div className="logo">
-            <a href="main.html" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
-          </div>
-
-          <div className="user-block">
-            <div className="user-block__avatar">
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-            </div>
-          </div>
-        </header>
+        <Header
+          onUserIconClick = {onUserIconClick}
+          isUserPage = {HeaderSetting.IS_USER_PAGE}
+          isMyList = {HeaderSetting.IS_MY_LIST}
+          isSignIn = {HeaderSetting.IS_SIGN_IN}
+          isNavigation = {HeaderSetting.IS_NAVIGATION}
+          isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+        />
 
         <div className="movie-card__wrap">
           <div className="movie-card__desc">
-            <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+            <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
-              <span className="movie-card__genre">Drama</span>
-              <span className="movie-card__year">2014</span>
+              <span className="movie-card__genre">{genre}</span>
+              <span className="movie-card__year">{release}</span>
             </p>
 
             <div className="movie-card__buttons">
-              <button className="btn btn--play movie-card__button" type="button">
+              <button
+                className="btn btn--play movie-card__button"
+                type="button"
+                onClick = {(evt) => {
+                  evt.preventDefault();
+
+                  onPlayButtonClick();
+                }}
+              >
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
@@ -47,7 +103,7 @@ const MovieCard = () => {
                 </svg>
                 <span>My list</span>
               </button>
-              <a href="add-review.html" className="btn movie-card__button">Add review</a>
+              <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
             </div>
           </div>
         </div>
@@ -75,21 +131,21 @@ const MovieCard = () => {
             </nav>
 
             <div className="movie-rating">
-              <div className="movie-rating__score">8,9</div>
+              <div className="movie-rating__score">{ratingString}</div>
               <p className="movie-rating__meta">
-                <span className="movie-rating__level">Very good</span>
-                <span className="movie-rating__count">240 ratings</span>
+                <span className="movie-rating__level">{generateRatingText(rating)}</span>
+                <span className="movie-rating__count">{ratingsCount} ratings</span>
               </p>
             </div>
 
             <div className="movie-card__text">
-              <p>In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave&apos;s friend and protege.</p>
+              {descriptionParagraphs.map((paragraph, i) => (
+                <p key={`paragraph-${i}`}>{paragraph}</p>
+              ))}
 
-              <p>Gustave prides himself on providing first-className service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
+              <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-              <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
-
-              <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+              <p className="movie-card__starring"><strong>Starring: {generateStarringString(actors)}</strong></p>
             </div>
           </div>
         </div>
@@ -97,5 +153,7 @@ const MovieCard = () => {
     </section>
   );
 };
+
+MovieCard.propTypes = movieCardType;
 
 export default MovieCard;
