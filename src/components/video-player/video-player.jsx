@@ -49,6 +49,9 @@ export default class VideoPlayer extends PureComponent {
     const video = this._videoRef.current;
 
     video.oncanplaythrough = null;
+    video.load = null;
+    video.play = null;
+    video.pause = null;
   }
 
   render() {

@@ -5,10 +5,6 @@ const withVideoPlayer = (Component) => {
   class WithVideoPlayer extends PureComponent {
     constructor(props) {
       super(props);
-
-      this.state = {
-        activePlayerId: 0
-      };
     }
 
     render() {
