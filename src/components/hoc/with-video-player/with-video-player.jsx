@@ -15,11 +15,13 @@ const withVideoPlayer = (Component) => {
 
       return <Component
         {...this.props}
-        renderPlayer={(videoUrl, imageName) => {
+        renderPlayer={(videoUrl, imageName, callSource, isPlaying) => {
           return (
             <VideoPlayer
               videoUrl={videoUrl}
               imageName={imageName}
+              callSource={callSource}
+              isPlaying={isPlaying}
             />
           );
         }}

@@ -1,6 +1,7 @@
 import React, {createRef, PureComponent} from "react";
 import {generateVideoType} from "../../utils/utils";
 import {VideoPlayerType} from "../types/types";
+import {CallSource} from "../../utils/const";
 
 export default class VideoPlayer extends PureComponent {
   constructor(props) {
@@ -15,17 +16,33 @@ export default class VideoPlayer extends PureComponent {
   }
 
   componentDidMount() {
-    const {videoUrl} = this.props;
+    const {imageName, callSource} = this.props;
 
-    const source = this._sourceRef.current;
     const video = this._videoRef.current;
-
-    source.src = videoUrl;
-    source.type = generateVideoType(videoUrl);
 
     video.oncanplaythrough = () => this.setState({
       isLoading: false
     });
+    video.muted = callSource === CallSource.CATALOG ? true : false;
+    video.autoPlay = callSource === CallSource.CATALOG ? true : false;
+    video.poster = `img/` + imageName + `.jpg`;
+  }
+
+  componentDidUpdate() {
+    const {videoUrl, isPlaying} = this.props;
+
+    const video = this._videoRef.current;
+    const source = this._sourceRef.current;
+
+    source.src = videoUrl;
+    source.type = generateVideoType(videoUrl);
+    video.load();
+
+    if (isPlaying) {
+      video.play();
+    } else {
+      video.pause();
+    }
   }
 
   componentWillUnmount() {
@@ -35,15 +52,11 @@ export default class VideoPlayer extends PureComponent {
   }
 
   render() {
-    const {imageName} = this.props;
-
     return (
       <video
         autoPlay="autoplay"
         className="player__video"
-        poster={`img/` + imageName + `.jpg`}
         ref={this._videoRef}
-        muted
       >
         <source
           ref={this._sourceRef}

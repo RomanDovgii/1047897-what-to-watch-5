@@ -65,3 +65,8 @@ export const RatingSystem = {
   GOOD: 8,
   AWESOME: 10
 };
+
+export const CallSource = {
+  CATALOG: `catalog`,
+  PLAYER: `player`
+};

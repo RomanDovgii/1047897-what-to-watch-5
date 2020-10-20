@@ -1,24 +1,23 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
 import {smallMovieCardType} from "../types/types";
+import {CallSource} from "../../utils/const";
 
 export default class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      isImage: true
+      isPlaying: false
     };
   }
 
   _showVideo() {
     this.timer = setTimeout(
         () => {
-          if (this.state.isImage) {
-            this.setState({
-              isImage: false
-            });
-          }
+          this.setState({
+            isPlaying: true
+          });
         },
         1000
     );
@@ -46,17 +45,13 @@ export default class SmallMovieCard extends PureComponent {
           clearTimeout(this.timer);
 
           this.setState({
-            isImage: true
+            isPlaying: false
           });
 
           onMouseLeave();
         }}>
         <div className="small-movie-card__image">
-          {this.state.isImage ?
-            <img src={`img/` + imageName + `.jpg`} alt={name} width="280" height="175" />
-            :
-            renderPlayer(videoUrl, imageName)
-          }
+          {renderPlayer(videoUrl, imageName, CallSource.CATALOG, this.state.isPlaying)}
         </div>
         <h3 className="small-movie-card__title">
           <Link className="small-movie-card__link" to="/films/:id">
