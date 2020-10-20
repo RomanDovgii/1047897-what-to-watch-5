@@ -38,11 +38,13 @@ export default class VideoPlayer extends PureComponent {
     source.type = generateVideoType(videoUrl);
     video.load();
 
-    if (isPlaying) {
-      video.play();
-    } else {
-      video.pause();
-    }
+    video.oncanplaythrough = () => {
+      if (isPlaying) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    };
   }
 
   componentWillUnmount() {
