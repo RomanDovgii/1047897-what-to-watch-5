@@ -26,6 +26,7 @@ export default class SmallMovieCard extends PureComponent {
   render() {
     const {onMouseEnter, onMouseLeave, movie, renderPlayer} = this.props;
     const {name, videoUrl} = movie;
+    const {isPlaying} = this.state;
 
     const imageName = name.split(` `).join(`-`);
 
@@ -51,7 +52,7 @@ export default class SmallMovieCard extends PureComponent {
           onMouseLeave();
         }}>
         <div className="small-movie-card__image">
-          {renderPlayer(videoUrl, imageName, CallSource.CATALOG, this.state.isPlaying)}
+          {renderPlayer(videoUrl, imageName, CallSource.CATALOG, isPlaying)}
         </div>
         <h3 className="small-movie-card__title">
           <Link className="small-movie-card__link" to="/films/:id">
