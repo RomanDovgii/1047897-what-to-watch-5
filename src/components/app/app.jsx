@@ -7,7 +7,7 @@ import MoviePage from "../movie-page/movie-page";
 import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
 import {promotedMovieAndMoviesType} from "../types/types";
-import {filterMoviesForMyList} from "../../utils/utils";
+import {filterMoviesForMyList, filterMoviesByGenre} from "../../utils/utils";
 
 const App = (props) => {
   const {promotedMovie, movies} = props;
@@ -51,7 +51,7 @@ const App = (props) => {
               onUserIconClick = {() => history.push(`/mylist`)}
               onPlayButtonClick={() => history.push(`/player/:id`)}
               promotedMovie = {promotedMovie}
-              movies = {movies}
+              movies = {filterMoviesByGenre(movies, promotedMovie.genre)}
             />
           )}
         />

@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, MAXIMUM_SIMIALAR_MOVIES} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -93,4 +93,18 @@ export const generateVideoType = (url) => {
   const lastIndex = urlPieces.length - 1;
 
   return `video/${urlPieces[lastIndex]}`;
+};
+
+export const filterMoviesByGenre = (movies, genre) => {
+  let filteredMovies = movies.slice().filter((movie) => movie.genre === genre);
+
+  let finalArray = filteredMovies;
+
+  if (filteredMovies.length < MAXIMUM_SIMIALAR_MOVIES) {
+    const difference = MAXIMUM_SIMIALAR_MOVIES - filterMoviesByGenre.length;
+    const additionalMovies = movies.slice().filter((movie) => movie.genre !== genre).slice(difference);
+    finalArray = filteredMovies.concat(additionalMovies);
+  }
+
+  return finalArray;
 };
