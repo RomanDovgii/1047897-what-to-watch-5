@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import VideoPlayer from "../../video-player/video-player";
 
 const withVideoPlayer = (Component) => {
-  class WithAudioPlayer extends PureComponent {
+  class WithVideoPlayer extends PureComponent {
     constructor(props) {
       super(props);
 
@@ -29,9 +29,9 @@ const withVideoPlayer = (Component) => {
     }
   }
 
-  WithAudioPlayer.propTypes = {};
+  WithVideoPlayer.propTypes = {};
 
-  return WithAudioPlayer;
+  return WithVideoPlayer;
 };
 
 export default withVideoPlayer;
