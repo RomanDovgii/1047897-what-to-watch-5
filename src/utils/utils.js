@@ -87,3 +87,10 @@ export const filterMoviesForMyList = (movies) => {
 export const generateMovies = () => {
   return new Array(MOVIES_COUNT).fill().map(generateMovie);
 };
+
+export const generateVideoType = (url) => {
+  const urlPieces = url.split(`.`);
+  const lastIndex = urlPieces.length - 1;
+
+  return `video/${urlPieces[lastIndex]}`;
+};
