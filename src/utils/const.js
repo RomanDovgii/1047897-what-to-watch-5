@@ -1,10 +1,11 @@
 export const MOVIES_COUNT = 9;
+export const MAXIMUM_SIMIALAR_MOVIES = 4;
 export const MAXIMUM_RATING = 10;
 export const MAXIMUM_RATING_COUNT = 1000;
 export const MAXIMUM_DISPLAYED_ACTORS = 4;
 export const MAXIMUM_DISPLAYED_MOVIES = 8;
 
-export const GENRES = [`All genres`, `Comedies`, `Crime`, `Documentary`, `Dramas`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thrillers`];
+export const GENRES = [`All genres`, `Comedie`, `Crime`, `Documentary`, `Drama`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thriller`];
 export const MOVIES = [`Aviator`, `Bohemian Rhapsody`, `Dardjeeling Limited`, `Fantastic Beasts The Crimes of Grindelwald`, `Johnny English`, `Macbeth`, `Midnight Special`, `Mindhunter`, `Moonrise Kingdom`, `No Country For Old Men`, `Orlando`, `Pulp Fiction`, `Revenant`, `Seven Years In Tibet`, `Shutter Island`, `Snatch`, `War of the Worlds`, `We need to talk about Kevin`, `What We Do in the Shadows`];
 export const VIDEO_URLS = [`https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`, `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`];
 export const DIRECTORS = [`Steven Spielberg`, `Martin Scorsese`, `Alfred Hitchcock`, `Quentin Tarantino`, `Stanley Kubrick`, `Christopher Nolan`, `Tim Burton`, `Spike lee`];
@@ -64,4 +65,9 @@ export const RatingSystem = {
   NORMAL: 5,
   GOOD: 8,
   AWESOME: 10
+};
+
+export const CallSource = {
+  CATALOG: `catalog`,
+  PLAYER: `player`
 };

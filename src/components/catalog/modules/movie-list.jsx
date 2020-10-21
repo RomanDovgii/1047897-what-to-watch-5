@@ -1,6 +1,9 @@
 import React, {PureComponent} from "react";
 import SmallMovieCard from "../../small-movie-card/small-movie-card";
 import {moviesType} from "../../types/types";
+import withVideoPlayer from "../../hoc/with-video-player/with-video-player";
+
+const SmallMovieCardWrapper = withVideoPlayer(SmallMovieCard);
 
 class MoviesList extends PureComponent {
   constructor(props) {
@@ -18,7 +21,7 @@ class MoviesList extends PureComponent {
       <div className="catalog__movies-list">
         {movies.map((movie, index) => {
           return (
-            <SmallMovieCard
+            <SmallMovieCardWrapper
               key = {`${movie.name.trim()}-${index}`}
               onMouseEnter = {(movieLocal) => {
                 this.setState({movie: movieLocal});

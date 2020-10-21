@@ -75,6 +75,11 @@ export const optionalGenreType = {
   genre: optionalListItemType
 };
 
+export const VideoPlayerType = {
+  videoUrl: PropTypes.string.isRequired,
+  imageName: PropTypes.string.isRequired
+};
+
 
 export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieObjectType);
 export const promotedMovieAndMoviesType = Object.assign({}, movieObjectType, moviesType);
@@ -87,4 +92,3 @@ export const catalogType = Object.assign({}, headingType, moviesType, optionalGe
 export const moreButtonType = Object.assign({}, headingType, moviesType);
 export const myListPageType = Object.assign({}, onUserIconClickType, moviesType);
 export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType);
-
