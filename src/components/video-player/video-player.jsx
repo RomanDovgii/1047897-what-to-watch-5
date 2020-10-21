@@ -1,6 +1,6 @@
 import React, {createRef, PureComponent} from "react";
 import {generateVideoType} from "../../utils/utils";
-import {VideoPlayerType} from "../types/types";
+import {videoPlayerType} from "../types/types";
 import {CallSource} from "../../utils/const";
 
 export default class VideoPlayer extends PureComponent {
@@ -68,4 +68,4 @@ export default class VideoPlayer extends PureComponent {
   }
 }
 
-VideoPlayer.propTypes = VideoPlayerType;
+VideoPlayer.propTypes = videoPlayerType;

@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, MAXIMUM_SIMIALAR_MOVIES} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, MAXIMUM_SIMIALAR_MOVIES} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -76,7 +76,18 @@ const generateMovie = () => {
     rating: generateRating(),
     ratingsCount: getRandomIntegerNumber(MAXIMUM_RATING_COUNT),
     videoUrl: getRandomElementFromArray(VIDEO_URLS),
+    duration: getRandomIntegerNumber(Duration.MINIMUM, Duration.MAXIMUM),
+    id: getRandomIntegerNumber(Id.MINIMUM, Id.MAXIMUM),
     isMyList: getRandomBoolean()
+  };
+};
+
+const generateComment = () => {
+  return {
+    text: generateParagraphText(),
+    rating: generateRating(),
+    name: getRandomElementFromArray(ACTORS),
+    date: new Date()
   };
 };
 

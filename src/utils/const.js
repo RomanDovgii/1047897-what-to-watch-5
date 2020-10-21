@@ -22,10 +22,12 @@ export const PROMOTED_MOVIE = {
     `Gustave prides himself on providing first-className service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
   ],
   director: `Wes Andreson`,
-  actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Tom Cruise`],
+  actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
   rating: 8.9,
   ratingsCount: 240,
   videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+  duration: 99,
+  id: 1,
   isMyList: false
 };
 
@@ -55,6 +57,11 @@ export const Paragraph = {
   MAXIMUM: 3
 };
 
+export const Duration = {
+  MINIMUM: 10,
+  MAXIMUM: 300
+};
+
 export const MoreLikeThis = {
   FIRST_INDEX: 1,
   LAST_INDEX: 5
@@ -67,7 +74,18 @@ export const RatingSystem = {
   AWESOME: 10
 };
 
+export const Id = {
+  MINIMUM: 2,
+  MAXIMUM: 3000
+};
+
 export const CallSource = {
   CATALOG: `catalog`,
   PLAYER: `player`
+};
+
+export const MovieScreenTab = {
+  OVERVIEW: `overview`,
+  DETAILS: `details`,
+  REVIEWS: `reviews`
 };

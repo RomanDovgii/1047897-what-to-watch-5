@@ -25,6 +25,8 @@ export const movieObjectType = PropTypes.shape({
   rating: PropTypes.number.isRequired,
   ratingsCount: PropTypes.number.isRequired,
   videoUrl: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   isMyList: PropTypes.bool.isRequired
 }).isRequired;
 
@@ -75,9 +77,13 @@ export const optionalGenreType = {
   genre: optionalListItemType
 };
 
-export const VideoPlayerType = {
+export const videoPlayerType = {
   videoUrl: PropTypes.string.isRequired,
   imageName: PropTypes.string.isRequired
+};
+
+export const ScreenTabType = {
+  screen: PropTypes.string.isRequired
 };
 
 
@@ -92,3 +98,4 @@ export const catalogType = Object.assign({}, headingType, moviesType, optionalGe
 export const moreButtonType = Object.assign({}, headingType, moviesType);
 export const myListPageType = Object.assign({}, onUserIconClickType, moviesType);
 export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType);
+export const tabsType = Object.assign({}, ScreenTabType, movieObjectType);
