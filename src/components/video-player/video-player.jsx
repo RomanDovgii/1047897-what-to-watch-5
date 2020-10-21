@@ -20,9 +20,6 @@ export default class VideoPlayer extends PureComponent {
 
     const video = this._videoRef.current;
 
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false
-    });
     video.muted = callSource === CallSource.CATALOG ? true : false;
     video.autoPlay = callSource === CallSource.CATALOG ? true : false;
     video.poster = `img/` + imageName + `.jpg`;
@@ -39,6 +36,9 @@ export default class VideoPlayer extends PureComponent {
     video.load();
 
     video.oncanplaythrough = () => {
+      this.setState({
+        isLoading: false
+      });
       if (isPlaying) {
         video.play();
       } else {

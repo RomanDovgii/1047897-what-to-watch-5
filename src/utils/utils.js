@@ -82,14 +82,14 @@ const generateMovie = () => {
   };
 };
 
-const generateComment = () => {
-  return {
-    text: generateParagraphText(),
-    rating: generateRating(),
-    name: getRandomElementFromArray(ACTORS),
-    date: new Date()
-  };
-};
+// const generateComment = () => {
+//   return {
+//     text: generateParagraphText(),
+//     rating: generateRating(),
+//     name: getRandomElementFromArray(ACTORS),
+//     date: new Date()
+//   };
+// };
 
 export const filterMoviesForMyList = (movies) => {
   return movies.filter((movie) => movie.isMyList);
@@ -107,7 +107,7 @@ export const generateVideoType = (url) => {
 };
 
 export const filterMoviesByGenre = (movies, genre) => {
-  let filteredMovies = movies.slice().filter((movie) => movie.genre === genre);
+  const filteredMovies = movies.slice().filter((movie) => movie.genre === genre);
 
   let finalArray = filteredMovies;
 

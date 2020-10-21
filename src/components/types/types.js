@@ -79,7 +79,8 @@ export const optionalGenreType = {
 
 export const videoPlayerType = {
   videoUrl: PropTypes.string.isRequired,
-  imageName: PropTypes.string.isRequired
+  imageName: PropTypes.string.isRequired,
+  callSource: PropTypes.string.isRequired
 };
 
 export const ScreenTabType = {

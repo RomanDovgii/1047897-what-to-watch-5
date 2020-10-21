@@ -72,6 +72,7 @@ const App = (props) => {
           render={({history}) => (
             <PlayerPage
               onExitButtonClick = {() => history.goBack()}
+              movie = {promotedMovie}
             />
           )}
         />
