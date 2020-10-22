@@ -1,6 +1,8 @@
 import React from "react";
 import {MovieScreenTab, MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "../../utils/const";
 import {tabsType} from "../types/types";
+import {comments} from "../../mocks/comments";
+import Comment from "./modules/comment";
 
 const generateStarringString = (actors) => {
   let text = ``;
@@ -58,7 +60,13 @@ const generateDurationString = (duration) => {
 const Tabs = (props) => {
   const {screen, movie} = props;
 
-  const {genre, release, descriptionParagraphs, director, actors, rating, ratingsCount, duration} = movie;
+  const {genre, release, descriptionParagraphs, director, actors, rating, duration, id} = movie;
+
+  const commentsForTheMovie = comments[id];
+  const commentsFirstColumn = Math.ceil(commentsForTheMovie.length / 2);
+
+  const firstColumnComments = commentsForTheMovie.slice().slice(0, commentsFirstColumn);
+  const secondColumnComments = commentsForTheMovie.slice().slice(commentsFirstColumn, commentsForTheMovie.length);
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
@@ -70,7 +78,7 @@ const Tabs = (props) => {
             <div className="movie-rating__score">{ratingString}</div>
             <p className="movie-rating__meta">
               <span className="movie-rating__level">{generateRatingText(rating)}</span>
-              <span className="movie-rating__count">{ratingsCount} ratings</span>
+              <span className="movie-rating__count">{comments[id].length} ratings</span>
             </p>
           </div>
 
@@ -121,84 +129,24 @@ const Tabs = (props) => {
       return (
         <div className="movie-card__reviews movie-card__row">
           <div className="movie-card__reviews-col">
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director&apos;s funniest and most exquisitely designed movies in years.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Kate Muir</cite>
-                  <time className="review__date" dateTime="2016-12-24">December 24, 2016</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">8,9</div>
-            </div>
-
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">Anderson&apos;s films are too precious for some, but for those of us willing to lose ourselves in them, they&apos;re a delight. &quot;The Grand Budapest Hotel&quot; is no different, except that he has added a hint of gravitas to the mix, improving the recipe.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Bill Goodykoontz</cite>
-                  <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">8,0</div>
-            </div>
-
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">I didn&apos;t find it amusing, and while I can appreciate the creativity, it&apos;s an hour and 40 minutes I wish I could take back.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Amanda Greever</cite>
-                  <time className="review__date" dateTime="2015-11-18">November 18, 2015</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">8,0</div>
-            </div>
+            {firstColumnComments.map((comment, i) => {
+              return (
+                <Comment
+                  comment = {comment}
+                  key = {`${comment.name.replace(` `, ``).toLowerCase()}-${i}`}
+                />
+              );
+            })}
           </div>
           <div className="movie-card__reviews-col">
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">The mannered, madcap proceedings are often delightful, occasionally silly, and here and there, gruesome and/or heartbreaking.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Matthew Lickona</cite>
-                  <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">7,2</div>
-            </div>
-
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Paula Fleri-Soler</cite>
-                  <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">7,6</div>
-            </div>
-
-            <div className="review">
-              <blockquote className="review__quote">
-                <p className="review__text">It is certainly a magical and childlike way of storytelling, even if the content is a little more adult.</p>
-
-                <footer className="review__details">
-                  <cite className="review__author">Paula Fleri-Soler</cite>
-                  <time className="review__date" dateTime="2016-12-20">December 20, 2016</time>
-                </footer>
-              </blockquote>
-
-              <div className="review__rating">7,0</div>
-            </div>
+            {secondColumnComments.map((comment, i) => {
+              return (
+                <Comment
+                  comment = {comment}
+                  key = {`${comment.name.replace(` `, ``).toLowerCase()}-${i}`}
+                />
+              );
+            })}
           </div>
         </div>
       );

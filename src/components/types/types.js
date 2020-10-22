@@ -30,6 +30,13 @@ export const movieObjectType = PropTypes.shape({
   isMyList: PropTypes.bool.isRequired
 }).isRequired;
 
+export const commentType = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired
+}).isRequired;
+
 const movieType = {
   movie: movieObjectType
 };

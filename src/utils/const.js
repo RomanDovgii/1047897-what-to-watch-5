@@ -62,6 +62,12 @@ export const Duration = {
   MAXIMUM: 300
 };
 
+
+export const CommentCount = {
+  MINIMUM: 10,
+  MAXIMUM: 30
+};
+
 export const MoreLikeThis = {
   FIRST_INDEX: 1,
   LAST_INDEX: 5

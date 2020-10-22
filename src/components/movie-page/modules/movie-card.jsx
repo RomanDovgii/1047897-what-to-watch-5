@@ -129,24 +129,6 @@ export default class MovieCard extends PureComponent {
                 screen = {this.state.shownScreen}
                 movie = {promotedMovie}
               />
-
-              {/* <div className="movie-rating">
-                <div className="movie-rating__score">{ratingString}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">{generateRatingText(rating)}</span>
-                  <span className="movie-rating__count">{ratingsCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                {descriptionParagraphs.map((paragraph, i) => (
-                  <p key={`paragraph-${i}`}>{paragraph}</p>
-                ))}
-
-                <p className="movie-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="movie-card__starring"><strong>Starring: {generateStarringString(actors)}</strong></p>
-              </div> */}
             </div>
           </div>
         </div>

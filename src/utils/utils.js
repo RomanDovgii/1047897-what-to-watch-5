@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, MAXIMUM_SIMIALAR_MOVIES} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -82,14 +82,29 @@ const generateMovie = () => {
   };
 };
 
-// const generateComment = () => {
-//   return {
-//     text: generateParagraphText(),
-//     rating: generateRating(),
-//     name: getRandomElementFromArray(ACTORS),
-//     date: new Date()
-//   };
-// };
+export const generateComment = () => {
+  return {
+    text: generateParagraphText(),
+    rating: generateRating(),
+    name: getRandomElementFromArray(ACTORS),
+    date: new Date()
+  };
+};
+
+const generateComments = (count) => {
+  return new Array(count).fill().map(generateComment);
+};
+
+export const generateCommentsById = (movieIds) => {
+  let comments = {};
+
+  movieIds.map((id) => {
+    const number = getRandomIntegerNumber(CommentCount.MINIMUM, CommentCount.MAXIMUM);
+    comments[id] = generateComments(number);
+  });
+
+  return comments;
+};
 
 export const filterMoviesForMyList = (movies) => {
   return movies.filter((movie) => movie.isMyList);
