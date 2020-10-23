@@ -1,6 +1,6 @@
 import React, {createRef, PureComponent} from "react";
 import {generateVideoType} from "../../utils/utils";
-import {VideoPlayerType} from "../types/types";
+import {videoPlayerType} from "../types/types";
 import {CallSource} from "../../utils/const";
 
 export default class VideoPlayer extends PureComponent {
@@ -20,9 +20,6 @@ export default class VideoPlayer extends PureComponent {
 
     const video = this._videoRef.current;
 
-    video.oncanplaythrough = () => this.setState({
-      isLoading: false
-    });
     video.muted = callSource === CallSource.CATALOG ? true : false;
     video.autoPlay = callSource === CallSource.CATALOG ? true : false;
     video.poster = `img/` + imageName + `.jpg`;
@@ -39,6 +36,9 @@ export default class VideoPlayer extends PureComponent {
     video.load();
 
     video.oncanplaythrough = () => {
+      this.setState({
+        isLoading: false
+      });
       if (isPlaying) {
         video.play();
       } else {
@@ -68,4 +68,4 @@ export default class VideoPlayer extends PureComponent {
   }
 }
 
-VideoPlayer.propTypes = VideoPlayerType;
+VideoPlayer.propTypes = videoPlayerType;

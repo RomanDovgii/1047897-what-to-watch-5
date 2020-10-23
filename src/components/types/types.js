@@ -25,8 +25,19 @@ export const movieObjectType = PropTypes.shape({
   rating: PropTypes.number.isRequired,
   ratingsCount: PropTypes.number.isRequired,
   videoUrl: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   isMyList: PropTypes.bool.isRequired
 }).isRequired;
+
+export const commentType = PropTypes.shape({
+  text: PropTypes.string.isRequired,
+  rating: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  date: PropTypes.instanceOf(Date).isRequired
+}).isRequired;
+
+const commentsType = PropTypes.objectOf(commentType).isRequired;
 
 const movieType = {
   movie: movieObjectType
@@ -75,20 +86,29 @@ export const optionalGenreType = {
   genre: optionalListItemType
 };
 
-export const VideoPlayerType = {
+export const videoPlayerType = {
   videoUrl: PropTypes.string.isRequired,
-  imageName: PropTypes.string.isRequired
+  imageName: PropTypes.string.isRequired,
+  callSource: PropTypes.string.isRequired
+};
+
+export const ScreenTabType = {
+  screen: PropTypes.string.isRequired
 };
 
 
 export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieObjectType);
-export const promotedMovieAndMoviesType = Object.assign({}, movieObjectType, moviesType);
+export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
 export const mainPageType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, moviesType);
+export const moviePageType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, moviesType, commentsType);
 export const movieCardTopType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, movieType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);
 export const userBlockType = Object.assign({}, onUserIconClickType, isRenderedType);
 export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
 export const moreButtonType = Object.assign({}, headingType, moviesType);
 export const myListPageType = Object.assign({}, onUserIconClickType, moviesType);
-export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType);
+export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, commentsType);
+export const tabsType = Object.assign({}, ScreenTabType, movieObjectType, commentsType);
+export const tabType = Object.assign({}, movieObjectType);
+export const tabWithCommentsType = Object.assign({}, movieObjectType, commentsType);

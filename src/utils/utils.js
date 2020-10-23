@@ -1,4 +1,5 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, MAXIMUM_SIMIALAR_MOVIES} from "./const";
+import React from "react";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -76,8 +77,33 @@ const generateMovie = () => {
     rating: generateRating(),
     ratingsCount: getRandomIntegerNumber(MAXIMUM_RATING_COUNT),
     videoUrl: getRandomElementFromArray(VIDEO_URLS),
+    duration: getRandomIntegerNumber(Duration.MINIMUM, Duration.MAXIMUM),
+    id: getRandomIntegerNumber(Id.MINIMUM, Id.MAXIMUM),
     isMyList: getRandomBoolean()
   };
+};
+
+export const generateComment = () => {
+  return {
+    text: generateParagraphText(),
+    rating: generateRating(),
+    name: getRandomElementFromArray(ACTORS),
+    date: new Date()
+  };
+};
+
+const generateComments = (count) => {
+  return new Array(count).fill().map(generateComment);
+};
+
+export const generateCommentsById = (movieIds) => {
+  const comments = movieIds.reduce((accumulator, id) => {
+    const number = getRandomIntegerNumber(CommentCount.MINIMUM, CommentCount.MAXIMUM);
+    accumulator[id] = generateComments(number);
+    return accumulator;
+  }, {});
+
+  return comments;
 };
 
 export const filterMoviesForMyList = (movies) => {
@@ -96,7 +122,7 @@ export const generateVideoType = (url) => {
 };
 
 export const filterMoviesByGenre = (movies, genre) => {
-  let filteredMovies = movies.slice().filter((movie) => movie.genre === genre);
+  const filteredMovies = movies.slice().filter((movie) => movie.genre === genre);
 
   let finalArray = filteredMovies;
 
@@ -107,4 +133,58 @@ export const filterMoviesByGenre = (movies, genre) => {
   }
 
   return finalArray;
+};
+
+export const generateDurationString = (duration) => {
+  return `${Math.floor(duration / 60)}h ${duration % 60}m`;
+};
+
+export const generateActorsText = (actors) => {
+  const actorsMaxIndex = actors.length - 1;
+
+  return (
+    <span className="movie-card__details-value">
+      {actors.map((actor, i) => (
+        <React.Fragment key={i}>
+          {actor}{i < actorsMaxIndex ? `, ` : ``} {i < actorsMaxIndex ? <br/> : ``}
+        </React.Fragment>
+      ))}
+    </span>);
+};
+
+export const generateStarringString = (actors) => {
+  let text = ``;
+  let end = ``;
+  let actorsLocal = actors.slice();
+
+  if (actorsLocal.length > MAXIMUM_DISPLAYED_ACTORS) {
+    actorsLocal = actors.slice(0, MAXIMUM_DISPLAYED_ACTORS);
+
+    end = ` and other`;
+  }
+
+  text = actorsLocal.join(`, `);
+
+  text = text.slice(0, -2);
+
+  text += end;
+
+  return text;
+};
+
+export const generateRatingText = (rating) => {
+  switch (true) {
+    case rating <= RatingSystem.BAD:
+      return `Bad`;
+    case rating <= RatingSystem.NORMAL:
+      return `Normal`;
+    case rating <= RatingSystem.GOOD:
+      return `Good`;
+    case rating < RatingSystem.AWESOME:
+      return `Very good`;
+    case rating === RatingSystem.AWESOME:
+      return `Awesome`;
+    default:
+      return `Rating is incorrect`;
+  }
 };

@@ -7,32 +7,24 @@ export default class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._isMounted = false;
-
     this.state = {
       isPlaying: false
     };
   }
 
-  componentDidMount() {
-    this._isMounted = true;
-  }
-
-  componentWillUnmount() {
-    this._isMounted = false;
-  }
-
   _showVideo() {
     this.timer = setTimeout(
         () => {
-          if (this._isMounted) {
-            this.setState({
-              isPlaying: true
-            });
-          }
+          this.setState({
+            isPlaying: true
+          });
         },
         1000
     );
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   render() {
@@ -57,11 +49,9 @@ export default class SmallMovieCard extends PureComponent {
 
           clearTimeout(this.timer);
 
-          if (this._isMounted) {
-            this.setState({
-              isPlaying: false
-            });
-          }
+          this.setState({
+            isPlaying: false
+          });
 
           onMouseLeave();
         }}>
