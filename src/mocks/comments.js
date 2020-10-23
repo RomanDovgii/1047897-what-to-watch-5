@@ -1,12 +1,7 @@
 import {generateCommentsById} from "../utils/utils";
 import {movies} from "./movies";
 
-const movieIds = [];
-
-movies.map((movie) => {
-  movieIds.push(movie.id);
-});
-
+const movieIds = movies.map(({id}) => id);
 
 const movieIdsWithPromotedMovie = [1, ...movieIds];
 
