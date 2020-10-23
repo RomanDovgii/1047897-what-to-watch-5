@@ -23,6 +23,10 @@ export default class SmallMovieCard extends PureComponent {
     );
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   render() {
     const {onMouseEnter, onMouseLeave, movie, renderPlayer} = this.props;
     const {name, videoUrl} = movie;

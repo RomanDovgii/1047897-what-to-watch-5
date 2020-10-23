@@ -91,7 +91,7 @@ export const CallSource = {
 };
 
 export const MovieScreenTab = {
-  OVERVIEW: `overview`,
-  DETAILS: `details`,
-  REVIEWS: `reviews`
+  OVERVIEW: `Overview`,
+  DETAILS: `Details`,
+  REVIEWS: `Reviews`
 };

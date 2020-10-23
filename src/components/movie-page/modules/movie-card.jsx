@@ -23,7 +23,7 @@ export default class MovieCard extends PureComponent {
   }
 
   render() {
-    const {onUserIconClick, onPlayButtonClick, promotedMovie} = this.props;
+    const {onUserIconClick, onPlayButtonClick, promotedMovie, comments} = this.props;
 
     const {name, genre, release} = promotedMovie;
 
@@ -89,45 +89,32 @@ export default class MovieCard extends PureComponent {
             <div className="movie-card__desc">
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
-                  <li className={`movie-nav__item ${this.state.shownScreen === MovieScreenTab.OVERVIEW ? `movie-nav__item--active` : ``}`}>
-                    <a
-                      href="#"
-                      className="movie-nav__link"
-                      onClick={(evt) => {
-                        evt.preventDefault();
-                        this.setState({
-                          shownScreen: MovieScreenTab.OVERVIEW
-                        });
-                      }}>Overview</a>
-                  </li>
-                  <li className={`movie-nav__item ${this.state.shownScreen === MovieScreenTab.DETAILS ? `movie-nav__item--active` : ``}`}>
-                    <a
-                      href="#"
-                      className="movie-nav__link"
-                      onClick={(evt) => {
-                        evt.preventDefault();
-                        this.setState({
-                          shownScreen: MovieScreenTab.DETAILS
-                        });
-                      }}>Details</a>
-                  </li>
-                  <li className={`movie-nav__item ${this.state.shownScreen === MovieScreenTab.REVIEWS ? `movie-nav__item--active` : ``}`}>
-                    <a
-                      href="#"
-                      className="movie-nav__link"
-                      onClick={(evt) => {
-                        evt.preventDefault();
-                        this.setState({
-                          shownScreen: MovieScreenTab.REVIEWS
-                        });
-                      }}>Reviews</a>
-                  </li>
+                  {
+                    Object.entries(MovieScreenTab).map((element) => {
+                      const [key, value] = element;
+
+                      return (
+                        <li key={key} className={`movie-nav__item ${this.state.shownScreen === value ? `movie-nav__item--active` : ``}`}>
+                          <a
+                            href="#"
+                            className="movie-nav__link"
+                            onClick={(evt) => {
+                              evt.preventDefault();
+                              this.setState({
+                                shownScreen: value
+                              });
+                            }}>{value}</a>
+                        </li>
+                      );
+                    })
+                  }
                 </ul>
               </nav>
 
               <Tabs
                 screen = {this.state.shownScreen}
                 movie = {promotedMovie}
+                comments = {comments}
               />
             </div>
           </div>
