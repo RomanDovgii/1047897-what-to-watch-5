@@ -1,8 +1,8 @@
 import React from "react";
-import {optionalGenreType} from "../../types/types";
+import {genreListItemType} from "../../types/types";
 
 const GenresListItem = (props) => {
-  const {genre, onGenreChange, isSelected} = props;
+  const {genre, onGenreClick, isSelected} = props;
 
   const activeClass = isSelected ? ` catalog__genres-item--active` : ``;
 
@@ -14,13 +14,13 @@ const GenresListItem = (props) => {
         onClick = {(evt) => {
           evt.preventDefault();
 
-          onGenreChange(genre);
+          onGenreClick(genre);
         }}
       >{genre}</a>
     </li>
   );
 };
 
-GenresListItem.propTypes = optionalGenreType;
+GenresListItem.propTypes = genreListItemType;
 
 export default GenresListItem;
