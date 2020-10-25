@@ -188,3 +188,7 @@ export const generateRatingText = (rating) => {
       return `Rating is incorrect`;
   }
 };
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};

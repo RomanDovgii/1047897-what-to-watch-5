@@ -95,3 +95,7 @@ export const MovieScreenTab = {
   DETAILS: `Details`,
   REVIEWS: `Reviews`
 };
+
+export const ActionType = {
+  SELECT_GENRE: `SELECT_GENRE`,
+};
