@@ -180,11 +180,7 @@ export const extend = (a, b) => {
 };
 
 export const createGenresList = (movies) => {
-  const genresNotSorted = [];
-
-  movies.map((movie) => {
-    genresNotSorted.push(movie.genre);
-  });
+  const genresNotSorted = movies.map(({genre}) => genre);
 
   const genres = [];
 
