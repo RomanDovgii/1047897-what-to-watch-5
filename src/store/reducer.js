@@ -12,7 +12,8 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SELECT_GENRE:
-      const newlySelectedGenre = state.genre;
+
+      const newlySelectedGenre = action.payload;
       const filteredMovies = newlySelectedGenre === allGenres ? movies : movies.filter((movie) => movie.genre === newlySelectedGenre);
 
       return extend(

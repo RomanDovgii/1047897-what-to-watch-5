@@ -1,5 +1,5 @@
 import React from "react";
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -191,4 +191,22 @@ export const generateRatingText = (rating) => {
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
+};
+
+export const createGenresList = (movies) => {
+  const genresNotSorted = [];
+
+  movies.map((movie) => {
+    genresNotSorted.push(movie.genre);
+  });
+
+  const genres = [];
+
+  genresNotSorted.map((genre) => {
+    if (!genres.includes(genre)) {
+      genres.push(genre);
+    }
+  });
+
+  return [ALL_GENRE, ...genres];
 };

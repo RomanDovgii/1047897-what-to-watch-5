@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {connect} from "react-redux";
 import SmallMovieCard from "../../small-movie-card/small-movie-card";
 import {moviesType} from "../../types/types";
 import withVideoPlayer from "../../hoc/with-video-player/with-video-player";
@@ -40,4 +41,9 @@ class MoviesList extends PureComponent {
 
 MoviesList.propTypes = moviesType;
 
-export default MoviesList;
+const mapStateToProps = (state) => ({
+  movies: state.movieCards,
+});
+
+export {MoviesList};
+export default connect(mapStateToProps)(MoviesList);
