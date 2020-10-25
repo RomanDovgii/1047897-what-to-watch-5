@@ -12,6 +12,10 @@ export default class SmallMovieCard extends PureComponent {
     };
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
   _showVideo() {
     this.timer = setTimeout(
         () => {
@@ -21,10 +25,6 @@ export default class SmallMovieCard extends PureComponent {
         },
         1000
     );
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
   }
 
   render() {

@@ -1,4 +1,3 @@
-import React from "react";
 import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
 
 const getRandomElementFromArray = (array) => {
@@ -137,19 +136,6 @@ export const filterMoviesByGenre = (movies, genre) => {
 
 export const generateDurationString = (duration) => {
   return `${Math.floor(duration / 60)}h ${duration % 60}m`;
-};
-
-export const generateActorsText = (actors) => {
-  const actorsMaxIndex = actors.length - 1;
-
-  return (
-    <span className="movie-card__details-value">
-      {actors.map((actor, i) => (
-        <React.Fragment key={i}>
-          {actor}{i < actorsMaxIndex ? `, ` : ``} {i < actorsMaxIndex ? <br/> : ``}
-        </React.Fragment>
-      ))}
-    </span>);
 };
 
 export const generateStarringString = (actors) => {
