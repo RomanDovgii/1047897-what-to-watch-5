@@ -77,6 +77,7 @@ export const moviesType = {
 
 export const listItemType = PropTypes.string.isRequired;
 const optionalListItemType = PropTypes.string;
+const ListItemType = PropTypes.string.isRequired;
 
 export const optionalGenresType = {
   genres: PropTypes.arrayOf(optionalListItemType)
@@ -84,6 +85,26 @@ export const optionalGenresType = {
 
 export const optionalGenreType = {
   genre: optionalListItemType
+};
+
+const genreType = {
+  genre: listItemType
+};
+
+const genresType = {
+  genres: PropTypes.arrayOf(ListItemType).isRequired
+};
+
+const selectedGenreType = {
+  selectedGenre: PropTypes.string.isRequired
+};
+
+const onGenreClick = {
+  onGenreClick: PropTypes.func.isRequired
+};
+
+const isSelected = {
+  isSelected: PropTypes.bool.isRequired
 };
 
 export const videoPlayerType = {
@@ -112,3 +133,5 @@ export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButton
 export const tabsType = Object.assign({}, ScreenTabType, movieObjectType, commentsType);
 export const tabType = Object.assign({}, movieObjectType);
 export const tabWithCommentsType = Object.assign({}, movieObjectType, commentsType);
+export const genresListType = Object.assign({}, genresType, selectedGenreType, onGenreClick);
+export const genreListItemType = Object.assign({}, genreType, onGenreClick, isSelected);

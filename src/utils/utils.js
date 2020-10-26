@@ -1,5 +1,4 @@
-import React from "react";
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem} from "./const";
+import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -139,19 +138,6 @@ export const generateDurationString = (duration) => {
   return `${Math.floor(duration / 60)}h ${duration % 60}m`;
 };
 
-export const generateActorsText = (actors) => {
-  const actorsMaxIndex = actors.length - 1;
-
-  return (
-    <span className="movie-card__details-value">
-      {actors.map((actor, i) => (
-        <React.Fragment key={i}>
-          {actor}{i < actorsMaxIndex ? `, ` : ``} {i < actorsMaxIndex ? <br/> : ``}
-        </React.Fragment>
-      ))}
-    </span>);
-};
-
 export const generateStarringString = (actors) => {
   let text = ``;
   let end = ``;
@@ -187,4 +173,22 @@ export const generateRatingText = (rating) => {
     default:
       return `Rating is incorrect`;
   }
+};
+
+export const extend = (a, b) => {
+  return Object.assign({}, a, b);
+};
+
+export const createGenresList = (movies) => {
+  const genresNotSorted = movies.map(({genre}) => genre);
+
+  const genres = [];
+
+  genresNotSorted.map((genre) => {
+    if (!genres.includes(genre)) {
+      genres.push(genre);
+    }
+  });
+
+  return [ALL_GENRE, ...genres];
 };

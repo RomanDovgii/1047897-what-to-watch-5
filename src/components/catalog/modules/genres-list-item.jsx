@@ -1,18 +1,26 @@
 import React from "react";
-import {optionalGenreType} from "../../types/types";
+import {genreListItemType} from "../../types/types";
 
 const GenresListItem = (props) => {
-  const {genre} = props;
+  const {genre, onGenreClick, isSelected} = props;
 
-  const activeClass = (genre === `All genres`) ? ` catalog__genres-item--active` : ``;
+  const activeClass = isSelected ? ` catalog__genres-item--active` : ``;
 
   return (
     <li className={`catalog__genres-item` + activeClass}>
-      <a href="#" className="catalog__genres-link">{genre}</a>
+      <a
+        href="#"
+        className="catalog__genres-link"
+        onClick = {(evt) => {
+          evt.preventDefault();
+
+          onGenreClick(genre);
+        }}
+      >{genre}</a>
     </li>
   );
 };
 
-GenresListItem.propTypes = optionalGenreType;
+GenresListItem.propTypes = genreListItemType;
 
 export default GenresListItem;

@@ -1,9 +1,11 @@
 import React from "react";
+import {connect} from "react-redux";
 import GenresListItem from "./genres-list-item";
-import {optionalGenresType} from "../../types/types";
+import {genresListType} from "../../types/types";
+import {ActionCreator} from "../../../store/action";
 
 const GenresList = (props) => {
-  const {genres} = props;
+  const {genres, selectedGenre, onGenreClick} = props;
 
   if (genres) {
     return (
@@ -13,6 +15,8 @@ const GenresList = (props) => {
             <GenresListItem
               key = {index.toString()}
               genre = {genre}
+              onGenreClick = {onGenreClick}
+              isSelected = {genre === selectedGenre ? true : false}
             />
           );
         })}
@@ -23,6 +27,20 @@ const GenresList = (props) => {
   return null;
 };
 
-GenresList.propTypes = optionalGenresType;
+GenresList.propTypes = genresListType;
 
-export default GenresList;
+const mapStateToProps = (state) => {
+  return {
+    selectedGenre: state.selectedGenre,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  onGenreClick(selectedGenre) {
+    dispatch(ActionCreator.changeGenre(selectedGenre));
+  }
+});
+
+export {GenresList};
+
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

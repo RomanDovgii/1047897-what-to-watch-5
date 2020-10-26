@@ -1,6 +1,19 @@
 import React from "react";
-import {generateDurationString, generateActorsText} from "../../utils/utils";
+import {generateDurationString} from "../../utils/utils";
 import {tabType} from "../types/types";
+
+export const generateActorsText = (actors) => {
+  const actorsMaxIndex = actors.length - 1;
+
+  return (
+    <span className="movie-card__details-value">
+      {actors.map((actor, i) => (
+        <React.Fragment key={i}>
+          {actor}{i < actorsMaxIndex ? `, ` : ``} {i < actorsMaxIndex ? <br/> : ``}
+        </React.Fragment>
+      ))}
+    </span>);
+};
 
 const DetailsTab = (props) => {
   const {movie} = props;

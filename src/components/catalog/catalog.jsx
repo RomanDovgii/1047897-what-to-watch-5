@@ -5,9 +5,12 @@ import MoreButton from "./modules/more-button";
 import CatalogHeading from "./modules/catalog-heading";
 import {catalogType} from "../types/types";
 import {CatalogHeadingVariant, MoreLikeThis} from "../../utils/const";
+import {createGenresList} from "../../utils/utils";
 
 const Catalog = (props) => {
-  const {heading, genres, movies} = props;
+  const {heading, movies} = props;
+
+  const genres = createGenresList(movies);
 
   const moviesLocal = (heading !== CatalogHeadingVariant.MOVIE_PAGE) ? movies : movies.slice(MoreLikeThis.FIRST_INDEX, MoreLikeThis.LAST_INDEX);
 
@@ -19,9 +22,7 @@ const Catalog = (props) => {
       <GenresList
         genres = {genres}
       />
-      <MoviesList
-        movies = {moviesLocal}
-      />
+      <MoviesList/>
       <MoreButton
         movies = {moviesLocal}
         heading = {heading}
