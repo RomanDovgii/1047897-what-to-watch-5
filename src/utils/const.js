@@ -1,3 +1,4 @@
+export const SHOWN_MOVIES_COUNT = 8;
 export const MOVIES_COUNT = 20;
 export const MAXIMUM_SIMIALAR_MOVIES = 4;
 export const MAXIMUM_RATING = 10;
@@ -99,4 +100,12 @@ export const MovieScreenTab = {
 
 export const ActionType = {
   SELECT_GENRE: `SELECT_GENRE`,
+  SHOW_MORE: `SHOW_MORE`,
+  RESET_SHOWN_MOVIES: `RESET_SHOWN_MOVIES`
+};
+
+export const CatalogCallSource = {
+  MAIN_PAGE: `MAIN_PAGE`,
+  MY_LIST: `MY_LIST`,
+  MOVIE_PAGE: `MOVIE_PAGE`
 };

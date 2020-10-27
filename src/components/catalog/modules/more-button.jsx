@@ -4,14 +4,20 @@ import {MAXIMUM_DISPLAYED_MOVIES} from "../../../utils/const";
 import {moreButtonType} from "../../types/types";
 
 const MoreButton = (props) => {
-  const {heading, movies} = props;
+  const {heading, moviesCount, onMoreButtonClick} = props;
 
-  const moviesLength = movies.length;
-
-  if ((moviesLength > MAXIMUM_DISPLAYED_MOVIES) && (heading === CatalogHeadingVariant.CATALOG)) {
+  if ((moviesCount > MAXIMUM_DISPLAYED_MOVIES) && (heading === CatalogHeadingVariant.CATALOG)) {
     return (
       <div className="catalog__more">
-        <button className="catalog__button" type="button">Show more</button>
+        <button
+          className="catalog__button"
+          type="button"
+          onClick={(evt) => {
+            evt.preventDefault();
+
+            onMoreButtonClick();
+          }}
+        >Show more</button>
       </div>
     );
   }

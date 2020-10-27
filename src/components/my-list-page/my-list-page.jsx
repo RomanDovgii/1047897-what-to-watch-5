@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Catalog from "../catalog/catalog";
-import {CatalogHeadingVariant} from "../../utils/const";
+import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {myListPageType} from "../types/types";
 
 const HeaderSetting = {
@@ -29,6 +29,7 @@ const MyListPage = (props) => {
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}
         movies = {movies}
+        source = {CatalogCallSource.MY_LIST}
       />
       <Footer/>
     </div>
