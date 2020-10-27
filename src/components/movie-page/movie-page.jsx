@@ -6,12 +6,13 @@ import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {moviePageType} from "../types/types";
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onPlayButtonClick, promotedMovie, movies, comments} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, promotedMovie, movies, comments} = props;
 
   return (
     <React.Fragment>
       <MovieCard
         onUserIconClick = {onUserIconClick}
+        onWTWLogoClick = {onWTWLogoClick}
         onPlayButtonClick = {onPlayButtonClick}
         promotedMovie={promotedMovie}
         comments = {comments}

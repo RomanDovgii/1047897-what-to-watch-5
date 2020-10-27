@@ -14,12 +14,13 @@ const HeaderSetting = {
 };
 
 const MyListPage = (props) => {
-  const {onUserIconClick, movies} = props;
+  const {onUserIconClick, onWTWLogoClick, movies} = props;
 
   return (
     <div className="user-page">
       <Header
         onUserIconClick = {onUserIconClick}
+        onWTWLogoClick = {onWTWLogoClick}
         isUserPage = {HeaderSetting.IS_USER_PAGE}
         isMyList = {HeaderSetting.IS_MY_LIST}
         isSignIn = {HeaderSetting.IS_SIGN_IN}

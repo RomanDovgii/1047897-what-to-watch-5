@@ -23,7 +23,7 @@ export default class MovieCard extends PureComponent {
   }
 
   render() {
-    const {onUserIconClick, onPlayButtonClick, promotedMovie, comments} = this.props;
+    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, promotedMovie, comments} = this.props;
 
     const {name, genre, release} = promotedMovie;
 
@@ -38,6 +38,7 @@ export default class MovieCard extends PureComponent {
 
           <Header
             onUserIconClick = {onUserIconClick}
+            onWTWLogoClick = {onWTWLogoClick}
             isUserPage = {HeaderSetting.IS_USER_PAGE}
             isMyList = {HeaderSetting.IS_MY_LIST}
             isSignIn = {HeaderSetting.IS_SIGN_IN}

@@ -117,21 +117,37 @@ export const ScreenTabType = {
   screen: PropTypes.string.isRequired
 };
 
+const moviesCountType = {
+  moviesCount: PropTypes.number.isRequired
+};
+
+const onMoreButtonClickType = {
+  onMoreButtonClick: PropTypes.func.isRequired
+};
+
+const onWTWLogoClickType = {
+  onWTWLogoClick: PropTypes.func.isRequired
+};
+
+const resetStateType = {
+  resetState: PropTypes.func.isRequired
+};
 
 export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
-export const mainPageType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, moviesType);
-export const moviePageType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, moviesType, commentsType);
-export const movieCardTopType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, movieType);
+export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType);
+export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType, commentsType);
+export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);
 export const userBlockType = Object.assign({}, onUserIconClickType, isRenderedType);
 export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
-export const moreButtonType = Object.assign({}, headingType, moviesType);
-export const myListPageType = Object.assign({}, onUserIconClickType, moviesType);
-export const movieCardType = Object.assign({}, onUserIconClickType, onPlayButtonClickType, promotedMovieType, commentsType);
+export const moreButtonType = Object.assign({}, headingType, moviesCountType, onMoreButtonClickType);
+export const myListPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, moviesType);
+export const movieCardType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, commentsType);
 export const tabsType = Object.assign({}, ScreenTabType, movieObjectType, commentsType);
 export const tabType = Object.assign({}, movieObjectType);
 export const tabWithCommentsType = Object.assign({}, movieObjectType, commentsType);
 export const genresListType = Object.assign({}, genresType, selectedGenreType, onGenreClick);
 export const genreListItemType = Object.assign({}, genreType, onGenreClick, isSelected);
+export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);

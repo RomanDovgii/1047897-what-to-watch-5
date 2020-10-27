@@ -16,7 +16,7 @@ const HeaderSetting = {
 
 const AddReviewPage = (props) => {
 
-  const {onUserIconClick} = props;
+  const {onUserIconClick, onWTWLogoClick} = props;
 
   return (
     <section className="movie-card movie-card--full">
@@ -25,6 +25,7 @@ const AddReviewPage = (props) => {
         <HeadingFirstLevel/>
         <Header
           onUserIconClick = {onUserIconClick}
+          onWTWLogoClick = {onWTWLogoClick}
           isUserPage = {HeaderSetting.IS_USER_PAGE}
           isMyList = {HeaderSetting.IS_MY_LIST}
           isSignIn = {HeaderSetting.IS_SIGN_IN}

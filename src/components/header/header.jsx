@@ -5,15 +5,20 @@ import HeadingMyList from "./modules/heading-my-list";
 import HeadingSignIn from "./modules/heading-sign-in";
 import Navigation from "./modules/navigation";
 import UserBlock from "./modules/user-block";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 const Header = (props) => {
-  const {onUserIconClick, isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
+  const {onUserIconClick, onWTWLogoClick, resetState, isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
 
   const userPageElementClass = isUserPage ? `user-page__head` : ``;
 
   return (
     <header className={`page-header ` + userPageElementClass}>
-      <Logo/>
+      <Logo
+        onWTWLogoClick = {onWTWLogoClick}
+        resetState = {resetState}
+      />
 
       <HeadingMyList
         isRendered = {isMyList}
@@ -28,6 +33,7 @@ const Header = (props) => {
 
       <UserBlock
         onUserIconClick = {onUserIconClick}
+        resetState = {resetState}
         isRendered = {isUserBlock}
       />
     </header>
@@ -36,4 +42,12 @@ const Header = (props) => {
 
 Header.propTypes = headerType;
 
-export default Header;
+const mapDispatchToProps = (dispatch) => ({
+  resetState(selectedGenre) {
+    dispatch(ActionCreator.resetShownMovies());
+    dispatch(ActionCreator.changeGenre(selectedGenre));
+  }
+});
+
+export {Header};
+export default connect(null, mapDispatchToProps)(Header);

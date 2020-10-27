@@ -22,6 +22,7 @@ const App = (props) => {
             <MainPage
               onUserIconClick={() => history.push(`/mylist`)}
               onPlayButtonClick={() => history.push(`/player/:id`)}
+              onWTWLogoClick={() => history.push(`/`)}
               promotedMovie = {promotedMovie}
               movies = {movies}
             />
@@ -38,6 +39,7 @@ const App = (props) => {
           render={({history}) => (
             <MyListPage
               onUserIconClick = {() => history.push(`/mylist`)}
+              onWTWLogoClick={() => history.push(`/`)}
               movies={filterMoviesForMyList(movies)}
             />
           )}
@@ -49,6 +51,7 @@ const App = (props) => {
           render={({history}) => (
             <MoviePage
               onUserIconClick = {() => history.push(`/mylist`)}
+              onWTWLogoClick={() => history.push(`/`)}
               onPlayButtonClick={() => history.push(`/player/:id`)}
               promotedMovie = {promotedMovie}
               movies = {filterMoviesByGenre(movies, promotedMovie.genre)}
@@ -63,6 +66,7 @@ const App = (props) => {
           render={({history}) => (
             <AddReviewPage
               onUserIconClick = {() => history.push(`/mylist`)}
+              onWTWLogoClick={() => history.push(`/`)}
             />
           )}
         />

@@ -11,7 +11,7 @@ const HeaderSetting = {
 };
 
 const MovieCardTop = (props) => {
-  const {onUserIconClick, onPlayButtonClick, movie} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie} = props;
   const {name, genre, release} = movie;
 
   return (
@@ -24,6 +24,7 @@ const MovieCardTop = (props) => {
 
       <Header
         onUserIconClick = {onUserIconClick}
+        onWTWLogoClick = {onWTWLogoClick}
         isUserPage = {HeaderSetting.IS_USER_PAGE}
         isMyList = {HeaderSetting.IS_MY_LIST}
         isSignIn = {HeaderSetting.IS_SIGN_IN}
