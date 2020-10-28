@@ -1,13 +1,10 @@
 import {ActionType} from "../utils/const";
 import {createGenresList, extend} from "../utils/utils";
-import {SHOWN_MOVIES_COUNT} from "..//utils/const";
+import {SHOWN_MOVIES_COUNT, ALL_GENRE} from "../utils/const";
 import {movies} from "../mocks/movies";
 
-const allGenres = `All genres`;
-let filteredMovies = movies;
-
 const initialState = {
-  selectedGenre: allGenres,
+  selectedGenre: ALL_GENRE,
   genres: createGenresList(movies),
   movieCards: movies,
   shownMoviesCount: SHOWN_MOVIES_COUNT
@@ -18,7 +15,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.SELECT_GENRE:
 
       const newlySelectedGenre = action.payload;
-      filteredMovies = newlySelectedGenre === allGenres ? movies : movies.filter((movie) => movie.genre === newlySelectedGenre);
+      const filteredMovies = newlySelectedGenre === ALL_GENRE ? movies : movies.filter((movie) => movie.genre === newlySelectedGenre);
 
       return extend(
           state,

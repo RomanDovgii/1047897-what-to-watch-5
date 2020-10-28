@@ -28,7 +28,7 @@ export default class SmallMovieCard extends PureComponent {
   }
 
   render() {
-    const {onMouseEnter, onMouseLeave, movie, renderPlayer} = this.props;
+    const {movie, renderPlayer} = this.props;
     const {name, videoUrl} = movie;
     const {isPlaying} = this.state;
 
@@ -40,8 +40,6 @@ export default class SmallMovieCard extends PureComponent {
         onMouseEnter={(evt) => {
           evt.preventDefault();
 
-          onMouseEnter(movie);
-
           this._showVideo();
         }}
         onMouseLeave={(evt) => {
@@ -52,8 +50,6 @@ export default class SmallMovieCard extends PureComponent {
           this.setState({
             isPlaying: false
           });
-
-          onMouseLeave();
         }}>
         <div className="small-movie-card__image">
           {renderPlayer(videoUrl, imageName, CallSource.CATALOG, isPlaying)}

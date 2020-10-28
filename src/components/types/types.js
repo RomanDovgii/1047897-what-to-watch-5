@@ -43,14 +43,6 @@ const movieType = {
   movie: movieObjectType
 };
 
-const onMouseEnterType = {
-  onMouseEnter: optionalFunctionType
-};
-
-const onMouseLeaveType = {
-  onMouseLeave: optionalFunctionType
-};
-
 export const onExitButtonClickType = {
   onExitButtonClick: FunctionType
 };
@@ -100,7 +92,7 @@ const selectedGenreType = {
 };
 
 const onGenreClick = {
-  onGenreClick: PropTypes.func.isRequired
+  onGenreClick: FunctionType
 };
 
 const isSelected = {
@@ -122,18 +114,18 @@ const moviesCountType = {
 };
 
 const onMoreButtonClickType = {
-  onMoreButtonClick: PropTypes.func.isRequired
+  onMoreButtonClick: FunctionType
 };
 
 const onWTWLogoClickType = {
-  onWTWLogoClick: PropTypes.func.isRequired
+  onWTWLogoClick: FunctionType
 };
 
 const resetStateType = {
-  resetState: PropTypes.func.isRequired
+  resetState: FunctionType
 };
 
-export const smallMovieCardType = Object.assign({}, onMouseEnterType, onMouseLeaveType, movieObjectType);
+export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
 export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType);
