@@ -1,8 +1,9 @@
 import React from "react";
 import {userBlockType} from "../../types/types";
+import {ALL_GENRE} from "../../../utils/const";
 
 const UserBlock = (props) => {
-  const {onUserIconClick, isRendered} = props;
+  const {onUserIconClick, resetState, isRendered} = props;
 
   if (isRendered) {
     return (
@@ -11,6 +12,7 @@ const UserBlock = (props) => {
         onClick={(evt) => {
           evt.preventDefault();
 
+          resetState(ALL_GENRE);
           onUserIconClick();
         }}
       >

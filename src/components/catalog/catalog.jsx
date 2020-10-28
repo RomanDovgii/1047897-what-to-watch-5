@@ -4,33 +4,73 @@ import MoviesList from "./modules/movie-list";
 import MoreButton from "./modules/more-button";
 import CatalogHeading from "./modules/catalog-heading";
 import {catalogType} from "../types/types";
-import {CatalogHeadingVariant, MoreLikeThis} from "../../utils/const";
-import {createGenresList} from "../../utils/utils";
+import {MoreLikeThis, CatalogCallSource} from "../../utils/const";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 const Catalog = (props) => {
-  const {heading, movies} = props;
+  const {heading, movies, shownMoviesCount, genres, source, onMoreButtonClick} = props;
 
-  const genres = createGenresList(movies);
+  let moviesLocal;
 
-  const moviesLocal = (heading !== CatalogHeadingVariant.MOVIE_PAGE) ? movies : movies.slice(MoreLikeThis.FIRST_INDEX, MoreLikeThis.LAST_INDEX);
+  switch (source) {
+    case CatalogCallSource.MY_LIST:
+      moviesLocal = movies.filter((movie) => movie.isMyList);
+      break;
+    case CatalogCallSource.MOVIE_PAGE:
+      moviesLocal = movies.slice(MoreLikeThis.FIRST_INDEX, MoreLikeThis.LAST_INDEX);
+      break;
+    default:
+      moviesLocal = movies;
+      break;
+  }
+
+  const moviesCount = moviesLocal.length;
+
+  moviesLocal = moviesLocal.slice(0, shownMoviesCount);
 
   return (
     <section className="catalog">
       <CatalogHeading
         heading = {heading}
       />
-      <GenresList
-        genres = {genres}
-      />
-      <MoviesList/>
-      <MoreButton
+
+      {
+        source === CatalogCallSource.MAIN_PAGE ?
+          <GenresList
+            genres = {genres}
+          /> :
+          ``
+      }
+
+      <MoviesList
+        source = {source}
         movies = {moviesLocal}
-        heading = {heading}
       />
+
+      {shownMoviesCount <= moviesCount &&
+      <MoreButton
+        moviesCount = {moviesCount}
+        heading = {heading}
+        onMoreButtonClick = {onMoreButtonClick}
+      />}
     </section>
   );
 };
 
 Catalog.propTypes = catalogType;
 
-export default Catalog;
+const mapStateToProps = (state) => ({
+  movies: state.movieCards,
+  genres: state.genres,
+  shownMoviesCount: state.shownMoviesCount
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onMoreButtonClick() {
+    dispatch(ActionCreator.showMore());
+  }
+});
+
+export {Catalog};
+export default connect(mapStateToProps, mapDispatchToProps)(Catalog);

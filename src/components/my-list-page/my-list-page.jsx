@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Catalog from "../catalog/catalog";
-import {CatalogHeadingVariant} from "../../utils/const";
+import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {myListPageType} from "../types/types";
 
 const HeaderSetting = {
@@ -14,12 +14,13 @@ const HeaderSetting = {
 };
 
 const MyListPage = (props) => {
-  const {onUserIconClick, movies} = props;
+  const {onUserIconClick, onWTWLogoClick, movies} = props;
 
   return (
     <div className="user-page">
       <Header
         onUserIconClick = {onUserIconClick}
+        onWTWLogoClick = {onWTWLogoClick}
         isUserPage = {HeaderSetting.IS_USER_PAGE}
         isMyList = {HeaderSetting.IS_MY_LIST}
         isSignIn = {HeaderSetting.IS_SIGN_IN}
@@ -29,6 +30,7 @@ const MyListPage = (props) => {
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}
         movies = {movies}
+        source = {CatalogCallSource.MY_LIST}
       />
       <Footer/>
     </div>

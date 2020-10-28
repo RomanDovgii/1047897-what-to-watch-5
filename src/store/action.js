@@ -1,4 +1,4 @@
-import {ActionType} from "../utils/const";
+import {ActionType, SHOWN_MOVIES_COUNT} from "../utils/const";
 
 export const ActionCreator = {
   changeGenre: (selectedGenre) => {
@@ -6,5 +6,16 @@ export const ActionCreator = {
       type: ActionType.SELECT_GENRE,
       payload: selectedGenre
     };
-  }
+  },
+  showMore: () => {
+    return {
+      type: ActionType.SHOW_MORE,
+      payload: SHOWN_MOVIES_COUNT
+    };
+  },
+  resetShownMovies: () => {
+    return {
+      type: ActionType.RESET_SHOWN_MOVIES
+    };
+  },
 };
