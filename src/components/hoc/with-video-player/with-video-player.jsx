@@ -1,5 +1,8 @@
 import React from "react";
 import VideoPlayer from "../../video-player/video-player";
+import withActivePlayer from "../with-active-player/with-active-player";
+
+const VideoPlayerWrapper = withActivePlayer(VideoPlayer);
 
 const withVideoPlayer = (Component) => {
   const WithVideoPlayer = (props) => {
@@ -7,7 +10,7 @@ const withVideoPlayer = (Component) => {
       {...props}
       renderPlayer={(videoUrl, imageName, callSource, isPlaying) => {
         return (
-          <VideoPlayer
+          <VideoPlayerWrapper
             videoUrl={videoUrl}
             imageName={imageName}
             callSource={callSource}

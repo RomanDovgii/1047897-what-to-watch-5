@@ -4,13 +4,16 @@ import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
 import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {moviePageType} from "../types/types";
+import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
+
+const MovieCardWrapper = withActiveTabs(MovieCard);
 
 const MoviePage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, promotedMovie, movies, comments} = props;
 
   return (
     <React.Fragment>
-      <MovieCard
+      <MovieCardWrapper
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
         onPlayButtonClick = {onPlayButtonClick}
