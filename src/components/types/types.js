@@ -39,7 +39,7 @@ export const commentType = PropTypes.shape({
 
 const commentsType = PropTypes.objectOf(commentType).isRequired;
 
-const movieType = {
+export const movieType = {
   movie: movieObjectType
 };
 
@@ -124,6 +124,46 @@ const resetStateType = {
   resetState: functionType
 };
 
+export const childrenType = {
+  children: PropTypes.node.isRequired
+};
+
+const renderPlayerType = {
+  renderPlayer: functionType
+};
+
+const callSourceType = {
+  callSource: PropTypes.string.isRequired
+};
+
+const imageNameType = {
+  imageName: PropTypes.string.isRequired
+};
+
+const isPlayingType = {
+  isPlaying: PropTypes.bool.isRequired
+};
+
+const videoUrlType = {
+  videoUrl: PropTypes.string.isRequired
+};
+
+const handleChangeType = {
+  handleChange: functionType
+};
+
+const handleSubmitType = {
+  handleSubmit: functionType
+};
+
+const ratingType = {
+  rating: PropTypes.string.isRequired
+};
+
+const reviewType = {
+  review: PropTypes.string.isRequired
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
@@ -142,3 +182,7 @@ export const tabWithCommentsType = Object.assign({}, movieObjectType, commentsTy
 export const genresListType = Object.assign({}, genresType, selectedGenreType, onGenreClick);
 export const genreListItemType = Object.assign({}, genreType, onGenreClick, isSelected);
 export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
+export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
+export const withActivePlayerType = Object.assign({}, callSourceType, imageNameType, isPlayingType, videoUrlType);
+export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, promotedMovieType);
+export const addReviewType = Object.assign({}, ratingType, reviewType, handleChangeType, handleSubmitType);

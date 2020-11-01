@@ -1,6 +1,7 @@
 import React, {createRef, PureComponent} from "react";
 import {generateVideoType} from "../../../utils/utils";
 import {CallSource} from "../../../utils/const";
+import {withActivePlayerType} from "../../types/types";
 
 const withActivePlayer = (Component) => {
   class WithActivePlayer extends PureComponent {
@@ -70,8 +71,7 @@ const withActivePlayer = (Component) => {
     }
   }
 
-  WithActivePlayer.propTypes = {
-  };
+  WithActivePlayer.propTypes = withActivePlayerType;
 
   return WithActivePlayer;
 };

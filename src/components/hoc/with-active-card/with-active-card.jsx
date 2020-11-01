@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {withActiveCardType} from "../../types/types";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {
@@ -57,7 +58,7 @@ const withActiveCard = (Component) => {
     }
   }
 
-  WithActiveCard.propTypes = {};
+  WithActiveCard.propTypes = withActiveCardType;
 
   return WithActiveCard;
 };

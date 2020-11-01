@@ -1,5 +1,6 @@
 import React, {PureComponent} from "react";
 import {MovieScreenTab} from "../../../utils/const";
+import {withActiveTabsType} from "../../types/types";
 
 const withActiveTabs = (Component) => {
   class WithActiveTabs extends PureComponent {
@@ -30,7 +31,7 @@ const withActiveTabs = (Component) => {
     }
   }
 
-  WithActiveTabs.propTypes = {};
+  WithActiveTabs.propTypes = withActiveTabsType;
 
   return WithActiveTabs;
 };

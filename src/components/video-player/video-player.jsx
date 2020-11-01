@@ -1,5 +1,5 @@
 import React from "react";
-import {videoPlayerType} from "../types/types";
+import {childrenType} from "../types/types";
 
 const VideoPlayer = (props) => {
   const {children} = props;
@@ -10,6 +10,6 @@ const VideoPlayer = (props) => {
   );
 };
 
-VideoPlayer.propTypes = {};
+VideoPlayer.propTypes = childrenType;
 
 export default VideoPlayer;
