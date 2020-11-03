@@ -148,12 +148,12 @@ const videoUrlType = {
   videoUrl: PropTypes.string.isRequired
 };
 
-const handleChangeType = {
-  handleChange: functionType
+const onChangeType = {
+  onChange: functionType
 };
 
-const handleSubmitType = {
-  handleSubmit: functionType
+const onSubmitType = {
+  onSubmit: functionType
 };
 
 const ratingType = {
@@ -185,4 +185,4 @@ export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
 export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
 export const withActivePlayerType = Object.assign({}, callSourceType, imageNameType, isPlayingType, videoUrlType);
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, promotedMovieType);
-export const addReviewType = Object.assign({}, ratingType, reviewType, handleChangeType, handleSubmitType);
+export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);

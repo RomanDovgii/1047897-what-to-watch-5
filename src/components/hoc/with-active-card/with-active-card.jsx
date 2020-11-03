@@ -11,8 +11,8 @@ const withActiveCard = (Component) => {
       };
 
       this._showVideo = this._showVideo.bind(this);
-      this._onMouseEnter = this._onMouseEnter.bind(this);
-      this._onMouseLeave = this._onMouseLeave.bind(this);
+      this._handleMouseEnter = this._handleMouseEnter.bind(this);
+      this._handleMouseLeave = this._handleMouseLeave.bind(this);
     }
 
     componentWillUnmount() {
@@ -30,13 +30,13 @@ const withActiveCard = (Component) => {
       );
     }
 
-    _onMouseEnter(evt) {
+    _handleMouseEnter(evt) {
       evt.preventDefault();
 
       this._showVideo();
     }
 
-    _onMouseLeave(evt) {
+    _handleMouseLeave(evt) {
       evt.preventDefault();
 
       clearTimeout(this.timer);
@@ -52,8 +52,8 @@ const withActiveCard = (Component) => {
       return (<Component
         {...this.props}
         isPlaying={isPlaying}
-        onMouseEnter={this._onMouseEnter}
-        onMouseLeave={this._onMouseLeave}
+        onMouseEnter={this._handleMouseEnter}
+        onMouseLeave={this._handleMouseLeave}
       />);
     }
   }

@@ -3,11 +3,11 @@ import {UserRating} from "../../../utils/const";
 import {addReviewType} from "../../types/types";
 
 const AddReview = (props) => {
-  const {handleChange, handleSubmit, rating, review} = props;
+  const {onChange, onSubmit, rating, review} = props;
 
   return (
     <div className="add-review">
-      <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+      <form action="#" className="add-review__form" onSubmit={onSubmit}>
         <div className="rating">
           <div className="rating__stars">
             {new Array(UserRating.MAXIMUM).fill().map((currentElement, i) => {
@@ -23,7 +23,7 @@ const AddReview = (props) => {
                     value={`${index}`}
                     key={`star-${index}`}
                     checked={`${index}` === rating}
-                    onChange={handleChange}
+                    onChange={onChange}
                   />
                   <label className="rating__label" htmlFor={`star-${index}`}>Rating {index}</label>
                 </React.Fragment>
@@ -39,7 +39,7 @@ const AddReview = (props) => {
             id="review-text"
             placeholder="Review text"
             value={review}
-            onChange={handleChange}
+            onChange={onChange}
           ></textarea>
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>

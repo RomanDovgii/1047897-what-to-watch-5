@@ -31,8 +31,8 @@ const withActiveReviewForm = (Component) => {
       return (
         <Component
           {...this.props}
-          handleChange={this._handleChange}
-          handleSubmit={this._handleSubmit}
+          onChange={this._handleChange}
+          onSubmit={this._handleSubmit}
           rating={this.state.rating}
           review={this.state.review}
         />
