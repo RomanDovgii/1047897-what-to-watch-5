@@ -8,6 +8,9 @@ import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
 import {promotedMovieMoviesCommentsType} from "../types/types";
 import {filterMoviesForMyList, filterMoviesByGenre} from "../../utils/utils";
+import withVideoPlayer from "../hoc/with-video-player/with-video-player";
+
+const PlayerPageWrapper = withVideoPlayer(PlayerPage);
 
 const App = (props) => {
   const {promotedMovie, movies, comments} = props;
@@ -75,9 +78,9 @@ const App = (props) => {
           exact
           path="/player/:id"
           render={({history}) => (
-            <PlayerPage
-              onExitButtonClick = {() => history.goBack()}
+            <PlayerPageWrapper
               movie = {promotedMovie}
+              onExitButtonClick = {() => history.goBack()}
             />
           )}
         />

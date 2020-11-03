@@ -5,6 +5,9 @@ import MovieCardBackground from "./modules/movie-card-background";
 import MoviePoster from "./modules/movie-poster";
 import HeadingFirstLevel from "./modules/heading-first-level";
 import {onUserIconClickType} from "../types/types";
+import withActiveReviewForm from "../hoc/with-active-review-form/with-active-review-form";
+
+const AddReviewWrapper = withActiveReviewForm(AddReview);
 
 const HeaderSetting = {
   IS_USER_PAGE: false,
@@ -35,7 +38,7 @@ const AddReviewPage = (props) => {
         <MoviePoster/>
       </div>
 
-      <AddReview/>
+      <AddReviewWrapper/>
     </section>
   );
 };
