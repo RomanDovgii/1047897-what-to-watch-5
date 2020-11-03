@@ -9,11 +9,11 @@ const PlayerPage = (props) => {
 
   const {videoUrl} = movie;
 
-  const imageName = `bg-the-grand-budapest-hotel`;
+  const IMAGE_NAME = `bg-the-grand-budapest-hotel`;
 
   return (
     <div className="player">
-      {renderPlayer(videoUrl, imageName, CallSource.PLAYER, true)}
+      {renderPlayer(videoUrl, IMAGE_NAME, CallSource.PLAYER, true)}
       <PlayerExit
         onExitButtonClick = {onExitButtonClick}
       />
