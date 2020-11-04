@@ -7,7 +7,8 @@ const initialState = {
   selectedGenre: ALL_GENRE,
   genres: createGenresList(movies),
   movieCards: movies,
-  shownMoviesCount: SHOWN_MOVIES_COUNT
+  shownMoviesCount: SHOWN_MOVIES_COUNT,
+  isPlayerPlaying: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -39,6 +40,13 @@ const reducer = (state = initialState, action) => {
           state,
           {
             shownMoviesCount: SHOWN_MOVIES_COUNT
+          }
+      );
+    case ActionType.START_PLAYING:
+      return extend(
+          state,
+          {
+            isPlayerPlaying: !state.isPlayerPlaying
           }
       );
   }

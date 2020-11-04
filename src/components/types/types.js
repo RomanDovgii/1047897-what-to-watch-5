@@ -164,6 +164,22 @@ const reviewType = {
   review: PropTypes.string.isRequired
 };
 
+const onFullScreenButtonClickType = {
+  onFullScreenButtonClick: functionType
+};
+
+const isLoadingType = {
+  isLoading: PropTypes.bool.isRequired
+};
+
+const durationType = {
+  duration: PropTypes.number.isRequired
+};
+
+const currentTimeType = {
+  currentTime: PropTypes.number.isRequired
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
@@ -186,3 +202,5 @@ export const withActiveCardType = Object.assign({}, movieType, renderPlayerType)
 export const withActivePlayerType = Object.assign({}, callSourceType, imageNameType, isPlayingType, videoUrlType);
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, promotedMovieType);
 export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
+export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
+export const PlayerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
