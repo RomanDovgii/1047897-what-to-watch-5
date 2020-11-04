@@ -1,8 +1,6 @@
 import React from "react";
-
-const HOURS_IN_SECONDS = 3600;
-const MINUTES_IN_SECONDS = 60;
-const ZERO = 0;
+import {playerControlsType} from "../../types/types";
+import {HOURS_IN_SECONDS, MINUTES_IN_SECONDS, ZERO} from "../../../utils/const.js";
 
 const PlayerControls = (props) => {
   const {onPlayButtonClick, onFullScreenButtonClick, isPlaying, duration, isLoading, currentTime} = props;
@@ -62,5 +60,7 @@ const PlayerControls = (props) => {
     </div>
   );
 };
+
+PlayerControls.propTypes = playerControlsType;
 
 export default PlayerControls;

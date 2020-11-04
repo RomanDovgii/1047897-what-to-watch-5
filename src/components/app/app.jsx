@@ -8,12 +8,12 @@ import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
 import {promotedMovieMoviesCommentsType} from "../types/types";
 import {filterMoviesForMyList, filterMoviesByGenre} from "../../utils/utils";
-import withVideoPlayer from "../hoc/with-video-player/with-video-player";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
-const PlayerPageWrapper = withVideoPlayer(PlayerPage);
 
 const App = (props) => {
-  const {promotedMovie, movies, comments} = props;
+  const {promotedMovie, movies, comments, onBigPlayButtonClick} = props;
 
   return (
     <BrowserRouter>
@@ -24,7 +24,10 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               onUserIconClick={() => history.push(`/mylist`)}
-              onPlayButtonClick={() => history.push(`/player/:id`)}
+              onPlayButtonClick={() => {
+                onBigPlayButtonClick();
+                history.push(`/player/:id`);
+              }}
               onWTWLogoClick={() => history.push(`/`)}
               promotedMovie = {promotedMovie}
               movies = {movies}
@@ -55,7 +58,10 @@ const App = (props) => {
             <MoviePage
               onUserIconClick = {() => history.push(`/mylist`)}
               onWTWLogoClick={() => history.push(`/`)}
-              onPlayButtonClick={() => history.push(`/player/:id`)}
+              onPlayButtonClick={() => {
+                onBigPlayButtonClick();
+                history.push(`/player/:id`);
+              }}
               promotedMovie = {promotedMovie}
               movies = {filterMoviesByGenre(movies, promotedMovie.genre)}
               comments = {comments}
@@ -78,7 +84,7 @@ const App = (props) => {
           exact
           path="/player/:id"
           render={({history}) => (
-            <PlayerPageWrapper
+            <PlayerPage
               movie = {promotedMovie}
               onExitButtonClick = {() => history.goBack()}
             />
@@ -91,4 +97,11 @@ const App = (props) => {
 
 App.propTypes = promotedMovieMoviesCommentsType;
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  onBigPlayButtonClick() {
+    dispatch(ActionCreator.startPlaying());
+  }
+});
+
+export {App};
+export default connect(null, mapDispatchToProps)(App);

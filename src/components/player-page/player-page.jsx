@@ -1,7 +1,10 @@
 import React, {createRef, PureComponent} from "react";
 import PlayerExit from "./modules/player-exit";
 import PlayerControls from "./modules/player-controls";
-import {onExitButtonClickType} from "../types/types";
+import {PlayerPageType} from "../types/types";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
+import {generateVideoType} from "../../utils/utils";
 
 class PlayerPage extends PureComponent {
   constructor(props) {
@@ -11,14 +14,15 @@ class PlayerPage extends PureComponent {
     this._sourceRef = createRef();
     this._movieDuration = 0;
 
+    this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
+    this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
+    this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
+
     this.state = {
       isPlaying: false,
       isLoading: true,
       currentTime: 0
     };
-
-    this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
-    this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
   }
 
   componentDidMount() {
@@ -30,17 +34,16 @@ class PlayerPage extends PureComponent {
   }
 
   _handlePlayButtonClick() {
+    const {onPlayButtonCLick, isPlaying} = this.props;
     const video = this._videoRef.current;
 
-    if (this.state.isPlaying) {
+    if (isPlaying) {
       video.pause();
     } else {
       video.play();
     }
 
-    this.setState({
-      isPlaying: !this.state.isPlaying
-    });
+    onPlayButtonCLick();
   }
 
   _handleFullScreenButtonClick() {
@@ -49,14 +52,25 @@ class PlayerPage extends PureComponent {
     video.requestFullscreen();
   }
 
+  _handleExitButtonClick() {
+    const {onPlayButtonCLick, onExitButtonClick, isPlaying} = this.props;
+
+    if (isPlaying) {
+      onPlayButtonCLick();
+    }
+
+    onExitButtonClick();
+  }
+
   render() {
-    const {onExitButtonClick, movie} = this.props;
+    const {movie, isPlaying} = this.props;
     const {videoUrl} = movie;
 
     return (
       <div className="player">
         <video
           ref={this._videoRef}
+          autoPlay={isPlaying}
           className="player__video"
           poster="img/bg-the-grand-budapest-hotel.jpg"
           onLoadedMetadata={(evt) => {
@@ -73,13 +87,13 @@ class PlayerPage extends PureComponent {
             });
           }}
         >
-          <source ref={this._sourceRef} src={videoUrl} type="video/webm"/>
+          <source ref={this._sourceRef} src={videoUrl} type={generateVideoType(videoUrl)}/>
         </video>
         <PlayerExit
-          onExitButtonClick = {onExitButtonClick}
+          onExitButtonClick = {this._handleExitButtonClick}
         />
         <PlayerControls
-          isPlaying={this.state.isPlaying}
+          isPlaying={isPlaying}
           isLoading={this.state.isLoading}
           duration={this._movieDuration}
           onPlayButtonClick={this._handlePlayButtonClick}
@@ -91,6 +105,18 @@ class PlayerPage extends PureComponent {
   }
 }
 
-PlayerPage.propTypes = onExitButtonClickType;
+PlayerPage.propTypes = PlayerPageType;
 
-export default PlayerPage;
+const mapStateToProps = (state) => ({
+  isPlaying: state.isPlayerPlaying
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonCLick() {
+    dispatch(ActionCreator.startPlaying());
+  }
+});
+
+export {PlayerPage};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerPage);

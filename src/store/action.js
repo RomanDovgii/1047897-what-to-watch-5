@@ -18,4 +18,9 @@ export const ActionCreator = {
       type: ActionType.RESET_SHOWN_MOVIES
     };
   },
+  startPlaying: () => {
+    return {
+      type: ActionType.START_PLAYING
+    };
+  },
 };

@@ -42,6 +42,13 @@ const reducer = (state = initialState, action) => {
             shownMoviesCount: SHOWN_MOVIES_COUNT
           }
       );
+    case ActionType.START_PLAYING:
+      return extend(
+          state,
+          {
+            isPlayerPlaying: !state.isPlayerPlaying
+          }
+      );
   }
 
   return state;

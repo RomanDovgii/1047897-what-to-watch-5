@@ -5,6 +5,9 @@ export const MAXIMUM_RATING = 10;
 export const MAXIMUM_RATING_COUNT = 1000;
 export const MAXIMUM_DISPLAYED_ACTORS = 4;
 export const MAXIMUM_DISPLAYED_MOVIES = 8;
+export const HOURS_IN_SECONDS = 3600;
+export const MINUTES_IN_SECONDS = 60;
+export const ZERO = 0;
 export const ALL_GENRE = `All genres`;
 
 export const GENRES = [`Comedie`, `Crime`, `Documentary`, `Drama`, `Horror`, `Kids & Family`, `Romance`, `Sci-Fi`, `Thriller`];
@@ -101,7 +104,8 @@ export const MovieScreenTab = {
 export const ActionType = {
   SELECT_GENRE: `SELECT_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
-  RESET_SHOWN_MOVIES: `RESET_SHOWN_MOVIES`
+  RESET_SHOWN_MOVIES: `RESET_SHOWN_MOVIES`,
+  START_PLAYING: `START_PLAYING`
 };
 
 export const CatalogCallSource = {
