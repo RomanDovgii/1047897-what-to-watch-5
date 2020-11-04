@@ -7,7 +7,8 @@ const initialState = {
   selectedGenre: ALL_GENRE,
   genres: createGenresList(movies),
   movieCards: movies,
-  shownMoviesCount: SHOWN_MOVIES_COUNT
+  shownMoviesCount: SHOWN_MOVIES_COUNT,
+  isPlayerPlaying: false
 };
 
 const reducer = (state = initialState, action) => {
