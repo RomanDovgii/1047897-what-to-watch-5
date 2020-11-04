@@ -8,9 +8,11 @@ import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
 import {promotedMovieMoviesCommentsType} from "../types/types";
 import {filterMoviesForMyList, filterMoviesByGenre} from "../../utils/utils";
+import withActiveMainPlayer from "../hoc/with-active-main-player/with-active-main-player";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 
+const PlayerPageWrapper = withActiveMainPlayer(PlayerPage);
 
 const App = (props) => {
   const {promotedMovie, movies, comments, onBigPlayButtonClick} = props;
@@ -84,7 +86,7 @@ const App = (props) => {
           exact
           path="/player/:id"
           render={({history}) => (
-            <PlayerPage
+            <PlayerPageWrapper
               movie = {promotedMovie}
               onExitButtonClick = {() => history.goBack()}
             />

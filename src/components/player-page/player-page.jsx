@@ -17,12 +17,6 @@ class PlayerPage extends PureComponent {
     this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
     this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
     this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
-
-    this.state = {
-      isPlaying: false,
-      isLoading: true,
-      currentTime: 0
-    };
   }
 
   componentDidMount() {
@@ -63,7 +57,7 @@ class PlayerPage extends PureComponent {
   }
 
   render() {
-    const {movie, isPlaying} = this.props;
+    const {movie, isPlaying, isLoading, currentTime, onTimeUpdate, onLoadingEnd} = this.props;
     const {videoUrl} = movie;
 
     return (
@@ -76,15 +70,11 @@ class PlayerPage extends PureComponent {
           onLoadedMetadata={(evt) => {
             evt.preventDefault();
             this._movieDuration = this._videoRef.current.duration;
-            this.setState({
-              isLoading: false
-            });
+            onLoadingEnd();
           }}
           onTimeUpdate={(evt) => {
             evt.preventDefault();
-            this.setState({
-              currentTime: this._videoRef.current.currentTime
-            });
+            onTimeUpdate(this._videoRef.current.currentTime);
           }}
         >
           <source ref={this._sourceRef} src={videoUrl} type={generateVideoType(videoUrl)}/>
@@ -94,11 +84,11 @@ class PlayerPage extends PureComponent {
         />
         <PlayerControls
           isPlaying={isPlaying}
-          isLoading={this.state.isLoading}
+          isLoading={isLoading}
           duration={this._movieDuration}
           onPlayButtonClick={this._handlePlayButtonClick}
           onFullScreenButtonClick={this._handleFullScreenButtonClick}
-          currentTime = {this.state.currentTime}
+          currentTime = {currentTime}
         />
       </div>
     );
