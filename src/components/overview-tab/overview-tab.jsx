@@ -3,9 +3,9 @@ import {generateRatingText, generateStarringString} from "../../utils/utils";
 import {tabWithCommentsType} from "../types/types";
 
 const OverviewTab = (props) => {
-  const {movie, comments} = props;
+  const {movie} = props; // should also contain comments
 
-  const {description, director, starring, rating, id} = movie;
+  const {description, director, starring, rating} = movie; // should contain id
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
