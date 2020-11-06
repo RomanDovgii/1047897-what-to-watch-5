@@ -105,7 +105,11 @@ export const ActionType = {
   SELECT_GENRE: `SELECT_GENRE`,
   SHOW_MORE: `SHOW_MORE`,
   RESET_SHOWN_MOVIES: `RESET_SHOWN_MOVIES`,
-  START_PLAYING: `START_PLAYING`
+  START_PLAYING: `START_PLAYING`,
+  LOAD_MOVIES: `LOAD_MOVIES`,
+  LOAD_PROMOTED_MOVIE: `LOAD_PROMOTED_MOVIE`,
+  REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
+  REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`
 };
 
 export const CatalogCallSource = {
@@ -118,4 +122,28 @@ export const ApiInformation = {
   BASE_URL: `https://5.react.pages.academy/wtw`,
   TIMEOUT: 5000,
   WITH_CREDENTIALS: true
+};
+
+export const HttpCode = {
+  UNAUTHORIZED: 401
+};
+
+export const AuthorizationStatus = {
+  AUTH: `AUTH`,
+  NO_AUTH: `NO_AUTH`
+};
+
+export const AppRoute = {
+  MAIN: `/`,
+  SIGN_IN: `/login`,
+  MY_LIST: `/mylist`,
+  FILM: `/films/:id`,
+  ADD_REVIEW: `/films/:id/review`,
+  PLAYER: `/player/:id`
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  PROMOTED_MOVIE: `/films/promo`,
+  LOGIN: `/login`
 };

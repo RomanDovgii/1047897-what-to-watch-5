@@ -18,8 +18,8 @@ const functionType = PropTypes.func.isRequired;
 export const movieObjectType = PropTypes.shape({
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
-  descriptionParagraphs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  released: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
   director: PropTypes.string.isRequired,
   actors: PropTypes.arrayOf(PropTypes.string).isRequired,
   rating: PropTypes.number.isRequired,
@@ -180,10 +180,14 @@ const currentTimeType = {
   currentTime: PropTypes.number.isRequired
 };
 
+export const onBigPlayButtonClickType = {
+  onBigPlayButtonClick: functionType
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
-export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType);
+export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType);
 export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType, commentsType);
 export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);

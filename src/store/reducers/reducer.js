@@ -1,12 +1,11 @@
-import {ActionType} from "../utils/const";
-import {createGenresList, extend} from "../utils/utils";
-import {SHOWN_MOVIES_COUNT, ALL_GENRE} from "../utils/const";
-import {movies} from "../mocks/movies";
+import {createGenresList, extend} from "../../utils/utils";
+import {SHOWN_MOVIES_COUNT, ALL_GENRE, ActionType} from "../../utils/const";
 
 const initialState = {
   selectedGenre: ALL_GENRE,
-  genres: createGenresList(movies),
-  movieCards: movies,
+  genres: createGenresList([]),
+  movies: [],
+  promotedMovie: {},
   shownMoviesCount: SHOWN_MOVIES_COUNT,
   isPlayerPlaying: false
 };
@@ -16,7 +15,7 @@ const reducer = (state = initialState, action) => {
     case ActionType.SELECT_GENRE:
 
       const newlySelectedGenre = action.payload;
-      const filteredMovies = newlySelectedGenre === ALL_GENRE ? movies : movies.filter((movie) => movie.genre === newlySelectedGenre);
+      const filteredMovies = newlySelectedGenre === ALL_GENRE ? state.movies : state.movies.filter((movie) => movie.genre === newlySelectedGenre);
 
       return extend(
           state,
@@ -47,6 +46,21 @@ const reducer = (state = initialState, action) => {
           state,
           {
             isPlayerPlaying: !state.isPlayerPlaying
+          }
+      );
+    case ActionType.LOAD_MOVIES:
+      return extend(
+          state,
+          {
+            movies: action.payload,
+            genres: createGenresList(action.payload)
+          }
+      );
+    case ActionType.LOAD_PROMOTED_MOVIE:
+      return extend(
+          state,
+          {
+            promotedMovie: action.payload
           }
       );
   }

@@ -6,7 +6,7 @@ import HeadingSignIn from "./modules/heading-sign-in";
 import Navigation from "./modules/navigation";
 import UserBlock from "./modules/user-block";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {resetShownMovies, changeGenre} from "../../store/actions/action";
 
 const Header = (props) => {
   const {onUserIconClick, onWTWLogoClick, resetState, isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
@@ -44,8 +44,8 @@ Header.propTypes = headerType;
 
 const mapDispatchToProps = (dispatch) => ({
   resetState(selectedGenre) {
-    dispatch(ActionCreator.resetShownMovies());
-    dispatch(ActionCreator.changeGenre(selectedGenre));
+    dispatch(resetShownMovies());
+    dispatch(changeGenre(selectedGenre));
   }
 });
 
