@@ -30,15 +30,11 @@ const withActiveCard = (Component) => {
       );
     }
 
-    _handleMouseEnter(evt) {
-      evt.preventDefault();
-
+    _handleMouseEnter() {
       this._showVideo();
     }
 
-    _handleMouseLeave(evt) {
-      evt.preventDefault();
-
+    _handleMouseLeave() {
       clearTimeout(this.timer);
 
       this.setState({

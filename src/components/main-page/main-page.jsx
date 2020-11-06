@@ -16,10 +16,10 @@ const MainPage = (props) => {
         onPlayButtonClick = {onPlayButtonClick}
       />
       <div className="page-content">
-        {/* <Catalog
+        <Catalog
           heading = {CatalogHeadingVariant.CATALOG}
           source = {CatalogCallSource.MAIN_PAGE}
-        /> */}
+        />
         <Footer/>
       </div>
     </React.Fragment>

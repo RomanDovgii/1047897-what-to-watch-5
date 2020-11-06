@@ -23,7 +23,7 @@ const withActivePlayer = (Component) => {
 
       video.muted = callSource === CallSource.CATALOG ? true : false;
       video.autoPlay = callSource === CallSource.CATALOG ? true : false;
-      video.poster = `img/` + imageName + `.jpg`;
+      video.poster = imageName;
     }
 
     componentDidUpdate() {

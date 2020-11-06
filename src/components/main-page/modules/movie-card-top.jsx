@@ -13,7 +13,7 @@ const HeaderSetting = {
 
 const MovieCardTop = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie} = props;
-  const {name, genre, released, preview_image: previewImage, background_image: backgroundImage} = movie;
+  const {name, genre, released, posterImage, backgroundImage} = movie;
 
   return (
     <section className="movie-card">
@@ -36,7 +36,7 @@ const MovieCardTop = (props) => {
       <div className="movie-card__wrap">
         <div className="movie-card__info">
           <div className="movie-card__poster">
-            <img src={previewImage} alt={name} width="218" height="327" />
+            <img src={posterImage} alt={name} width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
@@ -76,8 +76,8 @@ const MovieCardTop = (props) => {
 
 MovieCardTop.propTypes = movieCardTopType;
 
-const mapStateToProps = (state) => ({
-  movie: state.promotedMovie
+const mapStateToProps = ({DATA}) => ({
+  movie: DATA.promotedMovie
 });
 
 export {MovieCardTop};

@@ -29,9 +29,9 @@ const GenresList = (props) => {
 
 GenresList.propTypes = genresListType;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({DATA}) => {
   return {
-    selectedGenre: state.selectedGenre,
+    selectedGenre: DATA.selectedGenre,
   };
 };
 

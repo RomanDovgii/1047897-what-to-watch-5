@@ -1,6 +1,6 @@
 import {createSelector} from "reselect";
-import {createGenresList, extend, adaptToClient} from "../../utils/utils";
-import {SHOWN_MOVIES_COUNT, ALL_GENRE, ActionType} from "../../utils/const";
+import {createGenresList, extend, adaptToClient} from "../../../utils/utils";
+import {ALL_GENRE, ActionType} from "../../../utils/const";
 
 const initialState = {
   selectedGenre: ALL_GENRE,
@@ -8,12 +8,10 @@ const initialState = {
   originalMovies: [],
   movies: [],
   promotedMovie: {},
-  selectedMovie: {},
-  shownMoviesCount: SHOWN_MOVIES_COUNT,
-  isPlayerPlaying: false
+  selectedMovie: {}
 };
 
-const reducer = (state = initialState, action) => {
+const appData = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SELECT_GENRE:
       const newlySelectedGenre = action.payload;
@@ -34,30 +32,6 @@ const reducer = (state = initialState, action) => {
           {
             selectedGenre: newlySelectedGenre,
             movies: filteredMovies
-          }
-      );
-    case ActionType.SHOW_MORE:
-
-      const updatedShownMoviesCount = state.shownMoviesCount + action.payload;
-
-      return extend(
-          state,
-          {
-            shownMoviesCount: updatedShownMoviesCount
-          }
-      );
-    case ActionType.RESET_SHOWN_MOVIES:
-      return extend(
-          state,
-          {
-            shownMoviesCount: SHOWN_MOVIES_COUNT
-          }
-      );
-    case ActionType.START_PLAYING:
-      return extend(
-          state,
-          {
-            isPlayerPlaying: !state.isPlayerPlaying
           }
       );
     case ActionType.SELECT_MOVIE:
@@ -92,4 +66,4 @@ const reducer = (state = initialState, action) => {
   return state;
 };
 
-export {reducer};
+export {appData};

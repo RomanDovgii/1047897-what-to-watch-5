@@ -1,18 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
-
 import App from "./components/app/app";
-
 import {AuthorizationStatus} from "./utils/const";
-
 import {createAPI} from "./services/api";
-
-import {reducer} from "./store/reducers/reducer";
+import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization} from "./store/actions/action";
 import {fetchMovieList, fetchPromotedMovie, checkAuth} from "./store/actions/api-actions";
 
@@ -21,7 +16,7 @@ const api = createAPI(
 );
 
 const store = createStore(
-    reducer,
+    rootReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument(api))
     )

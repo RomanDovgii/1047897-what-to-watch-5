@@ -37,3 +37,8 @@ export const redirectToRoute = (url) => ({
   type: ActionType.REDIRECT_TO_ROUTE,
   payload: url
 });
+
+export const selectMovie = (movie) => ({
+  type: ActionType.SELECT_MOVIE,
+  payload: movie
+});

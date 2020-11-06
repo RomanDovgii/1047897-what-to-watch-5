@@ -60,10 +60,10 @@ const Catalog = (props) => {
 
 Catalog.propTypes = catalogType;
 
-const mapStateToProps = (state) => ({
-  movies: state.movieCards,
-  genres: state.genres,
-  shownMoviesCount: state.shownMoviesCount
+const mapStateToProps = ({DATA, STATE}) => ({
+  movies: DATA.movies,
+  genres: DATA.genres,
+  shownMoviesCount: STATE.shownMoviesCount
 });
 
 const mapDispatchToProps = (dispatch) => ({

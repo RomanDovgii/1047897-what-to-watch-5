@@ -97,8 +97,8 @@ class PlayerPage extends PureComponent {
 
 PlayerPage.propTypes = PlayerPageType;
 
-const mapStateToProps = (state) => ({
-  isPlaying: state.isPlayerPlaying
+const mapStateToProps = ({STATE}) => ({
+  isPlaying: STATE.isPlayerPlaying
 });
 
 const mapDispatchToProps = (dispatch) => ({
