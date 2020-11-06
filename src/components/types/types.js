@@ -61,10 +61,6 @@ const onPlayButtonClickType = {
   onPlayButtonClick: optionalFunctionType
 };
 
-const promotedMovieType = {
-  promotedMovie: movieObjectType
-};
-
 export const headingType = {
   heading: PropTypes.string.isRequired
 };
