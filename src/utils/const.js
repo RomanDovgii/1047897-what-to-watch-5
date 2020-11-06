@@ -113,3 +113,9 @@ export const CatalogCallSource = {
   MY_LIST: `MY_LIST`,
   MOVIE_PAGE: `MOVIE_PAGE`
 };
+
+export const ApiInformation = {
+  BASE_URL: `https://5.react.pages.academy/wtw`,
+  TIMEOUT: 5000,
+  WITH_CREDENTIALS: true
+};
