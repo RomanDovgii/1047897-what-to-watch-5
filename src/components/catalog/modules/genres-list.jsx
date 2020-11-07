@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import GenresListItem from "./genres-list-item";
 import {genresListType} from "../../types/types";
-import {ActionCreator} from "../../../store/action";
+import {resetShownMovies, changeGenre} from "../../../store/actions/action";
 
 const GenresList = (props) => {
   const {genres, selectedGenre, onGenreClick} = props;
@@ -29,16 +29,16 @@ const GenresList = (props) => {
 
 GenresList.propTypes = genresListType;
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({DATA}) => {
   return {
-    selectedGenre: state.selectedGenre,
+    selectedGenre: DATA.selectedGenre,
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(selectedGenre) {
-    dispatch(ActionCreator.resetShownMovies());
-    dispatch(ActionCreator.changeGenre(selectedGenre));
+    dispatch(resetShownMovies());
+    dispatch(changeGenre(selectedGenre));
   }
 });
 

@@ -3,9 +3,9 @@ import {generateRatingText, generateStarringString} from "../../utils/utils";
 import {tabWithCommentsType} from "../types/types";
 
 const OverviewTab = (props) => {
-  const {movie, comments} = props;
+  const {movie} = props; // should also contain comments
 
-  const {descriptionParagraphs, director, actors, rating, id} = movie;
+  const {description, director, starring, rating} = movie; // should contain id
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
@@ -15,18 +15,16 @@ const OverviewTab = (props) => {
         <div className="movie-rating__score">{ratingString}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{generateRatingText(rating)}</span>
-          <span className="movie-rating__count">{comments[id].length} ratings</span>
+          {/* <span className="movie-rating__count">{comments[id].length} ratings</span> */}
         </p>
       </div>
 
       <div className="movie-card__text">
-        {descriptionParagraphs.map((paragraph, i) => (
-          <p key={`paragraph-${i}`}>{paragraph}</p>
-        ))}
+        <p>{description}</p>
 
         <p className="movie-card__director"><strong>Director: {director}</strong></p>
 
-        <p className="movie-card__starring"><strong>Starring: {generateStarringString(actors)}</strong></p>
+        <p className="movie-card__starring"><strong>Starring: {generateStarringString(starring)}</strong></p>
       </div>
     </React.Fragment>
   );

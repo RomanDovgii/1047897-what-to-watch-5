@@ -6,7 +6,7 @@ import Catalog from "../catalog/catalog";
 import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 
 const MainPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, promotedMovie, movies} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick} = props;
 
   return (
     <React.Fragment>
@@ -14,12 +14,10 @@ const MainPage = (props) => {
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
         onPlayButtonClick = {onPlayButtonClick}
-        movie = {promotedMovie}
       />
       <div className="page-content">
         <Catalog
           heading = {CatalogHeadingVariant.CATALOG}
-          movies = {movies}
           source = {CatalogCallSource.MAIN_PAGE}
         />
         <Footer/>

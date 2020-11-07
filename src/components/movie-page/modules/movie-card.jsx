@@ -14,15 +14,15 @@ const HeaderSetting = {
 };
 
 const MovieCard = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, promotedMovie, comments, onTabClick, shownScreen} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen} = props;
 
-  const {name, genre, release} = promotedMovie;
+  const {name, genre, released, backgroundImage, posterImage, backgroundColor} = selectedMovie;
 
   return (
-    <section className="movie-card movie-card--full">
+    <section className="movie-card movie-card--full" style={{background: `${backgroundColor}`}}>
       <div className="movie-card__hero">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -42,7 +42,7 @@ const MovieCard = (props) => {
             <h2 className="movie-card__title">{name}</h2>
             <p className="movie-card__meta">
               <span className="movie-card__genre">{genre}</span>
-              <span className="movie-card__year">{release}</span>
+              <span className="movie-card__year">{released}</span>
             </p>
 
             <div className="movie-card__buttons">
@@ -75,7 +75,7 @@ const MovieCard = (props) => {
       <div className="movie-card__wrap movie-card__translate-top">
         <div className="movie-card__info">
           <div className="movie-card__poster movie-card__poster--big">
-            <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+            <img src={posterImage} alt="The Grand Budapest Hotel poster" width="218" height="327" />
           </div>
 
           <div className="movie-card__desc">
@@ -103,7 +103,7 @@ const MovieCard = (props) => {
 
             <Tabs
               screen = {shownScreen}
-              movie = {promotedMovie}
+              movie = {selectedMovie}
               comments = {comments}
             />
           </div>

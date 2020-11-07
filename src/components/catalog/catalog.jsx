@@ -6,7 +6,7 @@ import CatalogHeading from "./modules/catalog-heading";
 import {catalogType} from "../types/types";
 import {MoreLikeThis, CatalogCallSource} from "../../utils/const";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {showMore} from "../../store/actions/action";
 
 const Catalog = (props) => {
   const {heading, movies, shownMoviesCount, genres, source, onMoreButtonClick} = props;
@@ -60,15 +60,15 @@ const Catalog = (props) => {
 
 Catalog.propTypes = catalogType;
 
-const mapStateToProps = (state) => ({
-  movies: state.movieCards,
-  genres: state.genres,
-  shownMoviesCount: state.shownMoviesCount
+const mapStateToProps = ({DATA, STATE}) => ({
+  movies: DATA.movies,
+  genres: DATA.genres,
+  shownMoviesCount: STATE.shownMoviesCount
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onMoreButtonClick() {
-    dispatch(ActionCreator.showMore());
+    dispatch(showMore());
   }
 });
 

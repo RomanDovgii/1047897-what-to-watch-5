@@ -3,7 +3,7 @@ import PlayerExit from "./modules/player-exit";
 import PlayerControls from "./modules/player-controls";
 import {PlayerPageType} from "../types/types";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {startPlaying} from "../../store/actions/action";
 import {generateVideoType} from "../../utils/utils";
 
 class PlayerPage extends PureComponent {
@@ -97,13 +97,13 @@ class PlayerPage extends PureComponent {
 
 PlayerPage.propTypes = PlayerPageType;
 
-const mapStateToProps = (state) => ({
-  isPlaying: state.isPlayerPlaying
+const mapStateToProps = ({STATE}) => ({
+  isPlaying: STATE.isPlayerPlaying
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonCLick() {
-    dispatch(ActionCreator.startPlaying());
+    dispatch(startPlaying());
   }
 });
 

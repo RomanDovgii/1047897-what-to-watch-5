@@ -14,7 +14,7 @@ const HeaderSetting = {
 };
 
 const MyListPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, movies} = props;
+  const {onUserIconClick, onWTWLogoClick} = props;
 
   return (
     <div className="user-page">
@@ -29,7 +29,6 @@ const MyListPage = (props) => {
       />
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}
-        movies = {movies}
         source = {CatalogCallSource.MY_LIST}
       />
       <Footer/>

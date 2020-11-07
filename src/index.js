@@ -1,25 +1,42 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
 import {Provider} from "react-redux";
 import App from "./components/app/app";
-import {movies} from "./mocks/movies";
-import {PROMOTED_MOVIE} from "./utils/const";
-import {comments} from "./mocks/comments";
-import {reducer} from "./store/reducer";
+import {AuthorizationStatus} from "./utils/const";
+import {createAPI} from "./services/api";
+import rootReducer from "./store/reducers/root-reducer";
+import {requireAuthorization} from "./store/actions/action";
+import {fetchMovieList, fetchPromotedMovie, checkAuth} from "./store/actions/api-actions";
+
+const api = createAPI(
+    () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
+);
 
 const store = createStore(
-    reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
-ReactDOM.render(
-    <Provider store={store}>
-      <App
-        promotedMovie = {PROMOTED_MOVIE}
-        movies = {movies}
-        comments = {comments}
-      />
-    </Provider>,
-    document.querySelector(`#root`)
-);
+Promise.all([
+  store.dispatch(fetchMovieList()),
+  store.dispatch(fetchPromotedMovie()),
+  store.dispatch(checkAuth())
+])
+.then(() => {
+  ReactDOM.render(
+      <Provider store={store}>
+        <App/>
+      </Provider>,
+      document.querySelector(`#root`)
+  );
+})
+.catch((err) => {
+  throw err;
+});
+
+

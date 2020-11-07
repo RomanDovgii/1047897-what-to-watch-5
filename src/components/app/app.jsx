@@ -6,16 +6,15 @@ import MyListPage from "../my-list-page/my-list-page";
 import MoviePage from "../movie-page/movie-page";
 import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
-import {promotedMovieMoviesCommentsType} from "../types/types";
-import {filterMoviesForMyList, filterMoviesByGenre} from "../../utils/utils";
+import {onBigPlayButtonClickType} from "../types/types";
 import withActiveMainPlayer from "../hoc/with-active-main-player/with-active-main-player";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {startPlaying} from "../../store/actions/action";
 
 const PlayerPageWrapper = withActiveMainPlayer(PlayerPage);
 
 const App = (props) => {
-  const {promotedMovie, movies, comments, onBigPlayButtonClick} = props;
+  const {onBigPlayButtonClick} = props;
 
   return (
     <BrowserRouter>
@@ -31,8 +30,6 @@ const App = (props) => {
                 history.push(`/player/:id`);
               }}
               onWTWLogoClick={() => history.push(`/`)}
-              promotedMovie = {promotedMovie}
-              movies = {movies}
             />
           )}
         />
@@ -48,7 +45,6 @@ const App = (props) => {
             <MyListPage
               onUserIconClick = {() => history.push(`/mylist`)}
               onWTWLogoClick={() => history.push(`/`)}
-              movies={filterMoviesForMyList(movies)}
             />
           )}
         />
@@ -64,9 +60,6 @@ const App = (props) => {
                 onBigPlayButtonClick();
                 history.push(`/player/:id`);
               }}
-              promotedMovie = {promotedMovie}
-              movies = {filterMoviesByGenre(movies, promotedMovie.genre)}
-              comments = {comments}
             />
           )}
         />
@@ -87,7 +80,6 @@ const App = (props) => {
           path="/player/:id"
           render={({history}) => (
             <PlayerPageWrapper
-              movie = {promotedMovie}
               onExitButtonClick = {() => history.goBack()}
             />
           )}
@@ -97,11 +89,11 @@ const App = (props) => {
   );
 };
 
-App.propTypes = promotedMovieMoviesCommentsType;
+App.propTypes = onBigPlayButtonClickType;
 
 const mapDispatchToProps = (dispatch) => ({
   onBigPlayButtonClick() {
-    dispatch(ActionCreator.startPlaying());
+    dispatch(startPlaying());
   }
 });
 

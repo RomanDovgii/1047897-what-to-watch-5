@@ -14,20 +14,26 @@ export const isRenderedType = {
 
 const optionalFunctionType = PropTypes.func;
 const functionType = PropTypes.func.isRequired;
+const requiredString = PropTypes.string.isRequired;
 
 export const movieObjectType = PropTypes.shape({
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  release: PropTypes.number.isRequired,
-  descriptionParagraphs: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  director: PropTypes.string.isRequired,
-  actors: PropTypes.arrayOf(PropTypes.string).isRequired,
-  rating: PropTypes.number.isRequired,
-  ratingsCount: PropTypes.number.isRequired,
-  videoUrl: PropTypes.string.isRequired,
-  duration: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
-  isMyList: PropTypes.bool.isRequired
+  name: requiredString,
+  posterImage: requiredString,
+  backgroundImage: requiredString,
+  backgroundColor: requiredString,
+  videoLink: requiredString,
+  previewVideoLink: requiredString,
+  description: requiredString,
+  rating: PropTypes.number.isRequired,
+  scoresCount: PropTypes.number.isRequired,
+  director: requiredString,
+  starring: PropTypes.arrayOf(requiredString).isRequired,
+  runTime: PropTypes.number.isRequired,
+  genre: requiredString,
+  released: PropTypes.number.isRequired,
+  isFavorite: PropTypes.bool.isRequired
+
 }).isRequired;
 
 export const commentType = PropTypes.shape({
@@ -53,10 +59,6 @@ export const onUserIconClickType = {
 
 const onPlayButtonClickType = {
   onPlayButtonClick: optionalFunctionType
-};
-
-const promotedMovieType = {
-  promotedMovie: movieObjectType
 };
 
 export const headingType = {
@@ -180,18 +182,26 @@ const currentTimeType = {
   currentTime: PropTypes.number.isRequired
 };
 
+export const onBigPlayButtonClickType = {
+  onBigPlayButtonClick: functionType
+};
+
+const selectedMovie = {
+  selectedMovie: movieObjectType
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
-export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType);
-export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, moviesType, commentsType);
+export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType);
+export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovie, moviesType, commentsType);
 export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);
 export const userBlockType = Object.assign({}, onUserIconClickType, isRenderedType);
 export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
 export const moreButtonType = Object.assign({}, headingType, moviesCountType, onMoreButtonClickType);
-export const myListPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, moviesType);
-export const movieCardType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, promotedMovieType, commentsType);
+export const myListPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType);
+export const movieCardType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovie, commentsType);
 export const tabsType = Object.assign({}, screenTabType, movieObjectType, commentsType);
 export const tabType = Object.assign({}, movieObjectType);
 export const tabWithCommentsType = Object.assign({}, movieObjectType, commentsType);
@@ -200,7 +210,7 @@ export const genreListItemType = Object.assign({}, genreType, onGenreClick, isSe
 export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
 export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
 export const withActivePlayerType = Object.assign({}, callSourceType, imageNameType, isPlayingType, videoUrlType);
-export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, promotedMovieType);
+export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovie);
 export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
 export const PlayerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
