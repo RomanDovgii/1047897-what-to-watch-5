@@ -1,5 +1,5 @@
 import React from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import MainPage from "../main-page/main-page";
 import LoginPage from "../login-page/login-page";
 import MyListPage from "../my-list-page/my-list-page";
@@ -10,6 +10,9 @@ import {onBigPlayButtonClickType} from "../types/types";
 import withActiveMainPlayer from "../hoc/with-active-main-player/with-active-main-player";
 import {connect} from "react-redux";
 import {startPlaying} from "../../store/actions/action";
+import browserHistory from "../../browser-history";
+import PrivateRoute from "../private-route/private-route";
+import {AppRoute} from "../../utils/const";
 
 const PlayerPageWrapper = withActiveMainPlayer(PlayerPage);
 
@@ -17,48 +20,51 @@ const App = (props) => {
   const {onBigPlayButtonClick} = props;
 
   return (
-    <BrowserRouter>
+    <Router history={browserHistory}>
       <Switch>
         <Route
           exact
-          path="/"
+          path={AppRoute.MAIN}
           render={({history}) => (
             <MainPage
-              onUserIconClick={() => history.push(`/mylist`)}
+              onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onPlayButtonClick={() => {
                 onBigPlayButtonClick();
-                history.push(`/player/:id`);
+                history.push(AppRoute.PLAYER);
               }}
-              onWTWLogoClick={() => history.push(`/`)}
+              onWTWLogoClick={() => history.push(AppRoute.MAIN)}
             />
           )}
         />
 
-        <Route exact path="/login">
-          <LoginPage/>
-        </Route>
-
         <Route
           exact
-          path="/mylist"
+          path={AppRoute.SIGN_IN}
+          render={({history}) => (
+            <LoginPage
+              onWTWLogoClick={() => history.push(AppRoute.MAIN)}
+            />
+          )}/>
+
+        <PrivateRoute
+          exact
+          path={AppRoute.MY_LIST}
           render={({history}) => (
             <MyListPage
-              onUserIconClick = {() => history.push(`/mylist`)}
-              onWTWLogoClick={() => history.push(`/`)}
+              onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
             />
           )}
         />
 
         <Route
           exact
-          path="/films/:id"
+          path={AppRoute.FILM}
           render={({history}) => (
             <MoviePage
-              onUserIconClick = {() => history.push(`/mylist`)}
-              onWTWLogoClick={() => history.push(`/`)}
+              onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
+              onWTWLogoClick={() => history.push(AppRoute.MAIN)}
               onPlayButtonClick={() => {
                 onBigPlayButtonClick();
-                history.push(`/player/:id`);
               }}
             />
           )}
@@ -66,18 +72,18 @@ const App = (props) => {
 
         <Route
           exact
-          path="/films/:id/review"
+          path={AppRoute.ADD_REVIEW}
           render={({history}) => (
             <AddReviewPage
-              onUserIconClick = {() => history.push(`/mylist`)}
-              onWTWLogoClick={() => history.push(`/`)}
+              onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
+              onWTWLogoClick={() => history.push(AppRoute.MAIN)}
             />
           )}
         />
 
         <Route
           exact
-          path="/player/:id"
+          path={AppRoute.PLAYER}
           render={({history}) => (
             <PlayerPageWrapper
               onExitButtonClick = {() => history.goBack()}
@@ -85,7 +91,7 @@ const App = (props) => {
           )}
         />
       </Switch>
-    </BrowserRouter>
+    </Router>
   );
 };
 

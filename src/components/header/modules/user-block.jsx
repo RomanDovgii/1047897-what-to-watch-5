@@ -21,9 +21,23 @@ const UserBlock = (props) => {
         </div>
       </div>
     );
-  }
+  } else {
+    return (
+      <div
+        className="user-block"
+        onClick={(evt) => {
+          evt.preventDefault();
 
-  return null;
+          resetState(ALL_GENRE);
+          onUserIconClick();
+        }}
+      >
+        <div className="user-block">
+          <a href="sign-in.html" className="user-block__link">Sign in</a>
+        </div>
+      </div>
+    );
+  }
 };
 
 UserBlock.propTypes = userBlockType;

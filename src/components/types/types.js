@@ -229,5 +229,5 @@ export const withActivePlayerType = Object.assign({}, callSourceType, imageNameT
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovie);
 export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
-export const PlayerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
-export const PricateRoutetypr = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);
+export const playerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
+export const privateRouteType = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);

@@ -1,7 +1,7 @@
 import React, {createRef, PureComponent} from "react";
 import PlayerExit from "./modules/player-exit";
 import PlayerControls from "./modules/player-controls";
-import {PlayerPageType} from "../types/types";
+import {playerPageType} from "../types/types";
 import {connect} from "react-redux";
 import {startPlaying} from "../../store/actions/action";
 import {generateVideoType} from "../../utils/utils";
@@ -95,7 +95,7 @@ class PlayerPage extends PureComponent {
   }
 }
 
-PlayerPage.propTypes = PlayerPageType;
+PlayerPage.propTypes = playerPageType;
 
 const mapStateToProps = ({STATE}) => ({
   isPlaying: STATE.isPlayerPlaying

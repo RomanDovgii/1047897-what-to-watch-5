@@ -21,8 +21,11 @@ export const checkAuth = () => (dispatch, _getState, api) => (
     .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => (
+export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(AppRoute.RESULT)))
+    .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
+    .catch((err) => {
+      throw err;
+    })
 );
