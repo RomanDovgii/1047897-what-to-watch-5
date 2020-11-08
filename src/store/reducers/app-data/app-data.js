@@ -1,4 +1,3 @@
-import {createSelector} from "reselect";
 import {createGenresList, extend, adaptToClient} from "../../../utils/utils";
 import {ALL_GENRE, ActionType} from "../../../utils/const";
 
@@ -6,7 +5,6 @@ const initialState = {
   selectedGenre: ALL_GENRE,
   genres: createGenresList([]),
   originalMovies: [],
-  movies: [],
   promotedMovie: {},
   selectedMovie: {}
 };
@@ -16,22 +14,10 @@ const appData = (state = initialState, action) => {
     case ActionType.SELECT_GENRE:
       const newlySelectedGenre = action.payload;
 
-      const filterMovies = createSelector(() => {
-        switch (newlySelectedGenre) {
-          case ALL_GENRE:
-            return state.originalMovies;
-          default:
-            return state.originalMovies.filter((movie) => movie.genre === newlySelectedGenre);
-        }
-      });
-
-      const filteredMovies = filterMovies();
-
       return extend(
           state,
           {
-            selectedGenre: newlySelectedGenre,
-            movies: filteredMovies
+            selectedGenre: newlySelectedGenre
           }
       );
     case ActionType.SELECT_MOVIE:
@@ -48,7 +34,6 @@ const appData = (state = initialState, action) => {
           state,
           {
             originalMovies: adaptedMovies,
-            movies: adaptedMovies,
             genres: createGenresList(adaptedMovies)
           }
       );

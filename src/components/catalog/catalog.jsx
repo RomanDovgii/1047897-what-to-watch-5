@@ -7,6 +7,7 @@ import {catalogType} from "../types/types";
 import {MoreLikeThis, CatalogCallSource} from "../../utils/const";
 import {connect} from "react-redux";
 import {showMore} from "../../store/actions/action";
+import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 
 const Catalog = (props) => {
   const {heading, movies, shownMoviesCount, genres, source, onMoreButtonClick} = props;
@@ -61,7 +62,7 @@ const Catalog = (props) => {
 Catalog.propTypes = catalogType;
 
 const mapStateToProps = ({DATA, STATE}) => ({
-  movies: DATA.movies,
+  movies: filterMoviesByGenre(DATA),
   genres: DATA.genres,
   shownMoviesCount: STATE.shownMoviesCount
 });
