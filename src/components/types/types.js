@@ -190,6 +190,22 @@ const selectedMovie = {
   selectedMovie: movieObjectType
 };
 
+const authoriationStatusType = {
+  authorizationStatus: PropTypes.bool.isRequired
+};
+
+const exactType = {
+  exact: PropTypes.bool.isRequired
+};
+
+const pathType = {
+  path: PropTypes.string.isRequired
+};
+
+const renderType = {
+  render: functionType
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
@@ -214,3 +230,4 @@ export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonCl
 export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
 export const PlayerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
+export const PricateRoutetypr = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);
