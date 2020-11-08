@@ -21,8 +21,6 @@ const appData = (state = initialState, action) => {
           }
       );
     case ActionType.SELECT_MOVIE:
-      console.log(action.payload)
-
       return extend(
           state,
           {
