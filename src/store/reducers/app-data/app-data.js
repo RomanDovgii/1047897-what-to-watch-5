@@ -21,10 +21,13 @@ const appData = (state = initialState, action) => {
           }
       );
     case ActionType.SELECT_MOVIE:
+      console.log(action.payload)
+
       return extend(
           state,
           {
-            selectedMovie: action.payload
+            selectedMovie: action.payload,
+            selectedGenre: action.payload.genre
           }
       );
     case ActionType.LOAD_MOVIES:
