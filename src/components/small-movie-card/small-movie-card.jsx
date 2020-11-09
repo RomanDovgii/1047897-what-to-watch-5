@@ -1,26 +1,21 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {smallMovieCardType} from "../types/types";
-import {CallSource} from "../../utils/const";
+import {CallSource, AppRoute} from "../../utils/const";
 import {connect} from "react-redux";
-import {selectMovie} from "../../store/actions/action";
+import {redirectToRoute, selectMovie} from "../../store/actions/action";
 
 const SmallMovieCard = (props) => {
-  const {movie, renderPlayer, isPlaying, onMouseEnter, onMouseLeave, onMouseIn, onMouseOut} = props;
+  const {movie, renderPlayer, isPlaying, onClick} = props;
   const {name, previewVideoLink, previewImage} = movie;
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseEnter={(evt) => {
+      onClick={(evt) => {
         evt.preventDefault();
-        onMouseIn(movie);
-        onMouseEnter();
-      }}
-      onMouseLeave={(evt) => {
-        evt.preventDefault();
-        onMouseOut();
-        onMouseLeave();
+
+        onClick(movie);
       }}>
       <div className="small-movie-card__image">
         {renderPlayer(previewVideoLink, previewImage, CallSource.CATALOG, isPlaying)}
@@ -40,11 +35,9 @@ const SmallMovieCard = (props) => {
 SmallMovieCard.propTypes = smallMovieCardType;
 
 const mapDispatchToProps = (dispatch) => ({
-  onMouseIn(movie) {
+  onClick(movie) {
     dispatch(selectMovie(movie));
-  },
-  onMouseOut() {
-    dispatch(selectMovie({}));
+    dispatch(redirectToRoute(AppRoute.MOVIES));
   }
 });
 

@@ -42,3 +42,8 @@ export const selectMovie = (movie) => ({
   type: ActionType.SELECT_MOVIE,
   payload: movie
 });
+
+export const updateUserInfo = (userInfo) => ({
+  type: ActionType.UPDATE_USER_INFO,
+  payload: userInfo
+});

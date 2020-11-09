@@ -1,9 +1,10 @@
 import React from "react";
 import {userBlockType} from "../../types/types";
 import {ALL_GENRE} from "../../../utils/const";
+import {connect} from "react-redux";
 
 const UserBlock = (props) => {
-  const {onUserIconClick, resetState, isRendered} = props;
+  const {onUserIconClick, resetState, isRendered, avatarUrl} = props;
 
   if (isRendered) {
     return (
@@ -17,7 +18,7 @@ const UserBlock = (props) => {
         }}
       >
         <div className="user-block__avatar">
-          <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+          <img src={avatarUrl} alt="User avatar" width="63" height="63" />
         </div>
       </div>
     );
@@ -42,4 +43,9 @@ const UserBlock = (props) => {
 
 UserBlock.propTypes = userBlockType;
 
-export default UserBlock;
+const mapStateToProps = ({USER}) => ({
+  avatarUrl: USER.avatarUrl
+});
+
+export {UserBlock};
+export default connect(mapStateToProps)(UserBlock);

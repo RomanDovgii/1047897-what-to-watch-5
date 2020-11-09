@@ -8,11 +8,10 @@ import {connect} from "react-redux";
 import {filterMoviesByMyList} from "../../store/selectors/my-list-selector";
 
 const HeaderSetting = {
-  IS_USER_PAGE: true,
+  IS_USER_PAGE: false,
   IS_MY_LIST: true,
   IS_SIGN_IN: false,
   IS_NAVIGATION: false,
-  IS_USER_BLOCK: true
 };
 
 const MyListPage = (props) => {

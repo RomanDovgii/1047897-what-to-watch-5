@@ -11,7 +11,7 @@ import {resetShownMovies, changeGenre} from "../../store/actions/action";
 const Header = (props) => {
   const {onUserIconClick, onWTWLogoClick, resetState, isUserPage, isMyList, isSignIn, isNavigation, authorizationStatus} = props;
 
-  const userPageElementClass = isUserPage ? `user-page__head` : ``;
+  const userPageElementClass = isUserPage || isMyList ? `user-page__head` : ``;
 
   return (
     <header className={`page-header ` + userPageElementClass}>

@@ -51,6 +51,7 @@ const App = (props) => {
           path={AppRoute.MY_LIST}
           render={({history}) => (
             <MyListPage
+              onWTWLogoClick={() => history.push(AppRoute.MAIN)}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
             />
           )}
