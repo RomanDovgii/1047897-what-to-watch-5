@@ -118,7 +118,7 @@ const onMoreButtonClickType = {
   onMoreButtonClick: functionType
 };
 
-const onWTWLogoClickType = {
+export const onWTWLogoClickType = {
   onWTWLogoClick: functionType
 };
 
@@ -206,6 +206,10 @@ const renderType = {
   render: functionType
 };
 
+const isErrorType = {
+  isError: PropTypes.bool.isRequired
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
@@ -231,3 +235,4 @@ export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeT
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
 export const playerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
 export const privateRouteType = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);
+export const signInType = Object.assign({}, onSubmitType, isErrorType);

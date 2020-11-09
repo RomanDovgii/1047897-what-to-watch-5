@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./../header/header";
 import SignIn from "./modules/sign-in";
 import Footer from "../footer/footer";
+import {onWTWLogoClickType} from "../types/types";
 
 const HeaderSetting = {
   IS_USER_PAGE: true,
@@ -28,5 +29,7 @@ const LoginPage = (props) => {
     </div>
   );
 };
+
+LoginPage.propTypes = onWTWLogoClickType;
 
 export default LoginPage;
