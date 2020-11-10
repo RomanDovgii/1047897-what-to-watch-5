@@ -110,7 +110,10 @@ export const ActionType = {
   LOAD_PROMOTED_MOVIE: `LOAD_PROMOTED_MOVIE`,
   REQUIRED_AUTHORIZATION: `REQUIRED_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
-  SELECT_MOVIE: `SELECT_MOVIE`
+  SELECT_MOVIE: `SELECT_MOVIE`,
+  UPDATE_USER_INFO: `UPDATE_USER_INFO`,
+  THROW_ERR: `THROW_ERR`,
+  REMOVE_ERR: `REMOVE_ERR`
 };
 
 export const CatalogCallSource = {
@@ -130,8 +133,8 @@ export const HttpCode = {
 };
 
 export const AuthorizationStatus = {
-  AUTH: `AUTH`,
-  NO_AUTH: `NO_AUTH`
+  AUTH: true,
+  NO_AUTH: false
 };
 
 export const AppRoute = {

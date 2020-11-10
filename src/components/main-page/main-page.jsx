@@ -4,9 +4,11 @@ import Footer from "../footer/footer";
 import {mainPageType} from "../types/types";
 import Catalog from "../catalog/catalog";
 import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
+import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
+import {connect} from "react-redux";
 
 const MainPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movies, genres} = props;
 
   return (
     <React.Fragment>
@@ -17,6 +19,8 @@ const MainPage = (props) => {
       />
       <div className="page-content">
         <Catalog
+          movies = {movies}
+          genres = {genres}
           heading = {CatalogHeadingVariant.CATALOG}
           source = {CatalogCallSource.MAIN_PAGE}
         />
@@ -27,6 +31,12 @@ const MainPage = (props) => {
   );
 };
 
+const mapStateToProps = ({DATA}) => ({
+  movies: filterMoviesByGenre(DATA),
+  genres: DATA.genres,
+});
+
 MainPage.propTypes = mainPageType;
 
-export default MainPage;
+export {MainPage};
+export default connect(mapStateToProps)(MainPage);

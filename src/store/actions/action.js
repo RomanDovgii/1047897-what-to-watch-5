@@ -42,3 +42,16 @@ export const selectMovie = (movie) => ({
   type: ActionType.SELECT_MOVIE,
   payload: movie
 });
+
+export const updateUserInfo = (userInfo) => ({
+  type: ActionType.UPDATE_USER_INFO,
+  payload: userInfo
+});
+
+export const throwErr = () => ({
+  type: ActionType.THROW_ERR
+});
+
+export const removeErr = () => ({
+  type: ActionType.REMOVE_ERR
+});

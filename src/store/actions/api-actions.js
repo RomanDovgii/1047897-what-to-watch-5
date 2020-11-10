@@ -1,4 +1,4 @@
-import {loadMovies, loadPromotedMovie, requireAuthorization, redirectToRoute} from "./action";
+import {loadMovies, loadPromotedMovie, requireAuthorization, redirectToRoute, updateUserInfo, throwErr, removeErr} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 
 export const fetchMovieList = () => (dispatch, _getState, api) => (
@@ -18,11 +18,21 @@ export const fetchPromotedMovie = () => (dispatch, _getState, api) => (
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => {})
+    .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
-export const login = ({login: email, password}) => (dispatch, _getState, api) => (
+export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(AppRoute.RESULT)))
+    .then((response) => {
+      dispatch(updateUserInfo({
+        userId: response.data.id,
+        avatarUrl: response.data.avatar_url
+      }));
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(removeErr());
+    })
+    .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
+    .catch(() => {
+      dispatch(throwErr());
+    })
 );

@@ -4,30 +4,13 @@ import MoviesList from "./modules/movie-list";
 import MoreButton from "./modules/more-button";
 import CatalogHeading from "./modules/catalog-heading";
 import {catalogType} from "../types/types";
-import {MoreLikeThis, CatalogCallSource} from "../../utils/const";
 import {connect} from "react-redux";
 import {showMore} from "../../store/actions/action";
 
 const Catalog = (props) => {
-  const {heading, movies, shownMoviesCount, genres, source, onMoreButtonClick} = props;
+  const {heading, movies, shownMoviesCount, genres = [], onMoreButtonClick} = props;
 
-  let moviesLocal;
-
-  switch (source) {
-    case CatalogCallSource.MY_LIST:
-      moviesLocal = movies.filter((movie) => movie.isMyList);
-      break;
-    case CatalogCallSource.MOVIE_PAGE:
-      moviesLocal = movies.slice(MoreLikeThis.FIRST_INDEX, MoreLikeThis.LAST_INDEX);
-      break;
-    default:
-      moviesLocal = movies;
-      break;
-  }
-
-  const moviesCount = moviesLocal.length;
-
-  moviesLocal = moviesLocal.slice(0, shownMoviesCount);
+  const moviesCount = movies.length;
 
   return (
     <section className="catalog">
@@ -36,7 +19,7 @@ const Catalog = (props) => {
       />
 
       {
-        source === CatalogCallSource.MAIN_PAGE ?
+        genres.length ?
           <GenresList
             genres = {genres}
           /> :
@@ -44,8 +27,7 @@ const Catalog = (props) => {
       }
 
       <MoviesList
-        source = {source}
-        movies = {moviesLocal}
+        movies = {movies.slice(0, shownMoviesCount)}
       />
 
       {shownMoviesCount <= moviesCount &&
@@ -60,9 +42,7 @@ const Catalog = (props) => {
 
 Catalog.propTypes = catalogType;
 
-const mapStateToProps = ({DATA, STATE}) => ({
-  movies: DATA.movies,
-  genres: DATA.genres,
+const mapStateToProps = ({STATE}) => ({
   shownMoviesCount: STATE.shownMoviesCount
 });
 

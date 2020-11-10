@@ -3,7 +3,8 @@ import {SHOWN_MOVIES_COUNT, ActionType} from "../../../utils/const";
 
 const initialState = {
   shownMoviesCount: SHOWN_MOVIES_COUNT,
-  isPlayerPlaying: false
+  isPlayerPlaying: false,
+  isAuthError: false
 };
 
 const appState = (state = initialState, action) => {
@@ -30,6 +31,20 @@ const appState = (state = initialState, action) => {
           state,
           {
             isPlayerPlaying: !state.isPlayerPlaying
+          }
+      );
+    case ActionType.THROW_ERR:
+      return extend(
+          state,
+          {
+            isAuthError: true
+          }
+      );
+    case ActionType.REMOVE_ERR:
+      return extend(
+          state,
+          {
+            isAuthError: false
           }
       );
   }

@@ -6,11 +6,10 @@ import Tabs from "../../tabs/tabs";
 import {movieCardType} from "../../types/types";
 
 const HeaderSetting = {
-  IS_USER_PAGE: true,
+  IS_USER_PAGE: false,
   IS_MY_LIST: false,
   IS_SIGN_IN: false,
   IS_NAVIGATION: false,
-  IS_USER_BLOCK: true
 };
 
 const MovieCard = (props) => {

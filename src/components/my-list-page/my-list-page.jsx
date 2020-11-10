@@ -2,19 +2,20 @@ import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import Catalog from "../catalog/catalog";
-import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
+import {CatalogHeadingVariant} from "../../utils/const";
 import {myListPageType} from "../types/types";
+import {connect} from "react-redux";
+import {filterMoviesByMyList} from "../../store/selectors/my-list-selector";
 
 const HeaderSetting = {
-  IS_USER_PAGE: true,
+  IS_USER_PAGE: false,
   IS_MY_LIST: true,
   IS_SIGN_IN: false,
   IS_NAVIGATION: false,
-  IS_USER_BLOCK: true
 };
 
 const MyListPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick} = props;
+  const {onUserIconClick, onWTWLogoClick, movies} = props;
 
   return (
     <div className="user-page">
@@ -29,7 +30,7 @@ const MyListPage = (props) => {
       />
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}
-        source = {CatalogCallSource.MY_LIST}
+        movies = {movies}
       />
       <Footer/>
     </div>
@@ -38,4 +39,9 @@ const MyListPage = (props) => {
 
 MyListPage.propTypes = myListPageType;
 
-export default MyListPage;
+const mapStateToProps = ({DATA}) => ({
+  movies: filterMoviesByMyList(DATA)
+});
+
+export {MyListPage};
+export default connect(mapStateToProps)(MyListPage);

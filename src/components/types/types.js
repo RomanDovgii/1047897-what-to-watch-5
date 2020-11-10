@@ -118,7 +118,7 @@ const onMoreButtonClickType = {
   onMoreButtonClick: functionType
 };
 
-const onWTWLogoClickType = {
+export const onWTWLogoClickType = {
   onWTWLogoClick: functionType
 };
 
@@ -190,6 +190,26 @@ const selectedMovie = {
   selectedMovie: movieObjectType
 };
 
+const authoriationStatusType = {
+  authorizationStatus: PropTypes.bool.isRequired
+};
+
+const exactType = {
+  exact: PropTypes.bool.isRequired
+};
+
+const pathType = {
+  path: PropTypes.string.isRequired
+};
+
+const renderType = {
+  render: functionType
+};
+
+const isErrorType = {
+  isError: PropTypes.bool.isRequired
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
@@ -213,4 +233,6 @@ export const withActivePlayerType = Object.assign({}, callSourceType, imageNameT
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovie);
 export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
-export const PlayerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
+export const playerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
+export const privateRouteType = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);
+export const signInType = Object.assign({}, onSubmitType, isErrorType);

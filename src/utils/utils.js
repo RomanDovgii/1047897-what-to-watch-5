@@ -1,4 +1,4 @@
-import {GENRES, MOVIES, VIDEO_URLS, DIRECTORS, ACTORS, MOVIES_COUNT, MAXIMUM_RATING, MAXIMUM_RATING_COUNT, FISH_TEXT, ActorsCount, Description, Paragraph, Duration, Id, CommentCount, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
+import {ACTORS, MAXIMUM_RATING, FISH_TEXT, Description, MAXIMUM_SIMIALAR_MOVIES, MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
 
 const getRandomElementFromArray = (array) => {
   const max = array.length;
@@ -14,24 +14,8 @@ const getRandomIntegerNumber = (firstNumber, secondNumber = 0) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-const getRandomBoolean = () => {
-  return (Math.random() >= 0.5);
-};
-
 const generateRating = () => {
   return Math.round((Math.random() * MAXIMUM_RATING) * 1e1) / 1e1;
-};
-
-const generateActors = () => {
-  const actors = [];
-
-  const starringCount = getRandomIntegerNumber(ActorsCount.MINIMUM, ActorsCount.MAXIMUM);
-
-  for (let i = 0; i < starringCount; i++) {
-    actors.push(getRandomElementFromArray(ACTORS));
-  }
-
-  return actors;
 };
 
 const generateParagraphText = () => {
@@ -48,40 +32,6 @@ const generateParagraphText = () => {
   return text;
 };
 
-const generateDescriptionParagraphs = () => {
-  const paragraphsCount = getRandomIntegerNumber(Paragraph.MINIMUM, Paragraph.MAXIMUM);
-  let paragraphs = [];
-
-  for (let i = 0; i < paragraphsCount; i++) {
-    paragraphs.push(generateParagraphText());
-  }
-
-  return paragraphs;
-};
-
-const generateRelease = () => {
-  const date = new Date();
-
-  return date.getFullYear();
-};
-
-const generateMovie = () => {
-  return {
-    name: getRandomElementFromArray(MOVIES),
-    genre: getRandomElementFromArray(GENRES),
-    release: generateRelease(),
-    descriptionParagraphs: generateDescriptionParagraphs(),
-    director: getRandomElementFromArray(DIRECTORS),
-    actors: generateActors(),
-    rating: generateRating(),
-    ratingsCount: getRandomIntegerNumber(MAXIMUM_RATING_COUNT),
-    videoUrl: getRandomElementFromArray(VIDEO_URLS),
-    duration: getRandomIntegerNumber(Duration.MINIMUM, Duration.MAXIMUM),
-    id: getRandomIntegerNumber(Id.MINIMUM, Id.MAXIMUM),
-    isMyList: getRandomBoolean()
-  };
-};
-
 export const generateComment = () => {
   return {
     text: generateParagraphText(),
@@ -91,26 +41,8 @@ export const generateComment = () => {
   };
 };
 
-const generateComments = (count) => {
-  return new Array(count).fill().map(generateComment);
-};
-
-export const generateCommentsById = (movieIds) => {
-  const comments = movieIds.reduce((accumulator, id) => {
-    const number = getRandomIntegerNumber(CommentCount.MINIMUM, CommentCount.MAXIMUM);
-    accumulator[id] = generateComments(number);
-    return accumulator;
-  }, {});
-
-  return comments;
-};
-
 export const filterMoviesForMyList = (movies) => {
   return movies.filter((movie) => movie.isMyList);
-};
-
-export const generateMovies = () => {
-  return new Array(MOVIES_COUNT).fill().map(generateMovie);
 };
 
 export const generateVideoType = (url) => {

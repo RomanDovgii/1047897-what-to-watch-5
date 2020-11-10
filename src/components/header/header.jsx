@@ -9,9 +9,9 @@ import {connect} from "react-redux";
 import {resetShownMovies, changeGenre} from "../../store/actions/action";
 
 const Header = (props) => {
-  const {onUserIconClick, onWTWLogoClick, resetState, isUserPage, isMyList, isSignIn, isNavigation, isUserBlock} = props;
+  const {onUserIconClick, onWTWLogoClick, resetState, isUserPage, isMyList, isSignIn, isNavigation, authorizationStatus} = props;
 
-  const userPageElementClass = isUserPage ? `user-page__head` : ``;
+  const userPageElementClass = isUserPage || isMyList ? `user-page__head` : ``;
 
   return (
     <header className={`page-header ` + userPageElementClass}>
@@ -23,6 +23,7 @@ const Header = (props) => {
       <HeadingMyList
         isRendered = {isMyList}
       />
+
       <HeadingSignIn
         isRendered = {isSignIn}
       />
@@ -31,16 +32,27 @@ const Header = (props) => {
         isRendered = {isNavigation}
       />
 
-      <UserBlock
-        onUserIconClick = {onUserIconClick}
-        resetState = {resetState}
-        isRendered = {isUserBlock}
-      />
+      {
+        !isUserPage
+          ? <UserBlock
+            onUserIconClick = {onUserIconClick}
+            resetState = {resetState}
+            isRendered = {authorizationStatus}
+            isSignIn = {isSignIn}
+          />
+          : null
+      }
+
+
     </header>
   );
 };
 
 Header.propTypes = headerType;
+
+const mapStateToProps = ({USER}) => ({
+  authorizationStatus: USER.authorizationStatus
+});
 
 const mapDispatchToProps = (dispatch) => ({
   resetState(selectedGenre) {
@@ -50,4 +62,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {Header};
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
