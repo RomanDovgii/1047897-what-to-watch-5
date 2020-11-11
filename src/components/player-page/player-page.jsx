@@ -4,15 +4,20 @@ import PlayerControls from "./modules/player-controls";
 import {playerPageType} from "../types/types";
 import {connect} from "react-redux";
 import {startPlaying} from "../../store/actions/action";
+import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {generateVideoType} from "../../utils/utils";
 
 class PlayerPage extends PureComponent {
   constructor(props) {
     super(props);
 
+    this._isLoaded = false;
+
     this._videoRef = createRef();
     this._sourceRef = createRef();
     this._movieDuration = 0;
+
+    this._id = window.location.pathname.slice(8);
 
     this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
     this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
@@ -20,11 +25,17 @@ class PlayerPage extends PureComponent {
   }
 
   componentDidMount() {
+    const {fetchMovie} = this.props;
     const video = this._videoRef.current;
 
-    video.onloadedmetadata = () => {
-      this._movieDuration = video.duration;
-    };
+    fetchMovie(this._id);
+
+    if (this._isLoaded) {
+      video.onloadedmetadata = () => {
+        this._movieDuration = video.duration;
+      };
+    }
+    this._isLoaded = true;
   }
 
   _handlePlayButtonClick() {
@@ -58,27 +69,30 @@ class PlayerPage extends PureComponent {
 
   render() {
     const {movie, isPlaying, isLoading, currentTime, onTimeUpdate, onLoadingEnd} = this.props;
-    const {videoUrl} = movie;
+    const {videoLink, backgroundImage, name} = movie;
 
     return (
       <div className="player">
-        <video
-          ref={this._videoRef}
-          autoPlay={isPlaying}
-          className="player__video"
-          poster="img/bg-the-grand-budapest-hotel.jpg"
-          onLoadedMetadata={(evt) => {
-            evt.preventDefault();
-            this._movieDuration = this._videoRef.current.duration;
-            onLoadingEnd();
-          }}
-          onTimeUpdate={(evt) => {
-            evt.preventDefault();
-            onTimeUpdate(this._videoRef.current.currentTime);
-          }}
-        >
-          <source ref={this._sourceRef} src={videoUrl} type={generateVideoType(videoUrl)}/>
-        </video>
+        {this._isLoaded
+          ? <video
+            ref={this._videoRef}
+            autoPlay={isPlaying}
+            className="player__video"
+            poster={backgroundImage}
+            onLoadedMetadata={(evt) => {
+              evt.preventDefault();
+              this._movieDuration = this._videoRef.current.duration;
+              onLoadingEnd();
+            }}
+            onTimeUpdate={(evt) => {
+              evt.preventDefault();
+              onTimeUpdate(this._videoRef.current.currentTime);
+            }}
+          >
+            <source ref={this._sourceRef} src={videoLink} type={generateVideoType(videoLink)}/>
+          </video>
+          : null
+        }
         <PlayerExit
           onExitButtonClick = {this._handleExitButtonClick}
         />
@@ -89,6 +103,7 @@ class PlayerPage extends PureComponent {
           onPlayButtonClick={this._handlePlayButtonClick}
           onFullScreenButtonClick={this._handleFullScreenButtonClick}
           currentTime = {currentTime}
+          movieName = {name}
         />
       </div>
     );
@@ -97,13 +112,17 @@ class PlayerPage extends PureComponent {
 
 PlayerPage.propTypes = playerPageType;
 
-const mapStateToProps = ({STATE}) => ({
-  isPlaying: STATE.isPlayerPlaying
+const mapStateToProps = ({STATE, DATA}) => ({
+  isPlaying: STATE.isPlayerPlaying,
+  movie: DATA.selectedMovie
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonCLick() {
     dispatch(startPlaying());
+  },
+  fetchMovie(id) {
+    dispatch(fetchSelectedMovie(id));
   }
 });
 

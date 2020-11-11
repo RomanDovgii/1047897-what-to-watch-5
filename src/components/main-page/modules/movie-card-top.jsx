@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {movieCardTopType} from "../../types/types";
 import Header from "../../header/header";
+import {addMovieToFavorite} from "../../../store/actions/api-actions";
 
 const HeaderSetting = {
   IS_USER_PAGE: false,
@@ -11,8 +12,8 @@ const HeaderSetting = {
 };
 
 const MovieCardTop = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie} = props;
-  const {name, genre, released, posterImage, backgroundImage} = movie;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick} = props;
+  const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = movie;
 
   return (
     <section className="movie-card">
@@ -52,17 +53,29 @@ const MovieCardTop = (props) => {
                 onClick = {(evt) => {
                   evt.preventDefault();
 
-                  onPlayButtonClick();
+                  onPlayButtonClick(`/player/${id}`);
                 }}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
                   <use xlinkHref="#play-s"></use>
                 </svg>
                 <span>Play</span>
               </button>
-              <button className="btn btn--list movie-card__button" type="button">
-                <svg viewBox="0 0 19 20" width="19" height="20">
-                  <use xlinkHref="#add"></use>
-                </svg>
+              <button
+                className="btn btn--list movie-card__button"
+                type="button"
+                onClick={(evt) => {
+                  evt.preventDefault();
+                  onMyListClick(id, isFavorite);
+                }}
+              >
+                {isFavorite
+                  ? <svg viewBox="0 0 18 14" width="18" height="14">
+                    <use xlinkHref="#in-list"></use>
+                  </svg>
+                  : <svg viewBox="0 0 19 20" width="19" height="20">
+                    <use xlinkHref="#add"></use>
+                  </svg>
+                }
                 <span>My list</span>
               </button>
             </div>
@@ -75,9 +88,15 @@ const MovieCardTop = (props) => {
 
 MovieCardTop.propTypes = movieCardTopType;
 
+const mapDispatchToProps = (dispatch) => ({
+  onMyListClick(id, status) {
+    dispatch(addMovieToFavorite(id, status));
+  }
+});
+
 const mapStateToProps = ({DATA}) => ({
   movie: DATA.promotedMovie
 });
 
 export {MovieCardTop};
-export default connect(mapStateToProps)(MovieCardTop);
+export default connect(mapStateToProps, mapDispatchToProps)(MovieCardTop);

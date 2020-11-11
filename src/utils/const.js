@@ -114,7 +114,9 @@ export const ActionType = {
   UPDATE_USER_INFO: `UPDATE_USER_INFO`,
   THROW_ERR: `THROW_ERR`,
   REMOVE_ERR: `REMOVE_ERR`,
-  LOAD_SELECTED_MOVIE: `LOAD_SELECTED_MOVIE`
+  LOAD_SELECTED_MOVIE: `LOAD_SELECTED_MOVIE`,
+  LOAD_SELECTED_MOVIE_COMMENTS: `LOAD_SELECTED_MOVIE_COMMENTS`,
+  ADD_MOVIE_TO_FAVORITE: `ADD_MOVIE_TO_FAVORITE`
 };
 
 export const CatalogCallSource = {
@@ -150,5 +152,7 @@ export const AppRoute = {
 export const APIRoute = {
   FILMS: `/films`,
   PROMOTED_MOVIE: `/films/promo`,
-  LOGIN: `/login`
+  LOGIN: `/login`,
+  COMMENTS: `/comments`,
+  FAVORITE: `/favorite`
 };

@@ -26,12 +26,13 @@ class MovieCard extends PureComponent {
     this._isLoading = true;
   }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+  }
 
   render() {
-    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen} = this.props;
+    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth} = this.props;
 
-    const {name, genre, released, backgroundImage, posterImage, backgroundColor} = selectedMovie;
+    const {name, genre, released, backgroundImage, posterImage, backgroundColor, id, isFavorite} = selectedMovie;
 
     return (
       <section className="movie-card movie-card--full" style={{background: `${backgroundColor}`}}>
@@ -67,7 +68,7 @@ class MovieCard extends PureComponent {
                   onClick = {(evt) => {
                     evt.preventDefault();
 
-                    onPlayButtonClick();
+                    onPlayButtonClick(`/player/${id}`);
                   }}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
@@ -76,12 +77,21 @@ class MovieCard extends PureComponent {
                   <span>Play</span>
                 </button>
                 <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                  {isFavorite
+                    ? <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                    : <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  }
+
                   <span>My list</span>
                 </button>
-                <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
+                {isAuth
+                  ? <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
+                  : null
+                }
               </div>
             </div>
           </div>

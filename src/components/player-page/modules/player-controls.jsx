@@ -3,12 +3,12 @@ import {playerControlsType} from "../../types/types";
 import {HOURS_IN_SECONDS, MINUTES_IN_SECONDS, ZERO} from "../../../utils/const.js";
 
 const PlayerControls = (props) => {
-  const {onPlayButtonClick, onFullScreenButtonClick, isPlaying, duration, isLoading, currentTime} = props;
+  const {onPlayButtonClick, onFullScreenButtonClick, isPlaying, duration, isLoading, currentTime, movieName} = props;
 
   const timeElapsed = duration - currentTime;
   const hours = timeElapsed > HOURS_IN_SECONDS ? Math.floor((timeElapsed / HOURS_IN_SECONDS)) : ZERO;
   const minutes = timeElapsed > MINUTES_IN_SECONDS ? Math.floor(((timeElapsed - timeElapsed * hours) / MINUTES_IN_SECONDS)) : ZERO;
-  const seconds = Math.floor(timeElapsed - timeElapsed * hours - timeElapsed * minutes);
+  const seconds = Math.floor(timeElapsed - HOURS_IN_SECONDS * hours - minutes * MINUTES_IN_SECONDS);
 
   return (
     <div className="player__controls">
@@ -41,7 +41,7 @@ const PlayerControls = (props) => {
             </svg>}
           <span>{isPlaying ? `Pause` : `Play`}</span>
         </button>
-        <div className="player__name">Transpotting</div>
+        <div className="player__name">{movieName}</div>
 
         <button
           type="button"

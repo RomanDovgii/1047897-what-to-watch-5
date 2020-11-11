@@ -7,14 +7,14 @@ import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../util
 import {moviePageType} from "../types/types";
 import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
-import {fetchSelectedMovie} from "../../store/actions/api-actions";
+import {fetchSelectedMovie, fetchSelectedMovieComments} from "../../store/actions/api-actions";
 
 const MovieCardWrapper = withActiveTabs(MovieCard);
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth} = props;
 
-  const id = window.location.pathname.slice(7, 8);
+  const id = window.location.pathname.slice(7);
 
   return (
     <React.Fragment>
@@ -26,6 +26,7 @@ const MoviePage = (props) => {
         comments = {comments}
         id = {id}
         fetchMovie = {fetchMovie}
+        isAuth = {isAuth}
       />
 
       <div className="page-content">
@@ -42,14 +43,17 @@ const MoviePage = (props) => {
 
 MoviePage.propTypes = moviePageType;
 
-const mapStateToProps = ({DATA}) => ({
+const mapStateToProps = ({DATA, USER}) => ({
   selectedMovie: DATA.selectedMovie,
-  movies: filterMoviesByGenre(DATA)
+  movies: filterMoviesByGenre(DATA),
+  comments: DATA.comments,
+  isAuth: USER.authorizationStatus
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
+    dispatch(fetchSelectedMovieComments(id));
   }
 });
 

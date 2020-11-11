@@ -9,7 +9,7 @@ import PlayerPage from "../player-page/player-page";
 import {onBigPlayButtonClickType} from "../types/types";
 import withActiveMainPlayer from "../hoc/with-active-main-player/with-active-main-player";
 import {connect} from "react-redux";
-import {startPlaying} from "../../store/actions/action";
+import {startPlaying, redirectToRoute} from "../../store/actions/action";
 import browserHistory from "../../browser-history";
 import PrivateRoute from "../private-route/private-route";
 import {AppRoute} from "../../utils/const";
@@ -17,7 +17,7 @@ import {AppRoute} from "../../utils/const";
 const PlayerPageWrapper = withActiveMainPlayer(PlayerPage);
 
 const App = (props) => {
-  const {onBigPlayButtonClick} = props;
+  const {onBigPlayButtonClick, onMyListClick} = props;
 
   return (
     <Router history={browserHistory}>
@@ -28,11 +28,11 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
-              onPlayButtonClick={() => {
-                onBigPlayButtonClick();
-                history.push(AppRoute.PLAYER);
+              onPlayButtonClick={(url) => {
+                onBigPlayButtonClick(url);
               }}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
+              onMyListClick={onMyListClick}
             />
           )}
         />
@@ -60,13 +60,15 @@ const App = (props) => {
         <Route
           exact
           path={AppRoute.FILM}
-          render={({history}) => (
+          render={({history, match}) => (
             <MoviePage
+              id = {match.params.id}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
-              onPlayButtonClick={() => {
-                onBigPlayButtonClick();
+              onPlayButtonClick={(url) => {
+                onBigPlayButtonClick(url);
               }}
+              onMyListClick = {onMyListClick}
             />
           )}
         />
@@ -74,8 +76,9 @@ const App = (props) => {
         <PrivateRoute
           exact
           path={AppRoute.ADD_REVIEW}
-          render={({history}) => (
+          render={({history, match}) => (
             <AddReviewPage
+              id = {match.params.id}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
             />
@@ -85,8 +88,9 @@ const App = (props) => {
         <Route
           exact
           path={AppRoute.PLAYER}
-          render={({history}) => (
+          render={({history, match}) => (
             <PlayerPageWrapper
+              id = {match.params.id}
               onExitButtonClick = {() => history.goBack()}
             />
           )}
@@ -99,7 +103,8 @@ const App = (props) => {
 App.propTypes = onBigPlayButtonClickType;
 
 const mapDispatchToProps = (dispatch) => ({
-  onBigPlayButtonClick() {
+  onBigPlayButtonClick(url) {
+    dispatch(redirectToRoute(url));
     dispatch(startPlaying());
   }
 });

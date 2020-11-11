@@ -33,6 +33,11 @@ export const loadSelectedMovie = (movie) => ({
   payload: movie
 });
 
+export const loadSelectedMovieComments = (comments) => ({
+  type: ActionType.LOAD_SELECTED_MOVIE_COMMENTS,
+  payload: comments
+});
+
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status
@@ -59,4 +64,9 @@ export const throwErr = () => ({
 
 export const removeErr = () => ({
   type: ActionType.REMOVE_ERR
+});
+
+export const addMovieToFavoriteLocal = (movieId) => ({
+  type: ActionType.ADD_MOVIE_TO_FAVORITE,
+  payload: movieId
 });

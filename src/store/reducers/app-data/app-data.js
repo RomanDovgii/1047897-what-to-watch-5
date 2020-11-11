@@ -6,7 +6,8 @@ const initialState = {
   genres: createGenresList([]),
   originalMovies: [],
   promotedMovie: {},
-  selectedMovie: {}
+  selectedMovie: {},
+  comments: []
 };
 
 const appData = (state = initialState, action) => {
@@ -55,6 +56,16 @@ const appData = (state = initialState, action) => {
             selectedMovie: adaptedSelectedMovie
           }
       );
+    case ActionType.LOAD_SELECTED_MOVIE_COMMENTS:
+      return extend(
+          state,
+          {
+            comments: action.payload
+          }
+      );
+    case ActionType.ADD_MOVIE_TO_FAVORITE:
+      console.log(state.originalMovies[action.payload - 1]);
+      return state;
   }
 
   return state;

@@ -1,4 +1,4 @@
-import {loadMovies, loadPromotedMovie, loadSelectedMovie, requireAuthorization, redirectToRoute, updateUserInfo, throwErr, removeErr} from "./action";
+import {loadMovies, loadPromotedMovie, loadSelectedMovie, requireAuthorization, redirectToRoute, updateUserInfo, loadSelectedMovieComments, throwErr, removeErr, addMovieToFavoriteLocal} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 
 export const fetchMovieList = () => (dispatch, _getState, api) => (
@@ -43,3 +43,23 @@ export const fetchSelectedMovie = (movieId) => (dispatch, _getState, api) => (
       dispatch(loadSelectedMovie(response.data));
     })
 );
+
+export const fetchSelectedMovieComments = (movieId) => (dispatch, _getState, api) => (
+  api.get(APIRoute.COMMENTS + `/${movieId}`)
+    .then((response) => {
+      dispatch(loadSelectedMovieComments(response.data));
+    })
+);
+
+export const addMovieToFavorite = (movieId, movieStatus) => (dispatch, _getState, api) => (
+  api.post(APIRoute.FAVORITE + `/${movieId}/${movieStatus ? 1 : 0}`)
+    .then((response) => {
+      console.log(movieStatus);
+      console.log(response);
+      dispatch(addMovieToFavoriteLocal(movieId));
+    })
+    .catch((err) => {
+      throw err;
+    })
+);
+

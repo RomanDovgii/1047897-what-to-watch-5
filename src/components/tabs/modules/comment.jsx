@@ -2,25 +2,25 @@ import React from "react";
 import {commentType} from "../../types/types";
 
 const Comment = (props) => {
-  const {comment} = props;
+  const {commentData} = props;
 
-  const {text, rating, name, date} = comment;
+  const {comment, rating, user, date} = commentData;
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
-  const year = date.getFullYear();
-  const day = date.getDate();
-  const monthNumerical = date.getMonth() + 1;
-  const monthName = date.toLocaleString(`default`, {month: `long`});
+  // const year = date.getFullYear();
+  // const day = date.getDate();
+  // const monthNumerical = date.getMonth() + 1;
+  // const monthName = date.toLocaleString(`default`, {month: `long`});
 
   return (
     <div className="review">
       <blockquote className="review__quote">
-        <p className="review__text">{text}</p>
+        <p className="review__text">{comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{name}</cite>
-          <time className="review__date" dateTime={`${year}-${monthNumerical}-${day}`}>{monthName} {day}, {year}</time>
+          <cite className="review__author">{user.name}</cite>
+          <time className="review__date" dateTime={`${date}`}>{date}</time>
         </footer>
       </blockquote>
 

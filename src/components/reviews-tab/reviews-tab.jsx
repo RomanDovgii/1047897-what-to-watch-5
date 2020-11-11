@@ -3,11 +3,9 @@ import Comment from "../tabs/modules/comment";
 import {tabWithCommentsType} from "../types/types";
 
 const ReviewsTab = (props) => {
-  const {movie, comments} = props;
+  const {comments} = props;
 
-  const {id} = movie;
-
-  const commentsForTheMovie = comments[id];
+  const commentsForTheMovie = comments;
   const commentsFirstColumn = Math.ceil(commentsForTheMovie.length / 2);
 
   const firstColumnComments = commentsForTheMovie.slice().slice(0, commentsFirstColumn);
@@ -19,8 +17,8 @@ const ReviewsTab = (props) => {
         {firstColumnComments.map((comment, i) => {
           return (
             <Comment
-              comment = {comment}
-              key = {`${comment.name.replace(` `, ``).toLowerCase()}-${i}`}
+              commentData = {comment}
+              key = {`${comment.user.name.replace(` `, ``).toLowerCase()}-${i}`}
             />
           );
         })}
@@ -29,8 +27,8 @@ const ReviewsTab = (props) => {
         {secondColumnComments.map((comment, i) => {
           return (
             <Comment
-              comment = {comment}
-              key = {`${comment.name.replace(` `, ``).toLowerCase()}-${i}`}
+              commentData = {comment}
+              key = {`${comment.user.name.replace(` `, ``).toLowerCase()}-${i}`}
             />
           );
         })}
