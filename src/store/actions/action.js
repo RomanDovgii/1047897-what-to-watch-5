@@ -28,6 +28,11 @@ export const loadPromotedMovie = (movie) => ({
   payload: movie
 });
 
+export const loadSelectedMovie = (movie) => ({
+  type: ActionType.LOAD_SELECTED_MOVIE,
+  payload: movie
+});
+
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRED_AUTHORIZATION,
   payload: status

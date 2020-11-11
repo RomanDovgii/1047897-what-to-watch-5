@@ -7,7 +7,7 @@ import {redirectToRoute, selectMovie} from "../../store/actions/action";
 
 const SmallMovieCard = (props) => {
   const {movie, renderPlayer, isPlaying, onClick} = props;
-  const {name, previewVideoLink, previewImage} = movie;
+  const {name, previewVideoLink, previewImage, id} = movie;
 
   return (
     <article
@@ -23,7 +23,7 @@ const SmallMovieCard = (props) => {
       <h3 className="small-movie-card__title">
         <Link
           className="small-movie-card__link"
-          to="/films/:id"
+          to={`/films/${id}`}
         >
           {name}
         </Link>

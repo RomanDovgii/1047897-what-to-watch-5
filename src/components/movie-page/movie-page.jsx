@@ -7,11 +7,14 @@ import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../util
 import {moviePageType} from "../types/types";
 import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
+import {fetchSelectedMovie} from "../../store/actions/api-actions";
 
 const MovieCardWrapper = withActiveTabs(MovieCard);
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie} = props;
+
+  const id = window.location.pathname.slice(7, 8);
 
   return (
     <React.Fragment>
@@ -21,6 +24,8 @@ const MoviePage = (props) => {
         onPlayButtonClick = {onPlayButtonClick}
         selectedMovie={selectedMovie}
         comments = {comments}
+        id = {id}
+        fetchMovie = {fetchMovie}
       />
 
       <div className="page-content">
@@ -42,5 +47,11 @@ const mapStateToProps = ({DATA}) => ({
   movies: filterMoviesByGenre(DATA)
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchMovie(id) {
+    dispatch(fetchSelectedMovie(id));
+  }
+});
+
 export {MoviePage};
-export default connect(mapStateToProps)(MoviePage);
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

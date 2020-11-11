@@ -47,6 +47,14 @@ const appData = (state = initialState, action) => {
             promotedMovie: adaptedMovie
           }
       );
+    case ActionType.LOAD_SELECTED_MOVIE:
+      const adaptedSelectedMovie = adaptToClient(action.payload);
+      return extend(
+          state,
+          {
+            selectedMovie: adaptedSelectedMovie
+          }
+      );
   }
 
   return state;

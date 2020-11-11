@@ -1,4 +1,4 @@
-import {RatingSystem, ALL_GENRE} from "./const";
+import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
 
 export const generateVideoType = (url) => {
   const urlPieces = url.split(`.`);
@@ -9,6 +9,26 @@ export const generateVideoType = (url) => {
 
 export const generateDurationString = (duration) => {
   return `${Math.floor(duration / 60)}h ${duration % 60}m`;
+};
+
+export const generateStarringString = (actors) => {
+  let text = ``;
+  let end = ``;
+  let actorsLocal = actors.slice();
+
+  if (actorsLocal.length > MAXIMUM_DISPLAYED_ACTORS) {
+    actorsLocal = actors.slice(0, MAXIMUM_DISPLAYED_ACTORS);
+
+    end = ` and other`;
+  }
+
+  text = actorsLocal.join(`, `);
+
+  text = text.slice(0, -2);
+
+  text += end;
+
+  return text;
 };
 
 export const generateRatingText = (rating) => {
