@@ -13,6 +13,7 @@ const HeaderSetting = {
 
 const MovieCardTop = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick} = props;
+  console.log(movie);
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = movie;
 
   return (
@@ -65,6 +66,7 @@ const MovieCardTop = (props) => {
                 type="button"
                 onClick={(evt) => {
                   evt.preventDefault();
+                  console.log(isFavorite);
                   onMyListClick(id, isFavorite);
                 }}
               >
