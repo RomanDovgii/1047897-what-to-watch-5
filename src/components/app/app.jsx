@@ -71,7 +71,7 @@ const App = (props) => {
           )}
         />
 
-        <Route
+        <PrivateRoute
           exact
           path={AppRoute.ADD_REVIEW}
           render={({history}) => (
