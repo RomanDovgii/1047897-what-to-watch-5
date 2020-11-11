@@ -54,7 +54,6 @@ export const fetchSelectedMovieComments = (movieId) => (dispatch, _getState, api
 export const addMovieToFavorite = (movieId, movieStatus) => (dispatch, _getState, api) => (
   api.post(APIRoute.FAVORITE + `/${movieId}/${movieStatus ? 0 : 1}`)
     .then(() => {
-      console.log(`${APIRoute.FAVORITE + `/${movieId}/${movieStatus ? 0 : 1}`}`);
       dispatch(addMovieToFavoriteLocal(movieId));
     })
     .catch((err) => {
@@ -62,3 +61,12 @@ export const addMovieToFavorite = (movieId, movieStatus) => (dispatch, _getState
     })
 );
 
+export const addComment = (movieId, {rating, comment}) => (dispatch, _getState, api) => (
+  api.post(APIRoute.COMMENTS + `/${movieId}`, {rating, comment})
+    .then(() => {
+      dispatch(redirectToRoute(`/films/${movieId}`));
+    })
+    .catch((err) => {
+      throw err;
+    })
+);

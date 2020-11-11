@@ -30,7 +30,7 @@ class MovieCard extends PureComponent {
   }
 
   render() {
-    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth} = this.props;
+    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth, onMyListClick} = this.props;
 
     const {name, genre, released, backgroundImage, posterImage, backgroundColor, id, isFavorite} = selectedMovie;
 
@@ -76,7 +76,15 @@ class MovieCard extends PureComponent {
                   </svg>
                   <span>Play</span>
                 </button>
-                <button className="btn btn--list movie-card__button" type="button">
+                <button
+                  className="btn btn--list movie-card__button"
+                  type="button"
+                  onClick = {(evt) => {
+                    evt.preventDefault();
+
+                    onMyListClick(id, isFavorite);
+                  }}
+                >
                   {isFavorite
                     ? <svg viewBox="0 0 18 14" width="18" height="14">
                       <use xlinkHref="#in-list"></use>

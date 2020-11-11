@@ -7,12 +7,12 @@ import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../util
 import {moviePageType} from "../types/types";
 import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
-import {fetchSelectedMovie, fetchSelectedMovieComments} from "../../store/actions/api-actions";
+import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
 
 const MovieCardWrapper = withActiveTabs(MovieCard);
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick} = props;
 
   const id = window.location.pathname.slice(7);
 
@@ -27,6 +27,7 @@ const MoviePage = (props) => {
         id = {id}
         fetchMovie = {fetchMovie}
         isAuth = {isAuth}
+        onMyListClick = {onMyListClick}
       />
 
       <div className="page-content">
@@ -54,6 +55,9 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
     dispatch(fetchSelectedMovieComments(id));
+  },
+  onMyListClick(id, status) {
+    dispatch(addMovieToFavorite(id, status));
   }
 });
 

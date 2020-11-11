@@ -6,6 +6,8 @@ import MoviePoster from "./modules/movie-poster";
 import HeadingFirstLevel from "./modules/heading-first-level";
 import {onUserIconClickType} from "../types/types";
 import withActiveReviewForm from "../hoc/with-active-review-form/with-active-review-form";
+import {connect} from "react-redux";
+import {addComment} from "../../store/actions/api-actions";
 
 const AddReviewWrapper = withActiveReviewForm(AddReview);
 
@@ -45,4 +47,18 @@ const AddReviewPage = (props) => {
 
 AddReviewPage.propTypes = onUserIconClickType;
 
-export default AddReviewPage;
+const mapStateToProps = ({}) => ({});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(id, commentLocal, raitingLocal) {
+    const commentData = {
+      comment: commentLocal,
+      raiting: raitingLocal
+    };
+
+    dispatch(addComment(id, commentData));
+  }
+});
+
+export {AddReviewPage};
+export default connect(mapStateToProps, mapDispatchToProps)(AddReviewPage);

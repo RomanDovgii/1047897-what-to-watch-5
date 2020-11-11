@@ -65,13 +65,11 @@ const appData = (state = initialState, action) => {
       );
     case ActionType.ADD_MOVIE_TO_FAVORITE:
       const index = action.payload - 1;
-      const updatedElement = state.originalMovies[index];
+      const updatedElement = Object.assign({}, state.originalMovies[index]);
       const isFavorite = updatedElement.isFavorite;
       updatedElement.isFavorite = !isFavorite;
       const updatedOriginalMovies = [...state.originalMovies];
       updatedOriginalMovies.splice(index, 1, updatedElement);
-
-      console.log(state.promotedMovie);
 
       return extend(
           state,
