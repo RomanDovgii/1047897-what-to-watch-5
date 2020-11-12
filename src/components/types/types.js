@@ -150,10 +150,6 @@ const videoUrlType = {
   videoUrl: PropTypes.string.isRequired
 };
 
-const onChangeType = {
-  onChange: functionType
-};
-
 const onSubmitType = {
   onSubmit: functionType
 };
