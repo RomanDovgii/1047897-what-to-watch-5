@@ -1,4 +1,5 @@
 import React from "react";
+import {movieCardBackgroundType} from "../../types/types";
 
 const MovieCardBackground = (props) => {
   const {backgroundImage, name} = props;
@@ -9,5 +10,7 @@ const MovieCardBackground = (props) => {
     </div>
   );
 };
+
+MovieCardBackground.propTypes = movieCardBackgroundType;
 
 export default MovieCardBackground;

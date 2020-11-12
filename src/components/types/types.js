@@ -210,11 +210,55 @@ const isErrorType = {
   isError: PropTypes.bool.isRequired
 };
 
+const backgroundImageType = {
+  backgroundImage: PropTypes.string.isRequired
+};
+
+const nameType = {
+  name: PropTypes.string.isRequired
+};
+
+const posterType = {
+  poster: PropTypes.string.isRequired
+};
+
+const onRatingChangeType = {
+  onRatingChange: functionType
+};
+
+const onReviewChangeType = {
+  onReviewChange: functionType
+};
+
+const backgroundColorType = {
+  backgroundColor: PropTypes.string.isRequired
+};
+
+const isReviewFilledType = {
+  isReviewFilled: PropTypes.bool.isRequired
+};
+
+const isRatingFilledType = {
+  isRatingFilled: PropTypes.bool.isRequired
+};
+
+const isFormLockedType = {
+  isFormLocked: PropTypes.bool.isRequired
+};
+
+const idType = {
+  id: PropTypes.string.isRequired
+};
+
+const changeFormLockType = {
+  changeFormLock: functionType
+};
+
 export const smallMovieCardType = Object.assign({}, movieObjectType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieObjectType, moviesType, commentsType);
 
 export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType);
-export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovie, moviesType, commentsType);
+export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, moviesType, commentsType);
 export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);
 export const userBlockType = Object.assign({}, onUserIconClickType, isRenderedType);
@@ -231,8 +275,10 @@ export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
 export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
 export const withActivePlayerType = Object.assign({}, callSourceType, imageNameType, isPlayingType, videoUrlType);
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovie);
-export const addReviewType = Object.assign({}, ratingType, reviewType, onChangeType, onSubmitType);
+export const addReviewType = Object.assign({}, onRatingChangeType, onReviewChangeType, backgroundColorType, isReviewFilledType, isRatingFilledType, isFormLockedType, ratingType, reviewType, idType, onSubmitType, changeFormLockType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
 export const playerPageType = Object.assign({}, movieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
 export const privateRouteType = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);
 export const signInType = Object.assign({}, onSubmitType, isErrorType);
+export const movieCardBackgroundType = Object.assign({}, backgroundImageType, nameType);
+export const moviePosterType = Object.assign({}, posterType, nameType);

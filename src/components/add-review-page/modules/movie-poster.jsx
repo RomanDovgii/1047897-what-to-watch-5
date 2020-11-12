@@ -1,4 +1,5 @@
 import React from "react";
+import {moviePosterType} from "../../types/types";
 
 const MoviePoster = (props) => {
   const {poster, name} = props;
@@ -9,5 +10,7 @@ const MoviePoster = (props) => {
     </div>
   );
 };
+
+MoviePoster.propTypes = moviePosterType;
 
 export default MoviePoster;
