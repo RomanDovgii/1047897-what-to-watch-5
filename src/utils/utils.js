@@ -1,4 +1,4 @@
-import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE} from "./const";
+import {MAXIMUM_DISPLAYED_ACTORS, RatingSystem, ALL_GENRE, COLOR_DIFFERENCE} from "./const";
 
 export const generateVideoType = (url) => {
   const urlPieces = url.split(`.`);
@@ -91,4 +91,10 @@ export const adaptToClient = (movie) => {
   );
 
   return adaptedMovie;
+};
+
+export const calculateTextInputColor = (basicColor) => {
+  const basicColorNumber = parseInt(`${basicColor.replace(`#`, ``)}`, 16);
+  const finalColor = (basicColorNumber + COLOR_DIFFERENCE).toString(16);
+  return `#${finalColor}`;
 };

@@ -97,7 +97,7 @@ class MovieCard extends PureComponent {
                   <span>My list</span>
                 </button>
                 {isAuth
-                  ? <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
+                  ? <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
                   : null
                 }
               </div>

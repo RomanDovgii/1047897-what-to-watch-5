@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {UserRating} from "../../../utils/const";
+import {UserRating, ReviewLength} from "../../../utils/const";
 
 const withActiveReviewForm = (Component) => {
   class WithActiveReviewForm extends PureComponent {
@@ -8,33 +8,53 @@ const withActiveReviewForm = (Component) => {
 
       this.state = {
         rating: `${UserRating.DEFAULT}`,
-        review: ``
+        review: ``,
+        isRatingFilled: false,
+        isReviewFilled: false,
+        isFormLocked: false
       };
 
-      this._handleChange = this._handleChange.bind(this);
-      this._handleSubmit = this._handleSubmit.bind(this);
+      this._handleRatingChange = this._handleRatingChange.bind(this);
+      this._handleReviewChange = this._handleReviewChange.bind(this);
+      this._changeFormLock = this._changeFormLock.bind(this);
     }
 
-    _handleChange(evt) {
+    _handleRatingChange(evt) {
       const {name, value} = evt.target;
 
       this.setState({
-        [name]: value
+        [name]: value,
+        isRatingFilled: true
       });
     }
 
-    _handleSubmit(evt) {
-      evt.preventDefault();
+    _handleReviewChange(evt) {
+      const {name, value} = evt.target;
+
+      this.setState({
+        [name]: value,
+        isReviewFilled: value.length > ReviewLength.MINIMUM && value.length < ReviewLength.MAXIMUM ? true : false
+      });
+    }
+
+    _changeFormLock() {
+      this.setState({
+        isFormLocked: !this.state.isFormLocked
+      });
     }
 
     render() {
       return (
         <Component
           {...this.props}
-          onChange={this._handleChange}
-          onSubmit={this._handleSubmit}
+          onRatingChange={this._handleRatingChange}
+          onReviewChange={this._handleReviewChange}
+          isReviewFilled={this.state.isReviewFilled}
+          isRatingFilled={this.state.isRatingFilled}
+          isFormLocked={this.state.isFormLocked}
           rating={this.state.rating}
           review={this.state.review}
+          changeFormLock={this._changeFormLock}
         />
       );
     }

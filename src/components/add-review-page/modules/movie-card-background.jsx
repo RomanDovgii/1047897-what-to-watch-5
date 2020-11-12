@@ -1,9 +1,11 @@
 import React from "react";
 
-const MovieCardBackground = () => {
+const MovieCardBackground = (props) => {
+  const {backgroundImage, name} = props;
+
   return (
     <div className="movie-card__bg">
-      <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+      <img src={backgroundImage} alt={name} />
     </div>
   );
 };

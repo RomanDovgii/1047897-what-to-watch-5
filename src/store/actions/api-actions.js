@@ -61,12 +61,15 @@ export const addMovieToFavorite = (movieId, movieStatus) => (dispatch, _getState
     })
 );
 
-export const addComment = (movieId, {rating, comment}) => (dispatch, _getState, api) => (
+export const addReview = (movieId, changeFormLock, {rating, comment}) => (dispatch, _getState, api) => (
   api.post(APIRoute.COMMENTS + `/${movieId}`, {rating, comment})
-    .then(() => {
+    .then((response) => {
+      console.log(response);
+      changeFormLock();
       dispatch(redirectToRoute(`/films/${movieId}`));
     })
     .catch((err) => {
+      changeFormLock();
       throw err;
     })
 );

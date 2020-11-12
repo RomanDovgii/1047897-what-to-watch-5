@@ -1,9 +1,11 @@
 import React from "react";
 
-const MoviePoster = () => {
+const MoviePoster = (props) => {
+  const {poster, name} = props;
+
   return (
     <div className="movie-card__poster movie-card__poster--small">
-      <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+      <img src={poster} alt={name} width="218" height="327" />
     </div>
   );
 };

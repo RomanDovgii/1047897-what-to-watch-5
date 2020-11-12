@@ -7,6 +7,7 @@ export const MAXIMUM_DISPLAYED_ACTORS = 4;
 export const MAXIMUM_DISPLAYED_MOVIES = 8;
 export const HOURS_IN_SECONDS = 3600;
 export const MINUTES_IN_SECONDS = 60;
+export const COLOR_DIFFERENCE = 0x71312;
 export const ZERO = 0;
 export const ALL_GENRE = `All genres`;
 
@@ -93,6 +94,11 @@ export const Id = {
 export const CallSource = {
   CATALOG: `catalog`,
   PLAYER: `player`
+};
+
+export const ReviewLength = {
+  MINIMUM: 50,
+  MAXIMUM: 400
 };
 
 export const MovieScreenTab = {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import Header from "../header/header";
 import AddReview from "./modules/add-review";
 import MovieCardBackground from "./modules/movie-card-background";
@@ -6,8 +6,8 @@ import MoviePoster from "./modules/movie-poster";
 import HeadingFirstLevel from "./modules/heading-first-level";
 import {onUserIconClickType} from "../types/types";
 import withActiveReviewForm from "../hoc/with-active-review-form/with-active-review-form";
+import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
-import {addComment} from "../../store/actions/api-actions";
 
 const AddReviewWrapper = withActiveReviewForm(AddReview);
 
@@ -19,45 +19,69 @@ const HeaderSetting = {
   IS_USER_BLOCK: true
 };
 
-const AddReviewPage = (props) => {
+class AddReviewPage extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  const {onUserIconClick, onWTWLogoClick} = props;
+    this._isLoading = true;
+  }
 
-  return (
-    <section className="movie-card movie-card--full">
-      <div className="movie-card__header">
-        <MovieCardBackground/>
-        <HeadingFirstLevel/>
-        <Header
-          onUserIconClick = {onUserIconClick}
-          onWTWLogoClick = {onWTWLogoClick}
-          isUserPage = {HeaderSetting.IS_USER_PAGE}
-          isMyList = {HeaderSetting.IS_MY_LIST}
-          isSignIn = {HeaderSetting.IS_SIGN_IN}
-          isNavigation = {HeaderSetting.IS_NAVIGATION}
-          isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+  componentDidMount() {
+    const {fetchMovie} = this.props;
+    const pathParts = window.location.pathname.split(`/`);
+    this._id = pathParts[(pathParts.length - 2)];
+    fetchMovie(this._id);
+    this._isLoading = false;
+  }
+
+  render() {
+    const {onUserIconClick, onWTWLogoClick, selectedMovie} = this.props;
+    const {backgroundColor, posterImage, backgroundImage, name} = selectedMovie;
+
+    return !this._isLoading
+      ? <section
+        className="movie-card movie-card--full"
+        style={{background: `${backgroundColor}`}}>
+        <div className="movie-card__header">
+          <MovieCardBackground
+            backgroundImage = {backgroundImage}
+            name = {name}
+          />
+          <HeadingFirstLevel/>
+          <Header
+            onUserIconClick = {onUserIconClick}
+            onWTWLogoClick = {onWTWLogoClick}
+            isUserPage = {HeaderSetting.IS_USER_PAGE}
+            isMyList = {HeaderSetting.IS_MY_LIST}
+            isSignIn = {HeaderSetting.IS_SIGN_IN}
+            isNavigation = {HeaderSetting.IS_NAVIGATION}
+            isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+          />
+          <MoviePoster
+            poster = {posterImage}
+            name = {name}
+          />
+        </div>
+
+        <AddReviewWrapper
+          backgroundColor = {backgroundColor}
+          id = {this._id}
         />
-        <MoviePoster/>
-      </div>
-
-      <AddReviewWrapper/>
-    </section>
-  );
-};
+      </section>
+      : null;
+  }
+}
 
 AddReviewPage.propTypes = onUserIconClickType;
 
-const mapStateToProps = ({}) => ({});
+const mapStateToProps = ({DATA}) => ({
+  selectedMovie: DATA.selectedMovie
+});
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(id, commentLocal, raitingLocal) {
-    const commentData = {
-      comment: commentLocal,
-      raiting: raitingLocal
-    };
-
-    dispatch(addComment(id, commentData));
-  }
+  fetchMovie(movieId) {
+    dispatch(fetchSelectedMovie(movieId));
+  },
 });
 
 export {AddReviewPage};
