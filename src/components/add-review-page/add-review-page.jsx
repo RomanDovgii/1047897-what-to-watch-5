@@ -9,6 +9,7 @@ import {onUserIconClickType} from "../types/types";
 import withActiveReviewForm from "../hoc/with-active-review-form/with-active-review-form";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
+import LoadingPage from "../loading-page/loading-page";
 
 const AddReviewWrapper = withActiveReviewForm(AddReview);
 
@@ -75,7 +76,7 @@ class AddReviewPage extends PureComponent {
           id = {this._id}
         />
       </section>
-      : null;
+      : <LoadingPage/>;
   }
 }
 

@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {startPlaying} from "../../store/actions/action";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {generateVideoType} from "../../utils/utils";
+import LoadingPage from "../loading-page/loading-page";
 
 class PlayerPage extends PureComponent {
   constructor(props) {
@@ -98,7 +99,7 @@ class PlayerPage extends PureComponent {
           >
             <source ref={this._sourceRef} src={videoLink} type={generateVideoType(videoLink)}/>
           </video>
-          : null
+          : <LoadingPage></LoadingPage>
         }
         <PlayerExit
           onExitButtonClick = {this._handleExitButtonClick}
