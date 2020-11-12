@@ -6,7 +6,7 @@ import {addReview} from "../../../store/actions/api-actions";
 import {calculateTextInputColor} from "../../../utils/utils";
 
 const AddReview = (props) => {
-  const {onRatingChange, onReviewChange, backgroundColor, isReviewFilled, isRatingFilled, isFormLocked, rating, review, id, onSubmit, changeFormLock} = props;
+  const {onRatingChange, onReviewChange, backgroundColor, isReviewFilled, isRatingFilled, isFormLocked, rating, review, id, onSubmit, onChangeFormLock} = props;
 
   return (
     <div className="add-review">
@@ -19,8 +19,8 @@ const AddReview = (props) => {
             "rating": rating,
             "comment": review
           };
-          changeFormLock();
-          onSubmit(id, changeFormLock, reviewData);
+          onChangeFormLock();
+          onSubmit(id, onChangeFormLock, reviewData);
         }}
         disabled={isFormLocked}>
         <div className="rating">

@@ -32,7 +32,7 @@ const withActiveMainPlayer = (Component) => {
           {...this.props}
           onTimeUpdate={this._handleUpdateTime}
           onLoadingEnd={this._handleLoadingEnd}
-          isLoading={this.state.isLoading}
+          isPlayerLoading={this.state.isLoading}
           currentTime={this.state.currentTime}
         />
       );

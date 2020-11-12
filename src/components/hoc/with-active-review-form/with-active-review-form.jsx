@@ -54,7 +54,7 @@ const withActiveReviewForm = (Component) => {
           isFormLocked={this.state.isFormLocked}
           rating={this.state.rating}
           review={this.state.review}
-          changeFormLock={this._changeFormLock}
+          onChangeFormLock={this._changeFormLock}
         />
       );
     }

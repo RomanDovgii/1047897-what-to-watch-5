@@ -8,13 +8,15 @@ import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
 import {onBigPlayButtonClickType} from "../types/types";
 import withActiveMainPlayer from "../hoc/with-active-main-player/with-active-main-player";
+import withLoading from "../hoc/with-loading/with-loading";
 import {connect} from "react-redux";
 import {startPlaying, redirectToRoute} from "../../store/actions/action";
 import browserHistory from "../../browser-history";
 import PrivateRoute from "../private-route/private-route";
 import {AppRoute} from "../../utils/const";
 
-const PlayerPageWrapper = withActiveMainPlayer(PlayerPage);
+const PlayerPageWrapper = withLoading(withActiveMainPlayer(PlayerPage));
+const AddReviewWrapper = withLoading(AddReviewPage);
 
 const App = (props) => {
   const {onBigPlayButtonClick, onMyListClick} = props;
@@ -77,7 +79,7 @@ const App = (props) => {
           exact
           path={AppRoute.ADD_REVIEW}
           render={({history, match}) => (
-            <AddReviewPage
+            <AddReviewWrapper
               id = {match.params.id}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}

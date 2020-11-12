@@ -1,20 +1,24 @@
 import React from "react";
 import {connect} from "react-redux";
+import {useLocation} from "react-router-dom";
 import MovieCard from "./modules/movie-card";
 import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
 import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../utils/const";
 import {moviePageType} from "../types/types";
 import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
+import withLoading from "../hoc/with-loading/with-loading";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
 
-const MovieCardWrapper = withActiveTabs(MovieCard);
+const MovieCardWrapper = withLoading(withActiveTabs(MovieCard));
 
 const MoviePage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick} = props;
 
-  const id = window.location.pathname.slice(7);
+  const path = useLocation().pathname;
+
+  const id = path.slice(7);
 
   return (
     <React.Fragment>

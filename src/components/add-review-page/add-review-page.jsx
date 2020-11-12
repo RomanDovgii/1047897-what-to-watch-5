@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {withRouter} from "react-router-dom";
 import Header from "../header/header";
 import AddReview from "./modules/add-review";
 import MovieCardBackground from "./modules/movie-card-background";
@@ -22,23 +23,29 @@ const HeaderSetting = {
 class AddReviewPage extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._isLoading = true;
   }
 
   componentDidMount() {
-    const {fetchMovie} = this.props;
-    const pathParts = window.location.pathname.split(`/`);
+    const {fetchMovie, match} = this.props;
+    const path = match.url;
+    const pathParts = path.split(`/`);
     this._id = pathParts[(pathParts.length - 2)];
     fetchMovie(this._id);
-    this._isLoading = false;
+  }
+
+  componentDidUpdate() {
+    const {onLoadCompletion, selectedMovie} = this.props;
+
+    if (JSON.stringify(selectedMovie) !== JSON.stringify({})) {
+      onLoadCompletion();
+    }
   }
 
   render() {
-    const {onUserIconClick, onWTWLogoClick, selectedMovie} = this.props;
+    const {onUserIconClick, onWTWLogoClick, selectedMovie, isLoading} = this.props;
     const {backgroundColor, posterImage, backgroundImage, name} = selectedMovie;
 
-    return !this._isLoading
+    return !isLoading
       ? <section
         className="movie-card movie-card--full"
         style={{background: `${backgroundColor}`}}>
@@ -85,4 +92,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {AddReviewPage};
-export default connect(mapStateToProps, mapDispatchToProps)(AddReviewPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddReviewPage));

@@ -15,22 +15,24 @@ const HeaderSetting = {
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
-
-    this._isLoading = false;
   }
 
   componentDidMount() {
     const {fetchMovie, id} = this.props;
 
     fetchMovie(id);
-    this._isLoading = true;
   }
 
-  componentWillUnmount() {
+  componentDidUpdate() {
+    const {onLoadCompletion, selectedMovie} = this.props;
+
+    if (JSON.stringify(selectedMovie) !== JSON.stringify({})) {
+      onLoadCompletion();
+    }
   }
 
   render() {
-    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth, onMyListClick} = this.props;
+    const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth, onMyListClick, isLoading} = this.props;
 
     const {name, genre, released, backgroundImage, posterImage, backgroundColor, id, isFavorite} = selectedMovie;
 
@@ -134,7 +136,7 @@ class MovieCard extends PureComponent {
                 </ul>
               </nav>
 
-              {this._isLoading
+              {!isLoading
                 ? <Tabs
                   screen = {shownScreen}
                   movie = {selectedMovie}

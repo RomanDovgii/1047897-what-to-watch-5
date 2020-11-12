@@ -1,4 +1,5 @@
 import React, {createRef, PureComponent} from "react";
+import {withRouter} from "react-router-dom";
 import PlayerExit from "./modules/player-exit";
 import PlayerControls from "./modules/player-controls";
 import {playerPageType} from "../types/types";
@@ -11,13 +12,9 @@ class PlayerPage extends PureComponent {
   constructor(props) {
     super(props);
 
-    this._isLoaded = false;
-
     this._videoRef = createRef();
     this._sourceRef = createRef();
     this._movieDuration = 0;
-
-    this._id = window.location.pathname.slice(8);
 
     this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
     this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
@@ -25,17 +22,27 @@ class PlayerPage extends PureComponent {
   }
 
   componentDidMount() {
-    const {fetchMovie} = this.props;
+    const {fetchMovie, match, isLoading} = this.props;
     const video = this._videoRef.current;
+
+    const path = match.url;
+    this._id = path.slice(8);
 
     fetchMovie(this._id);
 
-    if (this._isLoaded) {
+    if (!isLoading) {
       video.onloadedmetadata = () => {
         this._movieDuration = video.duration;
       };
     }
-    this._isLoaded = true;
+  }
+
+  componentDidUpdate() {
+    const {onLoadCompletion, selectedMovie} = this.props;
+
+    if (JSON.stringify(selectedMovie) !== JSON.stringify({})) {
+      onLoadCompletion();
+    }
   }
 
   _handlePlayButtonClick() {
@@ -68,12 +75,12 @@ class PlayerPage extends PureComponent {
   }
 
   render() {
-    const {movie, isPlaying, isLoading, currentTime, onTimeUpdate, onLoadingEnd} = this.props;
-    const {videoLink, backgroundImage, name} = movie;
+    const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading} = this.props;
+    const {videoLink, backgroundImage, name} = selectedMovie;
 
     return (
       <div className="player">
-        {this._isLoaded
+        {!isLoading
           ? <video
             ref={this._videoRef}
             autoPlay={isPlaying}
@@ -98,7 +105,7 @@ class PlayerPage extends PureComponent {
         />
         <PlayerControls
           isPlaying={isPlaying}
-          isLoading={isLoading}
+          isLoading={isPlayerLoading}
           duration={this._movieDuration}
           onPlayButtonClick={this._handlePlayButtonClick}
           onFullScreenButtonClick={this._handleFullScreenButtonClick}
@@ -114,7 +121,7 @@ PlayerPage.propTypes = playerPageType;
 
 const mapStateToProps = ({STATE, DATA}) => ({
   isPlaying: STATE.isPlayerPlaying,
-  movie: DATA.selectedMovie
+  selectedMovie: DATA.selectedMovie
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -128,4 +135,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {PlayerPage};
 
-export default connect(mapStateToProps, mapDispatchToProps)(PlayerPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayerPage));
