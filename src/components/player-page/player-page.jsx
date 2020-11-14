@@ -25,9 +25,7 @@ class PlayerPage extends PureComponent {
   componentDidMount() {
     const {fetchMovie, match, isLoading} = this.props;
     const video = this._videoRef.current;
-
-    const path = match.url;
-    this._id = path.slice(8);
+    this._id = match.params.id;
 
     fetchMovie(this._id);
 

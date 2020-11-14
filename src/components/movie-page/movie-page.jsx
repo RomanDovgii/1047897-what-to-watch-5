@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {useLocation} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import MovieCard from "./modules/movie-card";
 import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
@@ -16,9 +16,7 @@ const MovieCardWrapper = withLoading(withActiveTabs(MovieCard));
 const MoviePage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick} = props;
 
-  const path = useLocation().pathname;
-
-  const id = path.slice(7);
+  const id = useParams().id;
 
   return (
     <React.Fragment>

@@ -28,9 +28,7 @@ class AddReviewPage extends PureComponent {
 
   componentDidMount() {
     const {fetchMovie, match} = this.props;
-    const path = match.url;
-    const pathParts = path.split(`/`);
-    this._id = pathParts[(pathParts.length - 2)];
+    this._id = match.params.id;
     fetchMovie(this._id);
   }
 
