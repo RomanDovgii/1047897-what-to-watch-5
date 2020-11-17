@@ -1,6 +1,6 @@
 import React from "react";
-import {CatalogHeadingVariant} from "../../../utils/const";
-import {headingType} from "../../types/types";
+import {CatalogHeadingVariant} from "../../utils/const";
+import {headingType} from "../types/types";
 
 const CatalogHeading = (props) => {
   const {heading} = props;

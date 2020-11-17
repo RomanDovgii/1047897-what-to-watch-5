@@ -2,7 +2,7 @@ import React from "react";
 import GenresList from "./modules/genres-list";
 import MoviesList from "./modules/movie-list";
 import MoreButton from "./modules/more-button";
-import CatalogHeading from "./modules/catalog-heading";
+import CatalogHeading from "../catalog-heading/catalog-heading";
 import {catalogType} from "../types/types";
 import {connect} from "react-redux";
 import {showMore} from "../../store/actions/action";
