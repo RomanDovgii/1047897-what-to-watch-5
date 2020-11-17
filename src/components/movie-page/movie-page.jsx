@@ -9,6 +9,7 @@ import {moviePageType} from "../types/types";
 import withActiveTabs from "../../hoc/with-active-tabs/with-active-tabs";
 import withLoading from "../../hoc/with-loading/with-loading";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
+import {redirectToRoute, startPlaying} from "../../store/actions/action";
 import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
 
 const MovieCardWrapper = withLoading(withActiveTabs(MovieCard));
@@ -60,6 +61,10 @@ const mapDispatchToProps = (dispatch) => ({
   },
   onMyListClick(id, status) {
     dispatch(addMovieToFavorite(id, status));
+  },
+  onPlayButtonClick(url) {
+    dispatch(redirectToRoute(url));
+    dispatch(startPlaying());
   }
 });
 

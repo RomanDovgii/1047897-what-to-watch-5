@@ -6,6 +6,7 @@ import Catalog from "../catalog/catalog";
 import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {connect} from "react-redux";
+import {redirectToRoute, startPlaying} from "../../store/actions/action";
 
 const MainPage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movies, genres} = props;
@@ -31,6 +32,13 @@ const MainPage = (props) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onPlayButtonClick(url) {
+    dispatch(redirectToRoute(url));
+    dispatch(startPlaying());
+  }
+});
+
 const mapStateToProps = ({DATA}) => ({
   movies: filterMoviesByGenre(DATA),
   genres: DATA.genres,
@@ -39,4 +47,4 @@ const mapStateToProps = ({DATA}) => ({
 MainPage.propTypes = mainPageType;
 
 export {MainPage};
-export default connect(mapStateToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
