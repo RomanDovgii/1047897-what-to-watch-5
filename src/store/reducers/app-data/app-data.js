@@ -3,7 +3,7 @@ import {ALL_GENRE, ActionType} from "../../../utils/const";
 
 const initialState = {
   selectedGenre: ALL_GENRE,
-  genres: createGenresList([]),
+  genres: [],
   originalMovies: [],
   promotedMovie: {},
   selectedMovie: {},
