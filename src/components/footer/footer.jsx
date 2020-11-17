@@ -1,15 +1,24 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {redirectToRoute} from "../../store/actions/action";
+import {AppRoute} from "../../utils/const";
+import {onWTWLogoClickType} from "../types/types";
 
-const Footer = () => {
+const Footer = (props) => {
+
+  const {onWTWLogoClick} = props;
+
   return (
     <footer className="page-footer">
       <div className="logo">
-        <Link to="/" className="logo__link logo__link--light">
+        <a
+          href=""
+          className="logo__link logo__link--light"
+          onClick={onWTWLogoClick}>
           <span className="logo__letter logo__letter--1">W</span>
           <span className="logo__letter logo__letter--2">T</span>
           <span className="logo__letter logo__letter--3">W</span>
-        </Link>
+        </a>
       </div>
 
       <div className="copyright">
@@ -19,4 +28,13 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+Footer.propTypes = onWTWLogoClickType;
+
+const mapDispatchToProps = (dispatch) => ({
+  onWTWLogoClick() {
+    dispatch(redirectToRoute(AppRoute.MAIN));
+  }
+});
+
+export {Footer};
+export default connect(null, mapDispatchToProps)(Footer);
