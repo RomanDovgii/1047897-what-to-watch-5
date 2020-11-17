@@ -64,3 +64,105 @@ it(
       });
     }
 );
+
+it(
+    `Reducer with ActionType.START_PLAYING changes isPlayerPlaying from true to false`,
+    () => {
+      expect(appState(
+          {
+            isPlayerPlaying: true
+          },
+          {
+            type: ActionType.START_PLAYING
+          }
+      ))
+      .toEqual({
+        isPlayerPlaying: false
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.START_PLAYING changes isPlayerPlaying from false to true`,
+    () => {
+      expect(appState(
+          {
+            isPlayerPlaying: false
+          },
+          {
+            type: ActionType.START_PLAYING
+          }
+      ))
+      .toEqual({
+        isPlayerPlaying: true
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.THROW_ERR changes isAuthError from false to true`,
+    () => {
+      expect(appState(
+          {
+            isAuthError: false
+          },
+          {
+            type: ActionType.THROW_ERR
+          }
+      ))
+      .toEqual({
+        isAuthError: true
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.THROW_ERR doesn't change isAuthError from true to false`,
+    () => {
+      expect(appState(
+          {
+            isAuthError: true
+          },
+          {
+            type: ActionType.THROW_ERR
+          }
+      ))
+      .toEqual({
+        isAuthError: true
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.REMOVE_ERR changes isAuthError from true to false`,
+    () => {
+      expect(appState(
+          {
+            isAuthError: true
+          },
+          {
+            type: ActionType.REMOVE_ERR
+          }
+      ))
+      .toEqual({
+        isAuthError: false
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.REMOVE_ERR doesn't change isAuthError from false to true`,
+    () => {
+      expect(appState(
+          {
+            isAuthError: false
+          },
+          {
+            type: ActionType.REMOVE_ERR
+          }
+      ))
+      .toEqual({
+        isAuthError: false
+      });
+    }
+);
