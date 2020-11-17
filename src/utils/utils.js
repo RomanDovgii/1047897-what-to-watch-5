@@ -98,3 +98,5 @@ export const calculateTextInputColor = (basicColor) => {
   const finalColor = (basicColorNumber + COLOR_DIFFERENCE).toString(16);
   return `#${finalColor}`;
 };
+
+export const noop = () => {};
