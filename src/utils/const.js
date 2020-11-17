@@ -19,24 +19,6 @@ export const ACTORS = [`Tom Hanks`, `Will Smith`, `Leonardo DiCaprio`, `Robert D
 
 export const FISH_TEXT = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc sodales convallis elit et lacinia. Quisque quis cursus lectus. Praesent elementum semper felis ut pretium. Ut eu mi mollis, luctus purus ac, aliquet ipsum. Maecenas libero nunc, faucibus a porttitor eget, laoreet hendrerit diam. Aliquam eget purus sit amet augue feugiat efficitur in et augue. Curabitur nec nulla a mauris maximus semper vel in dui. Vivamus mollis urna ex, id facilisis velit facilisis tincidunt. Maecenas vitae congue massa. Maecenas vel tortor justo.`;
 
-export const PROMOTED_MOVIE = {
-  name: `The Grand Budapest Hotel`,
-  genre: `Drama`,
-  release: 2014,
-  descriptionParagraphs: [
-    `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-    `Gustave prides himself on providing first-className service to the hotel's guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave's lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.`
-  ],
-  director: `Wes Andreson`,
-  actors: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`, `Tony Revoloru`, `Tilda Swinton`, `Tom Wilkinson`, `Owen Wilkinson`, `Adrien Brody`, `Ralph Fiennes`, `Jeff Goldblum`],
-  rating: 8.9,
-  ratingsCount: 240,
-  videoUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
-  duration: 99,
-  id: 1,
-  isMyList: false
-};
-
 export const CatalogHeadingVariant = {
   CATALOG: `Catalog`, // скрыт
   MOVIE_PAGE: `More like this` // не скрыт
