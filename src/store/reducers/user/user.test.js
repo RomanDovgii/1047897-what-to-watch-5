@@ -61,7 +61,8 @@ describe(
           }
       );
 
-      it(`Should make a correct API call to /login through login`,
+      it(
+          `Should make a correct API call to /login through login`,
           () => {
             const apiMock = new MockAdapter(api);
             const dispatch = jest.fn();
