@@ -1,5 +1,5 @@
 import React from "react";
-import Comment from "../tabs/modules/comment";
+import Comment from "../comment/comment";
 import {tabWithCommentsType} from "../types/types";
 
 const ReviewsTab = (props) => {

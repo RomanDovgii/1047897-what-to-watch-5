@@ -1,5 +1,5 @@
 import React from "react";
-import {commentType} from "../../types/types";
+import {commentType} from "../types/types";
 
 const Comment = (props) => {
   const {commentData} = props;
