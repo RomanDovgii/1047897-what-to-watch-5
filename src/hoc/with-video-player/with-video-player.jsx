@@ -1,7 +1,7 @@
 import React from "react";
-import VideoPlayer from "../../video-player/video-player";
+import VideoPlayer from "../../components/video-player/video-player";
 import withActivePlayer from "../with-active-player/with-active-player";
-import {movieType} from "../../types/types";
+import {movieType} from "../../components/types/types";
 
 const VideoPlayerWrapper = withActivePlayer(VideoPlayer);
 

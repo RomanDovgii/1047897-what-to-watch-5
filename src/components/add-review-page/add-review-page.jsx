@@ -6,7 +6,7 @@ import MovieCardBackground from "./modules/movie-card-background";
 import MoviePoster from "./modules/movie-poster";
 import HeadingFirstLevel from "./modules/heading-first-level";
 import {onUserIconClickType} from "../types/types";
-import withActiveReviewForm from "../hoc/with-active-review-form/with-active-review-form";
+import withActiveReviewForm from "../../hoc/with-active-review-form/with-active-review-form";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
 import LoadingPage from "../loading-page/loading-page";

@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {withActiveCardType} from "../../types/types";
+import {withActiveCardType} from "../../components/types/types";
 
 const withActiveCard = (Component) => {
   class WithActiveCard extends PureComponent {

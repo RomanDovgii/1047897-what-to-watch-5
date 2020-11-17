@@ -8,10 +8,11 @@ const Comment = (props) => {
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
-  // const year = date.getFullYear();
-  // const day = date.getDate();
-  // const monthNumerical = date.getMonth() + 1;
-  // const monthName = date.toLocaleString(`default`, {month: `long`});
+  const localDate = new Date(date);
+
+  const year = localDate.getFullYear();
+  const day = localDate.getDate();
+  const monthName = localDate.toLocaleString(`default`, {month: `long`});
 
   return (
     <div className="review">
@@ -20,7 +21,7 @@ const Comment = (props) => {
 
         <footer className="review__details">
           <cite className="review__author">{user.name}</cite>
-          <time className="review__date" dateTime={`${date}`}>{date}</time>
+          <time className="review__date" dateTime={`${date}`}>{monthName} {day}, {year}</time>
         </footer>
       </blockquote>
 

@@ -1,8 +1,8 @@
 import React from "react";
 import SmallMovieCard from "../../small-movie-card/small-movie-card";
 import {moviesType} from "../../types/types";
-import withVideoPlayer from "../../hoc/with-video-player/with-video-player";
-import withActiveCard from "../../hoc/with-active-card/with-active-card";
+import withVideoPlayer from "../../../hoc/with-video-player/with-video-player";
+import withActiveCard from "../../../hoc/with-active-card/with-active-card";
 
 const SmallMovieCardWrapper = withVideoPlayer(withActiveCard(SmallMovieCard));
 

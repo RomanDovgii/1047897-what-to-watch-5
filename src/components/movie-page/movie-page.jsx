@@ -6,8 +6,8 @@ import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
 import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../utils/const";
 import {moviePageType} from "../types/types";
-import withActiveTabs from "../hoc/with-active-tabs/with-active-tabs";
-import withLoading from "../hoc/with-loading/with-loading";
+import withActiveTabs from "../../hoc/with-active-tabs/with-active-tabs";
+import withLoading from "../../hoc/with-loading/with-loading";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
 

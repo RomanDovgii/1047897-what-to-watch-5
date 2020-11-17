@@ -1,7 +1,7 @@
 import React, {createRef, PureComponent} from "react";
-import {generateVideoType} from "../../../utils/utils";
-import {CallSource} from "../../../utils/const";
-import {withActivePlayerType} from "../../types/types";
+import {generateVideoType} from "../../utils/utils";
+import {CallSource} from "../../utils/const";
+import {withActivePlayerType} from "../../components/types/types";
 
 const withActivePlayer = (Component) => {
   class WithActivePlayer extends PureComponent {

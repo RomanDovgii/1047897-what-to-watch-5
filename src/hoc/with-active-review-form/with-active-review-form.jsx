@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {UserRating, ReviewLength} from "../../../utils/const";
+import {UserRating, ReviewLength} from "../../utils/const";
 
 const withActiveReviewForm = (Component) => {
   class WithActiveReviewForm extends PureComponent {

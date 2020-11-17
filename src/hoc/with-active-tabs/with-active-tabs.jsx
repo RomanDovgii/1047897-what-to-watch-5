@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
-import {MovieScreenTab} from "../../../utils/const";
-import {withActiveTabsType} from "../../types/types";
+import {MovieScreenTab} from "../../utils/const";
+import {withActiveTabsType} from "../../components/types/types";
 
 const withActiveTabs = (Component) => {
   class WithActiveTabs extends PureComponent {
