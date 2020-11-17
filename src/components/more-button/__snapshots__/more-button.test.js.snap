@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct MoreButton 1`] = `
+<div
+  className="catalog__more"
+>
+  <button
+    className="catalog__button"
+    onClick={[Function]}
+    type="button"
+  >
+    Show more
+  </button>
+</div>
+`;
+
+exports[`Should render nothing due to heading being incorrect 1`] = `null`;
+
+exports[`Should render nothing due to movies count being too big 1`] = `null`;

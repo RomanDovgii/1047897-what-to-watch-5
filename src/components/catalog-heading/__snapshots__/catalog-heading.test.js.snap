@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct catalog heading variant with CatalogHeadingVariant.CATALOG 1`] = `
+<h2
+  className="catalog__title visually-hidden"
+>
+  Catalog
+</h2>
+`;
+
+exports[`Should render correct catalog heading variant with CatalogHeadingVariant.MOVIE_PAGE 1`] = `
+<h2
+  className="catalog__title "
+>
+  More like this
+</h2>
+`;
