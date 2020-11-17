@@ -1,5 +1,5 @@
 import React from "react";
-import {genreListItemType} from "../../types/types";
+import {genreListItemType} from "../types/types";
 
 const GenresListItem = (props) => {
   const {genre, onGenreClick, isSelected} = props;
@@ -14,7 +14,9 @@ const GenresListItem = (props) => {
         onClick = {(evt) => {
           evt.preventDefault();
 
-          onGenreClick(genre);
+          if (!isSelected) {
+            onGenreClick(genre);
+          }
         }}
       >{genre}</a>
     </li>

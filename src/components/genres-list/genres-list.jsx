@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import GenresListItem from "./genres-list-item";
-import {genresListType} from "../../types/types";
-import {resetShownMovies, changeGenre} from "../../../store/actions/action";
+import GenresListItem from "../genres-list-item/genres-list-item";
+import {genresListType} from "../types/types";
+import {resetShownMovies, changeGenre} from "../../store/actions/action";
 
 const GenresList = (props) => {
   const {genres, selectedGenre, onGenreClick} = props;

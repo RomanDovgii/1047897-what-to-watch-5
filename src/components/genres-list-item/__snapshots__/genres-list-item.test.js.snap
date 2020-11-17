@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct non-selected genre item 1`] = `
+<li
+  className="catalog__genres-item"
+>
+  <a
+    className="catalog__genres-link"
+    href="#"
+    onClick={[Function]}
+  >
+    surreal
+  </a>
+</li>
+`;
+
+exports[`Should render correct selected genre item 1`] = `
+<li
+  className="catalog__genres-item catalog__genres-item--active"
+>
+  <a
+    className="catalog__genres-link"
+    href="#"
+    onClick={[Function]}
+  >
+    surreal
+  </a>
+</li>
+`;
