@@ -53,7 +53,8 @@ const appData = (state = initialState, action) => {
       return extend(
           state,
           {
-            selectedMovie: adaptedSelectedMovie
+            selectedMovie: adaptedSelectedMovie,
+            selectedGenre: adaptedSelectedMovie.genre
           }
       );
     case ActionType.LOAD_SELECTED_MOVIE_COMMENTS:

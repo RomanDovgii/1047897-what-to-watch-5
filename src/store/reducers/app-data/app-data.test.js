@@ -36,13 +36,37 @@ const testRawMovie = {
   "released": 2014,
   "is_favorite": false
 };
+const testRawComment = {
+  "id": 1,
+  "user": {
+    "id": 4,
+    "name": `Kate Muir`
+  },
+  "rating": 8.9,
+  "comment": `Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.`,
+  "date": `2019-05-08T14:13:56.569Z`
+};
+const testRawComments = [
+  testRawComment,
+  testRawComment,
+  testRawComment
+];
 
 const testRawMovies = [
   testRawMovie,
   testRawMovie,
   testRawMovie
 ];
+const testAdaptedMovie = adaptToClient(testRawMovie);
 const testAdaptedMovies = testRawMovies.map((movie) => adaptToClient(movie));
+
+const testAdaptedMovieFavorite = Object.assign({}, testAdaptedMovie);
+testAdaptedMovieFavorite.isFavorite = true;
+const testAdaptedMoviesWithFavorite = [
+  testAdaptedMovieFavorite,
+  testAdaptedMovie,
+  testAdaptedMovie
+];
 
 it(
     `Reducer without additional parameters returns initial state`,
@@ -133,5 +157,150 @@ it(
             genres: createGenresList(testAdaptedMovies)
           }
       );
+    }
+);
+
+it(
+    `Reducer with ActionType.LOAD_PROMOTED_MOVIE returns promotedMovie`,
+    () => {
+      expect(appData(
+          {
+            promotedMovie: {}
+          },
+          {
+            type: ActionType.LOAD_PROMOTED_MOVIE,
+            payload: testRawMovie
+          }
+      ))
+      .toEqual({
+        promotedMovie: testAdaptedMovie
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.LOAD_SELECTED_MOVIE returns selectedMovie and updates selectedGenre`,
+    () => {
+      expect(appData(
+          {
+            selectedMovie: {},
+            selectedGenre: ALL_GENRE
+          },
+          {
+            type: ActionType.LOAD_SELECTED_MOVIE,
+            payload: testRawMovie
+          }
+      ))
+      .toEqual({
+        selectedMovie: testAdaptedMovie,
+        selectedGenre: testAdaptedMovie.genre
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.LOAD_SELECTED_MOVIE_COMMENTS returns comments`,
+    () => {
+      expect(appData(
+          {
+            comments: []
+          },
+          {
+            type: ActionType.LOAD_SELECTED_MOVIE_COMMENTS,
+            payload: testRawComments
+          }
+      ))
+      .toEqual({
+        comments: testRawComments
+      });
+    }
+);
+
+
+it(
+    `Reducer with ActionType.ADD_MOVIE_TO_FAVORITE should change originalMovies and shouldn't change promotedMovie or selectedMovie`,
+    () => {
+      expect(appData(
+          {
+            originalMovies: testAdaptedMovies,
+            selectedMovie: {},
+            promotedMovie: {}
+          },
+          {
+            type: ActionType.ADD_MOVIE_TO_FAVORITE,
+            payload: 1
+          }
+      ))
+      .toEqual({
+        originalMovies: testAdaptedMoviesWithFavorite,
+        selectedMovie: {},
+        promotedMovie: {}
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.ADD_MOVIE_TO_FAVORITE should change originalMovies and selectedMovie but shouldn't change promotedMovie`,
+    () => {
+      expect(appData(
+          {
+            originalMovies: testAdaptedMovies,
+            selectedMovie: testAdaptedMovie,
+            promotedMovie: {}
+          },
+          {
+            type: ActionType.ADD_MOVIE_TO_FAVORITE,
+            payload: 1
+          }
+      ))
+      .toEqual({
+        originalMovies: testAdaptedMoviesWithFavorite,
+        selectedMovie: testAdaptedMovieFavorite,
+        promotedMovie: {}
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.ADD_MOVIE_TO_FAVORITE should change originalMovies and promotedMovie but shouldn't change selectedMovie`,
+    () => {
+      expect(appData(
+          {
+            originalMovies: testAdaptedMovies,
+            selectedMovie: {},
+            promotedMovie: testAdaptedMovie
+          },
+          {
+            type: ActionType.ADD_MOVIE_TO_FAVORITE,
+            payload: 1
+          }
+      ))
+      .toEqual({
+        originalMovies: testAdaptedMoviesWithFavorite,
+        selectedMovie: {},
+        promotedMovie: testAdaptedMovieFavorite
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.ADD_MOVIE_TO_FAVORITE should change originalMovies, promotedMovie, and selectedMovie`,
+    () => {
+      expect(appData(
+          {
+            originalMovies: testAdaptedMovies,
+            promotedMovie: testAdaptedMovie,
+            selectedMovie: testAdaptedMovie
+          },
+          {
+            type: ActionType.ADD_MOVIE_TO_FAVORITE,
+            payload: 1
+          }
+      ))
+      .toEqual({
+        originalMovies: testAdaptedMoviesWithFavorite,
+        promotedMovie: testAdaptedMovieFavorite,
+        selectedMovie: testAdaptedMovieFavorite
+      });
     }
 );
