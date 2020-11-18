@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct catalog 1`] = `
+<Router
+  history={
+    Object {
+      "action": "POP",
+      "block": [Function],
+      "createHref": [Function],
+      "go": [Function],
+      "goBack": [Function],
+      "goForward": [Function],
+      "length": 1,
+      "listen": [Function],
+      "location": Object {
+        "hash": "",
+        "pathname": "/",
+        "search": "",
+        "state": undefined,
+      },
+      "push": [Function],
+      "replace": [Function],
+    }
+  }
+>
+  <Switch>
+    <Route
+      exact={true}
+      path="/"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/login"
+      render={[Function]}
+    />
+    <Memo(Connect(PrivateRoute))
+      exact={true}
+      path="/mylist"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/films/:id"
+      render={[Function]}
+    />
+    <Memo(Connect(PrivateRoute))
+      exact={true}
+      path="/films/:id/review"
+      render={[Function]}
+    />
+    <Route
+      exact={true}
+      path="/player/:id"
+      render={[Function]}
+    />
+  </Switch>
+</Router>
+`;

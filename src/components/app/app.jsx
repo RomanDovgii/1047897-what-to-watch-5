@@ -6,11 +6,8 @@ import MyListPage from "../my-list-page/my-list-page";
 import MoviePage from "../movie-page/movie-page";
 import AddReviewPage from "../add-review-page/add-review-page";
 import PlayerPage from "../player-page/player-page";
-import {onBigPlayButtonClickType} from "../types/types";
 import withActiveMainPlayer from "../../hoc/with-active-main-player/with-active-main-player";
 import withLoading from "../../hoc/with-loading/with-loading";
-import {connect} from "react-redux";
-import {startPlaying, redirectToRoute} from "../../store/actions/action";
 import browserHistory from "../../browser-history";
 import PrivateRoute from "../private-route/private-route";
 import {AppRoute} from "../../utils/const";
@@ -18,9 +15,7 @@ import {AppRoute} from "../../utils/const";
 const PlayerPageWrapper = withLoading(withActiveMainPlayer(PlayerPage));
 const AddReviewWrapper = withLoading(AddReviewPage);
 
-const App = (props) => {
-  const {onBigPlayButtonClick, onMyListClick} = props;
-
+const App = () => {
   return (
     <Router history={browserHistory}>
       <Switch>
@@ -30,11 +25,7 @@ const App = (props) => {
           render={({history}) => (
             <MainPage
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
-              onPlayButtonClick={(url) => {
-                onBigPlayButtonClick(url);
-              }}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
-              onMyListClick={onMyListClick}
             />
           )}
         />
@@ -67,10 +58,6 @@ const App = (props) => {
               id = {match.params.id}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
-              onPlayButtonClick={(url) => {
-                onBigPlayButtonClick(url);
-              }}
-              onMyListClick = {onMyListClick}
             />
           )}
         />
@@ -102,14 +89,4 @@ const App = (props) => {
   );
 };
 
-App.propTypes = onBigPlayButtonClickType;
-
-const mapDispatchToProps = (dispatch) => ({
-  onBigPlayButtonClick(url) {
-    dispatch(redirectToRoute(url));
-    dispatch(startPlaying());
-  }
-});
-
-export {App};
-export default connect(null, mapDispatchToProps)(App);
+export default App;
