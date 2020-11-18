@@ -1,6 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render correct withActivePlayer 1`] = `
+exports[`Should render correct withActivePlayer which is playing 1`] = `
+<div>
+  <video
+    autoPlay="autoplay"
+    className="player__video"
+  >
+    <source />
+  </video>
+</div>
+`;
+
+exports[`Should render correct withActivePlayer which isn't playing 1`] = `
 <div>
   <video
     autoPlay="autoplay"

@@ -1,5 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {noop} from "../../utils/utils";
 import {LoginPageForm} from "./login-page-form";
 
 it(
@@ -8,6 +9,7 @@ it(
       const tree = renderer
       .create(
           <LoginPageForm
+            onSubmit={noop}
             isError={false}
           />
       )
@@ -23,6 +25,7 @@ it(
       const tree = renderer
       .create(
           <LoginPageForm
+            onSubmit={noop}
             isError={true}
           />
       )

@@ -18,9 +18,9 @@ it(
             isReviewFilled={true}
             isRatingFilled={true}
             isFormLocked={false}
-            rating={4}
+            rating={`4`}
             review={testReview}
-            id={1}
+            id={`1`}
             onSubmit={noop}
             onChangeFormLock={noop}
           />
@@ -43,9 +43,9 @@ it(
             isReviewFilled={true}
             isRatingFilled={true}
             isFormLocked={true}
-            rating={4}
+            rating={`4`}
             review={testReview}
-            id={1}
+            id={`1`}
             onSubmit={noop}
             onChangeFormLock={noop}
           />

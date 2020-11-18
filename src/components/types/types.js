@@ -133,10 +133,6 @@ const renderPlayerType = {
   renderPlayer: functionType
 };
 
-const callSourceType = {
-  callSource: PropTypes.string.isRequired
-};
-
 const imageNameType = {
   imageName: PropTypes.string.isRequired
 };

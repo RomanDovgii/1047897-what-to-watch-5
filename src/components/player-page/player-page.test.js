@@ -41,6 +41,7 @@ it(
             currentTime={0}
             onTimeUpdate={noop}
             onLoadingEnd={noop}
+            onExitButtonClick={noop}
             isLoading={true}
             onPlayButtonClick={noop}
             fetchMovie={noop}
@@ -70,6 +71,7 @@ it(
             currentTime={0}
             onTimeUpdate={noop}
             onLoadingEnd={noop}
+            onExitButtonClick={noop}
             isLoading={false}
             onPlayButtonClick={noop}
             fetchMovie={noop}

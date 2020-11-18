@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {testChildrenType} from "../../components/types/types";
+import {noop} from "../../utils/utils";
 import withActiveCard from "./with-active-card";
 
 const MockComponent = (props) => {
@@ -22,7 +23,9 @@ it(
     () => {
       const tree = renderer
       .create(
-          <MockComponentWrapped>
+          <MockComponentWrapped
+            renderPlayer={noop}
+          >
             <React.Fragment/>
           </MockComponentWrapped>
       )

@@ -68,7 +68,7 @@ exports[`Should render correct AddReviewForm 1`] = `
           3
         </label>
         <input
-          checked={false}
+          checked={true}
           className="rating__input"
           disabled={false}
           id="star-4"
@@ -204,7 +204,7 @@ exports[`Should render locked AddReviewForm 1`] = `
           3
         </label>
         <input
-          checked={false}
+          checked={true}
           className="rating__input"
           disabled={true}
           id="star-4"
