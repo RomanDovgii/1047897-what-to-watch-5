@@ -3,9 +3,9 @@ import {generateRatingText, generateStarringString} from "../../utils/utils";
 import {tabWithCommentsType} from "../types/types";
 
 const OverviewTab = (props) => {
-  const {movie, comments} = props;
+  const {movie} = props;
 
-  const {description, director, starring, rating} = movie;
+  const {description, director, starring, rating, scoresCount} = movie;
 
   const ratingString = `${rating}`.replace(`.`, `,`);
 
@@ -15,7 +15,7 @@ const OverviewTab = (props) => {
         <div className="movie-rating__score">{ratingString}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">{generateRatingText(rating)}</span>
-          <span className="movie-rating__count">{comments.length} ratings</span>
+          <span className="movie-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
 

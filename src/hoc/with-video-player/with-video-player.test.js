@@ -4,16 +4,13 @@ import {testChildrenType} from "../../components/types/types";
 import withVideoPlayer from "./with-video-player";
 
 const MockComponent = (props) => {
-  const {children} = props;
+  const {} = props;
 
   return (
     <div>
-      {children}
     </div>
   );
 };
-
-MockComponent.propTypes = testChildrenType;
 
 const MockComponentWrapped = withVideoPlayer(MockComponent);
 
