@@ -1,10 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import {movieCardTopType} from "../../types/types";
-import Header from "../../header/header";
-import {addMovieToFavorite} from "../../../store/actions/api-actions";
+import {movieCardTopType} from "../types/types";
+import Header from "../header/header";
+import {addMovieToFavorite} from "../../store/actions/api-actions";
 
-const MovieCardTop = (props) => {
+const MainPageMovieCard = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick} = props;
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = movie;
 
@@ -74,7 +74,7 @@ const MovieCardTop = (props) => {
   );
 };
 
-MovieCardTop.propTypes = movieCardTopType;
+MainPageMovieCard.propTypes = movieCardTopType;
 
 const mapDispatchToProps = (dispatch) => ({
   onMyListClick(id, status) {
@@ -86,5 +86,5 @@ const mapStateToProps = ({DATA}) => ({
   movie: DATA.promotedMovie
 });
 
-export {MovieCardTop};
-export default connect(mapStateToProps, mapDispatchToProps)(MovieCardTop);
+export {MainPageMovieCard};
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageMovieCard);

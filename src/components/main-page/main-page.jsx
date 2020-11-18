@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCardTop from "./modules/movie-card-top";
+import MainPageMovieCard from "../main-page-movie-card/main-page-movie-card";
 import Footer from "../footer/footer";
 import {mainPageType} from "../types/types";
 import Catalog from "../catalog/catalog";
@@ -13,7 +13,7 @@ const MainPage = (props) => {
 
   return (
     <React.Fragment>
-      <MovieCardTop
+      <MainPageMovieCard
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
         onPlayButtonClick = {onPlayButtonClick}
