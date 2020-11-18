@@ -12,7 +12,7 @@ const mockEvent = {
 };
 
 it(
-    `Click on link should pass url to the movie`,
+    `onSubmit shoul be called once`,
     () => {
       const onSubmit = jest.fn();
 

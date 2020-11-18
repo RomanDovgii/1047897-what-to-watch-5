@@ -8,7 +8,7 @@ configure({
 });
 
 it(
-    `Click on link should pass url to the movie`,
+    `onUserIconClick and resetState should be called once per click, so they should be called twice in this test`,
     () => {
       const onUserIconClick = jest.fn();
       const resetState = jest.fn();

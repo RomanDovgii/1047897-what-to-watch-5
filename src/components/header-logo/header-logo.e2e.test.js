@@ -12,7 +12,7 @@ const mockEvent = {
 };
 
 it(
-    `Click on link should pass url to the movie`,
+    `onWTWLogoClick, resetState should be called once`,
     () => {
       const onWTWLogoClick = jest.fn();
       const resetState = jest.fn();

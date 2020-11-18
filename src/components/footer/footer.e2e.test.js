@@ -12,7 +12,7 @@ const mockEvent = {
 };
 
 it(
-    `Click on link should call redirect function once`,
+    `onWTWLogoClick should be called once`,
     () => {
       const onWTWLogoClick = jest.fn();
 

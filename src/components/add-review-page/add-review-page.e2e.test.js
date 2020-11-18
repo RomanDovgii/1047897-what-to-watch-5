@@ -35,7 +35,7 @@ configure({
 });
 
 it(
-    `Click on link should pass url to the movie`,
+    `fetchMovie should be called once`,
     () => {
       const fetchMovie = jest.fn();
 

@@ -37,7 +37,7 @@ it(
     () => {
       const onClick = jest.fn();
 
-      const screen = shallow(
+      const smallMovieCard = shallow(
           <SmallMovieCard
             movie={testMovie}
             renderPlayer={noop}
@@ -48,7 +48,7 @@ it(
           />
       );
 
-      const link = screen.find(`a.small-movie-card__link`);
+      const link = smallMovieCard.find(`a.small-movie-card__link`);
 
       link.simulate(`click`, mockEvent);
 
