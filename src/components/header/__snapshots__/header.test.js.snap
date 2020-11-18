@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct Header  with logged in user and navigation 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading="My list"
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  <Memo(Connect(HeaderUserBlock))
+    isRendered={true}
+    onUserIconClick={[Function]}
+    resetState={[Function]}
+  />
+</header>
+`;
+
+exports[`Should render correct Header  with logged in user and without navigation 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading="My list"
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  <Memo(Connect(HeaderUserBlock))
+    isRendered={true}
+    onUserIconClick={[Function]}
+    resetState={[Function]}
+  />
+</header>
+`;
+
+exports[`Should render correct Header  without logged in user but with navigation 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading="Sign in"
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  
+</header>
+`;
+
+exports[`Should render correct Header  without navigation and logged in user 1`] = `
+<header
+  className="page-header user-page__head"
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading="Sign in"
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  
+</header>
+`;
+
+exports[`Should render correct Header without heading and logged in user but with navigation 1`] = `
+<header
+  className="page-header "
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading=""
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  <Memo(Connect(HeaderUserBlock))
+    isRendered={false}
+    onUserIconClick={[Function]}
+    resetState={[Function]}
+  />
+</header>
+`;
+
+exports[`Should render correct Header without heading, navigation, and logged in user 1`] = `
+<header
+  className="page-header "
+>
+  <HeaderLogo
+    onWTWLogoClick={[Function]}
+    resetState={[Function]}
+  />
+  <HeaderHeading
+    heading=""
+  />
+  <Memo(Connect(HeaderNavigation))
+    isRendered={false}
+  />
+  <Memo(Connect(HeaderUserBlock))
+    isRendered={false}
+    onUserIconClick={[Function]}
+    resetState={[Function]}
+  />
+</header>
+`;

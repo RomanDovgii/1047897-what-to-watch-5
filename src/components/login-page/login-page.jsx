@@ -5,17 +5,13 @@ import Footer from "../footer/footer";
 import {onWTWLogoClickType} from "../types/types";
 import {HeaderHeadingVariant} from "../../utils/const";
 
-const HeaderSetting = {
-  IS_USER_PAGE: true,
-};
-
 const LoginPage = (props) => {
   const {onWTWLogoClick} = props;
 
   return (
     <div className="user-page">
       <Header
-        isUserPage = {HeaderSetting.IS_USER_PAGE}
+        isUserPage = {true}
         heading={HeaderHeadingVariant.SIGN_IN}
         onWTWLogoClick = {onWTWLogoClick}
       />

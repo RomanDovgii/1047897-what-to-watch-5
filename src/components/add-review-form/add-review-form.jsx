@@ -72,12 +72,11 @@ const AddReviewForm = (props) => {
 
 AddReviewForm.propTypes = addReviewType;
 
-export {AddReviewForm};
-
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(id, isLocked, reviewInfo) {
     dispatch(addReview(id, isLocked, reviewInfo));
   }
 });
 
+export {AddReviewForm};
 export default connect(null, mapDispatchToProps)(AddReviewForm);

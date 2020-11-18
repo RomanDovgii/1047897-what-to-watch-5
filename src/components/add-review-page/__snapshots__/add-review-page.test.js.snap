@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct AddReviewPage with loading 1`] = `<LoadingPage />`;
+
+exports[`Should render correct AddReviewPage without loading 1`] = `
+<section
+  className="movie-card movie-card--full"
+  style={
+    Object {
+      "background": "#ffffff",
+    }
+  }
+>
+  <div
+    className="movie-card__header"
+  >
+    <AddReviewBackground
+      backgroundImage="img/the-grand-budapest-hotel-bg.jpg"
+      name="The Grand Budapest Hotel"
+    />
+    <AddReviewHeading />
+    <Memo(Connect(Header))
+      isNavigation={true}
+      onUserIconClick={[Function]}
+      onWTWLogoClick={[Function]}
+    />
+    <AddReviewPoster
+      name="The Grand Budapest Hotel"
+      poster="img/the-grand-budapest-hotel-poster.jpg"
+    />
+  </div>
+  <WithActiveReviewForm
+    backgroundColor="#ffffff"
+  />
+</section>
+`;

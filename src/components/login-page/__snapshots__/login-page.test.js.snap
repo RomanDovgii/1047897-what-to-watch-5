@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct  1`] = `
+<div
+  className="user-page"
+>
+  <Memo(Connect(Header))
+    heading="Sign in"
+    isUserPage={true}
+    onWTWLogoClick={[Function]}
+  />
+  <Memo(Connect(LoginPageForm)) />
+  <Memo(Connect(Footer)) />
+</div>
+`;
