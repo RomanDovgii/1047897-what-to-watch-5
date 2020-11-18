@@ -144,3 +144,8 @@ export const APIRoute = {
   COMMENTS: `/comments`,
   FAVORITE: `/favorite`
 };
+
+export const HeaderHeadingVariant = {
+  SIGN_IN: `Sign in`,
+  MY_LIST: `My list`
+};

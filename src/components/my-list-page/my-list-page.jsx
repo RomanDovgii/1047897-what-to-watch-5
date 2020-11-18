@@ -6,13 +6,7 @@ import {CatalogHeadingVariant} from "../../utils/const";
 import {myListPageType} from "../types/types";
 import {connect} from "react-redux";
 import {filterMoviesByMyList} from "../../store/selectors/my-list-selector";
-
-const HeaderSetting = {
-  IS_USER_PAGE: false,
-  IS_MY_LIST: true,
-  IS_SIGN_IN: false,
-  IS_NAVIGATION: false,
-};
+import {HeaderHeadingVariant} from "../../utils/const";
 
 const MyListPage = (props) => {
   const {onUserIconClick, onWTWLogoClick, movies} = props;
@@ -22,11 +16,7 @@ const MyListPage = (props) => {
       <Header
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
-        isUserPage = {HeaderSetting.IS_USER_PAGE}
-        isMyList = {HeaderSetting.IS_MY_LIST}
-        isSignIn = {HeaderSetting.IS_SIGN_IN}
-        isNavigation = {HeaderSetting.IS_NAVIGATION}
-        isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+        heading={HeaderHeadingVariant.MY_LIST}
       />
       <Catalog
         heading = {CatalogHeadingVariant.CATALOG}

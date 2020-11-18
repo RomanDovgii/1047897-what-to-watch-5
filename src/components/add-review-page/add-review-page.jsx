@@ -13,14 +13,6 @@ import LoadingPage from "../loading-page/loading-page";
 
 const AddReviewWrapper = withActiveReviewForm(AddReview);
 
-const HeaderSetting = {
-  IS_USER_PAGE: false,
-  IS_MY_LIST: false,
-  IS_SIGN_IN: false,
-  IS_NAVIGATION: true,
-  IS_USER_BLOCK: true
-};
-
 class AddReviewPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -57,11 +49,7 @@ class AddReviewPage extends PureComponent {
           <Header
             onUserIconClick = {onUserIconClick}
             onWTWLogoClick = {onWTWLogoClick}
-            isUserPage = {HeaderSetting.IS_USER_PAGE}
-            isMyList = {HeaderSetting.IS_MY_LIST}
-            isSignIn = {HeaderSetting.IS_SIGN_IN}
-            isNavigation = {HeaderSetting.IS_NAVIGATION}
-            isUserBlock = {HeaderSetting.IS_USER_BLOCK}
+            isNavigation = {true}
           />
           <MoviePoster
             poster = {posterImage}

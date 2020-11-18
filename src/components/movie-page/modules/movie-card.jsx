@@ -5,13 +5,6 @@ import Header from "../../header/header";
 import Tabs from "../../tabs/tabs";
 import {movieCardType} from "../../types/types";
 
-const HeaderSetting = {
-  IS_USER_PAGE: false,
-  IS_MY_LIST: false,
-  IS_SIGN_IN: false,
-  IS_NAVIGATION: false,
-};
-
 class MovieCard extends PureComponent {
   constructor(props) {
     super(props);
@@ -48,11 +41,6 @@ class MovieCard extends PureComponent {
           <Header
             onUserIconClick = {onUserIconClick}
             onWTWLogoClick = {onWTWLogoClick}
-            isUserPage = {HeaderSetting.IS_USER_PAGE}
-            isMyList = {HeaderSetting.IS_MY_LIST}
-            isSignIn = {HeaderSetting.IS_SIGN_IN}
-            isNavigation = {HeaderSetting.IS_NAVIGATION}
-            isUserBlock = {HeaderSetting.IS_USER_BLOCK}
           />
 
           <div className="movie-card__wrap">

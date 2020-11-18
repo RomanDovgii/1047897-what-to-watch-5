@@ -4,13 +4,6 @@ import {movieCardTopType} from "../../types/types";
 import Header from "../../header/header";
 import {addMovieToFavorite} from "../../../store/actions/api-actions";
 
-const HeaderSetting = {
-  IS_USER_PAGE: false,
-  IS_MY_LIST: false,
-  IS_SIGN_IN: false,
-  IS_NAVIGATION: false
-};
-
 const MovieCardTop = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick} = props;
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = movie;
@@ -26,11 +19,6 @@ const MovieCardTop = (props) => {
       <Header
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
-        isUserPage = {HeaderSetting.IS_USER_PAGE}
-        isMyList = {HeaderSetting.IS_MY_LIST}
-        isSignIn = {HeaderSetting.IS_SIGN_IN}
-        isNavigation = {HeaderSetting.IS_NAVIGATION}
-        isUserBlock = {HeaderSetting.IS_USER_BLOCK}
       />
 
       <div className="movie-card__wrap">
