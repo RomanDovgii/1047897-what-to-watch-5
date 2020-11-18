@@ -261,6 +261,13 @@ const onMouseLeaveType = {
   onMouseLeave: functionType
 };
 
+export const testChildrenType = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
+};
+
 export const smallMovieCardType = Object.assign({}, movieType, renderPlayerType, isPlayingType, onClickType, onMouseEnterType, onMouseLeaveType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieType, moviesType, commentsType);
 

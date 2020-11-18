@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct withActivePlayer 1`] = `
+<div>
+  <video
+    autoPlay="autoplay"
+    className="player__video"
+  >
+    <source />
+  </video>
+</div>
+`;
