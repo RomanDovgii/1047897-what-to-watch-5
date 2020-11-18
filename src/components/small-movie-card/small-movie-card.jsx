@@ -1,6 +1,5 @@
 import React from "react";
 import {smallMovieCardType} from "../types/types";
-import {CallSource} from "../../utils/const";
 import {connect} from "react-redux";
 import {selectMovie, redirectToRoute} from "../../store/actions/action";
 import {fetchSelectedMovieComments} from "../../store/actions/api-actions";
@@ -16,7 +15,7 @@ const SmallMovieCard = (props) => {
       onMouseLeave = {onMouseLeave}
     >
       <div className="small-movie-card__image">
-        {renderPlayer(previewVideoLink, previewImage, CallSource.CATALOG, isPlaying)}
+        {renderPlayer(previewVideoLink, previewImage, isPlaying)}
       </div>
       <h3 className="small-movie-card__title">
         <a

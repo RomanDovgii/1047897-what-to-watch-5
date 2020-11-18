@@ -1,6 +1,5 @@
 import React, {createRef, PureComponent} from "react";
 import {generateVideoType} from "../../utils/utils";
-import {CallSource} from "../../utils/const";
 import {withActivePlayerType} from "../../components/types/types";
 
 const withActivePlayer = (Component) => {
@@ -17,12 +16,12 @@ const withActivePlayer = (Component) => {
     }
 
     componentDidMount() {
-      const {imageName, callSource} = this.props;
+      const {imageName} = this.props;
 
       const video = this._videoRef.current;
 
-      video.muted = callSource === CallSource.CATALOG ? true : false;
-      video.autoPlay = callSource === CallSource.CATALOG ? true : false;
+      video.muted = true;
+      video.autoPlay = true;
       video.poster = imageName;
     }
 
