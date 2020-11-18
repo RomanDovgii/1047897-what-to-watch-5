@@ -1,7 +1,7 @@
 import React, {createRef, PureComponent} from "react";
 import {withRouter} from "react-router-dom";
-import PlayerExit from "./modules/player-exit";
-import PlayerControls from "./modules/player-controls";
+import PlayerPageExit from "../player-page-exit/player-page-exit";
+import PlayerPageControls from "../player-page-controls/player-page-controls";
 import {playerPageType} from "../types/types";
 import {connect} from "react-redux";
 import {startPlaying} from "../../store/actions/action";
@@ -99,10 +99,10 @@ class PlayerPage extends PureComponent {
           </video>
           : <LoadingPage></LoadingPage>
         }
-        <PlayerExit
+        <PlayerPageExit
           onExitButtonClick = {this._handleExitButtonClick}
         />
-        <PlayerControls
+        <PlayerPageControls
           isPlaying={isPlaying}
           isLoading={isPlayerLoading}
           duration={this._movieDuration}

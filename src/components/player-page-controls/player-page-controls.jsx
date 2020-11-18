@@ -1,8 +1,8 @@
 import React from "react";
-import {playerControlsType} from "../../types/types";
-import {HOURS_IN_SECONDS, MINUTES_IN_SECONDS, ZERO} from "../../../utils/const.js";
+import {playerControlsType} from "../types/types";
+import {HOURS_IN_SECONDS, MINUTES_IN_SECONDS, ZERO} from "../../utils/const.js";
 
-const PlayerControls = (props) => {
+const PlayerPageControls = (props) => {
   const {onPlayButtonClick, onFullScreenButtonClick, isPlaying, duration, isLoading, currentTime, movieName} = props;
 
   const timeElapsed = duration - currentTime;
@@ -61,6 +61,6 @@ const PlayerControls = (props) => {
   );
 };
 
-PlayerControls.propTypes = playerControlsType;
+PlayerPageControls.propTypes = playerControlsType;
 
-export default PlayerControls;
+export default PlayerPageControls;

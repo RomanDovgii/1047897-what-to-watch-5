@@ -1,7 +1,7 @@
 import React from "react";
-import {onExitButtonClickType} from "../../types/types";
+import {onExitButtonClickType} from "../types/types";
 
-const PlayerExit = (props) => {
+const PlayerPageExit = (props) => {
   const {onExitButtonClick} = props;
 
   return (
@@ -19,6 +19,6 @@ const PlayerExit = (props) => {
   );
 };
 
-PlayerExit.propTypes = onExitButtonClickType;
+PlayerPageExit.propTypes = onExitButtonClickType;
 
-export default PlayerExit;
+export default PlayerPageExit;
