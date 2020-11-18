@@ -1,11 +1,11 @@
 import React, {PureComponent} from "react";
 import {Link} from "react-router-dom";
-import {MovieScreenTab} from "../../../utils/const";
-import Header from "../../header/header";
-import Tabs from "../../tabs/tabs";
-import {movieCardType} from "../../types/types";
+import {MovieScreenTab} from "../../utils/const";
+import Header from "../header/header";
+import Tabs from "../tabs/tabs";
+import {movieCardType} from "../types/types";
 
-class MovieCard extends PureComponent {
+class MoviePageMovieCard extends PureComponent {
   constructor(props) {
     super(props);
   }
@@ -141,6 +141,6 @@ class MovieCard extends PureComponent {
 }
 
 
-MovieCard.propTypes = movieCardType;
+MoviePageMovieCard.propTypes = movieCardType;
 
-export default MovieCard;
+export default MoviePageMovieCard;

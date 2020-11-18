@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
-import MovieCard from "./modules/movie-card";
+import MoviePageMovieCard from "../movie-page-movie-card/movie-page-movie-card";
 import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
 import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../utils/const";
@@ -12,7 +12,7 @@ import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {redirectToRoute, startPlaying} from "../../store/actions/action";
 import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
 
-const MovieCardWrapper = withLoading(withActiveTabs(MovieCard));
+const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 
 const MoviePage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick} = props;
