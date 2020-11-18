@@ -1,7 +1,7 @@
 import React from "react";
-import {logoType} from "../../types/types";
+import {logoType} from "../types/types";
 
-const Logo = (props) => {
+const HeaderLogo = (props) => {
   const {onWTWLogoClick, resetState} = props;
 
   return (
@@ -25,6 +25,6 @@ const Logo = (props) => {
   );
 };
 
-Logo.propTypes = logoType;
+HeaderLogo.propTypes = logoType;
 
-export default Logo;
+export default HeaderLogo;

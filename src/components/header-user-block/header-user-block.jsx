@@ -1,9 +1,9 @@
 import React from "react";
-import {userBlockType} from "../../types/types";
-import {ALL_GENRE} from "../../../utils/const";
+import {userBlockType} from "../types/types";
+import {ALL_GENRE} from "../../utils/const";
 import {connect} from "react-redux";
 
-const UserBlock = (props) => {
+const HeaderUserBlock = (props) => {
   const {onUserIconClick, resetState, isRendered, avatarUrl} = props;
 
   if (isRendered) {
@@ -41,11 +41,11 @@ const UserBlock = (props) => {
   }
 };
 
-UserBlock.propTypes = userBlockType;
+HeaderUserBlock.propTypes = userBlockType;
 
 const mapStateToProps = ({USER}) => ({
   avatarUrl: USER.avatarUrl
 });
 
-export {UserBlock};
-export default connect(mapStateToProps)(UserBlock);
+export {HeaderUserBlock};
+export default connect(mapStateToProps)(HeaderUserBlock);

@@ -1,9 +1,9 @@
 import React from "react";
 import {headerType} from "../types/types";
-import Logo from "./modules/logo";
+import HeaderLogo from "../header-logo/header-logo";
 import HeaderHeading from "../header-heading/header-heading";
-import Navigation from "./modules/navigation";
-import UserBlock from "./modules/user-block";
+import HeaderNavigation from "../header-navigation/header-navigation";
+import HeaderUserBlock from "../header-user-block/header-user-block";
 import {connect} from "react-redux";
 import {resetShownMovies, changeGenre} from "../../store/actions/action";
 import {HeaderHeadingVariant} from "../../utils/const";
@@ -14,7 +14,7 @@ const Header = (props) => {
 
   return (
     <header className={`page-header ` + userPageElementClass}>
-      <Logo
+      <HeaderLogo
         onWTWLogoClick = {onWTWLogoClick}
         resetState = {resetState}
       />
@@ -23,12 +23,12 @@ const Header = (props) => {
         heading={heading}
       />
 
-      <Navigation
+      <HeaderNavigation
         isRendered = {isNavigation}
       />
 
       {!(heading === HeaderHeadingVariant.SIGN_IN)
-        ? <UserBlock
+        ? <HeaderUserBlock
           onUserIconClick = {onUserIconClick}
           resetState = {resetState}
           isRendered = {authorizationStatus}

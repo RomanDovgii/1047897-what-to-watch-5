@@ -1,8 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
-import {isRenderedType} from "../../types/types";
+import {isRenderedType} from "../types/types";
 
-const Navigation = (props) => {
+const HeaderNavigation = (props) => {
   const {isRendered, movie} = props;
 
   if (isRendered) {
@@ -23,11 +23,11 @@ const Navigation = (props) => {
   return null;
 };
 
-Navigation.propTypes = isRenderedType;
+HeaderNavigation.propTypes = isRenderedType;
 
 const mapStateToProps = ({DATA}) => ({
   movie: DATA.selectedMovie
 });
 
-export {Navigation};
-export default connect(mapStateToProps)(Navigation);
+export {HeaderNavigation};
+export default connect(mapStateToProps)(HeaderNavigation);
