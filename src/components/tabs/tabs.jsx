@@ -36,6 +36,6 @@ const Tabs = (props) => {
   return null;
 };
 
-Tabs.propTypes = tabsType; // update this later
+Tabs.propTypes = tabsType;
 
 export default Tabs;
