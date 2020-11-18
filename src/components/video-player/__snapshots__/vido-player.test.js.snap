@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct VideoPlayer with given children 1`] = `<<div/> />`;
+
+exports[`Should render correct VideoPlayer with given children 2`] = `<<video/> />`;
+
+exports[`Should render correct VideoPlayer with given children 3`] = `<video />`;
