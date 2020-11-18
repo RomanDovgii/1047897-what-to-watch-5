@@ -1,6 +1,5 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {testChildrenType} from "../../components/types/types";
 import withVideoPlayer from "./with-video-player";
 
 const MockComponent = (props) => {
