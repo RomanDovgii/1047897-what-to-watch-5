@@ -45,7 +45,7 @@ class PlayerPage extends PureComponent {
   }
 
   _handlePlayButtonClick() {
-    const {onPlayButtonCLick, isPlaying} = this.props;
+    const {onPlayButtonClick, isPlaying} = this.props;
     const video = this._videoRef.current;
 
     if (isPlaying) {
@@ -54,7 +54,7 @@ class PlayerPage extends PureComponent {
       video.play();
     }
 
-    onPlayButtonCLick();
+    onPlayButtonClick();
   }
 
   _handleFullScreenButtonClick() {
@@ -64,10 +64,10 @@ class PlayerPage extends PureComponent {
   }
 
   _handleExitButtonClick() {
-    const {onPlayButtonCLick, onExitButtonClick, isPlaying} = this.props;
+    const {onPlayButtonClick, onExitButtonClick, isPlaying} = this.props;
 
     if (isPlaying) {
-      onPlayButtonCLick();
+      onPlayButtonClick();
     }
 
     onExitButtonClick();
@@ -124,7 +124,7 @@ const mapStateToProps = ({STATE, DATA}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPlayButtonCLick() {
+  onPlayButtonClick() {
     dispatch(startPlaying());
   },
   fetchMovie(id) {
