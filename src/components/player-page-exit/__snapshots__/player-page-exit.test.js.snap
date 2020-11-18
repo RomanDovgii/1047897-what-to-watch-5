@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct PlayerPageExit 1`] = `
+<button
+  className="player__exit"
+  onClick={[Function]}
+  type="button"
+>
+  Exit
+</button>
+`;
