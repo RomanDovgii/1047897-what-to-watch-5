@@ -1,17 +1,17 @@
 import React, {PureComponent} from "react";
 import {withRouter} from "react-router-dom";
 import Header from "../header/header";
-import AddReview from "./modules/add-review";
-import MovieCardBackground from "./modules/movie-card-background";
-import MoviePoster from "./modules/movie-poster";
-import HeadingFirstLevel from "./modules/heading-first-level";
+import AddReviewForm from "../add-review-form/add-review-form";
+import AddReviewBackground from "../add-review-background/add-review-background";
+import AddReviewPoster from "../add-review-poster/add-review-poster";
+import AddReviewHeading from "../add-review-heading/add-review-heading";
 import {onUserIconClickType} from "../types/types";
 import withActiveReviewForm from "../../hoc/with-active-review-form/with-active-review-form";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
 import LoadingPage from "../loading-page/loading-page";
 
-const AddReviewWrapper = withActiveReviewForm(AddReview);
+const AddReviewWrapper = withActiveReviewForm(AddReviewForm);
 
 class AddReviewPage extends PureComponent {
   constructor(props) {
@@ -41,17 +41,17 @@ class AddReviewPage extends PureComponent {
         className="movie-card movie-card--full"
         style={{background: `${backgroundColor}`}}>
         <div className="movie-card__header">
-          <MovieCardBackground
+          <AddReviewBackground
             backgroundImage = {backgroundImage}
             name = {name}
           />
-          <HeadingFirstLevel/>
+          <AddReviewHeading/>
           <Header
             onUserIconClick = {onUserIconClick}
             onWTWLogoClick = {onWTWLogoClick}
             isNavigation = {true}
           />
-          <MoviePoster
+          <AddReviewPoster
             poster = {posterImage}
             name = {name}
           />

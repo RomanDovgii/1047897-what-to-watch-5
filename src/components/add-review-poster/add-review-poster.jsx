@@ -1,7 +1,7 @@
 import React from "react";
-import {moviePosterType} from "../../types/types";
+import {moviePosterType} from "../types/types";
 
-const MoviePoster = (props) => {
+const AddReviewPoster = (props) => {
   const {poster, name} = props;
 
   return (
@@ -11,6 +11,6 @@ const MoviePoster = (props) => {
   );
 };
 
-MoviePoster.propTypes = moviePosterType;
+AddReviewPoster.propTypes = moviePosterType;
 
-export default MoviePoster;
+export default AddReviewPoster;

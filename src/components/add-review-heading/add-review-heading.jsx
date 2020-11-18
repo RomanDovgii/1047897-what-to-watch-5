@@ -1,9 +1,9 @@
 import React from "react";
 
-const HeadingFirstLevel = () => {
+const AddReviewHeading = () => {
   return (
     <h1 className="visually-hidden">WTW</h1>
   );
 };
 
-export default HeadingFirstLevel;
+export default AddReviewHeading;

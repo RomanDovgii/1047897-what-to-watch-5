@@ -1,11 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
-import {UserRating} from "../../../utils/const";
-import {addReviewType} from "../../types/types";
-import {addReview} from "../../../store/actions/api-actions";
-import {calculateTextInputColor} from "../../../utils/utils";
+import {UserRating} from "../../utils/const";
+import {addReviewType} from "../types/types";
+import {addReview} from "../../store/actions/api-actions";
+import {calculateTextInputColor} from "../../utils/utils";
 
-const AddReview = (props) => {
+const AddReviewForm = (props) => {
   const {onRatingChange, onReviewChange, backgroundColor, isReviewFilled, isRatingFilled, isFormLocked, rating, review, id, onSubmit, onChangeFormLock} = props;
 
   return (
@@ -70,9 +70,9 @@ const AddReview = (props) => {
   );
 };
 
-AddReview.propTypes = addReviewType;
+AddReviewForm.propTypes = addReviewType;
 
-export {AddReview};
+export {AddReviewForm};
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(id, isLocked, reviewInfo) {
@@ -80,4 +80,4 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export default connect(null, mapDispatchToProps)(AddReview);
+export default connect(null, mapDispatchToProps)(AddReviewForm);
