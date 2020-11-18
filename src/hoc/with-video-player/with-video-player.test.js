@@ -22,9 +22,7 @@ it(
     () => {
       const tree = renderer
       .create(
-          <MockComponentWrapped>
-            <React.Fragment/>
-          </MockComponentWrapped>
+          <MockComponentWrapped/>
       )
       .toJSON();
 

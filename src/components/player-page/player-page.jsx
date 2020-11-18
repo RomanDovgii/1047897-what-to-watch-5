@@ -4,9 +4,10 @@ import PlayerPageExit from "../player-page-exit/player-page-exit";
 import PlayerPageControls from "../player-page-controls/player-page-controls";
 import {playerPageType} from "../types/types";
 import {connect} from "react-redux";
-import {startPlaying} from "../../store/actions/action";
+import {startPlaying, changeGenre} from "../../store/actions/action";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {generateVideoType} from "../../utils/utils";
+import {ALL_GENRE} from "../../utils/const";
 import LoadingPage from "../loading-page/loading-page";
 
 class PlayerPage extends PureComponent {
@@ -64,12 +65,13 @@ class PlayerPage extends PureComponent {
   }
 
   _handleExitButtonClick() {
-    const {onPlayButtonClick, onExitButtonClick, isPlaying} = this.props;
+    const {onPlayButtonClick, onExitButtonClick, resetMovieGenre, isPlaying} = this.props;
 
     if (isPlaying) {
       onPlayButtonClick();
     }
 
+    resetMovieGenre(ALL_GENRE);
     onExitButtonClick();
   }
 
@@ -129,6 +131,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
+  },
+  resetMovieGenre(selectedGenre) {
+    dispatch(changeGenre(selectedGenre));
   }
 });
 
