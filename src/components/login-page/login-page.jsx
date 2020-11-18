@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./../header/header";
-import SignIn from "./modules/sign-in";
+import LoginPageForm from "../login-page-form/login-page-form";
 import Footer from "../footer/footer";
 import {onWTWLogoClickType} from "../types/types";
 import {HeaderHeadingVariant} from "../../utils/const";
@@ -19,7 +19,7 @@ const LoginPage = (props) => {
         heading={HeaderHeadingVariant.SIGN_IN}
         onWTWLogoClick = {onWTWLogoClick}
       />
-      <SignIn/>
+      <LoginPageForm/>
       <Footer/>
     </div>
   );

@@ -1,9 +1,9 @@
 import React, {createRef, PureComponent} from "react";
-import {login} from "../../../store/actions/api-actions";
+import {login} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
-import {signInType} from "../../types/types";
+import {signInType} from "../types/types";
 
-class SignIn extends PureComponent {
+class LoginPageForm extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -56,7 +56,7 @@ class SignIn extends PureComponent {
   }
 }
 
-SignIn.propTypes = signInType;
+LoginPageForm.propTypes = signInType;
 
 const mapStateToProps = ({STATE}) => ({
   isError: STATE.isAuthError
@@ -68,5 +68,5 @@ const mapDispatchToProps = (dispatch) =>({
   }
 });
 
-export {SignIn};
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export {LoginPageForm};
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPageForm);
