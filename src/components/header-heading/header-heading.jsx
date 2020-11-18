@@ -2,7 +2,7 @@ import React from "react";
 import {HeaderHeadingVariant} from "../../utils/const";
 
 const HeaderHeading = (props) => {
-  const {heading} = props;
+  const {heading = ``} = props;
 
   switch (heading) {
     case HeaderHeadingVariant.MY_LIST:

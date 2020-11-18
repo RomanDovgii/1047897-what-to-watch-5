@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct AddReviewPoster 1`] = `
+<div
+  className="movie-card__poster movie-card__poster--small"
+>
+  <img
+    alt="none"
+    height="327"
+    src="none"
+    width="218"
+  />
+</div>
+`;

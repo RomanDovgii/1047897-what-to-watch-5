@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct HeaderHeading with My list 1`] = `
+<h1
+  className="page-title user-page__title"
+>
+  My list
+</h1>
+`;
+
+exports[`Should render correct HeaderHeading with Sign in 1`] = `
+<h1
+  className="page-title user-page__title"
+>
+  Sign in
+</h1>
+`;
+
+exports[`Should render nothing 1`] = `""`;

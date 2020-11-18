@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render correct AddReviewBackground 1`] = `
+<div
+  className="movie-card__bg"
+>
+  <img
+    alt="none"
+    src="none"
+  />
+</div>
+`;
