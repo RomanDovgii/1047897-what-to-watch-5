@@ -38,7 +38,9 @@ it(
     () => {
       const tree = renderer
       .create(
-          <HeaderHeading/>
+          <HeaderHeading
+            heading={``}
+          />
       )
       .toJSON();
 
