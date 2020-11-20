@@ -1,5 +1,6 @@
 import React from "react";
 import {HeaderHeadingVariant} from "../../utils/const";
+import {headingType} from "../types/types";
 
 const HeaderHeading = (props) => {
   const {heading = ``} = props;
@@ -18,6 +19,6 @@ const HeaderHeading = (props) => {
   }
 };
 
-HeaderHeading.propTypes = {};
+HeaderHeading.propTypes = headingType;
 
 export default HeaderHeading;

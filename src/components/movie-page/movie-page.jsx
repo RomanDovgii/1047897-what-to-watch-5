@@ -17,7 +17,7 @@ const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 const MoviePage = (props) => {
   const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick} = props;
 
-  const id = useParams().id;
+  const {id} = useParams();
 
   return (
     <React.Fragment>
