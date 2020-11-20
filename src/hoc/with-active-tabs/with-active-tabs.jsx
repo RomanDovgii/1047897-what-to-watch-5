@@ -1,35 +1,21 @@
-import React, {PureComponent} from "react";
+import React, {useState} from "react";
 import {MovieScreenTab} from "../../utils/const";
 import {withActiveTabsType} from "../../components/types/types";
 
 const withActiveTabs = (Component) => {
-  class WithActiveTabs extends PureComponent {
-    constructor(props) {
-      super(props);
+  const WithActiveTabs = (props) => {
+    const [shownScreen, changeShownScreen] = useState(MovieScreenTab.OVERVIEW);
 
-      this.state = {
-        shownScreen: MovieScreenTab.OVERVIEW
-      };
-
-      this._onTabClick = this._onTabClick.bind(this);
-    }
-
-    _onTabClick(value) {
-      this.setState({
-        shownScreen: value
-      });
-    }
-
-    render() {
-      return (
-        <Component
-          {...this.props}
-          shownScreen={this.state.shownScreen}
-          onTabClick={this._onTabClick}
-        />
-      );
-    }
-  }
+    return (
+      <Component
+        {...props}
+        shownScreen={shownScreen}
+        onTabClick={(value) => {
+          changeShownScreen(value);
+        }}
+      />
+    );
+  };
 
   WithActiveTabs.propTypes = withActiveTabsType;
 

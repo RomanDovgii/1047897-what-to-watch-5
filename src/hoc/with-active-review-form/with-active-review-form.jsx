@@ -1,64 +1,40 @@
-import React, {PureComponent} from "react";
+import React, {useState} from "react";
 import {UserRating, ReviewLength} from "../../utils/const";
 
 const withActiveReviewForm = (Component) => {
-  class WithActiveReviewForm extends PureComponent {
-    constructor(props) {
-      super(props);
+  const WithActiveReviewForm = (props) => {
+    const [rating, changeRating] = useState(`${UserRating.DEFAULT}`);
+    const [review, changeReview] = useState(``);
+    const [isRatingFilled, changeIsRatingFilled] = useState(false);
+    const [isReviewFilled, changeIsReviewFilled] = useState(false);
+    const [isFormLocked, changeIsFormLocked] = useState(false);
 
-      this.state = {
-        rating: `${UserRating.DEFAULT}`,
-        review: ``,
-        isRatingFilled: false,
-        isReviewFilled: false,
-        isFormLocked: false
-      };
+    return (
+      <Component
+        {...props}
+        onRatingChange={(evt) => {
+          const {value} = evt.target;
 
-      this._handleRatingChange = this._handleRatingChange.bind(this);
-      this._handleReviewChange = this._handleReviewChange.bind(this);
-      this._changeFormLock = this._changeFormLock.bind(this);
-    }
+          changeRating(value);
+          changeIsRatingFilled(true);
+        }}
+        onReviewChange={(evt) => {
+          const {value} = evt.target;
 
-    _handleRatingChange(evt) {
-      const {name, value} = evt.target;
-
-      this.setState({
-        [name]: value,
-        isRatingFilled: true
-      });
-    }
-
-    _handleReviewChange(evt) {
-      const {name, value} = evt.target;
-
-      this.setState({
-        [name]: value,
-        isReviewFilled: value.length > ReviewLength.MINIMUM && value.length < ReviewLength.MAXIMUM ? true : false
-      });
-    }
-
-    _changeFormLock() {
-      this.setState({
-        isFormLocked: !this.state.isFormLocked
-      });
-    }
-
-    render() {
-      return (
-        <Component
-          {...this.props}
-          onRatingChange={this._handleRatingChange}
-          onReviewChange={this._handleReviewChange}
-          isReviewFilled={this.state.isReviewFilled}
-          isRatingFilled={this.state.isRatingFilled}
-          isFormLocked={this.state.isFormLocked}
-          rating={this.state.rating}
-          review={this.state.review}
-          onChangeFormLock={this._changeFormLock}
-        />
-      );
-    }
-  }
+          changeReview(value);
+          changeIsReviewFilled(value.length > ReviewLength.MINIMUM && value.length < ReviewLength.MAXIMUM ? true : false);
+        }}
+        isReviewFilled={isReviewFilled}
+        isRatingFilled={isRatingFilled}
+        isFormLocked={isFormLocked}
+        rating={rating}
+        review={review}
+        onChangeFormLock={() => {
+          changeIsFormLocked(!isFormLocked);
+        }}
+      />
+    );
+  };
 
   WithActiveReviewForm.propTypes = {};
 
