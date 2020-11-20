@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import MainPageMovieCard from "../main-page-movie-card/main-page-movie-card";
 import Footer from "../footer/footer";
 import {mainPageType} from "../types/types";
@@ -7,12 +7,25 @@ import {CatalogHeadingVariant, CatalogCallSource} from "../../utils/const";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {connect} from "react-redux";
 import {redirectToRoute, startPlaying} from "../../store/actions/action";
+import {fetchMovieList, fetchPromotedMovie} from "../../store/actions/api-actions";
+import LoadingPage from "../loading-page/loading-page";
 
 const MainPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movies, genres} = props;
+  const {onUserIconClick, onWTWLogoClick, onLoadMovies, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion} = props;
 
-  return (
-    <React.Fragment>
+  useEffect(() => {
+    if (isLoading) {
+      onLoadMovies();
+    }
+
+    if (movies !== []) {
+      onLoadCompletion();
+    }
+  }, [movies]);
+
+
+  return !isLoading
+    ? <React.Fragment>
       <MainPageMovieCard
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
@@ -28,14 +41,17 @@ const MainPage = (props) => {
         <Footer/>
       </div>
     </React.Fragment>
-
-  );
+    : <LoadingPage/>;
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onPlayButtonClick(url) {
     dispatch(redirectToRoute(url));
     dispatch(startPlaying());
+  },
+  onLoadMovies() {
+    dispatch(fetchMovieList());
+    dispatch(fetchPromotedMovie());
   }
 });
 

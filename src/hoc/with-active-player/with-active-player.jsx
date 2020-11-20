@@ -1,74 +1,47 @@
-import React, {createRef, PureComponent} from "react";
+import React, {createRef, useEffect} from "react";
 import {generateVideoType} from "../../utils/utils";
 import {withActivePlayerType} from "../../components/types/types";
 
 const withActivePlayer = (Component) => {
-  class WithActivePlayer extends PureComponent {
-    constructor(props) {
-      super(props);
+  const WithActivePlayer = (props) => {
+    const {imageName, videoUrl, isPlaying} = props;
 
-      this._videoRef = createRef();
-      this._sourceRef = createRef();
+    const videoRef = createRef();
 
-      this.state = {
-        isLoading: true
-      };
-    }
+    useEffect(() => {
+      const video = videoRef.current;
 
-    componentDidMount() {
-      const {imageName} = this.props;
+      video.src = videoUrl;
+      video.type = generateVideoType(videoUrl);
 
-      const video = this._videoRef.current;
-
-      video.muted = true;
-      video.autoPlay = true;
-      video.poster = imageName;
-    }
-
-    componentDidUpdate() {
-      const {videoUrl, isPlaying} = this.props;
-
-      const video = this._videoRef.current;
-      const source = this._sourceRef.current;
-
-      source.src = videoUrl;
-      source.type = generateVideoType(videoUrl);
-      video.load();
-
-      video.oncanplaythrough = () => {
-        this.setState({
-          isLoading: false
-        });
-        if (isPlaying) {
+      if (isPlaying) {
+        video.oncanplaythrough = () => {
           video.play();
-        } else {
-          video.pause();
-        }
+        };
+
+      } else {
+        video.pause();
+        video.src = ``;
+        video.type = ``;
+      }
+
+      return () => {
+        video.oncanplaythrough = null;
       };
-    }
+    }, [isPlaying]);
 
-    componentWillUnmount() {
-      const video = this._videoRef.current;
-
-      video.oncanplaythrough = null;
-    }
-
-    render() {
-      return (
-        <Component>
-          <video
-            autoPlay="autoplay"
-            className="player__video"
-            ref={this._videoRef}
-          >
-            <source
-              ref={this._sourceRef}
-            />
-          </video>
-        </Component>
-      );
-    }
-  }
+    return (
+      <Component>
+        <video
+          autoPlay="autoplay"
+          className="player__video"
+          ref={videoRef}
+          poster={imageName}
+          muted
+        />
+      </Component>
+    );
+  };
 
   WithActivePlayer.propTypes = withActivePlayerType;
 

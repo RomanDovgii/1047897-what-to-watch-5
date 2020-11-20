@@ -9,7 +9,7 @@ import {AuthorizationStatus} from "./utils/const";
 import {createAPI} from "./services/api";
 import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization} from "./store/actions/action";
-import {fetchMovieList, fetchPromotedMovie, checkAuth} from "./store/actions/api-actions";
+import {checkAuth} from "./store/actions/api-actions";
 import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(
@@ -25,8 +25,6 @@ const store = createStore(
 );
 
 Promise.all([
-  store.dispatch(fetchMovieList()),
-  store.dispatch(fetchPromotedMovie()),
   store.dispatch(checkAuth())
 ])
 .then(() => {

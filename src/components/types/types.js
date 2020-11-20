@@ -237,8 +237,8 @@ const isFormLockedType = {
   isFormLocked: PropTypes.bool.isRequired
 };
 
-const idType = {
-  id: PropTypes.string.isRequired
+const optionalIdType = {
+  id: PropTypes.string
 };
 
 const onChangeFormLockType = {
@@ -285,7 +285,7 @@ export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
 export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
 export const withActivePlayerType = Object.assign({}, imageNameType, isPlayingType, videoUrlType);
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovieType);
-export const addReviewType = Object.assign({}, onRatingChangeType, onReviewChangeType, backgroundColorType, isReviewFilledType, isRatingFilledType, isFormLockedType, ratingType, reviewType, idType, onSubmitType, onChangeFormLockType);
+export const addReviewType = Object.assign({}, onRatingChangeType, onReviewChangeType, backgroundColorType, isReviewFilledType, isRatingFilledType, isFormLockedType, ratingType, reviewType, optionalIdType, onSubmitType, onChangeFormLockType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);
 export const playerPageType = Object.assign({}, selectedMovieType, isPlayingType, onExitButtonClickType, onPlayButtonClickType);
 export const privateRouteType = Object.assign({}, authoriationStatusType, exactType, pathType, renderType);

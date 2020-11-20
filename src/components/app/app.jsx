@@ -14,6 +14,7 @@ import {AppRoute} from "../../utils/const";
 
 const PlayerPageWrapper = withLoading(withActiveMainPlayer(PlayerPage));
 const AddReviewWrapper = withLoading(AddReviewPage);
+const MainPageWrapper = withLoading(MainPage);
 
 const App = () => {
   return (
@@ -23,7 +24,7 @@ const App = () => {
           exact
           path={AppRoute.MAIN}
           render={({history}) => (
-            <MainPage
+            <MainPageWrapper
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}
             />
