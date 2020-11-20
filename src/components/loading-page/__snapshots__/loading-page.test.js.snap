@@ -7,7 +7,7 @@ exports[`Should render correct LoadingPage 1`] = `
       "alignItems": "center",
       "backgroundImage": "linear-gradient(-180deg,#180202 0,#000 100%)",
       "display": "flex",
-      "height": "100%",
+      "height": "100vh",
       "justifyContent": "center",
       "left": "0",
       "position": "absolute",

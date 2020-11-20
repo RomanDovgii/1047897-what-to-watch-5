@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import {useRouteMatch} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import Header from "../header/header";
 import AddReviewForm from "../add-review-form/add-review-form";
 import AddReviewBackground from "../add-review-background/add-review-background";
@@ -14,9 +14,9 @@ import LoadingPage from "../loading-page/loading-page";
 const AddReviewWrapper = withActiveReviewForm(AddReviewForm);
 
 const AddReviewPage = (props) => {
-  const {fetchMovie, onLoadCompletion, selectedMovie, onUserIconClick, onWTWLogoClick, isLoading} = props;
+  const {fetchMovie, onLoadCompletion, selectedMovie, onUserIconClick, onWTWLogoClick, isLoading, match} = props;
   const {backgroundColor, posterImage, backgroundImage, name} = selectedMovie;
-  const id = useRouteMatch().params.id;
+  const {id} = useParams();
 
   useEffect(() => {
     if (JSON.stringify(selectedMovie) === JSON.stringify({})) {

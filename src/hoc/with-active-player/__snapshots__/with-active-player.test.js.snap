@@ -16,8 +16,8 @@ exports[`Should render correct withActivePlayer which isn't playing 1`] = `
   <video
     autoPlay="autoplay"
     className="player__video"
-  >
-    <source />
-  </video>
+    muted={true}
+    poster="img/the-grand-budapest-hotel-bg.jpg"
+  />
 </div>
 `;

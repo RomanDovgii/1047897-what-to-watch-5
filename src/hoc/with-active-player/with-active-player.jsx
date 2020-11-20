@@ -18,7 +18,6 @@ const withActivePlayer = (Component) => {
         video.oncanplaythrough = () => {
           video.play();
         };
-
       } else {
         video.pause();
         video.src = ``;

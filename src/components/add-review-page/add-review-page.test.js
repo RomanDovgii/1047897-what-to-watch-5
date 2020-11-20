@@ -24,9 +24,7 @@ const testMovie = {
 };
 
 const testMatch = {
-  params: {
-    id: testMovie.id
-  }
+  id: testMovie.id
 };
 
 it(
