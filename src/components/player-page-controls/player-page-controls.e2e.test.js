@@ -14,14 +14,14 @@ const mockEvent = {
 };
 
 it(
-    `onPlayButtonCLick and onFullScreenButtonClick should be called once`,
+    `onPlayButtonClick and onFullScreenButtonClick should be called once`,
     () => {
-      const onPlayButtonCLick = jest.fn();
+      const onPlayButtonClick = jest.fn();
       const onFullScreenButtonClick = jest.fn();
 
       const screen = shallow(
           <PlayerPageControls
-            onPlayButtonCLick={onPlayButtonCLick}
+            onPlayButtonClick={onPlayButtonClick}
             onFullScreenButtonClick={onFullScreenButtonClick}
             isPlaying={false}
             duration={500}
@@ -37,7 +37,7 @@ it(
       playButton.simulate(`click`, mockEvent);
       fullScreenButton.simulate(`click`, mockEvent);
 
-      expect(onPlayButtonCLick).toHaveBeenCalledTimes(1);
+      expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
       expect(onFullScreenButtonClick).toHaveBeenCalledTimes(1);
     }
 );

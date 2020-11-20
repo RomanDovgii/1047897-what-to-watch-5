@@ -6,7 +6,7 @@ exports[`Should render correct MoviePage with authorized user 1`] = `
     comments={
       Array [
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -16,7 +16,7 @@ exports[`Should render correct MoviePage with authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -26,7 +26,7 @@ exports[`Should render correct MoviePage with authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -36,7 +36,7 @@ exports[`Should render correct MoviePage with authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -203,7 +203,7 @@ exports[`Should render correct MoviePage with non-authorized user 1`] = `
     comments={
       Array [
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -213,7 +213,7 @@ exports[`Should render correct MoviePage with non-authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -223,7 +223,7 @@ exports[`Should render correct MoviePage with non-authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
@@ -233,7 +233,7 @@ exports[`Should render correct MoviePage with non-authorized user 1`] = `
           },
         },
         Object {
-          "comment": "Discerning travellers and Wes Anderson fans will luxuriate in the glorious Mittel-European kitsch of one of the director's funniest and most exquisitely designed movies in years.",
+          "comment": "Lorem ipsum dolor sit amet",
           "date": "2019-05-08T14:13:56.569Z",
           "id": 1,
           "rating": 8.9,
