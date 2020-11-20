@@ -1,5 +1,5 @@
-import React, {createRef, PureComponent} from "react";
-import {withRouter} from "react-router-dom";
+import React, {createRef, useEffect} from "react";
+import {useParams} from "react-router-dom";
 import PlayerPageExit from "../player-page-exit/player-page-exit";
 import PlayerPageControls from "../player-page-controls/player-page-controls";
 import {playerPageType} from "../types/types";
@@ -10,113 +10,80 @@ import {generateVideoType} from "../../utils/utils";
 import {ALL_GENRE} from "../../utils/const";
 import LoadingPage from "../loading-page/loading-page";
 
-class PlayerPage extends PureComponent {
-  constructor(props) {
-    super(props);
+const PlayerPage = (props) => {
+  const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading, onPlayButtonClick, onExitButtonClick, resetMovieGenre, fetchMovie, onLoadCompletion, duration} = props;
+  const {videoLink, backgroundImage, name} = selectedMovie;
+  const videoRef = createRef();
+  const id = useParams().id;
 
-    this._videoRef = createRef();
-    this._sourceRef = createRef();
-    this._movieDuration = 0;
-
-    this._handleFullScreenButtonClick = this._handleFullScreenButtonClick.bind(this);
-    this._handlePlayButtonClick = this._handlePlayButtonClick.bind(this);
-    this._handleExitButtonClick = this._handleExitButtonClick.bind(this);
-  }
-
-  componentDidMount() {
-    const {fetchMovie, match, isLoading} = this.props;
-    const video = this._videoRef.current;
-    this._id = match.params.id;
-
-    fetchMovie(this._id);
-
-    if (!isLoading) {
-      video.onloadedmetadata = () => {
-        this._movieDuration = video.duration;
-      };
+  useEffect(() => {
+    if (JSON.stringify(selectedMovie) === JSON.stringify({})) {
+      fetchMovie(id);
     }
-  }
-
-  componentDidUpdate() {
-    const {onLoadCompletion, selectedMovie} = this.props;
 
     if (JSON.stringify(selectedMovie) !== JSON.stringify({})) {
       onLoadCompletion();
     }
-  }
+  }, [selectedMovie, isLoading, isPlayerLoading]);
 
-  _handlePlayButtonClick() {
-    const {onPlayButtonClick, isPlaying} = this.props;
-    const video = this._videoRef.current;
+  return (
+    <div className="player">
+      {!isLoading
+        ? <video
+          ref={videoRef}
+          autoPlay={isPlaying}
+          className="player__video"
+          poster={backgroundImage}
+          src={videoLink}
+          type={generateVideoType(videoLink)}
+          onLoadedMetadata={(evt) => {
+            evt.preventDefault();
+            onLoadingEnd(videoRef.current.duration);
+          }}
+          onTimeUpdate={(evt) => {
+            evt.preventDefault();
+            onTimeUpdate(videoRef.current.currentTime);
+          }}
+        >
+        </video>
+        : <LoadingPage></LoadingPage>
+      }
+      <PlayerPageExit
+        onExitButtonClick = {() => {
+          if (isPlaying) {
+            onPlayButtonClick();
+          }
 
-    if (isPlaying) {
-      video.pause();
-    } else {
-      video.play();
-    }
+          resetMovieGenre(ALL_GENRE);
+          onExitButtonClick();
+        }}
+      />
+      <PlayerPageControls
+        isPlaying={isPlaying}
+        isLoading={isPlayerLoading}
+        duration={duration}
+        onPlayButtonClick={() => {
+          const video = videoRef.current;
 
-    onPlayButtonClick();
-  }
+          if (isPlaying) {
+            video.pause();
+          } else {
+            video.play();
+          }
 
-  _handleFullScreenButtonClick() {
-    const video = this._videoRef.current;
+          onPlayButtonClick();
+        }}
+        onFullScreenButtonClick={() => {
+          const video = videoRef.current;
 
-    video.requestFullscreen();
-  }
-
-  _handleExitButtonClick() {
-    const {onPlayButtonClick, onExitButtonClick, resetMovieGenre, isPlaying} = this.props;
-
-    if (isPlaying) {
-      onPlayButtonClick();
-    }
-
-    resetMovieGenre(ALL_GENRE);
-    onExitButtonClick();
-  }
-
-  render() {
-    const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading} = this.props;
-    const {videoLink, backgroundImage, name} = selectedMovie;
-
-    return (
-      <div className="player">
-        {!isLoading
-          ? <video
-            ref={this._videoRef}
-            autoPlay={isPlaying}
-            className="player__video"
-            poster={backgroundImage}
-            onLoadedMetadata={(evt) => {
-              evt.preventDefault();
-              this._movieDuration = this._videoRef.current.duration;
-              onLoadingEnd();
-            }}
-            onTimeUpdate={(evt) => {
-              evt.preventDefault();
-              onTimeUpdate(this._videoRef.current.currentTime);
-            }}
-          >
-            <source ref={this._sourceRef} src={videoLink} type={generateVideoType(videoLink)}/>
-          </video>
-          : <LoadingPage></LoadingPage>
-        }
-        <PlayerPageExit
-          onExitButtonClick = {this._handleExitButtonClick}
-        />
-        <PlayerPageControls
-          isPlaying={isPlaying}
-          isLoading={isPlayerLoading}
-          duration={this._movieDuration}
-          onPlayButtonClick={this._handlePlayButtonClick}
-          onFullScreenButtonClick={this._handleFullScreenButtonClick}
-          currentTime = {currentTime}
-          movieName = {name}
-        />
-      </div>
-    );
-  }
-}
+          video.requestFullscreen();
+        }}
+        currentTime = {currentTime}
+        movieName = {name}
+      />
+    </div>
+  );
+};
 
 PlayerPage.propTypes = playerPageType;
 
@@ -139,4 +106,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 export {PlayerPage};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PlayerPage));
+export default connect(mapStateToProps, mapDispatchToProps)(PlayerPage);

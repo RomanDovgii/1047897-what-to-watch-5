@@ -14,7 +14,7 @@ import LoadingPage from "../loading-page/loading-page";
 const AddReviewWrapper = withActiveReviewForm(AddReviewForm);
 
 const AddReviewPage = (props) => {
-  const {fetchMovie, onLoadCompletion, selectedMovie, onUserIconClick, onWTWLogoClick, isLoading, match} = props;
+  const {fetchMovie, onLoadCompletion, selectedMovie, onUserIconClick, onWTWLogoClick, isLoading} = props;
   const {backgroundColor, posterImage, backgroundImage, name} = selectedMovie;
   const {id} = useParams();
 

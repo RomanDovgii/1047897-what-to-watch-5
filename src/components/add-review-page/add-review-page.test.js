@@ -3,6 +3,10 @@ import ShallowRenderer from "react-test-renderer/shallow";
 import {noop} from "../../utils/utils";
 import {AddReviewPage} from "./add-review-page";
 
+jest.mock(`react-router-dom`, () => ({
+  useParams: jest.fn().mockReturnValue({environment: `dev`, service: `fakeService`}),
+}));
+
 const testMovie = {
   id: 1,
   name: `The Grand Budapest Hotel`,
@@ -23,10 +27,6 @@ const testMovie = {
   isFavorite: false
 };
 
-const testMatch = {
-  id: testMovie.id
-};
-
 it(
     `Should render correct AddReviewPage with loading`,
     () => {
@@ -38,8 +38,7 @@ it(
             onWTWLogoClick={noop}
             onLoadCompletion={noop}
             fetchMovie={noop}
-            match={testMatch}
-            selectedMovie={testMovie}
+            selectedMovie={{}}
             isLoading={true}
           />
       );
@@ -59,7 +58,6 @@ it(
             onWTWLogoClick={noop}
             onLoadCompletion={noop}
             fetchMovie={noop}
-            match={testMatch}
             selectedMovie={testMovie}
             isLoading={false}
           />

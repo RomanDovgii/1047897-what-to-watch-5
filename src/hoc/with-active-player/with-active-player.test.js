@@ -3,6 +3,10 @@ import renderer from "react-test-renderer";
 import {testChildrenType} from "../../components/types/types";
 import withActivePlayer from "./with-active-player";
 
+jest.mock(``, () => ({
+  pause: jest.fn()
+}));
+
 const testMovie = {
   id: 1,
   name: `The Grand Budapest Hotel`,
