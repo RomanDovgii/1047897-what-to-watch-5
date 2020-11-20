@@ -19,8 +19,7 @@ const AddReviewPage = (props) => {
   const id = useRouteMatch().params.id;
 
   useEffect(() => {
-
-    if (isLoading) {
+    if (JSON.stringify(selectedMovie) === JSON.stringify({})) {
       fetchMovie(id);
     }
 
