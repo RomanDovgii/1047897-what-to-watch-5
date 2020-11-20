@@ -82,9 +82,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-const mapStateToProps = ({DATA}) => ({
-  movie: DATA.promotedMovie
-});
-
 export {MainPageMovieCard};
-export default connect(mapStateToProps, mapDispatchToProps)(MainPageMovieCard);
+export default connect(null, mapDispatchToProps)(MainPageMovieCard);

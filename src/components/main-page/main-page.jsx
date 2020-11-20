@@ -11,25 +11,27 @@ import {fetchMovieList, fetchPromotedMovie} from "../../store/actions/api-action
 import LoadingPage from "../loading-page/loading-page";
 
 const MainPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onLoadMovies, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion} = props;
+  const {onUserIconClick, onWTWLogoClick, onLoadMovies, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion, promotedMovie} = props;
 
   useEffect(() => {
-    if (isLoading) {
+    if (JSON.stringify(movies) === JSON.stringify([]) && JSON.stringify(promotedMovie) === JSON.stringify({})) {
       onLoadMovies();
     }
 
-    if (movies !== []) {
+    if (JSON.stringify(movies) !== JSON.stringify([]) && JSON.stringify(promotedMovie) !== JSON.stringify({})) {
       onLoadCompletion();
     }
-  }, [movies]);
+  }, [movies, promotedMovie]);
 
 
-  return !isLoading
-    ? <React.Fragment>
+  return isLoading
+    ? <LoadingPage/>
+    : <React.Fragment>
       <MainPageMovieCard
         onUserIconClick = {onUserIconClick}
         onWTWLogoClick = {onWTWLogoClick}
         onPlayButtonClick = {onPlayButtonClick}
+        movie = {promotedMovie}
       />
       <div className="page-content">
         <Catalog
@@ -40,8 +42,7 @@ const MainPage = (props) => {
         />
         <Footer/>
       </div>
-    </React.Fragment>
-    : <LoadingPage/>;
+    </React.Fragment>;
 };
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,6 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = ({DATA}) => ({
   movies: filterMoviesByGenre(DATA),
+  promotedMovie: DATA.promotedMovie,
   genres: DATA.genres,
 });
 
