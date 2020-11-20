@@ -17,7 +17,13 @@ export const fetchPromotedMovie = () => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then((response) => {
+      dispatch(updateUserInfo({
+        userId: response.data.id,
+        avatarUrl: response.data.avatar_url
+      }));
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+    })
     .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
