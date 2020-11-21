@@ -11,6 +11,8 @@ exports[`Should render correct  1`] = `
   />
   <Memo(Connect(LoginPageForm)) />
   <Memo(Connect(Footer)) />
-  <Memo(Connect(Error)) />
+  <Memo(Connect(Error))
+    isFromLoginPage={true}
+  />
 </div>
 `;

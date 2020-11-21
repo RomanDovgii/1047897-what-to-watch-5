@@ -5,7 +5,7 @@ const testError = {
   data: {
     error: `random text`
   },
-  status: 505
+  status: `505`
 };
 
 it(
