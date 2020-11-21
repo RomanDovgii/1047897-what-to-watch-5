@@ -10,7 +10,7 @@ import withActiveTabs from "../../hoc/with-active-tabs/with-active-tabs";
 import withLoading from "../../hoc/with-loading/with-loading";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {redirectToRoute, startPlaying} from "../../store/actions/action";
-import {fetchSelectedMovie, fetchSelectedMovieComments, addMovieToFavorite} from "../../store/actions/api-actions";
+import {fetchSelectedMovie, fetchSelectedMovieComments, fetchMovieList, addMovieToFavorite} from "../../store/actions/api-actions";
 
 const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 
@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
     dispatch(fetchSelectedMovieComments(id));
+    dispatch(fetchMovieList());
   },
   onMyListClick(id, status) {
     dispatch(addMovieToFavorite(id, status));
