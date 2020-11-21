@@ -24,7 +24,9 @@ export const checkAuth = () => (dispatch, _getState, api) => (
       }));
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
     })
-    .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+    })
 );
 
 export const login = ({email, password}) => (dispatch, _getState, api) => (

@@ -9,7 +9,6 @@ import {AuthorizationStatus} from "./utils/const";
 import {createAPI} from "./services/api";
 import rootReducer from "./store/reducers/root-reducer";
 import {requireAuthorization} from "./store/actions/action";
-import {checkAuth} from "./store/actions/api-actions";
 import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(
@@ -24,19 +23,11 @@ const store = createStore(
     )
 );
 
-Promise.all([
-  store.dispatch(checkAuth())
-])
-.then(() => {
-  ReactDOM.render(
-      <Provider store={store}>
-        <App/>
-      </Provider>,
-      document.querySelector(`#root`)
-  );
-})
-.catch((err) => {
-  throw err;
-});
 
+ReactDOM.render(
+    <Provider store={store}>
+      <App/>
+    </Provider>,
+    document.querySelector(`#root`)
+);
 

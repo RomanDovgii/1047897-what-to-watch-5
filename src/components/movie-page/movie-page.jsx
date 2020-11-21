@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchMovieList());
   },
   onMyListClick(id, status) {
-    dispatch(addMovieToFavorite(id, status));
+    dispatch(addMovieToFavorite(parseInt(id, 10), status));
   },
   onPlayButtonClick(url) {
     dispatch(redirectToRoute(url));

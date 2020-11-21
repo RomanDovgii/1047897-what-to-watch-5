@@ -11,17 +11,21 @@ import {fetchMovieList, fetchPromotedMovie} from "../../store/actions/api-action
 import LoadingPage from "../loading-page/loading-page";
 
 const MainPage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onLoadMovies, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion, promotedMovie} = props;
+  const {onUserIconClick, onWTWLogoClick, loadMovies, loadPromotedMovie, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion, promotedMovie} = props;
 
   useEffect(() => {
-    if (JSON.stringify(movies) === JSON.stringify([]) && JSON.stringify(promotedMovie) === JSON.stringify({})) {
-      onLoadMovies();
+    if (JSON.stringify(movies) === JSON.stringify([])) {
+      loadMovies();
+    }
+
+    if (JSON.stringify(promotedMovie) === JSON.stringify({})) {
+      loadPromotedMovie();
     }
 
     if (JSON.stringify(movies) !== JSON.stringify([]) && JSON.stringify(promotedMovie) !== JSON.stringify({})) {
       onLoadCompletion();
     }
-  }, [movies, promotedMovie]);
+  }, [movies, promotedMovie, isLoading]);
 
 
   return isLoading
@@ -50,8 +54,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(redirectToRoute(url));
     dispatch(startPlaying());
   },
-  onLoadMovies() {
+  loadMovies() {
     dispatch(fetchMovieList());
+  },
+  loadPromotedMovie() {
     dispatch(fetchPromotedMovie());
   }
 });
