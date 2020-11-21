@@ -1,10 +1,11 @@
-import React, {createRef, useEffect} from "react";
+import React, {createRef, useEffect, useState} from "react";
 import {generateVideoType} from "../../utils/utils";
 import {withActivePlayerType} from "../../components/types/types";
 
 const withActivePlayer = (Component) => {
   const WithActivePlayer = (props) => {
     const {imageName, videoUrl, isPlaying} = props;
+    const [isLoading, changeIsLoading] = useState(true);
 
     const videoRef = createRef();
 
@@ -14,17 +15,22 @@ const withActivePlayer = (Component) => {
       video.src = videoUrl;
       video.type = generateVideoType(videoUrl);
 
-      if (isPlaying) {
-        video.oncanplaythrough = () => {
-          video.play();
-        };
-      } else {
-        video.pause();
-        video.src = ``;
-        video.type = ``;
-      }
+      video.oncanplaythrough = () => {
+        changeIsLoading(false);
+        switch (true) {
+          case isPlaying && !isLoading:
+            video.play();
+            break;
+          case !isPlaying && !isLoading:
+            video.pause();
+            video.src = ``;
+            video.type = ``;
+            break;
+        }
+      };
 
       return () => {
+        changeIsLoading(true);
         video.oncanplaythrough = null;
       };
     }, [isPlaying]);
@@ -32,7 +38,6 @@ const withActivePlayer = (Component) => {
     return (
       <Component>
         <video
-          autoPlay="autoplay"
           className="player__video"
           ref={videoRef}
           poster={imageName}

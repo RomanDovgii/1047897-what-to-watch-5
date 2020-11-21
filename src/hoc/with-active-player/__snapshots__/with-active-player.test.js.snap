@@ -3,18 +3,16 @@
 exports[`Should render correct withActivePlayer which is playing 1`] = `
 <div>
   <video
-    autoPlay="autoplay"
     className="player__video"
-  >
-    <source />
-  </video>
+    muted={true}
+    poster="img/the-grand-budapest-hotel-bg.jpg"
+  />
 </div>
 `;
 
 exports[`Should render correct withActivePlayer which isn't playing 1`] = `
 <div>
   <video
-    autoPlay="autoplay"
     className="player__video"
     muted={true}
     poster="img/the-grand-budapest-hotel-bg.jpg"

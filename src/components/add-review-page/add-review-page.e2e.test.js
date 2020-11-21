@@ -1,5 +1,5 @@
 import React from "react";
-import {configure, shallow} from "enzyme";
+import {configure, mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {noop} from "../../utils/utils";
 import {AddReviewPage} from "./add-review-page";
@@ -16,7 +16,7 @@ it(
     `fetchMovie should be called once`,
     () => {
       const fetchMovie = jest.fn();
-      shallow(
+      mount(
           <AddReviewPage
             onUserIconClick={noop}
             onWTWLogoClick={noop}
