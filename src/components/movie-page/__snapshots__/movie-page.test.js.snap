@@ -194,6 +194,7 @@ exports[`Should render correct MoviePage with authorized user 1`] = `
     />
     <Memo(Connect(Footer)) />
   </div>
+  <Memo(Connect(Error)) />
 </React.Fragment>
 `;
 
@@ -391,5 +392,6 @@ exports[`Should render correct MoviePage with non-authorized user 1`] = `
     />
     <Memo(Connect(Footer)) />
   </div>
+  <Memo(Connect(Error)) />
 </React.Fragment>
 `;

@@ -142,5 +142,6 @@ exports[`Should render correct MyListPage 1`] = `
     }
   />
   <Memo(Connect(Footer)) />
+  <Memo(Connect(Error)) />
 </div>
 `;

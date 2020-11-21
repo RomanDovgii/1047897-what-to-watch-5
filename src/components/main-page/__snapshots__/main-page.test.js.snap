@@ -153,5 +153,6 @@ exports[`Should render correct MainPage 1`] = `
     />
     <Memo(Connect(Footer)) />
   </div>
+  <Memo(Connect(Error)) />
 </React.Fragment>
 `;

@@ -8,7 +8,9 @@ it(
       .toEqual({
         shownMoviesCount: SHOWN_MOVIES_COUNT,
         isPlayerPlaying: false,
-        isAuthError: false
+        isAuthError: false,
+        isError: false,
+        error: {}
       });
     }
 );

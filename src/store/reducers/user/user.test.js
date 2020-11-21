@@ -52,15 +52,18 @@ describe(
 
             return testCheckAuth(dispatch, () => {}, api)
               .then(() => {
-                expect(dispatch).toHaveBeenCalledTimes(2);
+                expect(dispatch).toHaveBeenCalledTimes(3);
                 expect(dispatch).toHaveBeenNthCalledWith(1, {
+                  type: ActionType.FLUSH_ERR
+                });
+                expect(dispatch).toHaveBeenNthCalledWith(2, {
                   type: ActionType.UPDATE_USER_INFO,
                   payload: {
                     avatarUrl: undefined,
                     userId: undefined
                   }
                 });
-                expect(dispatch).toHaveBeenNthCalledWith(2, {
+                expect(dispatch).toHaveBeenNthCalledWith(3, {
                   type: ActionType.REQUIRED_AUTHORIZATION,
                   payload: AuthorizationStatus.AUTH
                 });
@@ -81,22 +84,25 @@ describe(
 
             return testLogin(dispatch, () => {}, api)
               .then(() => {
-                expect(dispatch).toHaveBeenCalledTimes(4);
+                expect(dispatch).toHaveBeenCalledTimes(5);
                 expect(dispatch).toHaveBeenNthCalledWith(1, {
+                  type: ActionType.FLUSH_ERR
+                });
+                expect(dispatch).toHaveBeenNthCalledWith(2, {
                   type: ActionType.UPDATE_USER_INFO,
                   payload: {
                     userId: undefined,
                     avatarUrl: undefined
                   }
                 });
-                expect(dispatch).toHaveBeenNthCalledWith(2, {
+                expect(dispatch).toHaveBeenNthCalledWith(3, {
                   type: ActionType.REQUIRED_AUTHORIZATION,
                   payload: AuthorizationStatus.AUTH
                 });
-                expect(dispatch).toHaveBeenNthCalledWith(3, {
+                expect(dispatch).toHaveBeenNthCalledWith(4, {
                   type: ActionType.REMOVE_ERR
                 });
-                expect(dispatch).toHaveBeenNthCalledWith(4, {
+                expect(dispatch).toHaveBeenNthCalledWith(5, {
                   type: ActionType.REDIRECT_TO_ROUTE,
                   payload: AppRoute.MAIN
                 });

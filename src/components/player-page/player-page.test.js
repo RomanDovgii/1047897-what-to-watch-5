@@ -1,5 +1,5 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import ShallowRenderer from "react-test-renderer/shallow";
 import {noop} from "../../utils/utils";
 import {PlayerPage} from "./player-page";
 
@@ -36,8 +36,10 @@ const testMatch = {
 it(
     `Should render correct PlayerPage while it's loading`,
     () => {
+      const renderer = new ShallowRenderer();
+
       const tree = renderer
-      .create(
+      .render(
           (<PlayerPage
             selectedMovie={testMovie}
             isPlaying={false}
@@ -57,8 +59,7 @@ it(
               return {};
             }
           }
-      )
-      .toJSON();
+      );
 
       expect(tree).toMatchSnapshot();
     }
@@ -67,8 +68,10 @@ it(
 it(
     `Should render correct PlayerPage after loading`,
     () => {
+      const renderer = new ShallowRenderer();
+
       const tree = renderer
-      .create(
+      .render(
           (<PlayerPage
             selectedMovie={testMovie}
             isPlaying={false}
@@ -87,8 +90,7 @@ it(
               return {};
             }
           }
-      )
-      .toJSON();
+      );
 
       expect(tree).toMatchSnapshot();
     }

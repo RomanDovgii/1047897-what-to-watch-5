@@ -36,7 +36,7 @@ export const movieObjectType = PropTypes.shape({
 });
 
 const errorObjectType = PropTypes.shape({
-  heading: PropTypes.string,
+  code: PropTypes.string,
   text: PropTypes.string
 });
 

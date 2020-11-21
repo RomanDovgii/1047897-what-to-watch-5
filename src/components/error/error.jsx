@@ -74,13 +74,13 @@ const errorStyle = {
 
 const Error = (props) => {
   const {error, isError, onCloseButtonClick} = props;
-  const {heading = `Error Unknown`, text = `We don't know what happened. If it doesn't bark, doesn't spread seeds or communism, and doesn't try to kill you, then just ignore it. It isn't important.`} = error;
+  const {code = `Unknown`, text = `We don't know what happened. If it doesn't bark, doesn't spread seeds or communism, and doesn't try to kill you, then just ignore it. It isn't important.`} = error;
 
   return (
     <React.Fragment>
       {isError &&
         <div style={errorStyle.ERROR}>
-          <h6 style={errorStyle.ERROR_HEADING}>{heading}</h6>
+          <h6 style={errorStyle.ERROR_HEADING}>{`Error ${code}`}</h6>
           <p style={errorStyle.ERROR_TEXT}>
             {text}
           </p>

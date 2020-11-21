@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`In case of back end developer being not smart enough to provide information with error status (error code 1D10T). It will render an error with basic text 1`] = `
+<div
+  style={
+    Object {
+      "backgroundImage": "linear-gradient(-180deg,#180202 0,#000 100%)",
+      "bottom": "0",
+      "boxShadow": "0px 0px 20px 2px #330233",
+      "minHeight": "50px",
+      "opacity": "0.9",
+      "paddingBottom": "20px",
+      "paddingLeft": "10px",
+      "paddingRight": "10px",
+      "paddingTop": "10px",
+      "position": "fixed",
+      "right": "30px",
+      "width": "300px",
+      "zIndex": "1000",
+    }
+  }
+>
+  <h6
+    style={
+      Object {
+        "color": "#ffffff",
+        "fontSize": "30px",
+        "margin": "0",
+        "paddingRight": "20px",
+      }
+    }
+  >
+    Error Unknown
+  </h6>
+  <p
+    style={
+      Object {
+        "color": "#ffffff",
+        "margin": "0",
+        "paddingTop": "20px",
+      }
+    }
+  >
+    We don't know what happened. If it doesn't bark, doesn't spread seeds or communism, and doesn't try to kill you, then just ignore it. It isn't important.
+  </p>
+  <button
+    className="error__close"
+    onClick={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "background": "none",
+        "border": "none",
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "30px",
+        "justifyContent": "center",
+        "position": "absolute",
+        "right": "5px",
+        "top": "10px",
+        "width": "30px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": "20px",
+          "content": "\`\`",
+          "height": "20px",
+          "position": "absolute",
+          "transform": "rotate(40deg)",
+          "width": "4px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": "20px",
+          "content": "\`\`",
+          "height": "20px",
+          "position": "absolute",
+          "transform": "rotate(-40deg)",
+          "width": "4px",
+        }
+      }
+    />
+    <p
+      style={
+        Object {
+          "border": "0 !important",
+          "clip": "rect(1px, 1px, 1px, 1px)",
+          "height": "1px !important",
+          "overflow": "hidden",
+          "padding": "0 !important",
+          "position": "absolute !important",
+          "width": "1px !important",
+        }
+      }
+    >
+      Close popup
+    </p>
+  </button>
+</div>
+`;
+
+exports[`Should render correct error 1`] = `
+<div
+  style={
+    Object {
+      "backgroundImage": "linear-gradient(-180deg,#180202 0,#000 100%)",
+      "bottom": "0",
+      "boxShadow": "0px 0px 20px 2px #330233",
+      "minHeight": "50px",
+      "opacity": "0.9",
+      "paddingBottom": "20px",
+      "paddingLeft": "10px",
+      "paddingRight": "10px",
+      "paddingTop": "10px",
+      "position": "fixed",
+      "right": "30px",
+      "width": "300px",
+      "zIndex": "1000",
+    }
+  }
+>
+  <h6
+    style={
+      Object {
+        "color": "#ffffff",
+        "fontSize": "30px",
+        "margin": "0",
+        "paddingRight": "20px",
+      }
+    }
+  >
+    Error Unknown
+  </h6>
+  <p
+    style={
+      Object {
+        "color": "#ffffff",
+        "margin": "0",
+        "paddingTop": "20px",
+      }
+    }
+  >
+    He, he, he, try to catch me
+  </p>
+  <button
+    className="error__close"
+    onClick={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "background": "none",
+        "border": "none",
+        "display": "flex",
+        "flexDirection": "column",
+        "height": "30px",
+        "justifyContent": "center",
+        "position": "absolute",
+        "right": "5px",
+        "top": "10px",
+        "width": "30px",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": "20px",
+          "content": "\`\`",
+          "height": "20px",
+          "position": "absolute",
+          "transform": "rotate(40deg)",
+          "width": "4px",
+        }
+      }
+    />
+    <div
+      style={
+        Object {
+          "backgroundColor": "#ffffff",
+          "borderRadius": "20px",
+          "content": "\`\`",
+          "height": "20px",
+          "position": "absolute",
+          "transform": "rotate(-40deg)",
+          "width": "4px",
+        }
+      }
+    />
+    <p
+      style={
+        Object {
+          "border": "0 !important",
+          "clip": "rect(1px, 1px, 1px, 1px)",
+          "height": "1px !important",
+          "overflow": "hidden",
+          "padding": "0 !important",
+          "position": "absolute !important",
+          "width": "1px !important",
+        }
+      }
+    >
+      Close popup
+    </p>
+  </button>
+</div>
+`;
+
+exports[`Should render nothing 1`] = `null`;
+
+exports[`Should render nothing even if error exist 1`] = `null`;

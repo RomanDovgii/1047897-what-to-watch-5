@@ -55,7 +55,7 @@ const appState = (state = initialState, action) => {
             isError: true,
             error: {
               text: action.payload.data.error,
-              heading: `Error ${action.payload.status}`
+              code: action.payload.status
             }
           }
       );
