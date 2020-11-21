@@ -304,3 +304,22 @@ it(
       });
     }
 );
+
+it(
+    `Reducer with ActionType.FLUSH_SELECTED_MOVIE resets selected genre and selected movie`,
+    () => {
+      expect(appData(
+          {
+            selectedMovie: testAdaptedMovie,
+            selectedGenre: `Surreal`
+          },
+          {
+            type: ActionType.FLUSH_SELECTED_MOVIE,
+          }
+      ))
+      .toEqual({
+        selectedMovie: {},
+        selectedGenre: ALL_GENRE
+      });
+    }
+);

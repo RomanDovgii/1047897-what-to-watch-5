@@ -15,7 +15,8 @@ import {
   loadSelectedMovie,
   loadSelectedMovieComments,
   flushError,
-  createError
+  createError,
+  flushSelectedMovie
 } from "./action";
 
 import {ActionType, AuthorizationStatus} from "../../utils/const";
@@ -268,6 +269,16 @@ describe(
             expect(flushError())
             .toEqual({
               type: ActionType.FLUSH_ERR,
+            });
+          }
+      );
+
+      it(
+          `Action creator for flushSelectedMovie returns correct action`,
+          () => {
+            expect(flushSelectedMovie())
+            .toEqual({
+              type: ActionType.FLUSH_SELECTED_MOVIE,
             });
           }
       );
