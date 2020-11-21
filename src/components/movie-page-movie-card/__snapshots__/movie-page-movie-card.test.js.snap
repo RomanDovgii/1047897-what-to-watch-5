@@ -95,7 +95,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, and deta
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>
@@ -338,7 +338,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, and over
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>
@@ -581,7 +581,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, and revi
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>
@@ -824,7 +824,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, loading 
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>
@@ -1067,7 +1067,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, loading 
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>
@@ -1310,7 +1310,7 @@ exports[`Should render correct MoviePageMovieCard with authorized user, loading 
           </button>
           <Link
             className="btn movie-card__button"
-            to="/films/1/review"
+            to="/films/undefined/review"
           >
             Add review
           </Link>

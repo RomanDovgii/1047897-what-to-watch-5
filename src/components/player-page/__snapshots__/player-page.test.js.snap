@@ -10,12 +10,9 @@ exports[`Should render correct PlayerPage after loading 1`] = `
     onLoadedMetadata={[Function]}
     onTimeUpdate={[Function]}
     poster="img/the-grand-budapest-hotel-bg.jpg"
-  >
-    <source
-      src="https://some-link"
-      type="video/https://some-link"
-    />
-  </video>
+    src="https://some-link"
+    type="video/https://some-link"
+  />
   <button
     className="player__exit"
     onClick={[Function]}
@@ -51,7 +48,7 @@ exports[`Should render correct PlayerPage after loading 1`] = `
       <div
         className="player__time-value"
       >
-        00:00:00
+        00:00:NaN
       </div>
     </div>
     <div

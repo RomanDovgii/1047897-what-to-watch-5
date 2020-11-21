@@ -3,6 +3,10 @@ import renderer from "react-test-renderer";
 import {noop} from "../../utils/utils";
 import {PlayerPage} from "./player-page";
 
+jest.mock(`react-router-dom`, () => ({
+  useParams: jest.fn().mockReturnValue({environment: `dev`, service: `fakeService`}),
+}));
+
 const testMovie = {
   id: 1,
   name: `The Grand Budapest Hotel`,
@@ -41,6 +45,7 @@ it(
             currentTime={0}
             onTimeUpdate={noop}
             onLoadingEnd={noop}
+            onLoadCompletion={noop}
             onExitButtonClick={noop}
             isLoading={true}
             onPlayButtonClick={noop}
