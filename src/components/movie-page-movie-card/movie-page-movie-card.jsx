@@ -10,8 +10,6 @@ const MoviePageMovieCard = (props) => {
 
   const {name, genre, released, backgroundImage, posterImage, backgroundColor, isFavorite} = selectedMovie;
 
-  console.log(selectedMovie);
-
   useEffect(() => {
     if (JSON.stringify(selectedMovie) === JSON.stringify({})) {
       fetchMovie(id);
