@@ -73,12 +73,17 @@ const errorStyle = {
 };
 
 const Error = (props) => {
-  const {error, isError, onCloseButtonClick} = props;
+  const {error, isError, onCloseButtonClick, isFromLoginPage = false} = props;
   const {code = `Unknown`, text = `We don't know what happened. If it doesn't bark, doesn't spread seeds or communism, and doesn't try to kill you, then just ignore it. It isn't important.`} = error;
+  let isRendered = isError;
+
+  if (isFromLoginPage) {
+    isRendered = code === `401` ? false : true;
+  }
 
   return (
     <React.Fragment>
-      {isError &&
+      {isRendered &&
         <div style={errorStyle.ERROR}>
           <h6 style={errorStyle.ERROR_HEADING}>{`Error ${code}`}</h6>
           <p style={errorStyle.ERROR_TEXT}>

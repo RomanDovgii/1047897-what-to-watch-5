@@ -12,22 +12,21 @@ const withActivePlayer = (Component) => {
     useEffect(() => {
       const video = videoRef.current;
 
-      video.src = videoUrl;
-      video.type = generateVideoType(videoUrl);
-
-      video.oncanplaythrough = () => {
-        changeIsLoading(false);
-        switch (true) {
-          case isPlaying && !isLoading:
+      changeIsLoading(false);
+      switch (true) {
+        case isPlaying && !isLoading:
+          video.src = videoUrl;
+          video.type = generateVideoType(videoUrl);
+          video.oncanplaythrough = () => {
             video.play();
-            break;
-          case !isPlaying && !isLoading:
-            video.pause();
-            video.src = ``;
-            video.type = ``;
-            break;
-        }
-      };
+          };
+          break;
+        case !isPlaying && !isLoading:
+          video.pause();
+          video.src = ``;
+          video.type = ``;
+          break;
+      }
 
       return () => {
         changeIsLoading(true);

@@ -1,6 +1,13 @@
 import {appState} from "./app-state";
 import {ActionType, SHOWN_MOVIES_COUNT} from "../../../utils/const";
 
+const testError = {
+  data: {
+    error: `random text`
+  },
+  status: 505
+};
+
 it(
     `Reducer without additional parameters returns initial state`,
     () => {
@@ -165,6 +172,73 @@ it(
       ))
       .toEqual({
         isAuthError: false
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.CREATE_ERR updated error info`,
+    () => {
+      expect(appState(
+          {
+            isError: false,
+            error: {}
+          },
+          {
+            type: ActionType.CREATE_ERR,
+            payload: testError
+          }
+      ))
+      .toEqual({
+        isError: true,
+        error: {
+          text: testError.data.error,
+          code: testError.status
+        }
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.FLUSH_ERR flushes error info`,
+    () => {
+      expect(appState(
+          {
+            isError: true,
+            error: {
+              text: testError.data.error,
+              code: testError.status
+            }
+          },
+          {
+            type: ActionType.FLUSH_ERR,
+          }
+      ))
+      .toEqual({
+        isError: false,
+        error: {}
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.FLUSH_ERR doesn't change isError because it is correct`,
+    () => {
+      expect(appState(
+          {
+            isError: false,
+            error: {
+              text: testError.data.error,
+              code: testError.status
+            }
+          },
+          {
+            type: ActionType.FLUSH_ERR,
+          }
+      ))
+      .toEqual({
+        isError: false,
+        error: {}
       });
     }
 );

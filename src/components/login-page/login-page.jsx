@@ -18,7 +18,9 @@ const LoginPage = (props) => {
       />
       <LoginPageForm/>
       <Footer/>
-      <Error/>
+      <Error
+        isFromLoginPage={true}
+      />
     </div>
   );
 };

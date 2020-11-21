@@ -13,10 +13,19 @@ import {
   loadMovies,
   loadPromotedMovie,
   loadSelectedMovie,
-  loadSelectedMovieComments
+  loadSelectedMovieComments,
+  flushError,
+  createError
 } from "./action";
 
 import {ActionType, AuthorizationStatus} from "../../utils/const";
+
+const testError = {
+  data: {
+    error: `random text`
+  },
+  status: 505
+};
 
 const testGenre = `surreal`;
 
@@ -238,6 +247,27 @@ describe(
             .toEqual({
               type: ActionType.LOAD_SELECTED_MOVIE_COMMENTS,
               payload: testComments
+            });
+          }
+      );
+
+      it(
+          `Action creator for createError returns correct action and error object`,
+          () => {
+            expect(createError(testError))
+            .toEqual({
+              type: ActionType.CREATE_ERR,
+              payload: testError
+            });
+          }
+      );
+
+      it(
+          `Action creator for flushError returns correct action`,
+          () => {
+            expect(flushError())
+            .toEqual({
+              type: ActionType.FLUSH_ERR,
             });
           }
       );
