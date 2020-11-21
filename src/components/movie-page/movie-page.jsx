@@ -11,6 +11,7 @@ import withLoading from "../../hoc/with-loading/with-loading";
 import {filterMoviesByGenre} from "../../store/selectors/genre-selector";
 import {redirectToRoute, startPlaying} from "../../store/actions/action";
 import {fetchSelectedMovie, fetchSelectedMovieComments, fetchMovieList, addMovieToFavorite} from "../../store/actions/api-actions";
+import Error from "../error/error";
 
 const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 
@@ -41,6 +42,7 @@ const MoviePage = (props) => {
         />
         <Footer/>
       </div>
+      <Error/>
     </React.Fragment>
   );
 };

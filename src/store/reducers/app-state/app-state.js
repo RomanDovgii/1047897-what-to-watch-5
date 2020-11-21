@@ -4,13 +4,14 @@ import {SHOWN_MOVIES_COUNT, ActionType} from "../../../utils/const";
 const initialState = {
   shownMoviesCount: SHOWN_MOVIES_COUNT,
   isPlayerPlaying: false,
-  isAuthError: false
+  isAuthError: false,
+  isError: false,
+  error: {}
 };
 
 const appState = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.SHOW_MORE:
-
       const updatedShownMoviesCount = state.shownMoviesCount + action.payload;
 
       return extend(
@@ -45,6 +46,25 @@ const appState = (state = initialState, action) => {
           state,
           {
             isAuthError: false
+          }
+      );
+    case ActionType.CREATE_ERR:
+      return extend(
+          state,
+          {
+            isError: true,
+            error: {
+              text: action.payload.data.error,
+              heading: `Error ${action.payload.status}`
+            }
+          }
+      );
+    case ActionType.FLUSH_ERR:
+      return extend(
+          state,
+          {
+            isError: false,
+            error: {}
           }
       );
   }

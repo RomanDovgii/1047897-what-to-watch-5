@@ -9,6 +9,7 @@ import {connect} from "react-redux";
 import {redirectToRoute, startPlaying} from "../../store/actions/action";
 import {fetchMovieList, fetchPromotedMovie} from "../../store/actions/api-actions";
 import LoadingPage from "../loading-page/loading-page";
+import Error from "../error/error";
 
 const MainPage = (props) => {
   const {onUserIconClick, onWTWLogoClick, loadMovies, loadPromotedMovie, onPlayButtonClick, movies, genres, isLoading, onLoadCompletion, promotedMovie} = props;
@@ -46,6 +47,7 @@ const MainPage = (props) => {
         />
         <Footer/>
       </div>
+      <Error/>
     </React.Fragment>;
 };
 

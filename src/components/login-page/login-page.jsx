@@ -4,6 +4,7 @@ import LoginPageForm from "../login-page-form/login-page-form";
 import Footer from "../footer/footer";
 import {onWTWLogoClickType} from "../types/types";
 import {HeaderHeadingVariant} from "../../utils/const";
+import Error from "../error/error";
 
 const LoginPage = (props) => {
   const {onWTWLogoClick} = props;
@@ -17,6 +18,7 @@ const LoginPage = (props) => {
       />
       <LoginPageForm/>
       <Footer/>
+      <Error/>
     </div>
   );
 };

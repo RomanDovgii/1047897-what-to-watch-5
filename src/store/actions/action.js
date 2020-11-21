@@ -70,3 +70,12 @@ export const addMovieToFavoriteLocal = (movieId) => ({
   type: ActionType.ADD_MOVIE_TO_FAVORITE,
   payload: movieId
 });
+
+export const createError = (error) => ({
+  type: ActionType.CREATE_ERR,
+  payload: error
+});
+
+export const flushError = () => ({
+  type: ActionType.FLUSH_ERR
+});

@@ -1,10 +1,13 @@
-import {loadMovies, loadPromotedMovie, loadSelectedMovie, requireAuthorization, redirectToRoute, updateUserInfo, loadSelectedMovieComments, throwErr, removeErr, addMovieToFavoriteLocal} from "./action";
+import {loadMovies, loadPromotedMovie, loadSelectedMovie, requireAuthorization, redirectToRoute, updateUserInfo, loadSelectedMovieComments, removeErr, addMovieToFavoriteLocal, createError, flushError} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 
 export const fetchMovieList = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => {
       dispatch(loadMovies(data));
+    })
+    .catch((err) => {
+      dispatch(createError(err.response));
     })
 );
 
@@ -13,18 +16,23 @@ export const fetchPromotedMovie = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(loadPromotedMovie(data));
     })
+    .catch((err) => {
+      dispatch(createError(err.response));
+    })
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoute.LOGIN)
     .then((response) => {
+      dispatch(flushError());
       dispatch(updateUserInfo({
         userId: response.data.id,
         avatarUrl: response.data.avatar_url
       }));
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
     })
-    .catch(() => {
+    .catch((err) => {
+      dispatch(createError(err.response));
       dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
     })
 );
@@ -32,6 +40,7 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then((response) => {
+      dispatch(flushError());
       dispatch(updateUserInfo({
         userId: response.data.id,
         avatarUrl: response.data.avatar_url
@@ -40,8 +49,8 @@ export const login = ({email, password}) => (dispatch, _getState, api) => (
       dispatch(removeErr());
     })
     .then(() => dispatch(redirectToRoute(AppRoute.MAIN)))
-    .catch(() => {
-      dispatch(throwErr());
+    .catch((err) => {
+      dispatch(createError(err.response));
     })
 );
 
@@ -50,12 +59,18 @@ export const fetchSelectedMovie = (movieId) => (dispatch, _getState, api) => (
     .then((response) => {
       dispatch(loadSelectedMovie(response.data));
     })
+    .catch((err) => {
+      dispatch(createError(err.response));
+    })
 );
 
 export const fetchSelectedMovieComments = (movieId) => (dispatch, _getState, api) => (
   api.get(APIRoute.COMMENTS + `/${movieId}`)
     .then((response) => {
       dispatch(loadSelectedMovieComments(response.data));
+    })
+    .catch((err) => {
+      dispatch(createError(err.response));
     })
 );
 
@@ -65,7 +80,7 @@ export const addMovieToFavorite = (movieId, movieStatus) => (dispatch, _getState
       dispatch(addMovieToFavoriteLocal(movieId));
     })
     .catch((err) => {
-      throw err;
+      dispatch(createError(err.response));
     })
 );
 
@@ -77,6 +92,6 @@ export const addReview = (movieId, changeFormLock, {rating, comment}) => (dispat
     })
     .catch((err) => {
       changeFormLock();
-      throw err;
+      dispatch(createError(err.response));
     })
 );

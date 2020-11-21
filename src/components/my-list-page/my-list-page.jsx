@@ -7,6 +7,7 @@ import {myListPageType} from "../types/types";
 import {connect} from "react-redux";
 import {filterMoviesByMyList} from "../../store/selectors/my-list-selector";
 import {HeaderHeadingVariant} from "../../utils/const";
+import Error from "../error/error";
 
 const MyListPage = (props) => {
   const {onUserIconClick, onWTWLogoClick, movies} = props;
@@ -23,6 +24,7 @@ const MyListPage = (props) => {
         movies = {movies}
       />
       <Footer/>
+      <Error/>
     </div>
   );
 };

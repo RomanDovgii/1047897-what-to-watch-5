@@ -35,6 +35,15 @@ export const movieObjectType = PropTypes.shape({
   isFavorite: PropTypes.bool.isRequired
 });
 
+const errorObjectType = PropTypes.shape({
+  heading: PropTypes.string,
+  text: PropTypes.string
+});
+
+const packedErrorType = {
+  error: errorObjectType,
+};
+
 export const commentType = PropTypes.shape({
   text: PropTypes.string.isRequired,
   rating: PropTypes.number.isRequired,
@@ -264,6 +273,10 @@ export const testChildrenType = {
   ]).isRequired
 };
 
+const onCloseButtonClickType = {
+  onCloseButtonClick: functionType
+};
+
 export const smallMovieCardType = Object.assign({}, movieType, renderPlayerType, isPlayingType, onClickType, onMouseEnterType, onMouseLeaveType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieType, moviesType, commentsType);
 
@@ -292,3 +305,4 @@ export const privateRouteType = Object.assign({}, authoriationStatusType, exactT
 export const signInType = Object.assign({}, onSubmitType, isErrorType);
 export const movieCardBackgroundType = Object.assign({}, backgroundImageType, nameType);
 export const moviePosterType = Object.assign({}, posterType, nameType);
+export const errorType = Object.assign({}, packedErrorType, isErrorType, onCloseButtonClickType);

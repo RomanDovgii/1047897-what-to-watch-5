@@ -9,6 +9,7 @@ import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {generateVideoType} from "../../utils/utils";
 import {ALL_GENRE} from "../../utils/const";
 import LoadingPage from "../loading-page/loading-page";
+import Error from "../error/error";
 
 const PlayerPage = (props) => {
   const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading, onPlayButtonClick, onExitButtonClick, resetMovieGenre, fetchMovie, onLoadCompletion, duration} = props;
@@ -81,6 +82,7 @@ const PlayerPage = (props) => {
         currentTime = {currentTime}
         movieName = {name}
       />
+      <Error/>
     </div>
   );
 };
