@@ -15,6 +15,7 @@ import {AppRoute} from "../../utils/const";
 const PlayerPageWrapper = withLoading(withActiveMainPlayer(PlayerPage));
 const AddReviewWrapper = withLoading(AddReviewPage);
 const MainPageWrapper = withLoading(MainPage);
+const MoviePageWrapper = withLoading(MoviePage);
 
 const App = () => {
   return (
@@ -55,7 +56,7 @@ const App = () => {
           exact
           path={AppRoute.FILM}
           render={({history, match}) => (
-            <MoviePage
+            <MoviePageWrapper
               id = {match.params.id}
               onUserIconClick = {() => history.push(AppRoute.MY_LIST)}
               onWTWLogoClick={() => history.push(AppRoute.MAIN)}

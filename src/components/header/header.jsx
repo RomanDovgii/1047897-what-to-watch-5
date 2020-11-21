@@ -5,7 +5,7 @@ import HeaderHeading from "../header-heading/header-heading";
 import HeaderNavigation from "../header-navigation/header-navigation";
 import HeaderUserBlock from "../header-user-block/header-user-block";
 import {connect} from "react-redux";
-import {resetShownMovies, changeGenre} from "../../store/actions/action";
+import {resetShownMovies, flushSelectedMovie} from "../../store/actions/action";
 import {HeaderHeadingVariant} from "../../utils/const";
 
 const Header = (props) => {
@@ -48,9 +48,9 @@ const mapStateToProps = ({USER}) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetState(selectedGenre) {
+  resetState() {
     dispatch(resetShownMovies());
-    dispatch(changeGenre(selectedGenre));
+    dispatch(flushSelectedMovie());
   }
 });
 

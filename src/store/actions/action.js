@@ -79,3 +79,7 @@ export const createError = (error) => ({
 export const flushError = () => ({
   type: ActionType.FLUSH_ERR
 });
+
+export const flushSelectedMovie = () => ({
+  type: ActionType.FLUSH_SELECTED_MOVIE
+});

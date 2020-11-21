@@ -80,6 +80,14 @@ const appData = (state = initialState, action) => {
             selectedMovie: state.selectedMovie.id === action.payload ? updatedElement : state.selectedMovie,
           }
       );
+    case ActionType.FLUSH_SELECTED_MOVIE:
+      return extend(
+          state,
+          {
+            selectedMovie: {},
+            selectedGenre: ALL_GENRE
+          }
+      );
   }
 
   return state;

@@ -4,15 +4,14 @@ import PlayerPageExit from "../player-page-exit/player-page-exit";
 import PlayerPageControls from "../player-page-controls/player-page-controls";
 import {playerPageType} from "../types/types";
 import {connect} from "react-redux";
-import {startPlaying, changeGenre} from "../../store/actions/action";
+import {startPlaying, flushSelectedMovie} from "../../store/actions/action";
 import {fetchSelectedMovie} from "../../store/actions/api-actions";
 import {generateVideoType} from "../../utils/utils";
-import {ALL_GENRE} from "../../utils/const";
 import LoadingPage from "../loading-page/loading-page";
 import Error from "../error/error";
 
 const PlayerPage = (props) => {
-  const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading, onPlayButtonClick, onExitButtonClick, resetMovieGenre, fetchMovie, onLoadCompletion, duration} = props;
+  const {selectedMovie, isPlaying, isPlayerLoading, currentTime, onTimeUpdate, onLoadingEnd, isLoading, onPlayButtonClick, onExitButtonClick, resetMovie, fetchMovie, onLoadCompletion, duration} = props;
   const {videoLink, backgroundImage, name} = selectedMovie;
   const videoRef = createRef();
   const id = useParams().id;
@@ -26,6 +25,12 @@ const PlayerPage = (props) => {
       onLoadCompletion();
     }
   }, [selectedMovie, isLoading, isPlayerLoading]);
+
+  useEffect(() => {
+    return () => {
+      resetMovie();
+    };
+  }, []);
 
   return (
     <div className="player">
@@ -55,7 +60,6 @@ const PlayerPage = (props) => {
             onPlayButtonClick();
           }
 
-          resetMovieGenre(ALL_GENRE);
           onExitButtonClick();
         }}
       />
@@ -101,8 +105,8 @@ const mapDispatchToProps = (dispatch) => ({
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
   },
-  resetMovieGenre(selectedGenre) {
-    dispatch(changeGenre(selectedGenre));
+  resetMovie() {
+    dispatch(flushSelectedMovie());
   }
 });
 

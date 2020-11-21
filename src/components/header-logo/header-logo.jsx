@@ -12,7 +12,7 @@ const HeaderLogo = (props) => {
         onClick={(evt) => {
           evt.preventDefault();
 
-          resetState(`All genres`);
+          resetState();
 
           onWTWLogoClick();
         }}
