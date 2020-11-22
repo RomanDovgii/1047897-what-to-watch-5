@@ -19,9 +19,11 @@ exports[`Should render correct movie card 1`] = `
       className="player__video-wrapper"
       style={
         Object {
+          "bottom": "0",
           "height": "100%",
           "left": "0",
           "position": "absolute",
+          "right": "0",
           "top": "0",
           "width": "100%",
           "zIndex": "50",
