@@ -9,6 +9,11 @@ exports[`Should render correct reviewsTab 1`] = `
   >
     <div
       className="review"
+      style={
+        Object {
+          "borderBottom": "2px solid #1071311",
+        }
+      }
     >
       <blockquote
         className="review__quote"
@@ -46,6 +51,7 @@ exports[`Should render correct reviewsTab 1`] = `
     </div>
     <div
       className="review"
+      style={Object {}}
     >
       <blockquote
         className="review__quote"
@@ -87,6 +93,11 @@ exports[`Should render correct reviewsTab 1`] = `
   >
     <div
       className="review"
+      style={
+        Object {
+          "borderBottom": "2px solid #1071311",
+        }
+      }
     >
       <blockquote
         className="review__quote"
@@ -124,6 +135,7 @@ exports[`Should render correct reviewsTab 1`] = `
     </div>
     <div
       className="review"
+      style={Object {}}
     >
       <blockquote
         className="review__quote"

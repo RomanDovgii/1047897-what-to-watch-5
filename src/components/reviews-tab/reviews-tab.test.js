@@ -18,6 +18,9 @@ const testComments = [
   testComment,
   testComment
 ];
+const testMovie = {
+  backgroundColor: `#ffffff`,
+};
 
 it(
     `Should render correct reviewsTab`,
@@ -26,6 +29,7 @@ it(
       .create(
           <ReviewsTab
             comments={testComments}
+            movie={testMovie}
           />
       )
       .toJSON();
