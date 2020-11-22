@@ -17,11 +17,15 @@ import LoadingPage from "../loading-page/loading-page";
 const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, isAuth, onMyListClick, isLoading, onLoadCompletion} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, fetchComments, isAuth, onMyListClick, isLoading, onLoadCompletion} = props;
 
   const {id} = useParams();
 
   useEffect(() => {
+    if (!isLoading) {
+      fetchComments(id);
+    }
+
     if (JSON.stringify(selectedMovie) === JSON.stringify({})) {
       fetchMovie(id);
     }
@@ -72,8 +76,10 @@ const mapStateToProps = ({DATA, USER}) => ({
 const mapDispatchToProps = (dispatch) => ({
   fetchMovie(id) {
     dispatch(fetchSelectedMovie(id));
-    dispatch(fetchSelectedMovieComments(id));
     dispatch(fetchMovieList());
+  },
+  fetchComments(id) {
+    dispatch(fetchSelectedMovieComments(id));
   },
   onMyListClick(id, status) {
     dispatch(addMovieToFavorite(parseInt(id, 10), status));

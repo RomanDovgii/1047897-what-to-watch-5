@@ -1,6 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {testChildrenType} from "../../components/types/types";
+import {noop} from "../../utils/utils";
 import withActivePlayer from "./with-active-player";
 
 const testMovie = {
@@ -38,34 +39,13 @@ MockComponent.propTypes = testChildrenType;
 const MockComponentWrapped = withActivePlayer(MockComponent);
 
 it(
-    `Should render correct withActivePlayer which isn't playing`,
+    `Should render correct children`,
     () => {
       const tree = renderer
       .create(
           (<MockComponentWrapped
             movie = {testMovie}
-          >
-            <React.Fragment/>
-          </MockComponentWrapped>),
-          {
-            createNodeMock() {
-              return {};
-            }
-          }
-      )
-      .toJSON();
-
-      expect(tree).toMatchSnapshot();
-    }
-);
-
-it(
-    `Should render correct withActivePlayer which is playing`,
-    () => {
-      const tree = renderer
-      .create(
-          (<MockComponentWrapped
-            movie = {testMovie}
+            renderPlayer = {noop}
           >
             <React.Fragment/>
           </MockComponentWrapped>),

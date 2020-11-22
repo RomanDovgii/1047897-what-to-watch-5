@@ -175,7 +175,7 @@ const isLoadingType = {
 };
 
 const durationType = {
-  duration: PropTypes.number.isRequired
+  duration: PropTypes.number
 };
 
 const currentTimeType = {
@@ -270,7 +270,7 @@ export const testChildrenType = {
   children: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.node),
     PropTypes.node
-  ]).isRequired
+  ])
 };
 
 const onCloseButtonClickType = {

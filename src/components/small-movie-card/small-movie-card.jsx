@@ -22,7 +22,7 @@ const SmallMovieCard = (props) => {
     >
       <div className="small-movie-card__image">
         <img className="player__video" src={previewImage} alt={name}/>
-        <div className="player__video-wrapper" style={{position: `absolute`, top: `0`, left: `0`, width: `100%`, height: `100%`, zIndex: `50`}}>
+        <div className="player__video-wrapper" style={{position: `absolute`, top: `0`, right: `0`, bottom: `0`, left: `0`, width: `100%`, height: `100%`, zIndex: `50`}}>
           {children}
         </div>
       </div>

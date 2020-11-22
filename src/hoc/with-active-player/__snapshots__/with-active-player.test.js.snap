@@ -1,5 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Should render correct withActivePlayer which is playing 1`] = `<div />`;
-
-exports[`Should render correct withActivePlayer which isn't playing 1`] = `<div />`;
+exports[`Should render correct children 1`] = `<div />`;
