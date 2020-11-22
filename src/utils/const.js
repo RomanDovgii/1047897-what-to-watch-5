@@ -123,7 +123,7 @@ export const ApiInformation = {
 };
 
 export const HttpCode = {
-  UNAUTHORIZED: 401
+  UNAUTHORIZED: `401`
 };
 
 export const AuthorizationStatus = {

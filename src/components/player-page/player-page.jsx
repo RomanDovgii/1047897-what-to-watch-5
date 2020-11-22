@@ -52,7 +52,7 @@ const PlayerPage = (props) => {
           }}
         >
         </video>
-        : <LoadingPage></LoadingPage>
+        : <LoadingPage/>
       }
       <PlayerPageExit
         onExitButtonClick = {() => {
