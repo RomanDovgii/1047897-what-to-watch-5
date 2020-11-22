@@ -2,8 +2,7 @@ import React from "react";
 import {commentType} from "../types/types";
 
 const Comment = (props) => {
-  const {commentData} = props;
-
+  const {commentData, borderBottomStyle} = props;
   const {comment, rating, user, date} = commentData;
 
   const ratingString = `${rating}`.replace(`.`, `,`);
@@ -15,7 +14,7 @@ const Comment = (props) => {
   const monthName = localDate.toLocaleString(`default`, {month: `long`});
 
   return (
-    <div className="review">
+    <div className="review" style={borderBottomStyle}>
       <blockquote className="review__quote">
         <p className="review__text">{comment}</p>
 
@@ -33,3 +32,4 @@ const Comment = (props) => {
 Comment.propTypes = commentType;
 
 export default Comment;
+
