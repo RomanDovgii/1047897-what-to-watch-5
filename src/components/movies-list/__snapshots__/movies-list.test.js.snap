@@ -4,7 +4,7 @@ exports[`Should render correct movie list 1`] = `
 <div
   className="catalog__movies-list"
 >
-  <WithVideoPlayer
+  <WithActivePlayer
     movie={
       Object {
         "backgroundColor": "#ffffff",
@@ -33,7 +33,7 @@ exports[`Should render correct movie list 1`] = `
       }
     }
   />
-  <WithVideoPlayer
+  <WithActivePlayer
     movie={
       Object {
         "backgroundColor": "#ffffff",
@@ -62,7 +62,7 @@ exports[`Should render correct movie list 1`] = `
       }
     }
   />
-  <WithVideoPlayer
+  <WithActivePlayer
     movie={
       Object {
         "backgroundColor": "#ffffff",

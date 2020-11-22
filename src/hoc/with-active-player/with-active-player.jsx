@@ -1,52 +1,56 @@
 import React, {createRef, useEffect, useState} from "react";
 import {generateVideoType} from "../../utils/utils";
-import {withActivePlayerType} from "../../components/types/types";
+import {movieType} from "../../components/types/types";
 
 const withActivePlayer = (Component) => {
   const WithActivePlayer = (props) => {
-    const {imageName, videoUrl, isPlaying} = props;
-    const [isLoading, changeIsLoading] = useState(true);
+    const {movie} = props;
+    const {previewImage, previewVideoLink} = movie;
+    const [isRendered, changeIsRendered] = useState(false);
 
     const videoRef = createRef();
 
     useEffect(() => {
       const video = videoRef.current;
 
-      changeIsLoading(false);
       switch (true) {
-        case isPlaying && !isLoading:
-          video.src = videoUrl;
-          video.type = generateVideoType(videoUrl);
+        case isRendered && video !== null:
           video.oncanplaythrough = () => {
-            video.play();
+            if (isRendered) {
+              video.play();
+            } else {
+              video.pause();
+              video.src = ``;
+            }
           };
           break;
-        case !isPlaying && !isLoading:
-          video.pause();
-          video.src = ``;
-          video.type = ``;
-          break;
       }
-
-      return () => {
-        changeIsLoading(true);
-        video.oncanplaythrough = null;
-      };
-    }, [isPlaying]);
+    }, [isRendered]);
 
     return (
-      <Component>
-        <video
-          className="player__video"
-          ref={videoRef}
-          poster={imageName}
-          muted
-        />
+      <Component
+        {...props}
+        renderPlayer = {changeIsRendered}
+      >
+        {
+          isRendered
+            ? <video
+              className="player__video"
+              ref={videoRef}
+              poster={previewImage}
+              src={previewVideoLink}
+              typeof={generateVideoType(previewVideoLink)}
+              style={{zIndex: `99`}}
+              muted
+            />
+            : null
+        }
+
       </Component>
     );
   };
 
-  WithActivePlayer.propTypes = withActivePlayerType;
+  WithActivePlayer.propTypes = movieType;
 
   return WithActivePlayer;
 };

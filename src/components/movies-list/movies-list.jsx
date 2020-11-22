@@ -1,10 +1,10 @@
 import React from "react";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
 import {moviesType} from "../types/types";
-import withVideoPlayer from "../../hoc/with-video-player/with-video-player";
 import withActiveCard from "../../hoc/with-active-card/with-active-card";
+import withActivePlayer from "../../hoc/with-active-player/with-active-player";
 
-const SmallMovieCardWrapper = withVideoPlayer(withActiveCard(SmallMovieCard));
+const SmallMovieCardWrapper = withActivePlayer(withActiveCard(SmallMovieCard));
 
 const MoviesList = (props) => {
   const {movies} = props;

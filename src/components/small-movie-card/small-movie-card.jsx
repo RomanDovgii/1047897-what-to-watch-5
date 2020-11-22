@@ -5,27 +5,31 @@ import {selectMovie, redirectToRoute} from "../../store/actions/action";
 import {fetchSelectedMovieComments} from "../../store/actions/api-actions";
 
 const SmallMovieCard = (props) => {
-  const {movie, renderPlayer, isPlaying, onClick, onMouseEnter, onMouseLeave} = props;
-  const {name, previewVideoLink, previewImage} = movie;
+  const {movie, isPlaying, onClick, onMouseEnter, onMouseLeave, children, renderPlayer} = props;
+  const {name, previewImage} = movie;
+
+  renderPlayer(isPlaying);
 
   return (
     <article
       className="small-movie-card catalog__movies-card"
       onMouseEnter = {onMouseEnter}
       onMouseLeave = {onMouseLeave}
+      onClick = {(evt) => {
+        evt.preventDefault();
+        onClick(movie);
+      }}
     >
       <div className="small-movie-card__image">
-        {renderPlayer(previewVideoLink, previewImage, isPlaying)}
+        <img className="player__video" src={previewImage} alt={name}/>
+        <div className="player__video-wrapper" style={{position: `absolute`, top: `0`, left: `0`, width: `100%`, height: `100%`, zIndex: `50`}}>
+          {children}
+        </div>
       </div>
       <h3 className="small-movie-card__title">
         <a
           className="small-movie-card__link"
           href="#"
-          onClick = {(evt) => {
-            evt.preventDefault();
-
-            onClick(movie);
-          }}
         >
           {name}
         </a>

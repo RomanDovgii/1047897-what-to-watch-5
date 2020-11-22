@@ -28,7 +28,6 @@ const MainPage = (props) => {
     }
   }, [movies, promotedMovie, isLoading]);
 
-
   return isLoading
     ? <LoadingPage/>
     : <React.Fragment>

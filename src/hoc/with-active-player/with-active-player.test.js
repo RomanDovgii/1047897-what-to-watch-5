@@ -3,10 +3,6 @@ import renderer from "react-test-renderer";
 import {testChildrenType} from "../../components/types/types";
 import withActivePlayer from "./with-active-player";
 
-jest.mock(``, () => ({
-  pause: jest.fn()
-}));
-
 const testMovie = {
   id: 1,
   name: `The Grand Budapest Hotel`,
@@ -47,9 +43,7 @@ it(
       const tree = renderer
       .create(
           (<MockComponentWrapped
-            imageName={testMovie.backgroundImage}
-            videoUrl={testMovie.previewVideoLink}
-            isPlaying={false}
+            movie = {testMovie}
           >
             <React.Fragment/>
           </MockComponentWrapped>),
@@ -71,9 +65,7 @@ it(
       const tree = renderer
       .create(
           (<MockComponentWrapped
-            imageName={testMovie.backgroundImage}
-            videoUrl={testMovie.previewVideoLink}
-            isPlaying={true}
+            movie = {testMovie}
           >
             <React.Fragment/>
           </MockComponentWrapped>),

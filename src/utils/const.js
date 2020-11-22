@@ -57,8 +57,8 @@ export const CommentCount = {
 };
 
 export const MoreLikeThis = {
-  FIRST_INDEX: 1,
-  LAST_INDEX: 5
+  FIRST_INDEX: 0,
+  LAST_INDEX: 4
 };
 
 export const RatingSystem = {

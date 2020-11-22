@@ -48,7 +48,7 @@ it(
           />
       );
 
-      const link = smallMovieCard.find(`a.small-movie-card__link`);
+      const link = smallMovieCard.find(`article.catalog__movies-card`);
 
       link.simulate(`click`, mockEvent);
 

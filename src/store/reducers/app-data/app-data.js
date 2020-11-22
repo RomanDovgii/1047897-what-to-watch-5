@@ -65,7 +65,7 @@ const appData = (state = initialState, action) => {
           }
       );
     case ActionType.ADD_MOVIE_TO_FAVORITE:
-      const index = action.payload - 1;
+      const index = state.originalMovies.findIndex((movie) => movie.id === action.payload);
       const updatedElement = Object.assign({}, state.originalMovies[index]);
       const isFavorite = updatedElement.isFavorite;
       updatedElement.isFavorite = !isFavorite;

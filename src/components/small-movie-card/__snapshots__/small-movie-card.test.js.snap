@@ -3,19 +3,38 @@
 exports[`Should render correct movie card 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
 >
   <div
     className="small-movie-card__image"
-  />
+  >
+    <img
+      alt="The Grand Budapest Hotel"
+      className="player__video"
+      src="img/the-grand-budapest-hotel.jpg"
+    />
+    <div
+      className="player__video-wrapper"
+      style={
+        Object {
+          "height": "100%",
+          "left": "0",
+          "position": "absolute",
+          "top": "0",
+          "width": "100%",
+          "zIndex": "50",
+        }
+      }
+    />
+  </div>
   <h3
     className="small-movie-card__title"
   >
     <a
       className="small-movie-card__link"
       href="#"
-      onClick={[Function]}
     >
       The Grand Budapest Hotel
     </a>
