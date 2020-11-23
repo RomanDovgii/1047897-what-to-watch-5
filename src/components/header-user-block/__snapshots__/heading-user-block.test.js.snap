@@ -28,7 +28,7 @@ exports[`Should render correct HeaderUserBlock with sign in 1`] = `
   >
     <a
       className="user-block__link"
-      href="sign-in.html"
+      href="#"
     >
       Sign in
     </a>

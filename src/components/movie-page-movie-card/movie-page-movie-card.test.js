@@ -53,9 +53,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.OVERVIEW}
             isAuth={true}
-            isLoadinhg={true}
+            isLoading={true}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -79,9 +81,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.OVERVIEW}
             isAuth={true}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -105,9 +109,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.OVERVIEW}
             isAuth={false}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -131,9 +137,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.REVIEWS}
             isAuth={true}
-            isLoadinhg={true}
+            isLoading={true}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -157,9 +165,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.REVIEWS}
             isAuth={true}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -183,9 +193,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.REVIEWS}
             isAuth={false}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -209,9 +221,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.DETAILS}
             isAuth={true}
-            isLoadinhg={true}
+            isLoading={true}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -235,9 +249,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.DETAILS}
             isAuth={true}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 
@@ -261,9 +277,11 @@ it(
             onTabClick={noop}
             onMyListClick={noop}
             onLoadCompletion={noop}
+            fetchMovie={noop}
+            onMyListClickNonAuth={noop}
             shownScreen={MovieScreenTab.DETAILS}
             isAuth={false}
-            isLoadinhg={false}
+            isLoading={false}
             selectedMovie={testMovie}
             comments={testComments}
 

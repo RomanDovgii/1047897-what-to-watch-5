@@ -35,6 +35,8 @@ it(
             onPlayButtonCLick={noop}
             movie={testMovie}
             onMyListClick={noop}
+            isAuth
+            onMyListClickNonAuth={noop}
           />
       );
 

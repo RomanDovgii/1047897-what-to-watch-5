@@ -59,6 +59,8 @@ it(
       const tree = renderer
       .render(
           <MoviePage
+            fetchComments={noop}
+            onMyListClickNonAuth={noop}
             onUserIconClick={noop}
             onWTWLogoClick={noop}
             onPlayButtonCLick={noop}
@@ -82,6 +84,8 @@ it(
       const tree = renderer
       .render(
           <MoviePage
+            fetchComments={noop}
+            onMyListClickNonAuth={noop}
             onUserIconClick={noop}
             onWTWLogoClick={noop}
             onPlayButtonCLick={noop}

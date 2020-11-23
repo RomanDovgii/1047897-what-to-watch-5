@@ -45,16 +45,43 @@ it(
             onPlayButtonClick={onPlayButtonClick}
             movie={testMovie}
             onMyListClick={onMyListClick}
+            onMyListClickNonAuth={noop}
+            isAuth
           />
       );
 
-      const myListLink = movieCard.find(`.btn--play`);
-      const playButtonLink = movieCard.find(`.btn--list`);
+      const myListLink = movieCard.find(`.btn--list`);
+      const playButtonLink = movieCard.find(`.btn--play`);
 
       myListLink.simulate(`click`, mockEvent);
       playButtonLink.simulate(`click`, mockEvent);
 
       expect(onPlayButtonClick).toHaveBeenCalledTimes(1);
       expect(onMyListClick).toHaveBeenCalledTimes(1);
+    }
+);
+
+it(
+    `onPlayButtonClick and onMyListClickNonAuth should be called once`,
+    () => {
+      const onMyListClickNonAuth = jest.fn();
+
+      const movieCard = shallow(
+          <MainPageMovieCard
+            onUserIconClick={noop}
+            onWTWLogoClick={noop}
+            onPlayButtonClick={noop}
+            movie={testMovie}
+            onMyListClick={noop}
+            isAuth={false}
+            onMyListClickNonAuth={onMyListClickNonAuth}
+          />
+      );
+
+      const myListLink = movieCard.find(`.btn--list`);
+
+      myListLink.simulate(`click`, mockEvent);
+
+      expect(onMyListClickNonAuth).toHaveBeenCalledTimes(1);
     }
 );
