@@ -22,7 +22,7 @@ const withActiveReviewForm = (Component) => {
           const {value} = evt.target;
 
           changeReview(value);
-          changeIsReviewFilled(value.length > ReviewLength.MINIMUM && value.length < ReviewLength.MAXIMUM ? true : false);
+          changeIsReviewFilled(value.length > ReviewLength.MINIMUM && value.length < ReviewLength.MAXIMUM);
         }}
         isReviewFilled={isReviewFilled}
         isRatingFilled={isRatingFilled}
@@ -35,8 +35,6 @@ const withActiveReviewForm = (Component) => {
       />
     );
   };
-
-  WithActiveReviewForm.propTypes = {};
 
   return WithActiveReviewForm;
 };

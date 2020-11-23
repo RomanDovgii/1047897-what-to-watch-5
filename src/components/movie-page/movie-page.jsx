@@ -4,7 +4,7 @@ import {useParams} from "react-router-dom";
 import MoviePageMovieCard from "../movie-page-movie-card/movie-page-movie-card";
 import Catalog from "../catalog/catalog";
 import Footer from "../footer/footer";
-import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis} from "../../utils/const";
+import {CatalogHeadingVariant, CatalogCallSource, MoreLikeThis, AppRoute} from "../../utils/const";
 import {moviePageType} from "../types/types";
 import withActiveTabs from "../../hoc/with-active-tabs/with-active-tabs";
 import withLoading from "../../hoc/with-loading/with-loading";
@@ -17,7 +17,7 @@ import LoadingPage from "../loading-page/loading-page";
 const MovieCardWrapper = withLoading(withActiveTabs(MoviePageMovieCard));
 
 const MoviePage = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, fetchComments, isAuth, onMyListClick, isLoading, onLoadCompletion} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, movies, comments, fetchMovie, fetchComments, isAuth, onMyListClick, isLoading, onLoadCompletion, onMyListClickNonAuth} = props;
 
   const {id} = useParams();
 
@@ -48,6 +48,7 @@ const MoviePage = (props) => {
           fetchMovie = {fetchMovie}
           isAuth = {isAuth}
           onMyListClick = {onMyListClick}
+          onMyListClickNonAuth = {onMyListClickNonAuth}
         />
 
         <div className="page-content">
@@ -87,6 +88,9 @@ const mapDispatchToProps = (dispatch) => ({
   onPlayButtonClick(url) {
     dispatch(redirectToRoute(url));
     dispatch(startPlaying());
+  },
+  onMyListClickNonAuth() {
+    dispatch(redirectToRoute(AppRoute.SIGN_IN));
   }
 });
 

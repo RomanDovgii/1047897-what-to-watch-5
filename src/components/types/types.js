@@ -16,7 +16,7 @@ const optionalFunctionType = PropTypes.func;
 const functionType = PropTypes.func.isRequired;
 const requiredString = PropTypes.string.isRequired;
 
-export const movieObjectType = PropTypes.shape({
+const movieObjectType = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: requiredString,
   posterImage: requiredString,
@@ -77,15 +77,11 @@ export const moviesType = {
   movies: PropTypes.arrayOf(movieObjectType).isRequired
 };
 
-export const listItemType = PropTypes.string.isRequired;
+const listItemType = PropTypes.string.isRequired;
 const optionalListItemType = PropTypes.string;
 
-export const optionalGenresType = {
+const optionalGenresType = {
   genres: PropTypes.arrayOf(optionalListItemType)
-};
-
-export const optionalGenreType = {
-  genre: optionalListItemType
 };
 
 const genreType = {
@@ -108,13 +104,7 @@ const isSelected = {
   isSelected: PropTypes.bool.isRequired
 };
 
-export const videoPlayerType = {
-  videoUrl: PropTypes.string.isRequired,
-  imageName: PropTypes.string.isRequired,
-  callSource: PropTypes.string.isRequired
-};
-
-export const screenTabType = {
+const screenTabType = {
   screen: PropTypes.string.isRequired
 };
 
@@ -134,24 +124,12 @@ const resetStateType = {
   resetState: functionType
 };
 
-export const childrenType = {
-  children: PropTypes.node.isRequired
-};
-
 const renderPlayerType = {
   renderPlayer: functionType
 };
 
-const imageNameType = {
-  imageName: PropTypes.string.isRequired
-};
-
 const isPlayingType = {
   isPlaying: PropTypes.bool.isRequired
-};
-
-const videoUrlType = {
-  videoUrl: PropTypes.string.isRequired
 };
 
 const onSubmitType = {
@@ -180,10 +158,6 @@ const durationType = {
 
 const currentTimeType = {
   currentTime: PropTypes.number.isRequired
-};
-
-export const onBigPlayButtonClickType = {
-  onBigPlayButtonClick: functionType
 };
 
 const selectedMovieType = {
@@ -277,18 +251,50 @@ const onCloseButtonClickType = {
   onCloseButtonClick: functionType
 };
 
+const isAuthType = {
+  isAuth: PropTypes.bool.isRequired
+};
+
+const onMyListClickNonAuthType = {
+  onMyListClickNonAuth: functionType
+};
+
+const onMyListClickType = {
+  onMyListClick: functionType
+};
+
+const onTabClickType = {
+  onTabClick: functionType
+};
+
+const shownScreenType = {
+  shownScreen: PropTypes.string.isRequired
+};
+
+const fetchMovieType = {
+  fetchMovie: functionType
+};
+
+const fetchCommentsType = {
+  fetchComments: functionType
+};
+
+const onLoadCompletionType = {
+  onLoadCompletion: functionType
+};
+
 export const smallMovieCardType = Object.assign({}, movieType, renderPlayerType, isPlayingType, onClickType, onMouseEnterType, onMouseLeaveType);
 export const promotedMovieMoviesCommentsType = Object.assign({}, movieType, moviesType, commentsType);
 
 export const mainPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType);
-export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, moviesType, commentsType);
-export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType);
+export const moviePageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovieType, moviesType, commentsType, fetchMovieType, fetchCommentsType, isAuthType, onMyListClickType, onMyListClickNonAuthType);
+export const movieCardTopType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, movieType, commentsType, isAuthType, onMyListClickNonAuthType, onMyListClickType);
 export const headerType = Object.assign({}, onUserIconClickType, headerSettingsType);
 export const userBlockType = Object.assign({}, onUserIconClickType, isRenderedType);
 export const catalogType = Object.assign({}, headingType, moviesType, optionalGenresType);
 export const moreButtonType = Object.assign({}, headingType, moviesCountType, onMoreButtonClickType);
 export const myListPageType = Object.assign({}, onUserIconClickType, onWTWLogoClickType);
-export const movieCardType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovieType, commentsType);
+export const movieCardType = Object.assign({}, onUserIconClickType, onWTWLogoClickType, onPlayButtonClickType, selectedMovieType, commentsType, onTabClickType, shownScreenType, isAuthType, isLoadingType, fetchMovieType, onLoadCompletionType, optionalIdType, onMyListClickNonAuthType, onMyListClickType);
 export const tabsType = Object.assign({}, screenTabType, movieType, commentsType);
 export const tabType = Object.assign({}, movieType);
 export const tabWithCommentsType = Object.assign({}, movieType, commentsType);
@@ -296,7 +302,6 @@ export const genresListType = Object.assign({}, genresType, selectedGenreType, o
 export const genreListItemType = Object.assign({}, genreType, onGenreClick, isSelected);
 export const logoType = Object.assign({}, onWTWLogoClickType, resetStateType);
 export const withActiveCardType = Object.assign({}, movieType, renderPlayerType);
-export const withActivePlayerType = Object.assign({}, imageNameType, isPlayingType, videoUrlType);
 export const withActiveTabsType = Object.assign({}, commentsType, onPlayButtonClickType, onUserIconClickType, onWTWLogoClickType, selectedMovieType);
 export const addReviewType = Object.assign({}, onRatingChangeType, onReviewChangeType, backgroundColorType, isReviewFilledType, isRatingFilledType, isFormLockedType, ratingType, reviewType, optionalIdType, onSubmitType, onChangeFormLockType);
 export const playerControlsType = Object.assign({}, onPlayButtonClickType, onFullScreenButtonClickType, isPlayingType, isLoadingType, durationType, currentTimeType);

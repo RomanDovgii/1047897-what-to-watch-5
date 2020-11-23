@@ -8,6 +8,13 @@ const testError = {
   status: `505`
 };
 
+const testErrorNotAuth = {
+  data: {
+    error: `random text`
+  },
+  status: `401`
+};
+
 it(
     `Reducer without additional parameters returns initial state`,
     () => {
@@ -195,6 +202,26 @@ it(
           text: testError.data.error,
           code: testError.status
         }
+      });
+    }
+);
+
+it(
+    `Reducer with ActionType.CREATE_ERR updated error info`,
+    () => {
+      expect(appState(
+          {
+            isError: false,
+            error: {}
+          },
+          {
+            type: ActionType.CREATE_ERR,
+            payload: testErrorNotAuth
+          }
+      ))
+      .toEqual({
+        isError: false,
+        error: {}
       });
     }
 );

@@ -12,7 +12,7 @@ const LoginPage = (props) => {
   return (
     <div className="user-page">
       <Header
-        isUserPage = {true}
+        isUserPage
         heading={HeaderHeadingVariant.SIGN_IN}
         onWTWLogoClick = {onWTWLogoClick}
       />

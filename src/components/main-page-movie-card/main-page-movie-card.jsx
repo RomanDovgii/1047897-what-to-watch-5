@@ -3,9 +3,11 @@ import {connect} from "react-redux";
 import {movieCardTopType} from "../types/types";
 import Header from "../header/header";
 import {addMovieToFavorite} from "../../store/actions/api-actions";
+import {redirectToRoute} from "../../store/actions/action";
+import {AppRoute} from "../../utils/const";
 
 const MainPageMovieCard = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, movie, onMyListClick, isAuth, onMyListClickNonAuth} = props;
   const {name, genre, released, posterImage, backgroundImage, id, isFavorite} = movie;
 
   return (
@@ -38,9 +40,7 @@ const MainPageMovieCard = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick = {(evt) => {
-                  evt.preventDefault();
-
+                onClick = {() => {
                   onPlayButtonClick(`/player/${id}`);
                 }}>
                 <svg viewBox="0 0 19 19" width="19" height="19">
@@ -51,9 +51,15 @@ const MainPageMovieCard = (props) => {
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
-                onClick={(evt) => {
-                  evt.preventDefault();
-                  onMyListClick(id, isFavorite);
+                onClick={() => {
+                  switch (isAuth) {
+                    case true:
+                      onMyListClick(id, isFavorite);
+                      break;
+                    default:
+                      onMyListClickNonAuth();
+                      break;
+                  }
                 }}
               >
                 {isFavorite
@@ -76,11 +82,18 @@ const MainPageMovieCard = (props) => {
 
 MainPageMovieCard.propTypes = movieCardTopType;
 
+const mapStateToProps = ({USER}) => ({
+  isAuth: USER.authorizationStatus
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onMyListClick(id, status) {
     dispatch(addMovieToFavorite(id, status));
+  },
+  onMyListClickNonAuth() {
+    dispatch(redirectToRoute(AppRoute.SIGN_IN));
   }
 });
 
 export {MainPageMovieCard};
-export default connect(null, mapDispatchToProps)(MainPageMovieCard);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageMovieCard);

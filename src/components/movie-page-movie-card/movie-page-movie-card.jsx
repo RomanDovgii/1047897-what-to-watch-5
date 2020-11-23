@@ -6,7 +6,7 @@ import Tabs from "../tabs/tabs";
 import {movieCardType} from "../types/types";
 
 const MoviePageMovieCard = (props) => {
-  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth, onMyListClick, isLoading, fetchMovie, onLoadCompletion, id} = props;
+  const {onUserIconClick, onWTWLogoClick, onPlayButtonClick, selectedMovie, comments, onTabClick, shownScreen, isAuth, onMyListClick, isLoading, fetchMovie, onLoadCompletion, onMyListClickNonAuth, id} = props;
 
   const {name, genre, released, backgroundImage, posterImage, backgroundColor, isFavorite} = selectedMovie;
 
@@ -46,9 +46,7 @@ const MoviePageMovieCard = (props) => {
               <button
                 className="btn btn--play movie-card__button"
                 type="button"
-                onClick = {(evt) => {
-                  evt.preventDefault();
-
+                onClick = {() => {
                   onPlayButtonClick(`/player/${id}`);
                 }}
               >
@@ -60,10 +58,15 @@ const MoviePageMovieCard = (props) => {
               <button
                 className="btn btn--list movie-card__button"
                 type="button"
-                onClick = {(evt) => {
-                  evt.preventDefault();
-
-                  onMyListClick(id, isFavorite);
+                onClick = {() => {
+                  switch (isAuth) {
+                    case true:
+                      onMyListClick(id, isFavorite);
+                      break;
+                    default:
+                      onMyListClickNonAuth();
+                      break;
+                  }
                 }}
               >
                 {isFavorite

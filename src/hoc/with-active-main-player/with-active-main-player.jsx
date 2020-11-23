@@ -30,8 +30,6 @@ const withActiveMainPlayer = (Component) => {
     );
   };
 
-  WithActiveMainPlayer.propTypes = {};
-
   return WithActiveMainPlayer;
 };
 

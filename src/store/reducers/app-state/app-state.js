@@ -1,5 +1,5 @@
 import {extend} from "../../../utils/utils";
-import {SHOWN_MOVIES_COUNT, ActionType} from "../../../utils/const";
+import {SHOWN_MOVIES_COUNT, ActionType, HttpCode} from "../../../utils/const";
 
 const initialState = {
   shownMoviesCount: SHOWN_MOVIES_COUNT,
@@ -49,13 +49,18 @@ const appState = (state = initialState, action) => {
           }
       );
     case ActionType.CREATE_ERR:
+      const errorCode = `${action.payload.status}`;
+      if (errorCode === HttpCode.UNAUTHORIZED) {
+        return state;
+      }
+
       return extend(
           state,
           {
             isError: true,
             error: {
               text: action.payload.data.error,
-              code: `${action.payload.status}`
+              code: errorCode
             }
           }
       );
