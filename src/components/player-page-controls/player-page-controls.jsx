@@ -14,7 +14,7 @@ const PlayerPageControls = (props) => {
     <div className="player__controls">
       <div className="player__controls-row">
         <div className="player__time">
-          <progress className="player__progress" value={duration > 0 ? ((currentTime / duration) * 100) : ZERO} max="100"></progress>
+          <progress className="player__progress" value={duration > 0 ? ((currentTime / duration) * 100) : ZERO} max="100"/>
           <div
             className="player__toggler"
             style={{left: `${(currentTime / duration) * 100}%`}}
@@ -52,7 +52,7 @@ const PlayerPageControls = (props) => {
           }}
         >
           <svg viewBox="0 0 27 27" width="27" height="27">
-            <use xlinkHref="#full-screen"></use>
+            <use xlinkHref="#full-screen"/>
           </svg>
           <span>Full screen</span>
         </button>

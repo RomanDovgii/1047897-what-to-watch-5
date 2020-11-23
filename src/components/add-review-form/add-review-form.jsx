@@ -59,7 +59,7 @@ const AddReviewForm = (props) => {
             value={review}
             onChange={onReviewChange}
             disabled={isFormLocked}
-          ></textarea>
+          />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit" disabled={isReviewFilled && isRatingFilled && !isFormLocked ? false : true}>Post</button>
           </div>
