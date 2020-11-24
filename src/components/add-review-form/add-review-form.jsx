@@ -61,7 +61,7 @@ const AddReviewForm = (props) => {
             disabled={isFormLocked}
           />
           <div className="add-review__submit">
-            <button className="add-review__btn" type="submit" disabled={isReviewFilled && isRatingFilled && !isFormLocked ? false : true}>Post</button>
+            <button className="add-review__btn" type="submit" disabled={isReviewFilled && isRatingFilled && !isFormLocked}>Post</button>
           </div>
 
         </div>

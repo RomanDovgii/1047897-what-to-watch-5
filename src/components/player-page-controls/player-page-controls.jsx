@@ -27,10 +27,7 @@ const PlayerPageControls = (props) => {
         <button
           type="button"
           className="player__play"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onPlayButtonClick();
-          }}
+          onClick={onPlayButtonClick}
         >
           {isPlaying
             ? <svg viewBox="0 0 14 21" width="14" height="21">
@@ -46,10 +43,7 @@ const PlayerPageControls = (props) => {
         <button
           type="button"
           className="player__full-screen"
-          onClick={(evt) => {
-            evt.preventDefault();
-            onFullScreenButtonClick();
-          }}
+          onClick={onFullScreenButtonClick}
         >
           <svg viewBox="0 0 27 27" width="27" height="27">
             <use xlinkHref="#full-screen"/>

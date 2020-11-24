@@ -37,7 +37,6 @@ exports[`Should render correct PlayerPageControls with loading 1`] = `
   >
     <button
       className="player__play"
-      onClick={[Function]}
       type="button"
     >
       <svg
@@ -117,7 +116,6 @@ exports[`Should render correct PlayerPageControls with pause 1`] = `
   >
     <button
       className="player__play"
-      onClick={[Function]}
       type="button"
     >
       <svg
@@ -197,7 +195,6 @@ exports[`Should render correct PlayerPageControls with play 1`] = `
   >
     <button
       className="player__play"
-      onClick={[Function]}
       type="button"
     >
       <svg

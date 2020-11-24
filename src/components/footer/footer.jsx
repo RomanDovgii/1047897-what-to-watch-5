@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {redirectToRoute} from "../../store/actions/action";
+import {redirectToRoute, resetShownMovies, flushSelectedMovie} from "../../store/actions/action";
 import {AppRoute} from "../../utils/const";
 import {onWTWLogoClickType} from "../types/types";
 
@@ -33,6 +33,8 @@ Footer.propTypes = onWTWLogoClickType;
 const mapDispatchToProps = (dispatch) => ({
   onWTWLogoClick() {
     dispatch(redirectToRoute(AppRoute.MAIN));
+    dispatch(resetShownMovies());
+    dispatch(flushSelectedMovie());
   }
 });
 

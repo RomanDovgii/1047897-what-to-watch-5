@@ -8,11 +8,7 @@ const PlayerPageExit = (props) => {
     <button
       type="button"
       className="player__exit"
-      onClick={(evt) => {
-        evt.preventDefault();
-
-        onExitButtonClick();
-      }}
+      onClick={onExitButtonClick}
     >
       Exit
     </button>

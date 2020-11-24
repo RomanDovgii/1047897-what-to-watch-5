@@ -5,14 +5,14 @@ const testError = {
   data: {
     error: `random text`
   },
-  status: `505`
+  status: 505
 };
 
 const testErrorNotAuth = {
   data: {
     error: `random text`
   },
-  status: `401`
+  status: 401
 };
 
 it(

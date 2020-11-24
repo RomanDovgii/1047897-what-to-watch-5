@@ -125,7 +125,7 @@ exports[`Should render correct AddReviewForm 1`] = `
       >
         <button
           className="add-review__btn"
-          disabled={false}
+          disabled={true}
           type="submit"
         >
           Post
@@ -261,7 +261,7 @@ exports[`Should render locked AddReviewForm 1`] = `
       >
         <button
           className="add-review__btn"
-          disabled={true}
+          disabled={false}
           type="submit"
         >
           Post

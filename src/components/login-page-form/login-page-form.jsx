@@ -40,7 +40,8 @@ const LoginPageForm = (props) => {
         <div className="sign-in__submit">
           <button
             className="sign-in__btn"
-            type="submit">Sign in</button>
+            type="submit"
+          >Sign in</button>
         </div>
       </form>
     </div>

@@ -12,11 +12,7 @@ const MoreButton = (props) => {
         <button
           className="catalog__button"
           type="button"
-          onClick={(evt) => {
-            evt.preventDefault();
-
-            onMoreButtonClick();
-          }}
+          onClick={onMoreButtonClick}
         >Show more</button>
       </div>
     );

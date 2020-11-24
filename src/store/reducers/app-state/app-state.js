@@ -49,7 +49,7 @@ const appState = (state = initialState, action) => {
           }
       );
     case ActionType.CREATE_ERR:
-      const errorCode = `${action.payload.status}`;
+      const errorCode = action.payload.status;
       if (errorCode === HttpCode.UNAUTHORIZED) {
         return state;
       }
